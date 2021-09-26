@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Museum</title>
+    <link rel="stylesheet" href="sass/style.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header class="header">
+    <header class="header dark">
         <div class="wrapper header__wrapper">
-            <div class="header__logo">
+            <div>
                 <a href="#" class="logo">
-                    <object type="image/svg+xml" data="assets/img/icons/logo.svg" class="logo-object">
+                    <object type="image/svg+xml" data="assets/img/logo.svg" class="logo-object">
                         Your browser does not support SVG
                      </object>
-                     <span>Louvre</span>
+                     <span class="title logo__title">Louvre</span>
                 </a>
             </div>
             <nav class="header__navigation">
@@ -31,46 +32,54 @@
         </div>
     </header>
     <main>
-        <section class="welcome">
-            <div class="wrapper">
+        <section class="welcome dark">
+            <div class="wrapper welcome__wrapper">
                 <div class="welcome__content">
-                    <h1 class="welcome__title">Welcome to the Louvre</h1>
+                    <h1 class="title welcome__title">Welcome to&nbsp;the Louvre</h1>
                     <p class="welcome__text">From the castle to the museum</p>
                     <div class="welcome__button">
-                        <a href="tour1.html" class="button__link link" target="_blank">Discover the Louvre</a>
+                        <a href="tour1.html" class="button__link" target="_blank">Discover the Louvre</a>
                     </div>
                 </div>
-                <img src="assets/img/welcome/1.jpg" alt="Mona Lisa" class="welcome__image">
-                <div class="carousel">
+                <span class="welcome__image"></span>
+                <div class="carousel welcome__carousel">
                     <div class="numeration">
                         <span class="numeration__current">01</span>
-                        <span>05</span>
+                        <span class="numeration__total">05</span>
                     </div>
-                    <div class="pagination pagination__squared"></div>
-                    <div class="controls left">
+                    <div class="pagination pagination__squared">
+                        <span class="pagination-square pagination-square_colored"></span>
+                        <span class="pagination-square"></span>
+                        <span class="pagination-square"></span>
+                        <span class="pagination-square"></span>
+                        <span class="pagination-square"></span>
+                    </div>
+                    <div class="controls">
+                        <div class="controls-left">
                         <div class="arrow left">
                             <img src="assets/img/welcome/left.png" alt="More image">
                         </div>
                     </div>
-                    <div class="controls right">
+                    <div class="controls-right">
                         <div class="arrow right">
                             <img src="assets/img/welcome/right.png" alt="More image">
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </section>
         <section class="visiting">
-            <div class="wrapper">
-                <h2 class="visiting__title">Virtual tour</h2>
+            <div class="wrapper wrapper__section">
+                <h2 class="title title_underlined title_light">Virtual tour</h2>
                 <div class="layout-3-column tour__container">
                     <a href="tour2.html" class="tour__link link">
                         <figure class="tour">
                             <img src="assets/img/visiting/1.jpg" class="tour__preview" alt="Royal Palace">
                             <figcaption class="tour__description">
-                                <h3 class="tour__title">Royal Palace</h3>
-                                <span class="tour__text">360° Virtual Tour</span>
-                                <span class="tour__text">Google Street Panorama View</span>
+                                <h3 class="title tour__title">Royal Palace</h3>
+                                <p class="tour__text">360° Virtual Tour</p>
+                                <p class="tour__text">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -78,9 +87,9 @@
                         <figure class="tour">
                             <img src="assets/img/visiting/2.jpg" class="tour__preview" alt="Denon Wing">
                             <figcaption class="tour__description">
-                                <h3 class="tour__title">Denon Wing</h3>
-                                <span class="tour__text">360° Virtual Tour</span>
-                                <span class="tour__text">Google Street Panorama View</span>
+                                <h3 class="title tour__title">Denon Wing</h3>
+                                <p class="tour__text">360° Virtual Tour</p>
+                                <p class="tour__text">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -88,9 +97,9 @@
                         <figure class="tour">
                             <img src="assets/img/visiting/3.jpg" class="tour__preview" alt="Collonade Perrault">
                             <figcaption class="tour__description">
-                                <h3 class="tour__title">Collonade Perrault</h3>
-                                <span class="tour__text">360° Virtual Tour</span>
-                                <span class="tour__text">Google Street Panorama View</span>
+                                <h3 class="title tour__title">Collonade Perrault</h3>
+                                <p class="tour__text">360° Virtual Tour</p>
+                                <p class="tour__text">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -98,9 +107,9 @@
                         <figure class="tour">
                             <img src="assets/img/visiting/4.jpg" class="tour__preview" alt="Greek Hall">
                             <figcaption class="tour__description">
-                                <h3 class="tour__title">Greek Hall</h3>
-                                <span class="tour__text">360° Virtual Tour</span>
-                                <span class="tour__text">Google Street Panorama View</span>
+                                <h3 class="title tour__title">Greek Hall</h3>
+                                <p class="tour__text">360° Virtual Tour</p>
+                                <p class="tour__text">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -108,9 +117,9 @@
                         <figure class="tour">
                             <img src="assets/img/visiting/5.jpg" class="tour__preview" alt="Mona Lisa">
                             <figcaption class="tour__description">
-                                <h3 class="tour__title">Mona Lisa</h3>
-                                <span class="tour__text">360° Virtual Tour</span>
-                                <span class="tour__text">Google Street Panorama View</span>
+                                <h3 class="title tour__title">Mona Lisa</h3>
+                                <p class="tour__text">360° Virtual Tour</p>
+                                <p class="tour__text">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -118,64 +127,81 @@
                         <figure class="tour">
                             <img src="assets/img/visiting/6.jpg" class="tour__preview" alt="Night Palace">
                             <figcaption class="tour__description">
-                                <h3 class="tour__title">Night Palace</h3>
-                                <span class="tour__text">360° Virtual Tour</span>
-                                <span class="tour__text">Google Street Panorama View</span>
+                                <h3 class="title tour__title">Night Palace</h3>
+                                <p class="tour__text">360° Virtual Tour</p>
+                                <p class="tour__text">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
                 </div>
             </div>
         </section>
-        <section class="explore">
-            <div class="wrapper explore__wrapper">
+        <section class="explore dark">
+            <div class="wrapper wrapper__section layout-2-column">
                 <div class="explore__content">
-                    <h2 class="explore__title">Picture explore</h2>
-                    <p class="explore__text">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
-                    <p class="explore__text">It was cleaned in 1984 to remove a <span class="text__colored">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
-                    <p class="explore__text">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
+                    <h2 class="title title_underlined">Picture explore</h2>
+                    <p class="text explore__text">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
+                    <p class="text explore__text">It was cleaned in 1984 to remove a <span class="text__colored">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
+                    <p class="text explore__text">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
                 </div>
                 <div class="explore__photos">
-                    <div class="photo photo-original"></div>
-                    <div class="photo photo-filtered"></div>
+                    <div class="photo photo_original"></div>
+                    <div class="photo photo_filtered"></div>
                     <div class="separator"></div>
                 </div>
             </div>
         </section>
         <section class="video">
-            <div class="wrapper video-wrapper">
+            <div class="wrapper wrapper__section">
                 <div class="video__introduction">
-                    <h2 class="video__title">Video journey</h2>
-                    <p class="video_subtitle">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
+                    <h2 class="title title_light video__title">Video journey</h2>
+                    <p class="text video__subtitle">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
                 </div>
                 <div class="video__content">
-                    <div class="video__current">
-                        <video src="assets/video/video0.mp4" muted poster="assets/video/poster0.jpg"></video>
-                        <button class="button-play button-play__big">
-                            <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
+                    <div class="video">
+                        <video class="video__current" src="assets/video/video/video0.mp4" muted poster="assets/video/posters/poster0.jpg" width="1440" height="650"></video>
+                        <button class="button-play button-play_big">
+                            <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__big-object">
                                 Your browser does not support SVG
                              </object>
                         </button>
                         <div class="video__controls">
                             <button class="controls__button-play">
-                                <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
+                                <object type="image/svg+xml" data="assets/video/play_grey.svg" class="controls__object">
                                     Your browser does not support SVG
                                  </object>
                             </button>
-                            <input type="range" name="video-progress">
+                            <input class="play-range" type="range" name="video-progress">
                             <button></button>
                             <input type="range" name="volume-level">
                             <button></button>
                         </div>
-                        <div class="video-next">
-                            <video src="assets/video/video/video1.mp4" muted poster="assets/video/posters/poster1.jpg"></video>
+                    </div>
+                    <div>    
+                        <div class="layout-3-column">
+                            <video class="video-next" src="assets/video/video/video1.mp4" width="452" height="254" muted poster="assets/video/posters/poster1.jpg"></video>
+                            <video class="video-next" src="assets/video/video/video2.mp4" width="452" height="254" muted poster="assets/video/posters/poster2.jpg"></video>
+                            <video class="video-next" src="assets/video/video/video3.mp4" width="452" height="254" muted poster="assets/video/posters/poster3.jpg"></video>
+                        </div>
+                        <div class="button">
                             <button class="button-play button-play__small">
                                 <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
                                     Your browser does not support SVG
                                  </object>
                             </button>
-                            <div class="video-next__wrappper">
-                                <img src="assets/img/welcome/1.jpg" alt="Mona Lisa" class="video-next__favicon">
+                            <button class="button-play button-play__small">
+                                <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
+                                    Your browser does not support SVG
+                                 </object>
+                            </button>
+                            <button class="button-play button-play__small">
+                                <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
+                                    Your browser does not support SVG
+                                 </object>
+                            </button>
+                        </div>    
+                            <div class="video-next__wrapper">
+                                <img src="assets/img/welcome/1.jpg"  width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
                                 <p class="video-next__title">Exposition - Le Corps et l’Ame. De Dona...</p>
                                 <ul class="video-next__more">
                                     <li></li>
@@ -184,15 +210,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="video-next">
-                            <video src="assets/video/video/video2.mp4" muted poster="assets/video/posters/poster2.jpg"></video>
-                            <button class="button-play button-play__small">
-                                <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
-                                    Your browser does not support SVG
-                                 </object>
-                            </button>
-                            <div class="video-next__wrappper">
-                                <img src="assets/img/welcome/1.jpg" alt="Mona Lisa" class="video-next__favicon">
+                        <div class="layout-3-column">
+                            
+
+                            <div class="video-next__wrapper">
+                                <img src="assets/img/welcome/1.jpg" width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
                                 <p class="video-next__title">Au Louvre ! La Venus de Milo</p>
                                 <ul class="video-next__more">
                                     <li></li>
@@ -201,15 +223,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="video-next">
-                            <video src="assets/video/video/video3.mp4" muted poster="assets/video/posters/poster3.jpg"></video>
-                            <button class="button-play button-play__small">
-                                <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
-                                    Your browser does not support SVG
-                                 </object>
-                            </button>
-                            <div class="video-next__wrappper">
-                                <img src="assets/img/welcome/1.jpg" alt="Mona Lisa" class="video-next__favicon">
+                        <div class="layout-3-column">
+                            
+
+                            <div class="video-next__wrapper">
+                                <img src="assets/img/welcome/1.jpg" width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
                                 <p class="video-next__title">Promenade dans les collections mesop...</p>
                                 <ul class="video-next__more">
                                     <li></li>
@@ -219,13 +237,13 @@
                             </div>
                         </div>
                         <div class="carousel">
-                            <div class="controls left">
+                            <div class="controls-left">
                                 <div class="arrow left">
                                     <img src="assets/video/left.svg" alt="More video">
                                 </div>
                             </div>
                             <div class="pagination pagination__circle"></div>
-                            <div class="controls right">
+                            <div class="controls-right">
                                 <div class="arrow right">
                                     <img src="assets/video/right.svg" alt="More video">
                                 </div>
@@ -235,8 +253,9 @@
                 </div>
             </div>
         </section>
-        <section class="gallery">
-            <div class="wrapper">
+        <section class="gallery dark">
+            <div class="wrapper wrapper__section">
+                <h2 class="title explore__title">Art gallery</h2>
                 <div class="picture-container">
                     <div class="picture-inner-container">
                         <img src="assets/img/gallery/gallery1.jpg" class="gallery__picture" alt="">
@@ -261,8 +280,8 @@
         <section class="tickets"></section>
         <div class="parallax"></div>
         <section class="contacts">
-            <div class="wrapper">
-                <h2 class="contacts__title">Contacts</h2>
+            <div class="wrapper wrapper__section">
+                <h2 class="title title_underlined title_light">Contacts</h2>
                 <div>
                     <span class="museum-title">Palais Royal Musee du Louvre</span>
                     <p class="contacts__details">address: 75001 Paris, France</p>
@@ -279,12 +298,12 @@
             </div>
         </section>
     </main>
-    <footer class="footer">
+    <footer class="footer dark">
         <div class="wrapper">
             <div class="footer__topline">
                 <div class="footer__logo">
                     <a href="#" class="logo">
-                        <object type="image/svg+xml" data="assets/img/icons/logo.svg" class="logo-object">
+                        <object type="image/svg+xml" data="assets/img/logo.svg" class="logo-object">
                             Your browser does not support SVG
                          </object>
                          <span>Louvre</span>
