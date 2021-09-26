@@ -1,0 +1,24 @@
+.pagination {
+    @extend %flex;
+}
+
+.pagination-square {
+    @include display($width: 16px, $height: 16px);
+    margin-right: 25px;
+    background-color: $color-on-dark;
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.pagination-square_colored {
+    background-color: $color-active;
+}
+
+.numeration, .controls {
+    display: flex;
+}
+
+.controls-left {
+    margin-right: 20px;
+}

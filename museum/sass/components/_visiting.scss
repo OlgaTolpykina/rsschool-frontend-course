@@ -1,0 +1,27 @@
+.tour__link {
+    margin-bottom: 7.5rem;
+    &:nth-child(n+4) {
+        margin-bottom: 0;
+    }
+}
+
+.tour__preview {
+    display: block;
+}
+
+.tour__title {
+    margin: 25px 0 10px 0;
+    @include font($size: 3.2rem, $height: 3.533rem, $letter: 0.5rem);
+    &:after {
+        content: "";
+        display: block;
+        width: 30rem;
+        height: 0.2rem;
+        margin-top: 1rem;
+        background-color: $color-primary;
+    }
+}
+
+.tour__text {
+    width: 100%;
+}
