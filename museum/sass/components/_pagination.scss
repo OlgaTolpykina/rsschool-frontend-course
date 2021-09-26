@@ -3,8 +3,8 @@
 }
 
 .pagination-square {
-    @include display($width: 16px, $height: 16px);
-    margin-right: 25px;
+    @include display($width: 1.6rem, $height: 1.6rem);
+    margin-right: 2.5rem;
     background-color: $color-on-dark;
     &:last-child {
         margin-right: 0;
@@ -13,6 +13,17 @@
 
 .pagination-square_colored {
     background-color: $color-active;
+}
+
+.pagination-circle {
+    @include display($width: 1.2rem, $height: 1.2rem);
+    margin-right: 2rem;
+    background-color: $color-grey;
+    border-radius: 50%;
+}
+
+.pagination-circle_colored {
+    background-color: #333333;
 }
 
 .numeration, .controls {

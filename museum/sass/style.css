@@ -473,7 +473,7 @@ button {
   font-weight: 200;
   font-style: normal;
 }
-.video-next__wrapper, .welcome__carousel, .welcome__wrapper, .pagination, .navigation, .header__wrapper, .logo {
+.video-carousel, .video-next__wrapper, .welcome__carousel, .welcome__wrapper, .pagination, .navigation, .header__wrapper, .logo {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -525,6 +525,10 @@ body {
   letter-spacing: 0.2rem;
 }
 
+.text__colored {
+  color: #CAAA7D;
+}
+
 .dark {
   color: #ffffff;
   background-color: #030303;
@@ -538,7 +542,7 @@ body {
   display: block;
   width: 36rem;
   height: 7.5rem;
-  padding: 2.6rem 6.4rem;
+  padding: 2.6rem 5rem;
   font-size: 2.2rem;
   font-style: normal;
   font-weight: 300;
@@ -616,9 +620,9 @@ body {
 
 .pagination-square {
   display: block;
-  width: 16px;
-  height: 16px;
-  margin-right: 25px;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 2.5rem;
   background-color: #ffffff;
 }
 .pagination-square:last-child {
@@ -627,6 +631,19 @@ body {
 
 .pagination-square_colored {
   background-color: #D2B183;
+}
+
+.pagination-circle {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 2rem;
+  background-color: #999999;
+  border-radius: 50%;
+}
+
+.pagination-circle_colored {
+  background-color: #333333;
 }
 
 .numeration, .controls {
@@ -722,6 +739,11 @@ body {
 
 .explore__text {
   margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.85rem;
+  letter-spacing: 0;
 }
 
 .explore__photos {
@@ -787,6 +809,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 7.5rem;
+  align-items: center;
 }
 .video__introduction > * {
   flex-basis: 50%;
@@ -795,6 +818,14 @@ body {
 .video__current {
   display: block;
   object-fit: cover;
+}
+
+.video__subtitle {
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.85rem;
+  letter-spacing: 0;
 }
 
 .button-play {
@@ -819,9 +850,21 @@ body {
   left: 1.5rem;
 }
 
+.button-play__small {
+  width: 6.8rem;
+  height: 4.8rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(33, 33, 33, 0.8);
+  border-radius: 20%;
+  transform: translate(-50%, -50%);
+}
+
 .video__controls {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 4rem;
   padding: 2.5rem 2.5rem 2.5rem 3rem;
   background-color: #000000;
 }
@@ -833,6 +876,28 @@ body {
 
 .play-range {
   width: 92.9rem;
+  appearance: none;
+  background-color: #000000;
+}
+.play-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -0.6rem;
+}
+.play-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 50px;
+  background: linear-gradient(to right, #710707 50%, #c4c4c4 50%);
+}
+
+.play-range_small {
+  width: 15.5rem;
 }
 
 .video-next {
@@ -842,10 +907,48 @@ body {
 .video-next__wrapper {
   flex-wrap: nowrap;
   position: absolute;
+  top: 1.5rem;
+  left: 1rem;
 }
 
 .video-next__favicon {
+  display: block;
+  margin-right: 1rem;
   border-radius: 50%;
+}
+
+.video-next__title {
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.85rem;
+  letter-spacing: 0;
+  margin-right: 2.3rem;
+  color: #ffffff;
+}
+
+.video-next__more {
+  display: block;
+  position: relative;
+  color: #ffffff;
+}
+.video-next__more::before {
+  content: ".";
+  position: absolute;
+  top: -9px;
+  color: #ffffff;
+}
+.video-next__more::after {
+  content: ".";
+  position: absolute;
+  top: -4px;
+  color: #ffffff;
+  left: 0;
+}
+
+.video-carousel {
+  justify-content: center;
+  margin-top: 4rem;
 }
 
 /*# sourceMappingURL=style.css.map */
