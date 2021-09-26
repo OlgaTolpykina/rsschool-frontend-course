@@ -1,5 +1,6 @@
 .explore__text {
     margin-bottom: 2.5rem;
+    @include font($height: 3.85rem, $letter: 0)
 }
 
 .explore__photos {

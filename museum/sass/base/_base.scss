@@ -27,6 +27,10 @@ body {
     @include font($height: 3.85rem, $weight: 300);
 }
 
+.text__colored {
+    color: $color-additional-text-on-dark;
+}
+
 .dark {
     color: $color-on-dark;
     background-color: $color-background;

@@ -172,77 +172,79 @@
                                  </object>
                             </button>
                             <input class="play-range" type="range" name="video-progress">
-                            <button></button>
-                            <input type="range" name="volume-level">
-                            <button></button>
+                            <button>
+                                <object type="image/svg+xml" data="assets/video/volume.svg" class="volume__object">
+                                    Your browser does not support SVG
+                                 </object>
+                            </button>
+                            <input class="play-range play-range_small" type="range" name="volume-level">
+                            <button>
+                                <object type="image/svg+xml" data="assets/video/scale.svg" class="scale__object">
+                                    Your browser does not support SVG
+                                 </object>
+                            </button>
                         </div>
                     </div>
                     <div>    
                         <div class="layout-3-column">
-                            <video class="video-next" src="assets/video/video/video1.mp4" width="452" height="254" muted poster="assets/video/posters/poster1.jpg"></video>
-                            <video class="video-next" src="assets/video/video/video2.mp4" width="452" height="254" muted poster="assets/video/posters/poster2.jpg"></video>
-                            <video class="video-next" src="assets/video/video/video3.mp4" width="452" height="254" muted poster="assets/video/posters/poster3.jpg"></video>
-                        </div>
-                        <div class="button">
-                            <button class="button-play button-play__small">
-                                <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
-                                    Your browser does not support SVG
-                                 </object>
-                            </button>
-                            <button class="button-play button-play__small">
-                                <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
-                                    Your browser does not support SVG
-                                 </object>
-                            </button>
-                            <button class="button-play button-play__small">
-                                <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
-                                    Your browser does not support SVG
-                                 </object>
-                            </button>
-                        </div>    
-                            <div class="video-next__wrapper">
-                                <img src="assets/img/welcome/1.jpg"  width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
-                                <p class="video-next__title">Exposition - Le Corps et l’Ame. De Dona...</p>
-                                <ul class="video-next__more">
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
+                            <div class="video-next">
+                                <video src="assets/video/video/video1.mp4" width="452" height="254" muted
+                                    poster="assets/video/posters/poster1.jpg"></video>
+                                <button class="button-play__small">
+                                    <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
+                                        Your browser does not support SVG
+                                    </object>
+                                </button>
+                                <div class="video-next__wrapper">
+                                    <img src="assets/img/welcome/1.jpg"  width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
+                                    <p class="video-next__title">Exposition - Le Corps et l’Ame. De Dona...</p>
+                                    <span class="video-next__more">.</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="layout-3-column">
                             
-
-                            <div class="video-next__wrapper">
-                                <img src="assets/img/welcome/1.jpg" width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
-                                <p class="video-next__title">Au Louvre ! La Venus de Milo</p>
-                                <ul class="video-next__more">
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
+                            <div class="video-next">
+                                <video src="assets/video/video/video2.mp4" width="452" height="254" muted
+                                    poster="assets/video/posters/poster2.jpg"></video>
+                                <button class="button-play__small">
+                                    <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
+                                        Your browser does not support SVG
+                                    </object>
+                                </button>
+                                <div class="video-next__wrapper">
+                                    <img src="assets/img/welcome/2.jpg"  width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
+                                    <p class="video-next__title">Au Louvre ! La Venus de Milo</p>
+                                    <span class="video-next__more">.</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="layout-3-column">
                             
-
-                            <div class="video-next__wrapper">
-                                <img src="assets/img/welcome/1.jpg" width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
-                                <p class="video-next__title">Promenade dans les collections mesop...</p>
-                                <ul class="video-next__more">
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
+                            <div class="video-next">
+                                <video src="assets/video/video/video3.mp4" width="452" height="254" muted
+                                    poster="assets/video/posters/poster3.jpg"></video>
+                                <button class="button-play__small">
+                                    <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
+                                        Your browser does not support SVG
+                                    </object>
+                                </button>
+                                <div class="video-next__wrapper">
+                                    <img src="assets/img/welcome/3.jpg"  width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
+                                    <p class="video-next__title">Promenade dans les collections mesop...</p>
+                                    <span class="video-next__more">.</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel">
+                        </div>  
+                        <div class="video-carousel">
                             <div class="controls-left">
                                 <div class="arrow left">
                                     <img src="assets/video/left.svg" alt="More video">
                                 </div>
                             </div>
-                            <div class="pagination pagination__circle"></div>
+                            <div class="pagination pagination__circle">
+                                <span class="pagination-circle pagination-circle_colored"></span>
+                                <span class="pagination-circle"></span>
+                                <span class="pagination-circle"></span>
+                                <span class="pagination-circle"></span>
+                                <span class="pagination-circle"></span>
+                            </div>
                             <div class="controls-right">
                                 <div class="arrow right">
                                     <img src="assets/video/right.svg" alt="More video">
