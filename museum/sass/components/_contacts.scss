@@ -1,0 +1,28 @@
+.contacts {
+width: 20%;
+}
+
+.flex__section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex__title {
+    width: 100%;
+}
+
+.contacts__details {
+    margin-bottom: 2.5rem;
+    @include font($weight: 300, $letter: 0);
+}
+
+.contacts__link {
+    color: $color-black;
+}
+
+.museum-title {
+    display: block;
+    margin-bottom: 5rem;
+    @include font($size: 2.8rem, $height: 3.281rem, $weight: 500, $letter: 0);
+}
