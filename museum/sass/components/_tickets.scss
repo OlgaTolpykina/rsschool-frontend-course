@@ -1,0 +1,16 @@
+.tickets__image {
+    width: 72rem;
+    height: 55rem;
+}
+
+.subtitle__type {
+    margin-bottom: 5rem;
+} 
+
+.type__input {
+    @include font($weight:300);
+}
+
+.type__label {
+    margin-bottom: 2.5rem;
+}
