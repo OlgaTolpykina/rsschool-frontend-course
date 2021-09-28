@@ -90,7 +90,7 @@
     color: $color-on-dark;
   }
 
-  .footer_item:hover {
+  .footer_item a:hover {
     color: $color-active;
     @extend %transition;
   }

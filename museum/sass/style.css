@@ -489,7 +489,7 @@ button {
   font-family: "Roboto", "Verdana", sans-serif;
 }
 
-.tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
+.tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item a:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
   transition: all 0.3s ease-out;
 }
 
@@ -766,7 +766,7 @@ body {
   color: #ffffff;
 }
 
-.footer_item:hover {
+.footer_item a:hover {
   color: #D2B183;
 }
 
