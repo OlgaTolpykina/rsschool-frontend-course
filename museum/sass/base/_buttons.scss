@@ -5,4 +5,11 @@
     border-radius: 1rem;
     color: $color-on-dark;
     background-color: $color-primary;
+    &:hover {
+        background-color: $color-active;
+    }
+    &:active {
+        background-color: $color-active;
+    }
+    @extend %transition;
 }

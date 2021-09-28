@@ -6,9 +6,17 @@
     @include display($width: 1.6rem, $height: 1.6rem);
     margin-right: 2.5rem;
     background-color: $color-on-dark;
+    cursor: pointer;
     &:last-child {
         margin-right: 0;
     }
+    &:hover {
+        background-color: $color-active;
+    }
+    &:active {
+        background-color: $color-active;
+    }
+    @extend %transition;
 }
 
 .pagination-square_colored {
@@ -20,6 +28,14 @@
     margin-right: 2rem;
     background-color: $color-grey;
     border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+        background-color: #333333;
+    }
+    &:active {
+        background-color: #333333;
+    }
+    @extend %transition;
 }
 
 .pagination-circle_colored {
@@ -32,4 +48,12 @@
 
 .controls-left {
     margin-right: 20px;
+}
+
+.arrow {
+    display: flex;
+    cursor: pointer;
+    &:hover .arrow__image{
+        filter: invert(58%) sepia(15%) saturate(792%) hue-rotate(356deg) brightness(91%) contrast(83%);
+    }
 }

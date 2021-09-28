@@ -17,5 +17,12 @@
 }
 
 .link-on-dark {
+    @extend %transition;
     color: $color-on-dark;
+    &:hover {
+        color: $color-active;
+    }
+    &:active {
+        color: $color-active;
+    }
 }
