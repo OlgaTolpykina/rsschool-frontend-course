@@ -16,7 +16,7 @@
                     <object type="image/svg+xml" data="assets/img/logo.svg" class="logo-object">
                         Your browser does not support SVG
                      </object>
-                     <span class="title logo__title">Louvre</span>
+                     <h1 class="title logo__title">Louvre</h1>
                 </a>
             </div>
             <nav class="header__navigation">
@@ -47,7 +47,7 @@
         <section class="welcome dark">
             <div class="wrapper welcome__wrapper">
                 <div class="welcome__content">
-                    <h1 class="title welcome__title">Welcome to&nbsp;the Louvre</h1>
+                    <h2 class="title welcome__title">Welcome to&nbsp;the Louvre</h2>
                     <p class="welcome__text">From the castle to the museum</p>
                     <div class="welcome__button">
                         <a href="tour1.html" class="button__link" target="_blank">Discover the Louvre</a>
@@ -294,21 +294,45 @@
         <section class="tickets" id="tickets">
             <div class="wrapper wrapper__section flex__section">
                 <h2 class="title title_underlined title_light flex__title">Buy tickets</h2>
-                <div>
-                    <img class="tickets__image" src="assets/img/tickets/1.jpg" alt="Picture" width="72" height="55">
-                </div>
-                <div class="type">
-                    <h3 class="subtitle subtitle__type">Ticket type</h3>
-                    <input class="type__input" type="radio" name="ticket" id="ticket_permanent" value="permanent" checked>
-                    <label class="type__label" for="ticket_permanent">Permanent exhibition</label>
-                    <br>
-                    <input class="type__input" type="radio" name="ticket" id="ticket_temporary" value="temporary">
-                    <label class="type__label" for="ticket_temporary">Temporary exhibition</label>
-                    <br>
-                    <input class="type__input" type="radio" name="ticket" id="ticket_combined" value="combined">
-                    <label for="ticket_combined">Combined admission</label>
-                </div>
-                <div></div>
+                <img class="tickets__image" src="assets/img/tickets/1.jpg" alt="Pompeo Girolamo Battoni - Hercules" width="720" height="550">
+                <form class="tickets-form" method="get">
+                    <div>
+                        <fieldset>
+                            <legend>Ticket Type</legend>
+                            <ul>
+                                <li>
+                                    <input type="radio" name="ticket-type" value="permanent" id="exhibition-permanent" checked />
+                                    <label for="exhibition-permanent">Permanent exhibition</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="ticket-type" value="temporart" id="exhibition-temporary"/>
+                                    <label for="exhibition-temporary">Temporary exhibition</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="ticket-type" value="combined" id="exhibition-combined"/>
+                                    <label for="exhibition-combined">Combined Admission</label>
+                                </li>
+                            </ul>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Amount</legend>
+                            <label for="basic18+">Basic 18+</label>
+                            <div>
+                                <button>-</button>
+                                <input id="basic18+" name="age18+" type="number" placeholder="1" />
+                                <button>+</button>
+                            </div>
+                            <label for="senior65+">Senior 65+</label>
+                            <div>
+                                <button>-</button>
+                                <input id="senior65+" name="age65+" type="number" placeholder="1" />
+                                <button>+</button>
+                            </div>
+                            <p>Total €220</p>
+                        </fieldset>
+                    </div>
+                </form>
+                <button>Buy Now</button>
             </div>
         </section>
         <div class="parallax"></div>
