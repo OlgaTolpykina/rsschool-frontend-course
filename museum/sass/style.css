@@ -808,7 +808,7 @@ body {
 
 .welcome__wrapper {
   min-height: 81rem;
-  background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url("../../assets/img/welcome/1.jpg");
+  background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url("../assets/img/welcome/1.jpg");
   background-size: 100rem 75rem;
   background-repeat: no-repeat;
   background-position: right top;
@@ -911,7 +911,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../../assets/img/explore/before.jpg");
+  background: url("../assets/img/explore/before.jpg");
   background-size: cover;
 }
 .photo_original {
@@ -920,7 +920,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .photo_filtered {
-  background: url("../../assets/img/explore/after.jpg");
+  background: url("../assets/img/explore/after.jpg");
   z-index: 1;
 }
 
@@ -1239,7 +1239,7 @@ body {
 .parallax {
   width: 100%;
   height: 40rem;
-  background-image: url("../../assets/img/parallax.jpg");
+  background-image: url("../assets/img/parallax.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
