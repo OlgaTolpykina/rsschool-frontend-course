@@ -64,10 +64,38 @@
   .socials__button::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -0.2rem;
+    left: -0.2rem;
     width: 48px;
     height: 48px;
     border: 1px solid #666666;
     border-radius: 50px;
+  }
+
+  .socials__button:hover .social-path {
+    fill: $color-active;
+    @extend %transition;
+  }
+
+  .socials__button:hover::before{
+    border: 1px solid $color-active;
+    @extend %transition;
+  }
+
+  .footer_item {
+    cursor: pointer;
+  }
+
+  .footer_item a {
+    color: $color-on-dark;
+  }
+
+  .footer_item:hover {
+    color: $color-active;
+    @extend %transition;
+  }
+
+  .footer_item:active {
+    color: $color-active;
+    @extend %transition;
   }
