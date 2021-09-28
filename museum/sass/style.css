@@ -489,6 +489,10 @@ button {
   font-family: "Roboto", "Verdana", sans-serif;
 }
 
+.video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .link-on-dark, .button__link {
+  transition: all 0.3s ease-out;
+}
+
 html {
   font-size: 10px;
 }
@@ -566,11 +570,23 @@ body {
   color: #ffffff;
   background-color: #710707;
 }
+.button__link:hover {
+  background-color: #D2B183;
+}
+.button__link:active {
+  background-color: #D2B183;
+}
 
 .logo {
   align-items: baseline;
   color: #ffffff;
   text-transform: uppercase;
+}
+.logo:hover {
+  color: #D2B183;
+}
+.logo:active {
+  color: #D2B183;
 }
 
 .logo__title {
@@ -587,6 +603,10 @@ body {
 
 .logo-svg {
   cursor: pointer;
+}
+
+.logo-path:hover {
+  fill: #D2B183;
 }
 
 .wrapper {
@@ -616,6 +636,12 @@ body {
 
 .link-on-dark {
   color: #ffffff;
+}
+.link-on-dark:hover {
+  color: #D2B183;
+}
+.link-on-dark:active {
+  color: #D2B183;
 }
 
 .layout-3-column {
@@ -728,9 +754,16 @@ body {
   height: 1.6rem;
   margin-right: 2.5rem;
   background-color: #ffffff;
+  cursor: pointer;
 }
 .pagination-square:last-child {
   margin-right: 0;
+}
+.pagination-square:hover {
+  background-color: #D2B183;
+}
+.pagination-square:active {
+  background-color: #D2B183;
 }
 
 .pagination-square_colored {
@@ -744,6 +777,13 @@ body {
   margin-right: 2rem;
   background-color: #999999;
   border-radius: 50%;
+  cursor: pointer;
+}
+.pagination-circle:hover {
+  background-color: #333333;
+}
+.pagination-circle:active {
+  background-color: #333333;
 }
 
 .pagination-circle_colored {
@@ -756,6 +796,14 @@ body {
 
 .controls-left {
   margin-right: 20px;
+}
+
+.arrow {
+  display: flex;
+  cursor: pointer;
+}
+.arrow:hover .arrow__image {
+  filter: invert(58%) sepia(15%) saturate(792%) hue-rotate(356deg) brightness(91%) contrast(83%);
 }
 
 .welcome__wrapper {
@@ -814,6 +862,9 @@ body {
 }
 .tour__link:nth-child(n+4) {
   margin-bottom: 0;
+}
+.tour__link:hover .tour__title:after {
+  width: 100%;
 }
 
 .tour__preview {
@@ -946,12 +997,23 @@ body {
   border: 1rem solid #ffffff;
   border-radius: 50%;
 }
+.button-play_big:hover {
+  border: 1rem solid #D2B183;
+}
 
 .button-play__big-object {
   width: 9.1rem;
   height: 12rem;
   position: relative;
   left: 1.5rem;
+}
+
+.play-svg_big {
+  cursor: pointer;
+}
+
+.play-path_big:hover {
+  fill: #D2B183;
 }
 
 .button-play__small {
@@ -971,6 +1033,14 @@ body {
   margin-bottom: 4rem;
   padding: 2.5rem 2.5rem 2.5rem 3rem;
   background-color: #000000;
+}
+
+.svg_grey {
+  cursor: pointer;
+}
+
+.svg_grey:hover .path_grey {
+  fill: #ffffff;
 }
 
 .controls__object {
@@ -1006,6 +1076,12 @@ body {
 
 .video-next {
   position: relative;
+}
+.video-next:hover .button-play__small {
+  background: #FF0000;
+}
+.video-next:active .button-play__small {
+  background: #FF0000;
 }
 
 .video-next__wrapper {
@@ -1053,10 +1129,6 @@ body {
 .video-carousel {
   justify-content: center;
   margin-top: 4rem;
-}
-
-.arrow {
-  display: flex;
 }
 
 .picture-container {
