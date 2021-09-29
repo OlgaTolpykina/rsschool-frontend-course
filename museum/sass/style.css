@@ -774,6 +774,12 @@ body {
   color: #D2B183;
 }
 
+iframe {
+  border: none;
+  height: 100vh;
+  width: 100vw;
+}
+
 .pagination-square {
   display: block;
   width: 1.6rem;
