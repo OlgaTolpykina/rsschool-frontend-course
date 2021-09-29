@@ -24,23 +24,24 @@
 
 .picture-inner-container {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 36px;
-    grid-row-gap: 14px;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-between;
+    height: 3020px;
 }
 
 .gallery__img {
-    width: 100%;
-    object-fit: cover;
+    width: 32%;
     &:nth-child(3n+1) {
-        position: relative;
-        grid-column-start: 1;
-        top: 50px;
+        margin-top: 2.4rem;
+        order: 1;
     }
-    &:nth-child(3n+3) {
-        position: relative;
-        grid-column-start: 3;
-        top: 50px; 
+    &:nth-child(3n+2) {
+        margin-bottom: 2.4rem;
+        order: 2;
+    }
+    &:nth-child(3n) {
+        margin-top: 2.4rem;
+        order: 3;
     }
 }
