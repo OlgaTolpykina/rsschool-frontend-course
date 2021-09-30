@@ -1,0 +1,77 @@
+.buy {
+    position: fixed;
+    width: $content-width;
+    height: 84.5rem;
+    margin: 0 auto;
+    padding: 9.1rem 23.5rem;
+    left: -100%;
+    top: 0;
+    @include font($size: 1.8rem, $height: 2.109rem, $letter: 0);
+    background-color: $color-on-dark;
+    animation: popup-hide .7s ease-out forwards;
+    @extend %transition;
+    z-index: 6;
+    &_popup {
+        animation: popup .7s ease-out forwards;
+    }
+}
+
+.buy__form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    background-image: url("../assets/img/logo.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    @extend %transition;
+}
+
+.tickets-details_choice {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 400px;
+}
+
+.title__bookform {
+    display: block;
+    margin-bottom: 1.5rem;
+    @extend %font-titles;
+    @include font($size: 5rem, $height: 5.52rem, $letter: 0);
+    text-transform: uppercase;
+}
+
+.logo__form {
+    filter: invert(56%) sepia(14%) saturate(769%) hue-rotate(356deg) brightness(93%) contrast(92%);
+}
+
+.subtitle__bookform {
+    display: block;
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-bottom: 6rem;
+    @include font($size: 1.8rem, $height: 2.109rem, $letter: 0);
+    color: $color-primary;
+    border-bottom: 0.3rem solid $color-primary;
+}
+
+.input__date {
+    width: 19rem;
+    height: 4.5rem;
+    margin-right: auto;
+}
+
+.input__time {
+    width: 19rem;
+    height: 4.5rem;
+}
+
+.buy__input {
+    border: 0.1rem solid #030303;
+    margin-bottom: 2rem;
+    padding: 1rem 1rem 0.7rem 3rem;
+    position: relative;
+}
+

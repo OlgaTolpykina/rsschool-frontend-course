@@ -12,10 +12,8 @@
     <header class="header dark">
         <div class="wrapper header__wrapper">
             <div>
-                <a href="#" class="logo">
-                    <object type="image/svg+xml" data="assets/img/logo.svg" class="logo-object">
-                        Your browser does not support SVG
-                     </object>
+                <a href="#" class="logo__link">
+                    <div class="logo"></div>
                      <h1 class="title logo__title">Louvre</h1>
                 </a>
             </div>
@@ -339,15 +337,92 @@
                 </div>
             </div>
         </section>
+        <div class="wrapper">
+            <div class="buy">
+                <button class="button__close"></button>
+                <form class="buy__form" name="ticket-details" method="POST" action="#">
+                    <div class="tickets-details_choice">
+                        <div class="logo logo__form"></div>
+                        <span class="title_light title__bookform">Booking tickets</span>
+                        <span class="subtitle__bookform">Tour to Louvre</span>
+                        <input class="buy__input input__date" type="date" name="date" required="required">
+                        <input class="buy__input input__time" type="time" name="time" required="required">
+                        <input type="text" name="name" required="required" placeholder="Name">
+                        <input type="email" name="email" required="required" placeholder="Email">
+                        <input type="tel" name="phone" required="required" placeholder="Phone">
+                        <select name="ticket-type" required="required">
+                            <option value="" disabled="disabled" selected="selected" hidden>Ticket Type</option>
+                            <option value="permanent">Permanent exhibition</option>
+                            <option value="temporary">Temporary exhibition</option>
+                            <option value="combined">Combined exhibition</option>
+                        </select>
+                        <div>
+                            <span>Entry ticket</span>
+                            <label class="tickets__label" for="basic18+">Basic 18+(20 €)</label>
+                            <div class="age-input">
+                                <button class="age__button">-</button>
+                                <input class="age__input" id="basic18+" name="age18+" type="number" placeholder="2"/>
+                                <button class="age__button">+</button>
+                            </div>
+                            <label class="tickets__label" for="senior65+">Senior 65+(10 €)</label>
+                            <div class="age-input age-input_second">
+                                <button class="age__button">-</button>
+                                <input class="age__input" id="senior65+" name="age65+" type="number" placeholder="2"/>
+                                <button class="age__button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tickets-details_overview">
+                        <span>Overview</span>
+                        <span>Tour to Louvre</span>
+                        <span>Friday, August 19</span>
+                        <span>16 : 30</span>
+                        <span>Temporary exhibition</span>
+                        <div>
+                            <span>2</span>
+                            <span>Basic (20 €)</span>
+                            <span>40 €</span>
+                        </div>
+                        <div>
+                            <span>2</span>
+                            <span>Senior (10 €)</span>
+                            <span>20 €</span>
+                        </div>
+                        <div>
+                            <span>Total:</span>
+                            <span>60 €</span>
+                        </div>
+                        <div>
+                            <label for="card-number">Card number</label>
+                            <input type="text" name="card-number" id="card-number">
+                            <label>Expiration date</label>
+                            <div>
+                                <button type="button"></button>
+                                <input type="number" min="01" max="31" value="03" name="expiration-day">
+                                <button type="button"></button>
+                            </div>
+                            <div>
+                                <button type="button"></button>
+                                <input type="number" min="2021" max="2030" value="2024" name="expiration-year">
+                                <button type="button"></button>
+                            </div>
+                            <label for="cardholder">Cardholder name</label>
+                            <input type="text" name="cardholder" id="cardholder">
+                            <label for="cvv">CVC/CVV</label>
+                            <input type="text" name="card-cvv" id="cvv">
+                        </div>
+                        <button>Book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
     <footer class="footer dark">
         <div class="wrapper footer__topwrapper top">
             <div class="footer__logo">
-                <a href="#" class="logo logo__link">
-                    <object type="image/svg+xml" data="assets/img/logo.svg" class="logo-object">
-                        Your browser does not support SVG
-                    </object>
-                    <p class="title logo__title">Louvre</p>
+                <a href="#" class="logo__link">
+                    <div class="logo"></div>
+                     <h1 class="title logo__title">Louvre</h1>
                 </a>
             </div>
             <nav class="footer-navigation">
@@ -436,5 +511,6 @@
     </footer>
     <script src="js/index.js"></script>
     <script src="js/gallery.js"></script>
+    <script src="js/popup.js"></script>
 </body>
 </html>
