@@ -10,9 +10,27 @@
     background-color: $color-on-dark;
     animation: popup-hide .7s ease-out forwards;
     @extend %transition;
-    z-index: 6;
+    z-index: 7;
     &_popup {
         animation: popup .7s ease-out forwards;
+    }
+}
+
+.overlay {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    opacity: 0;
+    background-color: $color-black;
+    z-index: 6;
+    transition: all .3s ease-in-out;
+    &_popup {
+        left: 0;
+        opacity: 0.6;
+        transition: all .3s ease-in-out;
     }
 }
 
