@@ -1364,6 +1364,7 @@ iframe {
 .age-input {
   display: flex;
   justify-content: space-between;
+  text-align: center;
   width: 15rem;
   height: 5rem;
   margin-bottom: 1rem;
@@ -1390,8 +1391,9 @@ iframe {
 }
 
 .age__input {
-  width: 3rem;
+  width: 4.4rem;
   border: none;
+  text-align: center;
 }
 
 .tickets__buy {

@@ -300,15 +300,15 @@
                         <legend class="tickets__subtitle tickets__subtitle_right">Amount</legend>
                         <label class="tickets__label" for="basic18+">Basic 18+</label>
                         <div class="age-input">
-                            <button class="age__button">-</button>
-                            <input class="age__input" id="basic18+" name="age18+" type="number" placeholder="1"/>
-                            <button class="age__button">+</button>
+                            <button type="button" class="age__button" onclick="this.nextElementSibling.stepDown()">—</button>
+                            <input class="age__input" id="basic18+" min="0" max="20" value="1" name="age18+" type="number" placeholder="1" readonly/>
+                            <button type="button" onclick="this.previousElementSibling.stepUp()" class="age__button">+</button>
                         </div>
                         <label class="tickets__label" for="senior65+">Senior 65+</label>
                         <div class="age-input age-input_second">
-                            <button class="age__button">-</button>
-                            <input class="age__input" id="senior65+" name="age65+" type="number" placeholder="1"/>
-                            <button class="age__button">+</button>
+                            <button type="button" class="age__button" onclick="this.nextElementSibling.stepDown()">—</button>
+                            <input class="age__input" id="senior65+" name="age65+" type="number" placeholder="1" readonly/>
+                            <button type="button" class="age__button" onclick="this.previousElementSibling.stepUp()">+</button>
                         </div>
                         <p class="tickets__subtitle">Total €220</p>
                     </fieldset>
