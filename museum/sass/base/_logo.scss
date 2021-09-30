@@ -1,28 +1,33 @@
+// .logo {
+//     @extend %flex;
+//     align-items: baseline;
+//     color: $color-on-dark;
+//     text-transform: uppercase;
+//     &:hover {
+//         color: $color-active;
+//     }
+//     &:active {
+//         color: $color-active;
+//     }
+// }
+
 .logo {
-    @extend %flex;
-    align-items: baseline;
+    width: 4.9rem;
+    height: 2.6rem;
+    margin-right: 2.5rem;
+}
+
+.logo__link {
+    display: flex;
     color: $color-on-dark;
-    text-transform: uppercase;
     &:hover {
         color: $color-active;
     }
-    &:active {
-        color: $color-active;
+    &:hover .logo {
+        filter: invert(15%) sepia(14%) saturate(769%) hue-rotate(356deg) brightness(93%) contrast(92%);
     }
 }
 
 .logo__title {
     @include font($size: 2.8rem, $height: 3.091rem, $letter: 0.5rem);
-}
-
-.logo-object {
-    margin-right: 25px;
-}
-
-.logo-svg {
-    cursor: pointer;
-}
-
-.logo-path:hover {
-    fill: $color-active;
 }

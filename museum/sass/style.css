@@ -474,14 +474,14 @@ button {
   font-weight: 200;
   font-style: normal;
 }
-.video-carousel, .video-next__wrapper, .welcome__carousel, .welcome__wrapper, .pagination, .navigation, .header__wrapper, .logo {
+.video-carousel, .video-next__wrapper, .welcome__carousel, .welcome__wrapper, .pagination, .navigation, .header__wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
 
-.title {
+.title__bookform, .title {
   font-family: "Forum", "Georgia", serif;
 }
 
@@ -489,7 +489,7 @@ button {
   font-family: "Roboto", "Verdana", sans-serif;
 }
 
-.tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item a:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
+.logo, .buy, .tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item a:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
   transition: all 0.3s ease-out;
 }
 
@@ -578,16 +578,57 @@ body {
   background-color: #D2B183;
 }
 
+.button__close {
+  height: 25px;
+  outline: none;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 25px;
+  cursor: pointer;
+}
+.button__close::before {
+  background-color: #030303;
+  content: "";
+  height: 30px;
+  position: absolute;
+  top: 0;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in-out;
+  width: 1px;
+}
+.button__close::after {
+  background-color: #030303;
+  content: "";
+  height: 30px;
+  position: absolute;
+  top: 0;
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in-out;
+  width: 1px;
+}
+.button__close:hover::before {
+  transform: rotate(135deg);
+}
+.button__close:hover::after {
+  transform: rotate(45deg);
+}
+
 .logo {
-  align-items: baseline;
+  width: 4.9rem;
+  height: 2.6rem;
+  margin-right: 2.5rem;
+}
+
+.logo__link {
+  display: flex;
   color: #ffffff;
-  text-transform: uppercase;
 }
-.logo:hover {
+.logo__link:hover {
   color: #D2B183;
 }
-.logo:active {
-  color: #D2B183;
+.logo__link:hover .logo {
+  filter: invert(15%) sepia(14%) saturate(769%) hue-rotate(356deg) brightness(93%) contrast(92%);
 }
 
 .logo__title {
@@ -598,18 +639,28 @@ body {
   letter-spacing: 0.5rem;
 }
 
-.logo-object {
-  margin-right: 25px;
+@keyframes popup {
+  0% {
+    display: block;
+  }
+  95% {
+    left: 13%;
+  }
+  to {
+    left: unset;
+  }
 }
-
-.logo-svg {
-  cursor: pointer;
+@keyframes popup-hide {
+  0% {
+    left: 13%;
+  }
+  95% {
+    left: -100%;
+  }
+  to {
+    display: none;
+  }
 }
-
-.logo-path:hover {
-  fill: #D2B183;
-}
-
 .wrapper {
   max-width: 1440px;
   margin: auto;
@@ -1409,6 +1460,92 @@ iframe {
   background-image: url("../assets/img/parallax.jpg");
   background-size: cover;
   background-attachment: fixed;
+}
+
+.buy {
+  position: fixed;
+  width: 1440px;
+  height: 84.5rem;
+  margin: 0 auto;
+  padding: 9.1rem 23.5rem;
+  left: -100%;
+  top: 0;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.109rem;
+  letter-spacing: 0;
+  background-color: #ffffff;
+  animation: popup-hide 0.7s ease-out forwards;
+  z-index: 6;
+}
+.buy_popup {
+  animation: popup 0.7s ease-out forwards;
+}
+
+.buy__form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  background-image: url("../assets/img/logo.svg");
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.tickets-details_choice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 400px;
+}
+
+.title__bookform {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 5.52rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.logo__form {
+  filter: invert(56%) sepia(14%) saturate(769%) hue-rotate(356deg) brightness(93%) contrast(92%);
+}
+
+.subtitle__bookform {
+  display: block;
+  width: 100%;
+  padding-bottom: 1rem;
+  margin-bottom: 6rem;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.109rem;
+  letter-spacing: 0;
+  color: #710707;
+  border-bottom: 0.3rem solid #710707;
+}
+
+.input__date {
+  width: 19rem;
+  height: 4.5rem;
+  margin-right: auto;
+}
+
+.input__time {
+  width: 19rem;
+  height: 4.5rem;
+}
+
+.buy__input {
+  border: 0.1rem solid #030303;
+  margin-bottom: 2rem;
+  padding: 1rem 1rem 0.7rem 3rem;
+  position: relative;
 }
 
 /*# sourceMappingURL=style.css.map */
