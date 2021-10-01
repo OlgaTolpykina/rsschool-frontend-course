@@ -81,6 +81,10 @@
     display: block;
     margin-bottom: 1.5rem;
     @include font($weight: 300, $letter: 0);
+    &_popup {
+        @include font($size: 1.8rem, $height: 2.109rem, $letter: 0);
+        color: $color-background;
+    }
 }
 
 .age-input {
@@ -108,10 +112,16 @@
         color: $color-active;
         @extend %transition;
     }
+    &_popup {
+        width: 3.5rem;
+        @include font($size: 1.8rem, $height: 0, $letter: 0);
+        color: $color-on-dark;
+        background-color: $color-black;
+    }
 }
 
 .age__input {
-    width: 4.4rem;
+    width: 3.5rem;
     border: none;
     text-align: center;
 }
