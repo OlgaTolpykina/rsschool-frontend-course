@@ -126,7 +126,7 @@
 
 .select {
     appearance: none;
-    background: no-repeat url('../../assets/img/icons/type.svg') top 1.5rem left 1.5rem;
+    background: no-repeat url('../assets/img/icons/type.svg') top 1.5rem left 1.5rem;
 }
 
 .booking__date {
@@ -201,7 +201,8 @@ input[type=time]::-webkit-datetime-edit-second-field {
     position: relative;
     width: 53rem;
     padding: 2.5rem 3rem;
-    border: 0.1rem solid $color-background;    
+    border: 0.1rem solid $color-background;  
+    background: no-repeat url('../assets/img/tickets/book_form.jpg') top 2.5rem left 35rem;  
 }
 
 .date {
