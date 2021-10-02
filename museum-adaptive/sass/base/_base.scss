@@ -1,0 +1,52 @@
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body {
+    @extend %font-text;
+    @include font();
+}
+
+.title {
+    @extend %font-titles;
+    @include font($size: 8rem, $height: 9rem, $letter: 0.5rem);
+    text-transform: uppercase;
+
+    &_underlined {
+        margin-bottom: 7.5rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 0.3rem solid $color-primary;
+    }
+
+    &_light {
+        color: $color-title-on-light;
+    }
+}
+
+.subtitle {
+    @extend %font-text;
+    @include font($size: 2.8rem, $height: 3.281rem, $letter: 0, $weight: 700);
+    text-transform: capitalize;
+}
+
+.text {
+    @include font($height: 3.85rem, $weight: 300);
+}
+
+.text__colored {
+    color: $color-additional-text-on-dark;
+}
+
+.dark {
+    color: $color-on-dark;
+    background-color: $color-background;
+}
+
+.link {
+    @include link();
+}
+
+.navigation {
+    margin: 0;
+}
