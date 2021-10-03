@@ -384,10 +384,55 @@ input[type=time]::-webkit-datetime-edit-second-field {
     opacity: 0.9;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
     .buy {
         width: 102.4rem;
         height: 76.8rem;
         padding: 7.5rem 2.7rem 3rem 2.7rem;
+    }
+}
+
+@media (max-width: 1023px) {
+    .buy {
+        width: 59rem;
+        padding: 7.978rem 3rem 4rem 3rem;
+        overflow: auto;
+        height: 100vh;
+    }
+
+    .buy__form {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .tickets-details_choice>.logo {
+        width: 8.5rem;
+        height: 4.1rem;
+        background-size: 8.5rem 4.1rem;
+    }
+
+    .subtitle__bookform {
+        margin-bottom: 4rem;
+    }
+
+    .tickets-details_choice {
+        margin-right: 0;
+        max-width: 53rem;
+    }
+
+    .input__date {
+        width: 25.1rem;
+    }
+
+    .input__time {
+        width: 25.1rem;
+    }
+
+    .booking__amount {
+        margin-bottom: 5.1rem;
+    }
+
+    .tickets-details_overview {
+        height: 66.5rem;
     }
 }

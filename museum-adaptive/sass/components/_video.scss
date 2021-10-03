@@ -41,7 +41,8 @@
     width: 9.1rem;
     height: 12rem;
     position: relative;
-    left: 1.5rem;
+    left: 50%;
+    transform: translateX(-90%);
 }
 
 .play-svg_big {
@@ -66,6 +67,7 @@
 .video__controls {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 4rem;
     padding: 2.5rem 2.5rem 2.5rem 3rem;
     background-color: $color-black;
@@ -171,7 +173,7 @@
     margin-top: 4rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
     .video__introduction {
         margin-bottom: 4rem;
     }
@@ -246,5 +248,57 @@
     .video-next_video {
         width: 100%;
         height: auto;
+    }
+}
+
+@media (max-width: 1023px) {
+    .video__introduction {
+        margin-bottom: 2rem;
+    }
+
+    .video__current {
+        height: 32.9rem;
+    }
+
+    .button-play_big {
+        width: 8rem;
+        height: 8rem;
+        border: 0.5rem solid $color-on-dark;
+    }
+
+    .button-play__big-object {
+        width: 3.325rem;
+        height: 4.37rem;
+    }
+
+    .play-range:nth-child(2) {
+        display: none;
+    }
+
+    .play-range_small {
+        width: 48.6rem;
+    }
+
+    .controls__button-play {
+        display: flex;
+        padding: 0;
+    }
+
+    .video-next {
+        width: 35.4rem;
+        height: 19.9rem;
+        flex-basis: unset;
+    }
+
+    .video-next:nth-child(3) {
+        display: none;
+    }
+
+    .video-next__wrapper {
+        width: 30.9rem;
+    }
+
+    .video-carousel {
+        margin-bottom: 4rem;
     }
 }

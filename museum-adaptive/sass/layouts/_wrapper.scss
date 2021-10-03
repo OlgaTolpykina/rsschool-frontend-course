@@ -2,7 +2,7 @@
     max-width: $content-width;
     margin: auto;
     position: relative;
-    @media (max-width: 1024px) {
+    @media (max-width: 1500px) {
         max-width: $tablet-big-width;
     }
 }
@@ -14,7 +14,7 @@
     background-size: 100rem 75rem;
     background-repeat: no-repeat;
     background-position: right top;
-    @media (max-width: 1024px) {
+    @media (max-width: 1500px) {
         min-height: 58.5rem;
         background-size: 70rem 52.5rem;
     }
@@ -28,9 +28,23 @@
     padding-bottom: 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
     .wrapper__section {
         padding: 6rem 0;
+    }
+}
+
+@media (max-width: 1023px) {
+    .wrapper {
+        max-width: $tablet-small-width;
+    }
+
+    .header__wrapper {
+        padding: 3.5rem 0;
+    }
+
+    .wrapper__section {
+        padding: 4rem 0;
     }
 }
 

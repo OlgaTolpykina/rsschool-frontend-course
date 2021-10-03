@@ -31,7 +31,7 @@
     width: 100%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
     .tour__container {
         justify-content: space-evenly;
     }
@@ -55,5 +55,29 @@
         &:nth-child(2) {
             margin-bottom: 1rem;
         }
+    }
+}
+
+@media (max-width: 1023px) {
+    .tour {
+        width: 28rem;
+    }
+
+    .tour__title {
+        font-size: 2.2rem;
+        line-height: 2.429rem;
+    }
+
+    .tour__text {
+        font-size: 1.8rem;
+        line-height: 2.109rem;
+    }
+
+    .tour__link {
+        margin-bottom: 4rem;
+    }
+
+    .tour__link:nth-child(n+4) {
+        margin-bottom: 4rem;
     }
 }

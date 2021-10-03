@@ -64,8 +64,32 @@
     grid-row: span 3;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1500px) {
       .gallery {
           height: 146rem;
+      }
+  }
+
+  @media (max-width: 1023px) {
+      .gallery__title {
+          margin-bottom: 4rem;
+      }
+    
+      .picture-inner-container {
+        display: block;
+        columns: 2;
+        column-gap: 24px;
+      }
+
+      .gallery__img {
+          margin-bottom: 2.4rem;
+      }
+
+      .gallery__img:nth-child(1) {
+          margin-top: 5rem;
+      }
+
+      .gallery__img:nth-child(3n+1), .gallery__img:nth-child(3n+3) {
+          position: static;
       }
   }

@@ -15,14 +15,18 @@
     margin-bottom: 7.5rem;
 }
 
+.welcome__image_mobile {
+    display: none;
+}
+
 .welcome__carousel {
     @extend %flex;
     position: absolute;
     left: 84rem;
     top: 69rem;
-    padding: 4rem 7.5rem;
+    padding: 5rem 7.5rem;
     width: 60rem;
-    height: 12rem;
+    height: auto;
     background: $color-background;
 }
 
@@ -40,7 +44,7 @@
     margin-left: 1rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
     .welcome__wrapper {
         background-size: 70rem 52.5rem;
     }
@@ -69,4 +73,39 @@
     .numeration {
         font-size: 2rem;
     }          
+}
+
+@media (max-width: 1023px) {
+    .wrapper__welcome {
+        background-image: none;
+    }
+
+    .welcome__content {
+        text-align: center;
+    }
+
+    .welcome__title {
+        width: 34rem;
+        margin: 0 auto;
+        margin-bottom: 2.5rem;
+    }
+
+    .welcome__text {
+        margin-bottom: 5rem;
+        font-size: 2rem;
+        line-height: 2.344rem;
+    }
+
+    .welcome__image_mobile {
+        display: block;
+        width: 100%;
+        height: 52.6rem;
+    }
+
+    .welcome__carousel {
+        position: static;
+        padding: 3rem 0;
+        margin: 0 auto;
+        width: 40.1rem;
+    }
 }

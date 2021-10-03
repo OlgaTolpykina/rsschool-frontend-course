@@ -6,7 +6,7 @@
     @include columns($width: 46%);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
     .layout-2-column {
         display: block;
     }

@@ -7,6 +7,10 @@
     display: none;
 }
 
+.header__navigation {
+    overflow-x: hidden;
+}
+
 .navigation {
     @extend %flex;
     font-weight: 200;
@@ -31,12 +35,18 @@
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
     .header__wrapper {
         padding: 4.9rem 0;
     }
     
     .navigation {
         display: none;
+    }
+}
+
+@media (max-width: 1023px) {
+    .header__wrapper {
+        padding: 3.5rem 0;
     }
 }

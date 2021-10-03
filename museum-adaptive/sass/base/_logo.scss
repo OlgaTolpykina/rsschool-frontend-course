@@ -19,6 +19,7 @@
 
 .logo__link {
     display: flex;
+    align-items: center;
     color: $color-on-dark;
     &:hover {
         color: $color-active;
@@ -30,4 +31,10 @@
 
 .logo__title {
     @include font($size: 2.8rem, $height: 3.091rem, $letter: 0.5rem);
+}
+
+@media (max-width: 1023px) {
+    .logo__title {
+        line-height: 4rem;
+    }
 }

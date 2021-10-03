@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="sass/style.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body class="active-menu">
     <header class="header dark">
         <div class="wrapper header__wrapper">
             <div>
@@ -30,6 +30,11 @@
                       <li class="navigation_mobile__link"><a class="link-mobile" href="#tickets">Tickets</a></li>
                       <li class="navigation_mobile__link"><a class="link-mobile" href="#contacts">Contacts</a></li>
                     </ul>
+                    <div class="images__burger">
+                        <img src="assets/img/burger/1.jpg" alt="Louvre">
+                        <img src="assets/img/burger/2.jpg" alt="Louvre">
+                        <img src="assets/img/burger/3.jpg" alt="Louvre">
+                    </div>
                 </div>    
                 <ul class="navigation">
                     <li class="navigation__link">
@@ -54,7 +59,7 @@
             </nav>
         </div>
     </header>
-    <main>
+    <main class="hidden">
         <section class="welcome dark">
             <div class="wrapper wrapper__welcome">
                 <div class="welcome__content welcome__content-hidden">
@@ -66,7 +71,9 @@
                         </a>
                     </div>
                 </div>
-                <span class="welcome__image"></span>
+                <span class="welcome__image">
+                    <img class="welcome__image_mobile" src="assets/img/welcome/1.jpg" alt="Mona Lisa">
+                </span>
                 <div class="carousel welcome__carousel">
                     <div class="numeration">
                         <span class="numeration__current">01</span>
@@ -293,7 +300,7 @@
             </div>
         </section>
         <section class="tickets" id="tickets">
-            <div class="wrapper wrapper__section flex__section">
+            <div class="wrapper wrapper__section flex__section tickets_section">
                 <h2 class="title title_underlined title_light flex__title">Buy tickets</h2>
                 <img class="tickets__image" src="assets/img/tickets/1.jpg" alt="Pompeo Girolamo Battoni - Hercules" width="720" height="550">
                 <form class="tickets__form" method="get">
@@ -452,35 +459,35 @@
     </main>
     <footer class="footer dark">
         <div class="wrapper footer__topwrapper top">
-            <div class="footer__logo">
+            <div class="footer__logo hidden">
                 <a href="#" class="logo__link">
                     <div class="logo"></div>
                      <h1 class="title logo__title">Louvre</h1>
                 </a>
             </div>
-            <nav class="footer-navigation">
+            <nav class="footer-navigation hidden">
                 <ul class="footer-navigation__column">
-                    <li>
+                    <li class="footer-nav-link">
                         <a class="link-on-dark" href="#visiting">Visiting</a>
                     </li>
-                    <li>
+                    <li class="footer-nav-link">
                         <a class="link-on-dark" href="#explore">Explore</a>
                     </li>
-                    <li>
+                    <li class="footer-nav-link">
                         <a class="link-on-dark" href="#video">Video</a>
                     </li>
-                    <li>
+                    <li class="footer-nav-link">
                         <a class="link-on-dark" href="#gallery">Gallery</a>
                     </li>
-                    <li>
+                    <li class="footer-nav-link">
                         <a class="link-on-dark" href="#tickets">Tickets</a>
                     </li>
-                    <li>
+                    <li class="footer-nav-link">
                         <a class="link-on-dark" href="#contacts">Contacts</a>
                     </li>
                 </ul>
             </nav>
-            <ul class="footer-nav__socials socials">
+            <ul class="footer-nav__socials socials active-menu">
                 <li>
                     <a href="https://www.youtube.com/user/louvre" class="socials__button" target="_blank">
                         <svg class="social-svg" width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -529,7 +536,7 @@
             </ul>
         </div>
     </footer>
-    <footer class="dark footer__bottomline">
+    <footer class="dark footer__bottomline hidden">
         <div class="wrapper footer__wrapper bottom">
             <div>
                 <span>&copy; 2021</span>

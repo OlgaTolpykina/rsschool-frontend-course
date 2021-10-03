@@ -147,7 +147,7 @@
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
     .tickets__image {
         width: 70rem;
         height: 44rem;
@@ -174,5 +174,19 @@
 
     .tickets__fieldset_right {
         margin-right: 2.9rem;
+    }
+}
+
+@media (max-width: 1023px) {
+    .tickets__image {
+        width: 44.4rem;
+        height: 34rem;
+        margin-right: 6rem;
+        margin-bottom: 9rem;
+    }
+
+    .tickets__buy {
+        bottom: 4rem;
+        right: 4.9rem;
     }
 }
