@@ -1,6 +1,6 @@
 .footer__topwrapper {
     display: grid;
-    grid-template-columns: min-content 1fr min-content;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .footer__wrapper {
@@ -99,3 +99,9 @@
     color: $color-active;
     @extend %transition;
   }
+
+  @media (max-width: 1024px) {
+    .footer__logo {
+        margin-right: 0;
+    }
+}

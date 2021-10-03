@@ -3,6 +3,10 @@
     padding: 5.9rem 0;
 }
 
+.burger {
+    display: none;
+}
+
 .navigation {
     @extend %flex;
     font-weight: 200;
@@ -24,5 +28,15 @@
     }
     &:active {
         color: $color-active;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header__wrapper {
+        padding: 4.9rem 0;
+    }
+    
+    .navigation {
+        display: none;
     }
 }

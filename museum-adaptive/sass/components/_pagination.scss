@@ -2,6 +2,11 @@
     @extend %flex;
 }
 
+.pagination__squared {
+    margin-left: 5.5rem;
+    margin-right: 6rem;
+}
+
 .pagination-square {
     @include display($width: 1.6rem, $height: 1.6rem);
     margin-right: 2.5rem;
@@ -55,5 +60,17 @@
     cursor: pointer;
     &:hover .arrow__image{
         filter: invert(58%) sepia(15%) saturate(792%) hue-rotate(356deg) brightness(91%) contrast(83%);
+    }
+}
+
+@media (max-width: 1024px) {
+    .pagination__squared {
+        margin-left: 4.5rem;
+        margin-right: 4.5rem;
+    }
+
+    .pagination-square {
+        width: 1.2rem;
+        height: 1.2rem;
     }
 }

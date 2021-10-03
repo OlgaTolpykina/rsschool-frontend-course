@@ -18,6 +18,19 @@
                 </a>
             </div>
             <nav class="header__navigation">
+                <button class="burger burger-popup">
+                    <span class="burger-line"></span>
+                </button>
+                <div class="navigation_mobile navigation_mobile-active">
+                    <ul class="navigation_mobile__list">
+                      <li class="navigation_mobile__link"><a class="link-mobile" href="#visiting">Visiting</a></li>
+                      <li class="navigation_mobile__link"><a class="link-mobile" href="#explore">Explore</a></li>
+                      <li class="navigation_mobile__link"><a class="link-mobile" href="#video">Video</a></li>
+                      <li class="navigation_mobile__link"><a class="link-mobile" href="#gallery">Gallery</a></li>
+                      <li class="navigation_mobile__link"><a class="link-mobile" href="#tickets">Tickets</a></li>
+                      <li class="navigation_mobile__link"><a class="link-mobile" href="#contacts">Contacts</a></li>
+                    </ul>
+                </div>    
                 <ul class="navigation">
                     <li class="navigation__link">
                         <a class="link-on-dark" href="#visiting">Visiting</a>
@@ -43,12 +56,14 @@
     </header>
     <main>
         <section class="welcome dark">
-            <div class="wrapper welcome__wrapper">
-                <div class="welcome__content">
+            <div class="wrapper wrapper__welcome">
+                <div class="welcome__content welcome__content-hidden">
                     <h2 class="title welcome__title">Welcome to&nbsp;the Louvre</h2>
                     <p class="welcome__text">From the castle to the museum</p>
                     <div class="welcome__button">
-                        <a href="tour1.html" class="button__link" target="_blank">Discover the Louvre</a>
+                        <a href="tour1.html" class="button__link" target="_blank">
+                            <span class="button__link_text">Discover the Louvre</span>
+                        </a>
                     </div>
                 </div>
                 <span class="welcome__image"></span>
@@ -198,8 +213,8 @@
                     <div>    
                         <div class="layout-3-column">
                             <div class="video-next">
-                                <video src="assets/video/video/video1.mp4" width="452" height="254" muted
-                                    poster="assets/video/posters/poster1.jpg"></video>
+                                <video class="video-next_video" src="assets/video/video/video1.mp4" width="452" height="254" muted
+                                    poster="assets/video/posters/poster3.jpg"></video>
                                 <button class="button-play__small">
                                     <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
                                         Your browser does not support SVG
@@ -208,13 +223,14 @@
                                 <div class="video-next__wrapper">
                                     <img src="assets/img/welcome/1.jpg"  width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
                                     <p class="video-next__title">Exposition - Le Corps et l’Ame. De Dona...</p>
+                                    <p class="video-next__title_mobile">Exposition - Le Corps...</p>
                                     <span class="video-next__more">.</span>
                                 </div>
                             </div>
                             
                             <div class="video-next">
-                                <video src="assets/video/video/video2.mp4" width="452" height="254" muted
-                                    poster="assets/video/posters/poster2.jpg"></video>
+                                <video class="video-next_video" src="assets/video/video/video2.mp4" width="452" height="254" muted
+                                    poster="assets/video/posters/poster1.jpg"></video>
                                 <button class="button-play__small">
                                     <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
                                         Your browser does not support SVG
@@ -223,13 +239,14 @@
                                 <div class="video-next__wrapper">
                                     <img src="assets/img/welcome/2.jpg"  width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
                                     <p class="video-next__title">Au Louvre ! La Venus de Milo</p>
+                                    <p class="video-next__title_mobile">Au Louvre ! La Venu...</p>
                                     <span class="video-next__more">.</span>
                                 </div>
                             </div>
                             
                             <div class="video-next">
-                                <video src="assets/video/video/video3.mp4" width="452" height="254" muted
-                                    poster="assets/video/posters/poster3.jpg"></video>
+                                <video class="video-next_video" src="assets/video/video/video3.mp4" width="452" height="254" muted
+                                    poster="assets/video/posters/poster2.jpg"></video>
                                 <button class="button-play__small">
                                     <object type="image/svg+xml" data="assets/video/play.svg" class="button-play__object">
                                         Your browser does not support SVG
@@ -238,6 +255,7 @@
                                 <div class="video-next__wrapper">
                                     <img src="assets/img/welcome/3.jpg"  width="40" height="40" alt="Mona Lisa" class="video-next__favicon">
                                     <p class="video-next__title">Promenade dans les collections mesop...</p>
+                                    <p class="video-next__title_mobile">Promenade dans les...</p>
                                     <span class="video-next__more">.</span>
                                 </div>
                             </div>
@@ -525,6 +543,7 @@
         </div>
     </footer>
     <script src="js/index.js"></script>
+    <script src="js/burger.js"></script>
     <script src="js/gallery.js"></script>
     <script src="js/popup.js"></script>
 </body>

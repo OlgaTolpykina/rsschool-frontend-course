@@ -10,6 +10,7 @@
 
 .tour__preview {
     display: block;
+    width: 100%;
 }
 
 .tour__title {
@@ -28,4 +29,31 @@
 
 .tour__text {
     width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .tour__container {
+        justify-content: space-evenly;
+    }
+
+    .tour {
+        width: 33rem;
+    }
+
+    .tour__title {
+        font-size: 2.8rem;
+        line-height: 3.091rem;
+        letter-spacing: 0.3rem;
+        &::after {
+            width: 15rem;
+        }
+    }
+
+    .tour__text {
+        font-size: 2rem;
+        line-height: 2.344rem;
+        &:nth-child(2) {
+            margin-bottom: 1rem;
+        }
+    }
 }

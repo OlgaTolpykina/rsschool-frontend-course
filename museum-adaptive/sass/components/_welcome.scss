@@ -1,17 +1,13 @@
-.welcome__wrapper {
-    @extend %flex;
-    min-height: 81rem;
-    background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url("../assets/img/welcome/1.jpg");
-    background-size: 100rem 75rem;
-    background-repeat: no-repeat;
-    background-position: right top;
-}
-
 .welcome__title {
     @include display($width: 59.3rem);
     margin-bottom: 2.5rem;
     @include font($size: 8rem, $height: 9rem);
     text-transform: uppercase;
+}
+
+.welcome__content {
+    position: relative;
+    padding-top: 15rem;
 }
 
 .welcome__text {
@@ -21,22 +17,56 @@
 
 .welcome__carousel {
     @extend %flex;
-    padding: 40px 75px;
+    position: absolute;
+    left: 84rem;
+    top: 69rem;
+    padding: 4rem 7.5rem;
     width: 60rem;
     height: 12rem;
-    align-self: flex-end;
     background: $color-background;
 }
 
 .numeration {
     width: 76px;
+    @include font($height: 2rem, $letter: 0);
 }
 
 .numeration__current {
-    width: 4rem;
-    border-right: 1px solid white;
+    padding-right: 1rem;
+    border-right: 2px solid white;
 }
 
 .numeration__total {
     margin-left: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .welcome__wrapper {
+        background-size: 70rem 52.5rem;
+    }
+
+    .welcome__content {
+        padding-top: 5rem;
+    }
+
+    .welcome__title {
+        width: 39.8rem;
+        @include font($size: 5rem, $height: 9rem, $letter: 0.5rem);
+    }
+
+    .welcome__text {
+        font-size: 2.4rem;
+        line-height: 2.813rem;
+    }
+
+    .welcome__carousel {
+        top: 46.5rem;
+        left: 30.4rem;
+        width: 70rem;
+        padding-left: 22.4rem;
+    }
+
+    .numeration {
+        font-size: 2rem;
+    }          
 }

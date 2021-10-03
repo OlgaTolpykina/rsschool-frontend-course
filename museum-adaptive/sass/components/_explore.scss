@@ -60,3 +60,15 @@
         background-color: #fff;
     }
   }
+
+  @media (max-width: 1024px) {
+      .explore__photos {
+          margin: 6.2rem auto 0 auto;
+      }
+
+      .explore__text {
+          margin: 0;
+          font-size: 2rem;
+          line-height: 3.85rem;
+      }
+  }

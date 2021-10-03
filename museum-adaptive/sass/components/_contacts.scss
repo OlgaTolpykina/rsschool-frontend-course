@@ -1,5 +1,5 @@
 .contacts {
-width: 25%;
+width: 19.5%;
 }
 
 .flex__section {
@@ -25,4 +25,29 @@ width: 25%;
     display: block;
     margin-bottom: 5rem;
     @include font($size: 2.8rem, $height: 3.281rem, $weight: 500, $letter: 0);
+}
+
+.map {
+    width: 70.5%;
+}
+
+.contacts__map {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 1024px) {
+    .museum-title {
+        font-size: 2.4rem;
+        line-height: 2.813rem;
+    }
+
+    .contacts {
+        width: 27%;
+    }
+
+    .contacts__details {
+        font-size: 2rem;
+        line-height: 2.344rem;
+    }
 }

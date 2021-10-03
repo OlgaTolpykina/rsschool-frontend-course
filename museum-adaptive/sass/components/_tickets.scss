@@ -146,3 +146,33 @@
         @extend %transition;
     }
 }
+
+@media (max-width: 1024px) {
+    .tickets__image {
+        width: 70rem;
+        height: 44rem;
+        object-fit: cover;
+    }
+
+    .tickets__fieldset_left {
+        display: none;
+    }
+
+    .tickets__form {
+        display: block;
+        flex-basis: unset;
+    }
+
+    .tickets__buy {
+        bottom: 6rem;
+        right: 2.9rem;
+    }
+
+    .tickets__subtitle_right {
+        text-align: initial;
+    }
+
+    .tickets__fieldset_right {
+        margin-right: 2.9rem;
+    }
+}

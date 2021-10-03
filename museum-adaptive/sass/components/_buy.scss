@@ -4,7 +4,7 @@
     height: 84.5rem;
     margin: 0 auto;
     padding: 9.1rem 23.5rem;
-    left: -100%;
+    left: -200%;
     top: 0;
     @include font($size: 1.8rem, $height: 2.109rem, $letter: 0);
     background-color: $color-on-dark;
@@ -382,4 +382,12 @@ input[type=time]::-webkit-datetime-edit-second-field {
     color: $color-on-dark;
     background-color: $color-primary;
     opacity: 0.9;
+}
+
+@media (max-width: 1024px) {
+    .buy {
+        width: 102.4rem;
+        height: 76.8rem;
+        padding: 7.5rem 2.7rem 3rem 2.7rem;
+    }
 }
