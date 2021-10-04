@@ -77,3 +77,22 @@ width: 19.5%;
         margin-bottom: 2.7rem;
     }
 }
+
+@media (max-width: 767px) {
+    .museum-title {
+        width: 12.4rem;
+        font-size: 1.6rem;
+        line-height: 1.875rem;
+        margin-bottom: 4rem;
+    }
+
+    .contacts__details {
+        font-size: 1.6rem;
+        line-height: 1.875rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contacts {
+        width: 100%;
+    }
+}

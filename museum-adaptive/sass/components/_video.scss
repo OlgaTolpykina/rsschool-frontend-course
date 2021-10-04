@@ -298,7 +298,129 @@
         width: 30.9rem;
     }
 
+    .video-next__title_smallmobile {
+        display: none;
+    }
+
     .video-carousel {
         margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .video__introduction {
+        display: block;
+    }
+
+    .video__current {
+        height: 17.2rem;
+    }
+
+    .button-play_big {
+        width: 5rem;
+        height: 5rem;
+        border: 0.3rem solid $color-on-dark;
+    }
+
+    .button-play__big-object {
+        width: 2.1rem;
+        height: 2.73rem;
+        top: 50%;
+        transform: translate(-80%, -70%);
+    }
+
+    .video__controls {
+        height: 5.5rem;
+        padding: 0;
+        position: relative;
+        padding-left: 2rem;
+        padding-right: 1.6rem;
+    }
+
+    .controls__object {
+        width: 1.4rem;
+        height: 1.8rem;
+    }
+
+    .play-range {
+        position: absolute;
+        width: 38rem;
+        top: 0;
+        left: 0;
+        padding: 0;
+        &::-webkit-slider-runnable-track {
+            height: 0.4rem;
+            background: linear-gradient(to right, $color-primary 41%, #c4c4c4 41%);
+        }
+        &::-webkit-slider-thumb {
+            width: 1rem;
+            height: 1rem;
+            margin-top: -0.3rem;
+            margin-right: 1rem;
+            appearance: none;
+        }
+    }
+
+    .play-range:nth-child(2) {
+        display: block;
+    }
+
+    .play-range_small {
+        position: static;
+        width: 20rem;
+    }
+
+    .volume__object {
+        width: 1.8rem;
+        height: 1.4rem;
+    }
+
+    .scale__object {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .video-next__wrapper {
+        width: 15.9rem;
+        justify-content: flex-start;
+        z-index: 1;
+    }
+
+    .video-next {
+        width: 18rem;
+        height: 10.1rem;
+        z-index: 5;
+    }
+
+    .video-next__title_mobile {
+        display: none;
+    }
+
+    .video-next__title_smallmobile {
+        color: $color-on-dark;
+        font-size: 1.8rem;
+        line-height: 3.85rem;
+        letter-spacing: 0;
+    }
+
+    .video-next__more {
+        display: none;
+    }
+
+    .video-next__favicon {
+        margin-right: 0.6rem;
+    }
+
+    .button-play__small {
+        z-index: 5;
+    }
+
+    .video-carousel {
+        margin-bottom: 0;
+    }
+
+    .pagination-circle {
+        width: 0.8rem;
+        height: 0.8rem;
     }
 }
