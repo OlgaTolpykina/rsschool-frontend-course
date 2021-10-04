@@ -38,3 +38,18 @@
         line-height: 4rem;
     }
 }
+
+@media (max-width: 767px) {
+    .logo__link {
+        width: 13.6rem;
+    }
+
+    .logo {
+        background-size: 2.9rem 1.6rem;
+    }
+
+    .logo__title {
+        font-size: 1.6rem;
+        line-height: 1.766rem;
+    }
+}

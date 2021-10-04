@@ -41,7 +41,7 @@
 }
 
 .numeration__total {
-    margin-left: 1rem;
+    padding-left: 1rem;
 }
 
 @media (max-width: 1500px) {
@@ -88,6 +88,8 @@
         width: 34rem;
         margin: 0 auto;
         margin-bottom: 2.5rem;
+        font-size: 4rem;
+        line-height: 6rem;
     }
 
     .welcome__text {
@@ -107,5 +109,65 @@
         padding: 3rem 0;
         margin: 0 auto;
         width: 40.1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .welcome__content {
+        padding-top: 0.5rem;
+    }
+
+    .welcome__title {
+        width: 25.5rem;
+        font-size: 2.8rem;
+        line-height: 4rem;
+    }
+
+    .welcome__text {
+        font-size: 1.6rem;
+        line-height: 1.875rem;
+    }
+
+    .welcome__image_mobile {
+        height: auto;
+    }
+
+    .welcome__carousel {
+        padding: 4rem 0;
+        width: 23rem;
+        height: 4rem;
+    }
+
+    .numeration {
+        font-size: 1.6rem;
+        line-height: 2rem;
+    }
+
+    .numeration__current {
+        padding-right: 0.5rem;
+    }
+
+    .numeration__total {
+        padding-left: 0.5rem;
+    }
+
+    .pagination__squared {
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+    }
+
+    .pagination-square {
+        width: 0.7rem;
+        height: 0.7rem;
+        margin-right: 1rem;
+    }
+
+    .arrow__image {
+        width: 2rem;
+        height: 0.8rem;
+    }
+
+    .controls-left {
+        margin-right: 1.5rem;
     }
 }

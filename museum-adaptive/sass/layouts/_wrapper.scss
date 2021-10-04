@@ -48,4 +48,14 @@
     }
 }
 
+@media (max-width: 767px) {
+    .wrapper {
+        max-width: $mobile-width;
+    }
+
+    .wrapper__welcome {
+        min-height: 54.4rem;
+    }
+}
+
 

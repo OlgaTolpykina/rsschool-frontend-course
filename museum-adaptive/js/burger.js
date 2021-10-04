@@ -38,18 +38,18 @@ navigationMobile.addEventListener('mousedown', (event) => {
     footerSocials.classList.toggle('active-menu');
 });
 
-main.addEventListener('mousedown', (event) => {
-    event.preventDefault();
-    burger.classList.toggle('burger-popup');
-    navigationMobile.classList.toggle('navigation_mobile-active');
-    welcomeContent.classList.toggle('welcome__content-hidden');
-    main.classList.toggle('hidden');
-    body.classList.toggle('active-menu');
-    footerLogo.classList.toggle('hidden');
-    footerNavigation.classList.toggle('hidden');
-    footerBottomLine.classList.toggle('hidden');
-    footerSocials.classList.toggle('active-menu');
-});
+// main.addEventListener('mousedown', (event) => {
+//     event.preventDefault();
+//     burger.classList.toggle('burger-popup');
+//     navigationMobile.classList.toggle('navigation_mobile-active');
+//     welcomeContent.classList.toggle('welcome__content-hidden');
+//     main.classList.toggle('hidden');
+//     body.classList.toggle('active-menu');
+//     footerLogo.classList.toggle('hidden');
+//     footerNavigation.classList.toggle('hidden');
+//     footerBottomLine.classList.toggle('hidden');
+//     footerSocials.classList.toggle('active-menu');
+// });
 
 footer.addEventListener('mousedown', (event) => {
     event.preventDefault();

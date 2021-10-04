@@ -436,3 +436,80 @@ input[type=time]::-webkit-datetime-edit-second-field {
         height: 66.5rem;
     }
 }
+
+@media (max-width: 767px) {
+    .buy {
+        width: 42rem;
+    }
+
+    .tickets-details_choice > .logo {
+        width: 100%;
+    }
+
+    .title__bookform {
+        font-size: 3.2rem;
+        line-height: 3.533rem;
+    } 
+
+    .booking__date {
+        flex-wrap: wrap;
+    } 
+
+    .input__date {
+        width: 36rem;
+    }
+
+    .input__time {
+        width: 36rem;
+    }
+
+    .tickets-details_overview {
+        width: 36rem;
+        height: 88.5rem;
+        padding: 2.5rem 1.5rem;
+        background-position: top 2.5rem right 1.5rem;
+        background-size: 12rem 9.6rem;
+    }
+
+    .overview__total {
+        margin-bottom: 1.5rem;
+    }
+
+    .card-details_front {
+        margin-bottom: 2.5rem;
+        width: 33rem;
+        background-position: top 3.3rem left 25.4rem;
+    }
+
+    .card-cardholder {
+        width: 29rem;
+    }
+
+    .card-details_back {
+        position: static;
+        width: 33rem;
+        padding: 8.5rem 2rem 2rem 23.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .card-details__text {
+        font-size: 1.3rem;
+        line-height: 1.523rem;
+    }
+
+    .card-cvv_text {
+        font-size: 0.9rem;
+        line-height: 1.055rem;
+    }
+
+    .black-line {
+        top: 25.9rem;
+        width: 33rem;
+    }
+
+    .button__book {
+        position: static;
+        display: block;
+        margin-left: auto;
+    }
+}

@@ -190,3 +190,57 @@
         right: 4.9rem;
     }
 }
+
+@media (max-width: 767px) {
+    .tickets_section {
+        display: block;
+    }
+
+    .tickets__image {
+        width: 100%;
+        height: 16rem;
+        margin-right: 0;
+        margin-bottom: 4rem;
+    }
+
+    .tickets__form {
+        width: 46%;
+        margin: 0 auto;
+    }
+
+    .tickets__fieldset_right {
+        margin: 0;
+    }
+
+    .tickets__subtitle {
+        text-align: center;
+        padding-bottom: 2rem;
+        font-size: 1.6rem;
+        line-height: 1.875rem;
+    }
+
+    .tickets__label {
+        font-size: 1.6rem;
+        line-height: 1.875rem;
+    }
+
+    .age-input {
+        width: 100%;
+        margin: 0 auto 2rem auto;
+    }
+
+    .age-input_second {
+        margin-bottom: 4rem;
+    }
+
+    .tickets__fieldset_right > p {
+        padding-bottom: 9rem;
+    }
+
+    .tickets__buy {
+        right: 50%;
+        transform: translateX(50%);
+        font-size: 1.6rem;
+        line-height: 2rem;
+    }
+}

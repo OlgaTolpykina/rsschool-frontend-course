@@ -7,10 +7,6 @@
     display: none;
 }
 
-.header__navigation {
-    overflow-x: hidden;
-}
-
 .navigation {
     @extend %flex;
     font-weight: 200;

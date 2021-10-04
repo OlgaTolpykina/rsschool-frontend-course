@@ -81,3 +81,15 @@
         margin-bottom: 4rem;
     }
 }
+
+@media (max-width: 767px) {
+    .tour__title {
+        font-size: 1.8rem;
+        line-height: 1.987rem;
+    }
+
+    .tour__text {
+        font-size: 1.6rem;
+        line-height: 1.875rem;
+    }
+}
