@@ -9,3 +9,17 @@
     95%{left:-100%}
     to{display: none}
 }
+
+@media (max-width: 1500px) {
+    @keyframes popup {
+        0% {display: block}
+        to{left: 0}
+    }
+}
+
+@media (max-width: 1023px) {
+    @keyframes popup {
+        0% {display: block}
+        to{left: 12.5%}
+    }
+}

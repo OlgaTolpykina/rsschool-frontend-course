@@ -50,3 +50,25 @@ body {
 .navigation {
     margin: 0;
 }
+
+@media (max-width: 1500px) {
+    .title {
+        font-size: 5rem;
+        line-height: 7.5rem;
+        &_underlined {
+            margin-bottom: 6rem;
+            padding-bottom: 2rem;
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .title {
+        font-size: 4rem;
+        line-height: 6rem;
+    }
+
+    .title_underlined {
+        margin-bottom: 4rem;
+    }
+}

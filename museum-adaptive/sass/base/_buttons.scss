@@ -1,6 +1,5 @@
 .button__link {
-    @include display($width: 36rem, $height: 7.5rem);
-    padding: 2.6rem 6.4rem;
+    @include display($display:flex, $width: 36rem, $height: 7.5rem);
     @include font($weight: 300);
     border-radius: 1rem;
     color: $color-on-dark;
@@ -12,6 +11,15 @@
         background-color: $color-active;
     }
     @extend %transition;
+    @media (max-width: 1500px) {
+        width: 30rem;
+        height: 6rem;
+        font-size: 2rem;
+        line-height: 2.344rem;
+    }
+    &_text {
+        margin: auto;
+    }
 }
 
 .button__close {
@@ -48,4 +56,10 @@
     &:hover::after {
         transform: rotate(45deg);
     } 
+}
+
+@media (max-width: 1023px) {
+    .button__link {
+        display: none;
+    }
 }
