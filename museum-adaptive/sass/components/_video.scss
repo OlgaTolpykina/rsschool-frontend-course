@@ -387,7 +387,7 @@
     }
 
     .video-next {
-        width: 18rem;
+        width: calc(50% - 10px);
         height: 10.1rem;
         z-index: 5;
     }
