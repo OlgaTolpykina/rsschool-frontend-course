@@ -72,6 +72,10 @@
           font-size: 2rem;
           line-height: 3.85rem;
       }
+
+      .explore__text:nth-child(4) {
+          display: none;
+      }
   }
 
   @media (max-width: 1023px) {
