@@ -71,6 +71,10 @@
   }
 
   @media (max-width: 1023px) {
+        .gallery {
+            height: 122rem;
+        } 
+
       .gallery__title {
           margin-bottom: 4rem;
       }
@@ -92,4 +96,10 @@
       .gallery__img:nth-child(3n+1), .gallery__img:nth-child(3n+3) {
           position: static;
       }
+  }
+
+  @media (max-width: 767px) {
+    .gallery {
+        height: 75.7rem;
+    }
   }
