@@ -39,7 +39,7 @@
     line-height: 2.344rem;
     font-weight: 300;
     color: $color-on-dark;
-    z-index: 1;
+    z-index: 100;
     &::after {
         content: '';
         position: absolute;
