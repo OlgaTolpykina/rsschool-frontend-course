@@ -1013,21 +1013,8 @@ body {
     margin-bottom: 0;
   }
 
-  .footer-navigation__column {
-    align-items: flex-end;
-    width: 34rem;
-  }
-
-  .footer-nav-link:nth-child(1) {
-    align-self: flex-start;
-  }
-
-  .footer-nav-link:nth-child(2) {
-    align-self: flex-start;
-  }
-
-  .footer-nav-link:nth-child(3) {
-    align-self: flex-start;
+  .footer-nav-link {
+    margin-right: 18.4rem;
   }
 }
 @media (max-width: 767px) {
@@ -1053,6 +1040,10 @@ body {
   .link-on-dark {
     font-size: 1.6rem;
     line-height: 1.875rem;
+  }
+
+  .footer-nav-link {
+    margin-right: 0;
   }
 
   .footer-nav__socials {
