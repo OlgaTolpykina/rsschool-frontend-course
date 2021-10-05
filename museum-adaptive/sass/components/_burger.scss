@@ -165,6 +165,10 @@
 
 @media (max-width: 767px) {
 
+    .logo__wrapper {
+        height: 2rem;
+    }
+
     .images__burger {
         display: block;
         width: 32.5rem;
@@ -188,8 +192,14 @@
         width: 33rem;
     }
 
+    .navigation_mobile {
+        padding-top: 0;
+        height: auto;
+    }
+
     .footer-nav__socials.active-menu {
         padding-top: 2.4rem;
-        left: 15%;
+        left: 18%;
+        top: 44rem;
     }
 }
