@@ -101,8 +101,37 @@
   }
 
 @media (max-width: 1500px) {
+    .top {
+      padding: 63px 0 50px 0;
+      height: 243px;
+    }
+
     .footer__logo {
-        margin-right: 0;
+        margin-right: 39px;
+    }
+
+    .footer-navigation__column {
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: auto auto;
+        width: 313px;
+        margin-top: 3px;
+    }
+
+    .footer-nav-link {
+      line-height: 25.78px;
+    }
+
+    .footer-nav__socials {
+      margin-bottom: 19px;
+    }
+
+    .footer__topwrapper {
+      grid-template-columns: max-content 1fr max-content;
+    }
+
+    .bottom {
+      padding-top: 5.4rem;
     }
 }    
 

@@ -36,8 +36,19 @@
         justify-content: space-evenly;
     }
 
+    .tour__link {
+        margin-bottom: 6rem;
+        &:nth-child(4) {
+            margin-bottom: 6rem;
+        }
+    }
+
     .tour {
         width: 33rem;
+    }
+
+    .tour__preview {
+        height: 215px;
     }
 
     .tour__title {
@@ -52,9 +63,18 @@
     .tour__text {
         font-size: 2rem;
         line-height: 2.344rem;
+        font-weight: 200;
+        letter-spacing: 0;
         &:nth-child(2) {
             margin-bottom: 1rem;
         }
+    }
+
+    .tour__text_small {
+        font-size: 1.6rem;
+        line-height: 1.875rem;
+        font-weight: 200;
+        letter-spacing: 0;
     }
 }
 

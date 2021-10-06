@@ -161,6 +161,8 @@
     .tickets__form {
         display: block;
         flex-basis: unset;
+        margin-left: 80px;
+        margin-right: 29px;
     }
 
     .tickets__buy {
@@ -172,8 +174,17 @@
         text-align: initial;
     }
 
-    .tickets__fieldset_right {
-        margin-right: 2.9rem;
+    .tickets__subtitle {
+        letter-spacing: 1.65px;
+    }
+
+    .tickets__subtitle span {
+        padding-left: 13px;
+    }
+
+    .age-input {
+        width: 175px;
+        margin-bottom: 25px;
     }
 }
 

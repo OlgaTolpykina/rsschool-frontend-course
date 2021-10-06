@@ -659,6 +659,7 @@ body {
   width: 4.9rem;
   height: 2.6rem;
   margin-right: 2.5rem;
+  margin-bottom: 7px;
 }
 
 .logo__link {
@@ -679,6 +680,7 @@ body {
   font-weight: 400;
   line-height: 3.091rem;
   letter-spacing: 0.5rem;
+  margin: 1px 0;
 }
 
 @media (max-width: 1023px) {
@@ -991,8 +993,37 @@ body {
 }
 
 @media (max-width: 1500px) {
+  .top {
+    padding: 63px 0 50px 0;
+    height: 243px;
+  }
+
   .footer__logo {
-    margin-right: 0;
+    margin-right: 39px;
+  }
+
+  .footer-navigation__column {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto auto;
+    width: 313px;
+    margin-top: 3px;
+  }
+
+  .footer-nav-link {
+    line-height: 25.78px;
+  }
+
+  .footer-nav__socials {
+    margin-bottom: 19px;
+  }
+
+  .footer__topwrapper {
+    grid-template-columns: max-content 1fr max-content;
+  }
+
+  .bottom {
+    padding-top: 5.4rem;
   }
 }
 @media (max-width: 1023px) {
@@ -1122,7 +1153,7 @@ body {
   width: 1.2rem;
   height: 1.2rem;
   top: 50%;
-  left: 10.5rem;
+  left: 11rem;
   transform: translateY(-30%);
   background-image: url("../assets/img/icons/mobile_arrow.svg");
 }
@@ -1435,11 +1466,12 @@ iframe {
   .welcome__text {
     font-size: 2.4rem;
     line-height: 2.813rem;
+    margin-bottom: 5rem;
   }
 
   .welcome__carousel {
     top: 46.5rem;
-    left: 30.4rem;
+    left: 28.4rem;
     width: 70rem;
     padding-left: 22.4rem;
   }
@@ -1585,8 +1617,19 @@ iframe {
     justify-content: space-evenly;
   }
 
+  .tour__link {
+    margin-bottom: 6rem;
+  }
+  .tour__link:nth-child(4) {
+    margin-bottom: 6rem;
+  }
+
   .tour {
     width: 33rem;
+  }
+
+  .tour__preview {
+    height: 215px;
   }
 
   .tour__title {
@@ -1601,9 +1644,18 @@ iframe {
   .tour__text {
     font-size: 2rem;
     line-height: 2.344rem;
+    font-weight: 200;
+    letter-spacing: 0;
   }
   .tour__text:nth-child(2) {
     margin-bottom: 1rem;
+  }
+
+  .tour__text_small {
+    font-size: 1.6rem;
+    line-height: 1.875rem;
+    font-weight: 200;
+    letter-spacing: 0;
   }
 }
 @media (max-width: 1023px) {
@@ -1792,7 +1844,7 @@ iframe {
 .button-play_big {
   width: 22rem;
   height: 22rem;
-  border: 1rem solid #ffffff;
+  border: 0.5rem solid #ffffff;
   border-radius: 50%;
 }
 .button-play_big:hover {
@@ -1911,6 +1963,10 @@ iframe {
   display: none;
 }
 
+.video-next__title_smallmobile {
+  display: none;
+}
+
 .video-next__more {
   display: block;
   position: relative;
@@ -1949,6 +2005,8 @@ iframe {
   }
 
   .button-play_big {
+    top: 221px;
+    left: 492px;
     width: 15.2rem;
     height: 15.2rem;
   }
@@ -1959,17 +2017,28 @@ iframe {
   }
 
   .video__controls {
-    padding: 1.5rem 1.7rem 1.5rem 4rem;
+    height: 60px;
+    padding: 1.5rem 4rem;
   }
 
   .play-range {
-    width: 56.4rem;
-    padding-right: 3.1rem;
+    width: 55.07vw;
+  }
+  .play-range::-webkit-slider-runnable-track {
+    height: 5px;
+    margin-top: -6px;
+    background: linear-gradient(to right, #710707 0%, #710707 40%, #C4C4C4 40%, #C4C4C4 100%);
+  }
+  .play-range::-webkit-slider-thumb {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    left: 314px;
+    margin-top: -5px;
   }
 
   .controls__button-play {
     padding: 0;
-    padding-right: 3rem;
   }
 
   .volume__object {
@@ -1978,7 +2047,14 @@ iframe {
   }
 
   .play-range_small {
-    width: 14.3rem;
+    width: 13.96vw;
+  }
+  .play-range_small::-webkit-slider-thumb {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    left: 795px;
+    margin-top: -5px;
   }
 
   .scale__object {
@@ -2254,6 +2330,10 @@ iframe {
   .gallery {
     height: 146rem;
   }
+
+  .gallery__title {
+    margin-bottom: 6rem;
+  }
 }
 @media (max-width: 1023px) {
   .gallery {
@@ -2472,6 +2552,8 @@ iframe {
   .tickets__form {
     display: block;
     flex-basis: unset;
+    margin-left: 80px;
+    margin-right: 29px;
   }
 
   .tickets__buy {
@@ -2483,8 +2565,17 @@ iframe {
     text-align: initial;
   }
 
-  .tickets__fieldset_right {
-    margin-right: 2.9rem;
+  .tickets__subtitle {
+    letter-spacing: 1.65px;
+  }
+
+  .tickets__subtitle span {
+    padding-left: 13px;
+  }
+
+  .age-input {
+    width: 175px;
+    margin-bottom: 25px;
   }
 }
 @media (max-width: 1023px) {
@@ -2601,6 +2692,8 @@ iframe {
 
 @media (max-width: 1500px) {
   .museum-title {
+    width: 185px;
+    margin-bottom: 35px;
     font-size: 2.4rem;
     line-height: 2.813rem;
   }
@@ -2610,8 +2703,14 @@ iframe {
   }
 
   .contacts__details {
+    margin-bottom: 15px;
     font-size: 2rem;
     line-height: 2.344rem;
+  }
+
+  .contacts__map {
+    max-width: 67.78vw;
+    height: auto;
   }
 }
 @media (max-width: 1023px) {
