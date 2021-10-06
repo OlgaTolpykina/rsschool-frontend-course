@@ -29,7 +29,7 @@
     &_big {
         width: 22rem;
         height: 22rem;
-        border: 1rem solid $color-on-dark;
+        border: 0.5rem solid $color-on-dark;
         border-radius: 50%;
         &:hover {
             border: 1rem solid $color-active;
@@ -148,6 +148,10 @@
     display: none;
 }
 
+.video-next__title_smallmobile {
+    display: none;
+}
+
 .video-next__more {
     display: block;
     position: relative;
@@ -187,6 +191,8 @@
     }
 
     .button-play_big {
+        top: 221px;
+        left: 492px;
         width: 15.2rem;
         height: 15.2rem;
     }
@@ -197,17 +203,28 @@
     }
 
     .video__controls {
-        padding: 1.5rem 1.7rem 1.5rem 4rem;
+        height: 60px;
+        padding: 1.5rem 4rem;
     }
     
     .play-range {
-        width: 56.4rem;
-        padding-right: 3.1rem;
+        width: 55.07vw;
+        &::-webkit-slider-runnable-track {
+            height: 5px;
+            margin-top: -6px;
+            background: linear-gradient(to right, #710707 0%, #710707 40%, #C4C4C4 40%, #C4C4C4 100%);
+        }
+        &::-webkit-slider-thumb {
+            width: 13px;
+            height: 13px;
+            position: absolute;
+            left: 314px;
+            margin-top: -5px;
+        }
     }
 
     .controls__button-play {
         padding: 0;
-        padding-right: 3rem;
     }
 
     .volume__object {
@@ -216,7 +233,14 @@
     }
 
     .play-range_small {
-        width: 14.3rem;
+        width: 13.96vw;
+        &::-webkit-slider-thumb {
+            width: 13px;
+            height: 13px;
+            position: absolute;
+            left: 795px;
+            margin-top: -5px;
+        }
     }
 
     .scale__object {

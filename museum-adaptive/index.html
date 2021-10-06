@@ -111,7 +111,7 @@
                             <figcaption class="tour__description">
                                 <h3 class="title tour__title">Royal Palace</h3>
                                 <p class="tour__text">360° Virtual Tour</p>
-                                <p class="tour__text">Google Street Panorama View</p>
+                                <p class="tour__text tour__text_small">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -121,17 +121,17 @@
                             <figcaption class="tour__description">
                                 <h3 class="title tour__title">Denon Wing</h3>
                                 <p class="tour__text">360° Virtual Tour</p>
-                                <p class="tour__text">Google Street Panorama View</p>
+                                <p class="tour__text tour__text_small">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
                     <a href="tour4.html" class="tour__link link" target="_blank">
                         <figure class="tour">
-                            <img src="assets/img/visiting/3.jpg" class="tour__preview" alt="Collonade Perrault">
+                            <img src="assets/img/visiting/3.jpg" class="tour__preview" alt="Colonnade Perrault">
                             <figcaption class="tour__description">
-                                <h3 class="title tour__title">Collonade Perrault</h3>
+                                <h3 class="title tour__title">Colonnade Perrault</h3>
                                 <p class="tour__text">360° Virtual Tour</p>
-                                <p class="tour__text">Google Street Panorama View</p>
+                                <p class="tour__text tour__text_small">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -141,7 +141,7 @@
                             <figcaption class="tour__description">
                                 <h3 class="title tour__title">Greek Hall</h3>
                                 <p class="tour__text">360° Virtual Tour</p>
-                                <p class="tour__text">Google Street Panorama View</p>
+                                <p class="tour__text tour__text_small">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -151,7 +151,7 @@
                             <figcaption class="tour__description">
                                 <h3 class="title tour__title">Mona Lisa</h3>
                                 <p class="tour__text">360° Virtual Tour</p>
-                                <p class="tour__text">Google Street Panorama View</p>
+                                <p class="tour__text tour__text_small">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -161,7 +161,7 @@
                             <figcaption class="tour__description">
                                 <h3 class="title tour__title">Night Palace</h3>
                                 <p class="tour__text">360° Virtual Tour</p>
-                                <p class="tour__text">Google Street Panorama View</p>
+                                <p class="tour__text tour__text_small">Google Street Panorama View</p>
                             </figcaption>
                         </figure>
                     </a>
@@ -203,7 +203,7 @@
                                     Your browser does not support SVG
                                  </object>
                             </button>
-                            <input class="play-range" type="range" name="video-progress">
+                            <input class="play-range" id="play__bar" type="range" name="video-progress">
                             <button>
                                 <object type="image/svg+xml" data="assets/video/volume.svg" class="volume__object">
                                     Your browser does not support SVG
@@ -337,7 +337,7 @@
                             <input class="age__input" id="senior65+" min="0" max="20" name="age65+" type="number" placeholder="1" readonly/>
                             <button type="button" class="age__button" onclick="this.previousElementSibling.stepUp()">+</button>
                         </div>
-                        <p class="tickets__subtitle">Total €220</p>
+                        <p class="tickets__subtitle">Total € <span>220</span></p>
                     </fieldset>
                 </form>
                 <button class="tickets__buy">Buy Now</button>
@@ -370,7 +370,7 @@
                 <button class="button__close"></button>
                 <form class="buy__form" name="ticket-details" method="POST" action="#">
                     <div class="tickets-details_choice">
-                        <div class="logo logo__form"></div>
+                        <img src="assets/img/logo-form.svg" width="85" height="41" alt="logo">
                         <span class="title_light title__bookform">Booking tickets</span>
                         <span class="subtitle__bookform">Tour to Louvre</span>
                         <div class="booking__date">
@@ -473,16 +473,16 @@
                         <a class="link-on-dark" href="#visiting">Visiting</a>
                     </li>
                     <li class="footer-nav-link">
-                        <a class="link-on-dark" href="#explore">Explore</a>
-                    </li>
-                    <li class="footer-nav-link">
-                        <a class="link-on-dark" href="#video">Video</a>
-                    </li>
-                    <li class="footer-nav-link">
                         <a class="link-on-dark" href="#gallery">Gallery</a>
                     </li>
                     <li class="footer-nav-link">
+                        <a class="link-on-dark" href="#explore">Explore</a>
+                    </li>
+                    <li class="footer-nav-link">
                         <a class="link-on-dark" href="#tickets">Tickets</a>
+                    </li>
+                    <li class="footer-nav-link">
+                        <a class="link-on-dark" href="#video">Video</a>
                     </li>
                     <li class="footer-nav-link">
                         <a class="link-on-dark" href="#contacts">Contacts</a>
