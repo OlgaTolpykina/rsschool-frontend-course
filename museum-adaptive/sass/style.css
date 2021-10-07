@@ -696,9 +696,15 @@ body {
 @media (max-width: 767px) {
   .logo__link {
     width: 13.6rem;
+    height: 20px;
+    padding-top: 3px;
+    margin-bottom: 0;
   }
 
   .logo {
+    margin-bottom: 0px;
+    width: 29px;
+    height: 22px;
     background-size: 2.9rem 1.6rem;
   }
 
@@ -887,6 +893,13 @@ body {
     display: block;
   }
 }
+hr {
+  height: 3px;
+  margin: 0;
+  border: 0;
+  background-color: #666666;
+}
+
 .footer__topwrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1032,13 +1045,16 @@ body {
   }
 }
 @media (max-width: 1023px) {
+  hr {
+    height: 1px;
+  }
+
   .top {
     padding: 40px 0;
   }
 
   .footer {
     height: 308px;
-    border-bottom: 1px solid #666666;
   }
 
   .footer__topwrapper {
@@ -1076,6 +1092,10 @@ body {
   }
 }
 @media (max-width: 767px) {
+  hr {
+    height: 2px;
+  }
+
   .logo__link {
     margin-bottom: 2.5rem;
   }
@@ -1257,6 +1277,10 @@ body {
     padding-top: 13px;
   }
 
+  .images__burger_small {
+    display: none;
+  }
+
   .images__burger {
     display: flex;
     flex-wrap: wrap;
@@ -1305,10 +1329,23 @@ body {
     height: 2rem;
   }
 
-  .images__burger {
+  .images__burger_big {
+    display: none;
+  }
+
+  .images__burger_small {
     display: block;
-    width: 32.5rem;
+  }
+
+  .images__burger {
+    display: grid;
+    grid-template-columns: repeat(3, 95px);
+    column-gap: 12px;
+    row-gap: 0;
+    width: 310px;
+    left: 33px;
     height: 12rem;
+    grid-template-areas: "img2 img1 img3";
   }
 
   .images__burger img {
@@ -1317,18 +1354,22 @@ body {
     object-fit: cover;
   }
   .images__burger img:nth-child(1) {
-    margin-right: 1.2rem;
+    grid-area: img1;
   }
   .images__burger img:nth-child(2) {
-    margin-right: 1.2rem;
+    grid-area: img2;
+  }
+  .images__burger img:nth-child(3) {
+    grid-area: img3;
   }
 
   .images__burger::after {
     margin-top: 2rem;
-    width: 33rem;
+    width: 31rem;
   }
 
   .navigation_mobile {
+    margin-top: -5px;
     padding-top: 0;
     height: auto;
   }
@@ -1336,8 +1377,8 @@ body {
   .footer-nav__socials.active-menu {
     padding-top: 2.4rem;
     padding-bottom: 2.4rem;
-    left: 18%;
-    top: 44.5rem;
+    left: 16%;
+    top: 449px;
   }
 }
 iframe {
@@ -1563,6 +1604,7 @@ iframe {
   }
 
   .welcome__text {
+    margin-bottom: 50px;
     font-size: 1.6rem;
     line-height: 1.875rem;
   }
@@ -1728,11 +1770,22 @@ iframe {
   .tour__title {
     font-size: 1.8rem;
     line-height: 1.987rem;
+    letter-spacing: 5px;
   }
 
   .tour__text {
     font-size: 1.6rem;
     line-height: 1.875rem;
+  }
+
+  .tour__link {
+    margin-bottom: 42px;
+  }
+  .tour__link:nth-child(n+4) {
+    margin-bottom: 42px;
+  }
+  .tour__link:nth-child(6) {
+    margin-bottom: 0;
   }
 }
 .explore__text {
@@ -1855,6 +1908,14 @@ iframe {
   }
 }
 @media (max-width: 767px) {
+  .explore {
+    padding-bottom: 0;
+  }
+
+  .photo {
+    height: 368px;
+  }
+
   .explore__photos {
     margin: 0;
     height: 36.8rem;
@@ -2244,6 +2305,10 @@ iframe {
   }
 }
 @media (max-width: 767px) {
+  .video > .wrapper__section {
+    padding-top: 36px;
+  }
+
   .video__introduction {
     display: block;
   }
@@ -2256,6 +2321,8 @@ iframe {
     width: 5rem;
     height: 5rem;
     border: 0.3rem solid #ffffff;
+    top: 87px;
+    left: 189px;
   }
 
   .button-play__big-object {
@@ -2271,6 +2338,7 @@ iframe {
     position: relative;
     padding-left: 2rem;
     padding-right: 1.6rem;
+    margin-bottom: 40px;
   }
 
   .controls__object {
@@ -2293,12 +2361,13 @@ iframe {
     width: 1rem;
     height: 1rem;
     margin-top: -0.3rem;
-    margin-right: 1rem;
+    margin-right: 2rem;
     appearance: none;
   }
 
   .play-range:nth-child(2) {
     display: block;
+    top: 5px;
   }
 
   .play-range_small {
@@ -2352,6 +2421,7 @@ iframe {
   }
 
   .video-carousel {
+    margin-top: 40px;
     margin-bottom: 0;
   }
 
@@ -2739,6 +2809,7 @@ iframe {
   .tickets__label {
     font-size: 1.6rem;
     line-height: 1.875rem;
+    margin-bottom: 15px;
   }
 
   .age-input {
@@ -2752,6 +2823,11 @@ iframe {
 
   .tickets__fieldset_right > p {
     padding-bottom: 9rem;
+    letter-spacing: 0;
+  }
+
+  .tickets__subtitle span {
+    padding-left: 2px;
   }
 
   .tickets__buy {
@@ -2759,6 +2835,7 @@ iframe {
     transform: translateX(50%);
     font-size: 1.6rem;
     line-height: 2rem;
+    bottom: 39px;
   }
 }
 .contacts {
@@ -2858,12 +2935,16 @@ iframe {
   .contacts__map {
     display: block;
     margin-top: 25px;
-    max-width: calc(100vw - 40px);
-    width: calc(100vw - 40px);
+    max-width: calc(100% - 40px);
+    width: calc(100% - 40px);
     height: 476px;
   }
 }
 @media (max-width: 767px) {
+  .map {
+    padding-bottom: 0;
+  }
+
   .museum-title {
     width: 12.4rem;
     font-size: 1.6rem;
@@ -2879,6 +2960,23 @@ iframe {
 
   .contacts {
     width: 100%;
+  }
+
+  .contacts__map {
+    height: 248px;
+  }
+
+  .footer-navigation__column {
+    row-gap: 30px;
+    margin-top: 42px;
+  }
+
+  .footer-nav__socials {
+    margin-top: 40px;
+  }
+
+  .bottom {
+    padding-top: 30px;
   }
 }
 .parallax {

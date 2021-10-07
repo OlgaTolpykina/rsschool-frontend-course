@@ -115,10 +115,22 @@
     .tour__title {
         font-size: 1.8rem;
         line-height: 1.987rem;
+        letter-spacing: 5px;
     }
 
     .tour__text {
         font-size: 1.6rem;
         line-height: 1.875rem;
     }
+
+    .tour__link {
+        margin-bottom: 42px;
+        &:nth-child(n+4) {
+            margin-bottom: 42px;
+        }
+        &:nth-child(6) {
+            margin-bottom: 0;
+        }
+    }
+    
 }

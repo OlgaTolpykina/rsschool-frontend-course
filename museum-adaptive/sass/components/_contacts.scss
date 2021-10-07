@@ -88,13 +88,17 @@ width: 19.5%;
     .contacts__map {
         display: block;
         margin-top: 25px;
-        max-width: calc(100vw - 40px);
-        width: calc(100vw - 40px);
+        max-width: calc(100% - 40px);
+        width: calc(100% - 40px);
         height: 476px;
     }
 }
 
 @media (max-width: 767px) {
+    .map {
+        padding-bottom: 0;
+    }
+
     .museum-title {
         width: 12.4rem;
         font-size: 1.6rem;
@@ -110,5 +114,22 @@ width: 19.5%;
 
     .contacts {
         width: 100%;
+    }
+
+    .contacts__map {
+        height: 248px;
+    }
+
+    .footer-navigation__column {
+        row-gap: 30px;
+        margin-top: 42px;
+    }
+
+    .footer-nav__socials {
+        margin-top: 40px;
+    }
+
+    .bottom {
+        padding-top: 30px;
     }
 }
