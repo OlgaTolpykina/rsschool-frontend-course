@@ -196,8 +196,25 @@
         margin-bottom: 9rem;
     }
 
+    .tickets__form {
+        margin-left: 0;
+    }
+
+    .tickets__subtitle {
+        margin-top: 35px;
+        padding-bottom: 39px;
+    }
+
+    .tickets__subtitle span {
+        padding-left: 8px;
+    }
+
+    .tickets__label {
+        margin-bottom: 10px;
+    }
+
     .tickets__buy {
-        bottom: 4rem;
+        bottom: 4.3rem;
         right: 4.9rem;
     }
 }

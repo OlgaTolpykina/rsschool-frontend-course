@@ -79,12 +79,43 @@
   }
 
   @media (max-width: 1023px) {
+      .explore {
+          padding-bottom: 7px;
+      }
+      
       .explore__text {
           display: none;
       }
 
       .explore__photos {
           width: 100%;
+          margin: 0 auto;
+      }
+
+      .photo {
+          height: 705px;
+      }
+
+      .separator {
+          width: 39px;
+          height: 39px;
+          top: 365px;
+          left: 440px;
+          border: 4px solid #fff;
+          &::before {
+              content: '';
+              width: 4px;
+              height: 348px;
+              bottom: 31px;
+              left: 13px;
+          }
+          &::after {
+              content: '';
+              height: 321px;
+              width: 4px;
+              top: 36px;
+              left: 14px;
+          }
       }
   }
 

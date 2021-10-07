@@ -411,6 +411,10 @@ input[type=time]::-webkit-datetime-edit-second-field {
         background-size: 8.5rem 4.1rem;
     }
 
+    .title__bookform {
+        width: 100%;
+    }
+
     .subtitle__bookform {
         margin-bottom: 4rem;
     }
@@ -429,11 +433,18 @@ input[type=time]::-webkit-datetime-edit-second-field {
     }
 
     .booking__amount {
+        padding-top: 4px;
         margin-bottom: 5.1rem;
+    }
+
+    .subtitle__bookform_light {
+        margin-bottom: 13px;
     }
 
     .tickets-details_overview {
         height: 66.5rem;
+        padding: 25px 15px 15px 15px;
+        background-position: left 363px;
     }
 }
 
