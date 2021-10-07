@@ -250,6 +250,7 @@
     .tickets__label {
         font-size: 1.6rem;
         line-height: 1.875rem;
+        margin-bottom: 15px;
     }
 
     .age-input {
@@ -263,6 +264,11 @@
 
     .tickets__fieldset_right > p {
         padding-bottom: 9rem;
+        letter-spacing: 0;
+    }
+
+    .tickets__subtitle span {
+        padding-left: 2px;
     }
 
     .tickets__buy {
@@ -270,5 +276,6 @@
         transform: translateX(50%);
         font-size: 1.6rem;
         line-height: 2rem;
+        bottom: 39px;
     }
 }

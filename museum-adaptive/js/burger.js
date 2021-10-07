@@ -11,6 +11,7 @@ let footerLogo = document.querySelector('.footer__logo');
 let footerNavigation = document.querySelector('.footer-navigation');
 let footerBottomLine = document.querySelector('.footer__bottomline');
 let footerSocials = document.querySelector('.footer-nav__socials');
+let hr = document.querySelector('.line');
 
 burger.addEventListener('mousedown', (event) => {
     event.preventDefault();
@@ -23,6 +24,7 @@ burger.addEventListener('mousedown', (event) => {
     footerNavigation.classList.toggle('hidden');
     footerBottomLine.classList.toggle('hidden');
     footerSocials.classList.toggle('active-menu');
+    hr.classList.toggle('hidden');
 });
 
 navigationMobile.addEventListener('mousedown', (event) => {
@@ -36,6 +38,7 @@ navigationMobile.addEventListener('mousedown', (event) => {
     footerNavigation.classList.toggle('hidden');
     footerBottomLine.classList.toggle('hidden');
     footerSocials.classList.toggle('active-menu');
+    hr.classList.toggle('hidden');
 });
 
 // main.addEventListener('mousedown', (event) => {
@@ -62,4 +65,5 @@ footer.addEventListener('mousedown', (event) => {
     footerNavigation.classList.toggle('hidden');
     footerBottomLine.classList.toggle('hidden');
     footerSocials.classList.toggle('active-menu');
+    hr.classList.toggle('hidden');
 });

@@ -1,3 +1,10 @@
+hr {
+  height: 3px;
+  margin: 0;
+  border: 0;
+  background-color: #666666;
+}
+
 .footer__topwrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -136,13 +143,16 @@
 }    
 
 @media (max-width: 1023px) {
+  hr {
+    height: 1px;
+  }
+
   .top {
     padding: 40px 0;
   }
 
   .footer {
     height: 308px;
-    border-bottom: 1px solid #666666;
   }
 
   .footer__topwrapper {
@@ -182,6 +192,10 @@
 }
 
 @media (max-width: 767px) {
+  hr {
+    height: 2px;
+  }
+
   .logo__link {
     margin-bottom: 2.5rem;
   }

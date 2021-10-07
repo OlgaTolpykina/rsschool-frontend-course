@@ -120,6 +120,14 @@
   }
 
   @media (max-width: 767px) {
+     .explore {
+        padding-bottom: 0;
+     } 
+
+    .photo {
+        height: 368px;
+    }
+
     .explore__photos {
         margin: 0;
         height: 36.8rem;
