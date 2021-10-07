@@ -136,6 +136,15 @@
 }    
 
 @media (max-width: 1023px) {
+  .top {
+    padding: 40px 0;
+  }
+
+  .footer {
+    height: 308px;
+    border-bottom: 1px solid #666666;
+  }
+
   .footer__topwrapper {
     grid-template-columns: 0.5fr 1fr;
   }
@@ -145,7 +154,12 @@
   }
 
   .footer-navigation {
-    margin-bottom: 4.2rem;
+    margin-bottom: 12px;
+  }
+
+  .footer-navigation__column {
+    margin-top: 20px;
+    grid-template-rows: repeat(3,45px);
   }
 
   .footer-nav__socials {
@@ -154,7 +168,15 @@
   }
 
   .footer-nav-link {
+    font-size: 18px;
+    line-height: 21.09px;
+    letter-spacing: 2px;
     margin-right: 18.4rem;
+  }
+
+  .bottom {
+    padding-top: 43px;
+    padding-bottom: 40px;
   }
 
 }

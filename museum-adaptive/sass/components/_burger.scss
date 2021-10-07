@@ -122,6 +122,10 @@
 }
 
 @media (max-width: 1023px) {
+    .navigation_mobile-active {
+        padding-top: 13px;
+    }
+
     .images__burger {
         display: flex;
         flex-wrap: wrap;
@@ -131,6 +135,9 @@
         width: 100%;
         height: 37.5rem;
         padding-bottom: 3.5rem;
+        margin-top: 34px;
+        position: absolute;
+        left: -2px;
         &::after {
             content: '';
             display: block;
@@ -147,8 +154,8 @@
 
     .footer-nav__socials.active-menu {
         position: absolute;
-        top: 71.1rem;
-        left: -5%;
+        top: 71rem;
+        left: -10%;
         margin: 0 auto;
         padding: 70px 0 35px 0;
         background-color: transparent;
