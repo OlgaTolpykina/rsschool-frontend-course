@@ -1,0 +1,65 @@
+.button__link {
+    @include display($display:flex, $width: 36rem, $height: 7.5rem);
+    @include font($weight: 300);
+    border-radius: 1rem;
+    color: $color-on-dark;
+    background-color: $color-primary;
+    &:hover {
+        background-color: $color-active;
+    }
+    &:active {
+        background-color: $color-active;
+    }
+    @extend %transition;
+    @media (max-width: 1500px) {
+        width: 30rem;
+        height: 6rem;
+        font-size: 2rem;
+        line-height: 2.344rem;
+    }
+    &_text {
+        margin: auto;
+    }
+}
+
+.button__close {
+    height: 25px;
+    outline: none;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 25px;
+    cursor: pointer;
+    &::before {
+        background-color: #030303;
+        content: "";
+        height: 30px;
+        position: absolute;
+        top: 0;
+        transform: rotate(45deg);
+        transition: all .3s ease-in-out;
+        width: 1px;
+    }
+    &::after {
+        background-color: #030303;
+        content: "";
+        height: 30px;
+        position: absolute;
+        top: 0;
+        transform: rotate(-45deg);
+        transition: all .3s ease-in-out;
+        width: 1px;
+    }
+    &:hover::before {
+        transform: rotate(135deg);
+    } 
+    &:hover::after {
+        transform: rotate(45deg);
+    } 
+}
+
+@media (max-width: 1023px) {
+    .button__link {
+        display: none;
+    }
+}

@@ -1,0 +1,68 @@
+// .logo {
+//     @extend %flex;
+//     align-items: baseline;
+//     color: $color-on-dark;
+//     text-transform: uppercase;
+//     &:hover {
+//         color: $color-active;
+//     }
+//     &:active {
+//         color: $color-active;
+//     }
+// }
+
+.logo {
+    width: 4.9rem;
+    height: 2.6rem;
+    margin-right: 2.5rem;
+    margin-bottom: 7px;
+}
+
+.logo__link {
+    display: flex;
+    align-items: center;
+    color: $color-on-dark;
+    &:hover {
+        color: $color-active;
+    }
+    &:hover .logo {
+        filter: invert(15%) sepia(14%) saturate(769%) hue-rotate(356deg) brightness(93%) contrast(92%);
+    }
+}
+
+.logo__title {
+    @include font($size: 2.8rem, $height: 3.091rem, $letter: 0.5rem);
+    margin: 1px 0;
+}
+
+@media (max-width: 1023px) {
+    .logo__title {
+        line-height: 5rem;
+    }
+
+    .logo__link {
+        height: 41px;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .logo__link {
+        width: 13.6rem;
+        height: 20px;
+        padding-top: 3px;
+        margin-bottom: 0;
+    }
+
+    .logo {
+        margin-bottom: 0px;
+        width: 29px;
+        height: 22px;
+        background-size: 2.9rem 1.6rem;
+    }
+
+    .logo__title {
+        font-size: 1.6rem;
+        line-height: 1.766rem;
+    }
+}
