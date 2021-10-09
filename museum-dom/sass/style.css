@@ -475,7 +475,7 @@ button {
   font-weight: 200;
   font-style: normal;
 }
-.video-carousel, .video-next__wrapper, .welcome__carousel, .pagination, .navigation, .header__wrapper {
+.video-carousel, .video-next__wrapper, .pagination, .navigation, .header__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -779,10 +779,6 @@ body {
 .wrapper__welcome {
   position: relative;
   min-height: 81rem;
-  background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url("../assets/img/welcome/1.jpg");
-  background-size: 100rem 75rem;
-  background-repeat: no-repeat;
-  background-position: right top;
 }
 @media (max-width: 1500px) {
   .wrapper__welcome {
@@ -1461,10 +1457,13 @@ iframe {
     height: 1.2rem;
   }
 }
+.welcome__content {
+  position: relative;
+  padding-top: 15rem;
+  z-index: 3;
+}
+
 .welcome__title {
-  display: block;
-  width: 59.3rem;
-  height: auto;
   margin-bottom: 2.5rem;
   font-size: 8rem;
   font-style: normal;
@@ -1472,11 +1471,7 @@ iframe {
   line-height: 9rem;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
-}
-
-.welcome__content {
-  position: relative;
-  padding-top: 15rem;
+  z-index: 5;
 }
 
 .welcome__text {
@@ -1484,40 +1479,101 @@ iframe {
   font-style: normal;
   font-weight: 300;
   line-height: 3.281rem;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.5rem;
   margin-bottom: 7.5rem;
+  z-index: 5;
 }
 
-.welcome__image_mobile {
-  display: none;
+.welcome__images_container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 750px;
 }
 
-.welcome__carousel {
+.welcome__images {
   position: absolute;
-  left: 84rem;
-  top: 69rem;
-  padding: 5rem 7.5rem;
-  width: 60rem;
-  height: auto;
-  background: #030303;
+  right: 0;
+  top: 0;
+  z-index: 2;
 }
 
-.numeration {
-  width: 76px;
-  font-size: 2.2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2rem;
-  letter-spacing: 0;
+.welcome__images_gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0) 25%);
+  z-index: 3;
+}
+
+.item {
+  display: none;
+  position: relative;
+  animation: 0.5s ease-in-out;
+}
+.item.active {
+  display: block;
+}
+
+.next {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.welcome__slider {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 600px;
+  height: 125px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 68px 0 75px;
+  align-items: center;
+  background-color: #000000;
+  z-index: 4;
+}
+.welcome__slider p {
+  line-height: 40px;
 }
 
 .numeration__current {
-  padding-right: 1rem;
-  border-right: 2px solid white;
+  margin-right: 10px;
+}
+
+.welcome__slider_list {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+.welcome__slider_list li {
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff;
+}
+.welcome__slider_list li:nth-child(1) {
+  background-color: #D2B183;
+}
+
+.welcome__slider_button button {
+  width: 30px;
+  height: 30px;
+}
+
+.welcome__slider_button button:nth-child(1) {
+  margin-right: 18px;
+}
+
+.button__image {
+  display: block;
 }
 
 .numeration__total {
-  padding-left: 1rem;
+  margin-left: 18px;
 }
 
 @media (max-width: 1500px) {
@@ -1542,6 +1598,16 @@ iframe {
     font-size: 2.4rem;
     line-height: 2.813rem;
     margin-bottom: 5rem;
+  }
+
+  .welcome__images_container {
+    width: 700px;
+    height: 525px;
+  }
+
+  .item img {
+    width: 700px;
+    height: 525px;
   }
 
   .welcome__carousel {
@@ -1577,6 +1643,29 @@ iframe {
     margin-bottom: 4.6rem;
     font-size: 2rem;
     line-height: 2.344rem;
+  }
+
+  .welcome__images_container {
+    width: 728px;
+    height: 546px;
+  }
+
+  .welcome__images {
+    position: static;
+  }
+
+  .welcome__images_gradient {
+    background: none;
+  }
+
+  .welcome__slider {
+    position: static;
+    margin: 0 auto;
+  }
+
+  .item img {
+    width: 728px;
+    height: 546px;
   }
 
   .welcome__image_mobile {
@@ -3568,6 +3657,40 @@ input[type=time]::-webkit-datetime-edit-second-field {
     position: static;
     display: block;
     margin-left: auto;
+  }
+}
+.to_left {
+  animation-name: left;
+}
+
+.to_right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+
+.from_left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+.from_right {
+  animation-name: right;
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
   }
 }
 

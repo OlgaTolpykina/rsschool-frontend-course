@@ -67,7 +67,7 @@
         <section class="welcome dark">
             <div class="wrapper wrapper__welcome">
                 <div class="welcome__content">
-                    <h2 class="title welcome__title">Welcome to&nbsp;the Louvre</h2>
+                    <h2 class="title welcome__title">Welcome<br>to the Louvre</h2>
                     <p class="welcome__text">From the castle to the museum</p>
                     <div class="welcome__button">
                         <a href="tour1.html" class="button__link" target="_blank">
@@ -75,10 +75,45 @@
                         </a>
                     </div>
                 </div>
-                <span class="welcome__image">
-                    <img class="welcome__image_mobile" src="assets/img/welcome/1.jpg" width="728" height="546" alt="Mona Lisa">
-                </span>
-                <div class="carousel welcome__carousel">
+                <div class="welcome__images">
+                    <div class="welcome__images_container">
+                        <div class="item active">
+                            <img src="assets/img/welcome/1.jpg" width="1000" height="750" alt="Mona Lisa">
+                        </div>
+                        <div class="item">
+                            <img src="assets/img/welcome/2.jpg" width="1000" height="750" alt="Mona Lisa">
+                        </div>
+                        <div class="item">
+                            <img src="assets/img/welcome/3.jpg" width="1000" height="750" alt="Mona Lisa">
+                        </div>
+                        <div class="item">
+                            <img src="assets/img/welcome/4.jpg" width="1000" height="750" alt="Mona Lisa">
+                        </div>
+                        <div class="item">
+                            <img src="assets/img/welcome/5.jpg" width="1000" height="750" alt="Mona Lisa">
+                        </div>
+                    </div>
+                    <div class="welcome__images_gradient"></div>
+                </div>
+                <div class="welcome__slider">
+                    <p><span class="numeration__current">01</span>|<span class="numeration__total">05</span></p>
+                    <ul class="welcome__slider_list">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="welcome__slider_button">
+                        <button class="left">
+                            <img class="button__image" src="assets/img/welcome/left.png" alt="left arrow">
+                        </button>
+                        <button class="right">
+                            <img class="button__image" src="assets/img/welcome/right.png" alt="right arrow">
+                        </button>
+                    </div>
+                </div>
+                <!-- <div class="carousel welcome__carousel">
                     <div class="numeration">
                         <span class="numeration__current">01</span>
                         <span class="numeration__total">05</span>
@@ -102,7 +137,7 @@
                         </div>
                     </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
         <section class="visiting" id="visiting">
@@ -560,5 +595,6 @@
     <script src="js/burger.js"></script>
     <script src="js/gallery.js"></script>
     <script src="js/popup.js"></script>
+    <script src="js/welcome_slider.js"></script>
 </body>
 </html>
