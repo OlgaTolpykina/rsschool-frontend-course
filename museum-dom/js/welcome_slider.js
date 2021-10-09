@@ -5,8 +5,6 @@ const items = document.querySelectorAll('.welcome__images_container .item'),
   list = document.querySelectorAll('.welcome__slider_list li'),
   number = document.querySelector('.numeration__current');
 
-console.log(number);
-
 let currentItem = 0,
   isEnabled = true;
 
