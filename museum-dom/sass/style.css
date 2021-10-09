@@ -3693,5 +3693,28 @@ input[type=time]::-webkit-datetime-edit-second-field {
     left: 0;
   }
 }
+.back-to-top {
+  position: fixed;
+  right: 1%;
+  top: 80%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #710707;
+  opacity: 0.8;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+}
+.back-to-top:hover {
+  opacity: 1;
+}
+
+.back-to-top-show {
+  display: block;
+}
 
 /*# sourceMappingURL=style.css.map */

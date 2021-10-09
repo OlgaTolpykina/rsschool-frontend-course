@@ -1,0 +1,23 @@
+.back-to-top {
+    position: fixed;
+    right: 1%;
+    top: 80%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: $color-primary;
+    opacity: 0.8;
+    color: $color-on-dark;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.back-to-top-show {
+    display: block;
+}
