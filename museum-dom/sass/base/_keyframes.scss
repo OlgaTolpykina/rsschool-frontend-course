@@ -1,0 +1,32 @@
+@keyframes popup {
+    0% {display: block}
+    95%{left: 13%}
+    to{left:unset}
+}
+
+@keyframes popup-hide {
+    0%{left:13%}
+    95%{left:-100%}
+    to{display: none}
+}
+
+@media (max-width: 1500px) {
+    @keyframes popup {
+        0% {display: block}
+        to{left: 0}
+    }
+}
+
+@media (max-width: 1023px) {
+    @keyframes popup {
+        0% {display: block}
+        to{left: 12.5%}
+    }
+}
+
+@media (max-width: 676px) {
+    @keyframes popup {
+        0% {display: block}
+        to{left: 0}
+    }
+}
