@@ -92,6 +92,12 @@
     }
   }
 
+  .welcome__slider_list li:hover {
+    background-color: #9D8665 !important;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
   .welcome__slider_button button {
       width: 30px;
       height: 30px;
@@ -103,6 +109,10 @@
 
   .button__image {
       display: block;
+      &:hover {
+        filter: invert(15%) sepia(14%) saturate(769%) hue-rotate(356deg) brightness(93%) contrast(92%);
+        transition-duration: 1s;
+      }
   }
 
   .numeration__total {
