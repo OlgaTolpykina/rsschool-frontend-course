@@ -26,3 +26,38 @@ function shuffle(array) {
 }
 
 shuffle(array).forEach((elem) => pictureInnerContainer.innerHTML += elem);
+
+function debounce(func, wait = 20, immediate = true) {
+  let timeout;
+  return function() {
+    let context = this, args = arguments;
+    let later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context,args);
+    };
+    let callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
+const galleryImages = document.querySelectorAll('.gallery__img');
+
+function checkImage(e) {
+  galleryImages.forEach(galleryImage => {
+
+    const partOfImage = (window.scrollY + window.innerHeight) - galleryImage.height / 2;
+    const imageBottom = galleryImage.getBoundingClientRect().top + window.scrollY + galleryImage.height;
+    const isPartShown = partOfImage > (galleryImage.getBoundingClientRect().top + window.scrollY);
+    const isNotScrolledPast = window.scrollY < imageBottom;
+    if (isPartShown && isNotScrolledPast) {
+      galleryImage.classList.add('gallery_active');
+    } else {
+      galleryImage.classList.remove('gallery_active');
+        }
+  });
+}
+
+window.addEventListener('scroll', debounce(checkImage));
+window.onload(debounce(checkImage));
