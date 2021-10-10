@@ -34,9 +34,12 @@
 }
 
 .gallery__img {
+    transform: translateY(100px) scale(0.95);
+    opacity: 0;
     width: 100%;
     height: auto;
     object-fit: cover;
+    @extend %transition;
     &:nth-child(3n+1) {
         position: relative;
         grid-column-start: 1;
@@ -50,6 +53,11 @@
         grid-column-start: 3;
         top: 50px; 
     }
+  }
+
+  .gallery_active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
   }
 
   .img-5row {

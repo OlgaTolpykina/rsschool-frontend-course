@@ -489,7 +489,7 @@ button {
   font-family: "Roboto", "Verdana", sans-serif;
 }
 
-.logo, .buy, .tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item a:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
+.logo, .buy, .tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .gallery__img, .video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item a:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
   transition: all 0.3s ease-out;
 }
 
@@ -2545,6 +2545,8 @@ iframe {
 }
 
 .gallery__img {
+  transform: translateY(100px) scale(0.95);
+  opacity: 0;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -2561,6 +2563,11 @@ iframe {
   position: relative;
   grid-column-start: 3;
   top: 50px;
+}
+
+.gallery_active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .img-5row {
