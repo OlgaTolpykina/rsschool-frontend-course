@@ -490,7 +490,7 @@ button {
 }
 
 .logo, .buy, .tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .gallery__img, .video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item a:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
-  transition: all 0.3s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 html {
