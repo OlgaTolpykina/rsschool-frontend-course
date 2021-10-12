@@ -475,7 +475,7 @@ button {
   font-weight: 200;
   font-style: normal;
 }
-.video-carousel, .video-next__wrapper, .pagination, .navigation, .header__wrapper {
+.pagination, .navigation, .header__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -489,7 +489,7 @@ button {
   font-family: "Roboto", "Verdana", sans-serif;
 }
 
-.input__error, .logo, .buy, .tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .gallery__img, .video-next:active .button-play__small, .video-next:hover .button-play__small, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item a:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
+.input__error, .logo, .buy, .tickets__buy:active, .tickets__buy:hover, .age__button:active, .age__button:hover, .tickets__type-option:active .tickets__type-label, .tickets__type-option:hover .tickets__type-label, .gallery__img, .tour__title:after, .pagination-circle, .pagination-square, .footer_item:active, .footer_item a:hover, .socials__button:hover::before, .socials__button:hover .social-path, .link-on-dark, .button__link {
   transition: all 0.5s ease-out;
 }
 
@@ -1377,7 +1377,7 @@ hr {
     top: 449px;
   }
 }
-iframe {
+.virtual-tour {
   border: none;
   height: 100vh;
   width: 100vw;
@@ -2140,69 +2140,20 @@ iframe {
   width: 15.5rem;
 }
 
-.video-next {
+.video-next_container {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
   position: relative;
 }
-.video-next:hover .button-play__small {
-  background: #FF0000;
-}
-.video-next:active .button-play__small {
-  background: #FF0000;
-}
 
-.video-next__wrapper {
-  flex-wrap: nowrap;
-  position: absolute;
-  top: 1.5rem;
-  left: 1rem;
-}
-
-.video-next__favicon {
-  display: block;
-  margin-right: 1rem;
-  border-radius: 50%;
-}
-
-.video-next__title {
-  font-size: 1.8rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 3.85rem;
-  letter-spacing: 0;
-  margin-right: 2.3rem;
-  color: #ffffff;
-}
-
-.video-next__title_mobile {
+.video-next-iframe {
   display: none;
+  border: none;
 }
 
-.video-next__title_smallmobile {
-  display: none;
-}
-
-.video-next__more {
+.active {
   display: block;
-  position: relative;
-  color: #ffffff;
-}
-.video-next__more::before {
-  content: ".";
-  position: absolute;
-  top: -9px;
-  color: #ffffff;
-}
-.video-next__more::after {
-  content: ".";
-  position: absolute;
-  top: -4px;
-  color: #ffffff;
-  left: 0;
-}
-
-.video-carousel {
-  justify-content: center;
-  margin-top: 4rem;
 }
 
 @media (max-width: 1500px) {
