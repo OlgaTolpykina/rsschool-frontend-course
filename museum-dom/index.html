@@ -386,7 +386,7 @@
             <div class="overlay"></div>
             <div class="buy">
                 <button class="button__close"></button>
-                <form class="buy__form" name="ticket-details" method="POST" action="#">
+                <form class="buy__form" name="ticket-details" method="POST" action="#" novalidate>
                     <div class="tickets-details_choice">
                         <img src="assets/img/logo-form.svg" width="85" height="41" alt="logo">
                         <span class="title_light title__bookform">Booking tickets</span>
@@ -394,18 +394,21 @@
                         <div class="booking__date">
                             <div>
                                 <div></div>
-                                <input class="buy__input input__date" type="date" name="date" required="required" data-placeholder="Date">
+                                <input class="buy__input input__date" type="date" name="date" data-placeholder="Date">
                                 <div></div>
                             </div>
                             <div>
                                 <div></div>
-                                <input class="buy__input input__time" type="time" name="time" required="required" data-placeholder="Time">
+                                <input class="buy__input input__time" type="time" name="time" data-placeholder="Time">
                                 <div></div>
                             </div>
                         </div>
-                        <input class="input buy__input input__name" type="text" name="name" required="required" placeholder="Name">
-                        <input class="input buy__input input__email" type="email" name="email" required="required" placeholder="Email">
-                        <input class="input buy__input input__phone" type="tel" name="phone" required="required" placeholder="Phone">
+                        <input class="input buy__input input__name" type="text" name="name" required="required" placeholder="Name" pattern="^[a-zA-Zа-яА-Я*\s]{3,15}$">
+                        <span class="input__error name-error"></span>
+                        <input class="input buy__input input__email" type="email" name="email" required="required" placeholder="Email" pattern="^([a-zA-Z_\-]{3,15})@([a-z]{4,})(\.)([a-z]{2,})">
+                        <span class="input__error email-error"></span>
+                        <input class="input buy__input input__phone" type="tel" name="phone" required="required" placeholder="Phone" maxlength="14" pattern="^([\d]{2,3}[-\s]?)*$">
+                        <span class="input__error phone-error"></span>
                         <select class="input buy__input select" name="ticket-type" required="required">
                             <option value="" disabled="disabled" selected="selected" hidden>Ticket Type</option>
                             <option value="permanent">Permanent exhibition</option>
@@ -578,6 +581,7 @@
     <script src="js/welcome_slider.js"></script>
     <script src="js/top_button.js"></script>
     <script src="js/explore_comparison.js"></script>
+    <script src="js/_validation.js"></script>
     <script src="js/mapbox.js"></script>
 </body>
 </html>
