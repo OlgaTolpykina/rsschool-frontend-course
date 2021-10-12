@@ -21,9 +21,9 @@ nameInput.addEventListener('blur', function (event) {
 
 function showErrorName() {
     if(nameInput.validity.valueMissing) {
-        nameError.textContent = "You need to enter your email.";
-    } else if (nameInput.validity.typeMismatch) {
-        nameError.textContent = "Value entered should be an email";
+        nameError.textContent = "You need to enter your name.";
+    } else if (nameInput.validity.patternMismatch) {
+        nameError.textContent = "Value entered should consist of cyrillic/latin letters.";
     }
 
     nameInput.classList.add('_invalid');
@@ -45,7 +45,7 @@ email.addEventListener('blur', function(event) {
 function showErrorEmail() {
     if(email.validity.valueMissing) {
         emailError.textContent = "You need to enter your email.";
-    } else if (email.validity.typeMismatch) {
+    } else if (email.validity.patternMismatch) {
         emailError.textContent = "Value entered should be an email";
     }
 
@@ -56,7 +56,7 @@ function showErrorEmail() {
 //Валидация телефона
 
 phone.addEventListener('blur', function(event) {
-    if (phone.validity.valid) {
+    if (phone.validity.valid  && !phoneError.className.includes('input__error_active')) {
         phoneError.textContent = '';
         phoneError.className = 'input__error';
         phone.classList.remove('_invalid');
@@ -68,7 +68,7 @@ phone.addEventListener('blur', function(event) {
 function showErrorPhone() {
     if(phone.validity.valueMissing) {
         phoneError.textContent = "You need to enter your phone.";
-    } else if (phone.validity.typeMismatch) {
+    } else if (phone.validity.patternMismatch) {
         phoneError.textContent = "Value entered should be a phone";
     }
 
@@ -81,7 +81,6 @@ phone.oninput = function () {
     b = a.split('');
     let count = 0;
     for (let i = 0; i < b.length; i++ ) {
-        console.log(b[i] >= 0);
         if (b[i] >= 0){
             count += 1;
         }
@@ -90,6 +89,9 @@ phone.oninput = function () {
         phoneError.textContent = 'Please enter no more than 10 digits.'
         phone.classList.add('_invalid');
         phoneError.classList.add('input__error_active');
+    } else if (count >= 0 && count <= 10) {
+        phone.classList.remove('_invalid');
+        phoneError.classList.remove('input__error_active');
     }
 };
 
@@ -103,13 +105,8 @@ form.addEventListener('submit', function (event) {
         event.preventDefault();
         showErrorEmail();
     }
-    if (!phone.validity.valid ) {
+    if (!phone.validity.valid || phoneError.className.includes('input__error_active')) {
         event.preventDefault();
         showErrorPhone();
-    }
-    if (phoneError.textContent='Please enter no more than 10 digits.') {
-        event.preventDefault();
-        showErrorPhone();
-        phoneError.textContent='Please enter no more than 10 digits.'
     }
 });
