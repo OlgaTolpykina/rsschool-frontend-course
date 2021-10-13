@@ -115,19 +115,30 @@
 .video-next_container {
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
+    height: 258px;
 }
 
 .video-next-iframe {
     display: none;
     border: none;
+    position: absolute;
+    top: 0;
+    &.active {
+        display: block;
+    }
 }
 
-.active {
-    display: block;
+.video-next-video {
+    display: none;
 }
 
+.video-carousel {
+    @extend %flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
 
 // .video-next {
 //     position: relative;
@@ -186,12 +197,6 @@
 //         color: $color-on-dark;
 //         left: 0; 
 //     }
-// }
-
-// .video-carousel {
-//     @extend %flex;
-//     justify-content: center;
-//     margin-top: 4rem;
 // }
 
 @media (max-width: 1500px) {
