@@ -19,30 +19,49 @@
     @include font($height: 3.85rem, $letter: 0);
 }
 
-.button-play {
+// .button-play {
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+//     background-color: transparent;
+//     border: none;
+//     &_big {
+//         width: 22rem;
+//         height: 22rem;
+//         border: 0.5rem solid $color-on-dark;
+//         border-radius: 50%;
+//         &:hover {
+//             border: 1rem solid $color-active;
+//         }
+//     }
+// }
+
+// .button-play__big-object {
+//     width: 9.1rem;
+//     height: 12rem;
+//     position: relative;
+//     left: 50%;
+//     transform: translateX(-90%);
+// }
+
+.button-play_big {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: transparent;
-    border: none;
-    &_big {
-        width: 22rem;
-        height: 22rem;
-        border: 0.5rem solid $color-on-dark;
-        border-radius: 50%;
-        &:hover {
-            border: 1rem solid $color-active;
-        }
+    display: block;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    &:hover {
+        filter: invert(15%) sepia(14%) saturate(769%) hue-rotate(356deg) brightness(93%) contrast(92%);
     }
 }
 
-.button-play__big-object {
-    width: 9.1rem;
-    height: 12rem;
-    position: relative;
-    left: 50%;
-    transform: translateX(-90%);
+.button-play_big-hide {
+    display: none;
 }
 
 .play-svg_big {
@@ -79,7 +98,30 @@
 
 .svg_grey:hover .path_grey{
     fill: $color-on-dark;
-} 
+}
+
+.controls__button-play {
+    height: 31px;
+    width: 23px;
+}
+
+.play-button-small {
+    display: none;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.pause-button {
+    display: none;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.active {
+    display: block;
+}
 
 .controls__object {
     width: 2.3rem;
@@ -123,7 +165,7 @@
 .video-next-iframe {
     display: none;
     border: none;
-    position: absolute;
+    // position: absolute;
     top: 0;
     &.active {
         display: block;
