@@ -138,4 +138,42 @@ bigVideo.addEventListener('click', function() {
     }
 });
 
+//Ползунок
+
+let playBar = document.querySelector('#play__bar');
+
+playBar.addEventListener('change', () => {
+    const time = bigVideo.duration * (playBar.value / 100);
+    console.log(time);
+    bigVideo.currentTime = time;
+  });
+
+  bigVideo.addEventListener('timeupdate', () => {
+    const value = (100 / bigVideo.duration) * bigVideo.currentTime;
+
+    playBar.value = value || 0;
+    playBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value - 1}%, #C4C4C4 ${value + 1}%, #C4C4C4 100%)`;
+    
+    if (bigVideo.duration == bigVideo.currentTime) {
+        btnPlayBig.style.opacity = '1';
+        btnPlaySmall.classList.add('active');
+        btnPause.classList.remove('active');
+    }
+  });
+
+  playBar.addEventListener('mousedown', () => {
+    bigVideo.pause();
+
+    btnPlayBig.style.opacity = '1';
+    btnPlaySmall.classList.add('active');
+    btnPause.classList.remove('active');
+  });
+
+  playBar.addEventListener('mouseup', () => {
+    bigVideo.play();
+    btnPlayBig.style.opacity = '0';
+    btnPlaySmall.classList.remove('active');
+    btnPause.classList.add('active');
+  });
+
 

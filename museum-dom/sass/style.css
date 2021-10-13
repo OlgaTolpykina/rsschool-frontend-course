@@ -2130,26 +2130,21 @@ hr {
   height: 3.1rem;
 }
 
-.play-range {
-  width: 92.9rem;
-  appearance: none;
-  background-color: #000000;
-}
-.play-range::-webkit-slider-thumb {
-  appearance: none;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background: #ffffff;
-  cursor: pointer;
-  margin-top: -0.6rem;
-}
-.play-range::-webkit-slider-runnable-track {
-  width: 100%;
+.video__controls #play__bar {
+  -webkit-appearance: none;
   height: 8px;
+  width: 929px;
   cursor: pointer;
-  border-radius: 50px;
-  background: linear-gradient(to right, #710707 50%, #c4c4c4 50%);
+  background: linear-gradient(to right, #710707 0%, #710707 50%, #C4C4C4 50%, #C4C4C4 100%);
+}
+
+.video__controls #play__bar::-webkit-slider-thumb,
+.video__controls #volume__bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  background: #ffffff;
+  border-radius: 100%;
 }
 
 .play-range_small {
