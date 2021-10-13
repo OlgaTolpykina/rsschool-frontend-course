@@ -15,7 +15,6 @@ const videos = document.querySelectorAll('.video-next_container iframe'),
   leftArrow = document.querySelector('.controls-left .left'),
   pagination = document.querySelectorAll('.pagination-circle');
 
-
   let currentVideo = 0,
   isPossible = true;
 
@@ -25,30 +24,22 @@ function changeCurrentVideo (n) {
   pagination[currentVideo].style.background = '#333333';
 }
 
-let left = 0;
-for (let i = 0; i < videos.length; i++) {
-    if(items[i].classList[0] == 'active') {
-        items[i].style.left = left + '%';
-        left += 35;
-    }
-}
-
 function hideVideo () {
   isPossible = false;
-  videos.forEach(video => video.classList.remove('active'));
+  videos.forEach(video => {
+      video.classList.remove('active');
+    });
 }
 
 function showVideo () {
-  left = 0;
-  bigVideo.poster = `assets/video/posters/poster${currentVideo}.jpg`;
-  bigVideo.src = `assets/video/video/video${currentVideo}.mp4`;
-  for (let i = 0; i < 3; i++) {
-      let index = (currentVideo + i + videos.length) % videos.length;
-      videos[index].classList.add('active');
-      videos[index].style.left = left + '%';
-      isPossible = true;
-      left +=34.6;
-  }
+    bigVideo.poster = `assets/video/posters/poster${currentVideo}.jpg`;
+    bigVideo.src = `assets/video/video/video${currentVideo}.mp4`;
+    for (let i = 0; i < 3; i++) {
+        let index = (currentVideo + i + videos.length) % videos.length;
+        videos[index].style.order = i;
+        videos[index].classList.add('active');
+        isPossible = true;  
+    }
 }
 
 function previousVideo (n) {
@@ -67,12 +58,22 @@ leftArrow.addEventListener('click', function () {
   if (isPossible) {
     previousVideo (currentVideo)
   }
+  videos.forEach(video => video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'));
+  bigVideo.pause();
+  btnPlayBig.style.opacity = '1';
+  btnPlaySmall.classList.add('active');
+  btnPause.classList.remove('active');
 })
 
 rightArrow.addEventListener('click', function () {
   if (isPossible) {
-    nextVideo(currentVideo)
+    nextVideo(currentVideo);
   }
+  videos.forEach(video => video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'));
+  bigVideo.pause();
+  btnPlayBig.style.opacity = '1';
+  btnPlaySmall.classList.add('active');
+  btnPause.classList.remove('active');
 })
 
 pagination.forEach((element, index) =>{
@@ -80,7 +81,61 @@ pagination.forEach((element, index) =>{
     if (isPossible) {
       hideVideo();
       changeCurrentVideo(index);
-      showVideo()
+      showVideo();
     }
-  })
+    videos.forEach(video => video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'));
+    })
 })
+
+//Запуск или остановка основного видео
+
+let btnPlayBig = document.querySelector('.button-play_big');
+let btnPlaySmall = document.querySelector('.play-button-small');
+let btnPause = document.querySelector('.pause-button');
+
+btnPlayBig.addEventListener('click', function(e) {
+    e.preventDefault();
+    bigVideo.play();
+    btnPlayBig.style.opacity = '0';
+    btnPlaySmall.classList.remove('active');
+    btnPause.classList.add('active');
+});
+
+btnPause.addEventListener('click', function() {
+    bigVideo.pause();
+    btnPlayBig.style.opacity = '1';
+    btnPlaySmall.classList.add('active');
+    btnPause.classList.remove('active');
+});
+
+btnPlaySmall.addEventListener('click', function() {
+    bigVideo.play();
+    btnPlayBig.style.opacity = '0';
+    btnPlaySmall.classList.remove('active');
+    btnPause.classList.add('active');
+});
+
+pagination.forEach((element) => {
+    element.addEventListener('click', () => {
+        bigVideo.pause();
+        btnPlayBig.style.opacity = '1';
+        btnPlaySmall.classList.add('active');
+        btnPause.classList.remove('active');
+    })
+});
+
+bigVideo.addEventListener('click', function() {
+    if (bigVideo.paused == true) {
+        bigVideo.play();
+        btnPlayBig.style.opacity = '0';
+        btnPlaySmall.classList.remove('active');
+        btnPause.classList.add('active');
+    } else {
+        bigVideo.pause();
+        btnPlayBig.style.opacity = '1';
+        btnPlaySmall.classList.add('active');
+        btnPause.classList.remove('active');
+    }
+});
+
+
