@@ -475,7 +475,7 @@ button {
   font-weight: 200;
   font-style: normal;
 }
-.pagination, .navigation, .header__wrapper {
+.video-carousel, .pagination, .navigation, .header__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2143,17 +2143,28 @@ hr {
 .video-next_container {
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
+  height: 258px;
 }
 
 .video-next-iframe {
   display: none;
   border: none;
+  position: absolute;
+  top: 0;
+}
+.video-next-iframe.active {
+  display: block;
 }
 
-.active {
-  display: block;
+.video-next-video {
+  display: none;
+}
+
+.video-carousel {
+  justify-content: center;
+  margin-top: 4rem;
 }
 
 @media (max-width: 1500px) {
