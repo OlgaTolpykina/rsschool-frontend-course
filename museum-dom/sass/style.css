@@ -2210,6 +2210,21 @@ hr {
   width: 20%;
 }
 
+.video-player__playback-speed {
+  position: absolute;
+  left: calc(50% - 30px);
+  top: calc(20% - 25px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 80px;
+  font-size: 40px;
+  color: #FFFFFF;
+  background: rgba(3, 3, 3, 0.7);
+  border-radius: 5px;
+}
+
 .video-next_container {
   display: flex;
   justify-content: space-between;

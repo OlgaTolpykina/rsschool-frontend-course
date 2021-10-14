@@ -277,8 +277,46 @@ playBar.addEventListener('change', () => {
             btnExitFullscreen.classList.add('active');
             goTopButton.classList.remove('back-to-top-show'); 
           }
-          break;
+          break;  
         }  
     }     
   });
+
+  document.addEventListener('keydown', (e) => {
+    if(e.target.tagName === 'INPUT') {
+      return
+    }
+    if (e.code === 'Period' && e.shiftKey) {
+      bigVideo.playbackRate += 0.25
+      const span = createSpanSpeed(bigVideo.playbackRate)
+      addSpanToPlayer(span)
+    }
+    if (e.code === 'Comma' && e.shiftKey) {
+      bigVideo.playbackRate -= 0.25
+      const span = createSpanSpeed(bigVideo.playbackRate)
+      addSpanToPlayer(span)
+    }
+  })
+
+  function createSpanSpeed(innnerText) {
+    const span = document.createElement('span')
+    span.classList.add('video-player__playback-speed')
+    span.innerHTML = `${innnerText}x`
+    return span
+  }
+
+  function addSpanToPlayer(span) {
+    const isSpanExist = bigVideoContainer.querySelector('.video-player__playback-speed')
+    if (isSpanExist) {
+      removeSpanToPlayer(isSpanExist)
+    }
+    bigVideoContainer.append(span)
+    setTimeout(() => {
+      removeSpanToPlayer(span)
+    }, 1000)
+  }
+
+  function removeSpanToPlayer(span) {
+    bigVideoContainer.removeChild(span)
+  }
 
