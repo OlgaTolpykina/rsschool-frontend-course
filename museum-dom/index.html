@@ -210,7 +210,7 @@
                 </div>
                 <div class="video__content">
                     <div class="video">
-                        <video class="video__current" src="assets/video/video/video0.mp4" muted poster="assets/video/posters/poster0.jpg" width="1440" height="650"></video>
+                        <video class="video__current" src="assets/video/video/video0.mp4" poster="assets/video/posters/poster0.jpg" width="1440" height="650"></video>
                         <img class="button-play_big" src="assets/img/icons/play-button-big.svg" alt="youtube">
                         <div class="video__controls">
                             <button class="controls__button-play">
@@ -219,11 +219,10 @@
                             </button>
                             <input class="play-range" id="play__bar" type="range" name="video-progress">
                             <button>
-                                <object type="image/svg+xml" data="assets/video/volume.svg" class="volume__object">
-                                    Your browser does not support SVG
-                                 </object>
+                                <img class="volume-button active" src="assets/video/volume.svg" alt="Volume">
+                                <img class="mute-button" src="assets/img/icons/mute.svg" alt="Mute">
                             </button>
-                            <input class="play-range play-range_small" id="volume__bar" type="range" name="volume-level">
+                            <input class="play-range play-range_small" id="volume__bar" min="0" max="1" step="0.1" value="0.5" type="range" name="volume-level">
                             <button>
                                 <object type="image/svg+xml" data="assets/video/scale.svg" class="scale__object">
                                     Your browser does not support SVG
