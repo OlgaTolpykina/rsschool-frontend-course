@@ -197,37 +197,20 @@ playBar.addEventListener('change', () => {
     volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value * 100}%, #C4C4C4 ${volumeBar.value * 100}%, #C4C4C4 100%)`;
   });
 
-//   function volumeMute() {
-//       if (bigVideo.muted == false) {
-//           bigVideo.muted = true;
-//           btnVolume.classList.remove('active');
-//           btnMute.classList.add('active');
-//           volumeBar.value = 0;
-//           volumeBar.style.background = `linear-gradient(to right, #C4C4C4 0%, #C4C4C4 100%)`;
-//       } else {
-//           bigVideo.muted = false;
-//           btnVolume.classList.add('active');
-//           btnMute.classList.remove('active');
-//           volumeBar.value = 0.3;
-//           volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value * 100}%, #C4C4C4 ${volumeBar.value * 100}%, #C4C4C4 100%)`;
-//       }
-//   }
 
-//   btnVolume.addEventListener('click', volumeMute);
-
-//   volumeBar.addEventListener('change', function() {
-//     console.log(volumeBar.value);
-//     bigVideo.volume = volumeBar.value;
-//     if (volumeBar.value == 0) {
-//         btnVolume.classList.remove('active');
-//         btnMute.classList.add('active');
-//         bigVideo.muted = true;
-//     } else {
-//         bigVideo.muted = false;
-//         btnVolume.classList.add('active');
-//         btnMute.classList.remove('active');
-//     }
-//     volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value * 100}%, #C4C4C4 ${volumeBar.value * 100}%, #C4C4C4 100%)`;
-//   })
+  volumeBar.addEventListener('change', function() {
+    console.log(volumeBar.value);
+    bigVideo.volume = volumeBar.value;
+    if (volumeBar.value == 0) {
+        btnVolume.classList.remove('active');
+        btnMute.classList.add('active');
+        bigVideo.muted = true;
+    } else {
+        bigVideo.muted = false;
+        btnVolume.classList.add('active');
+        btnMute.classList.remove('active');
+    }
+    volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value * 100}%, #C4C4C4 ${volumeBar.value * 100}%, #C4C4C4 100%)`;
+  })
 
 
