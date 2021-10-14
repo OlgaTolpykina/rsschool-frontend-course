@@ -74,6 +74,7 @@ rightArrow.addEventListener('click', function () {
   btnPlayBig.style.opacity = '1';
   btnPlaySmall.classList.add('active');
   btnPause.classList.remove('active');
+  playBar.style.background = `#C4C4C4`;
 })
 
 pagination.forEach((element, index) =>{
