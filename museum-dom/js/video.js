@@ -233,3 +233,52 @@ playBar.addEventListener('change', () => {
     goTopButton.classList.add('back-to-top-show');
   });
 
+  document.addEventListener('keydown', (evt) => {
+    if (window.pageYOffset > 2600 && window.pageYOffset < 4600) {
+        switch (evt.code) {
+        case 'Space':
+          evt.preventDefault();
+          if (bigVideo.paused == true) {
+              bigVideo.play();
+              btnPlayBig.style.opacity = '0';
+              btnPlaySmall.classList.remove('active');
+              btnPause.classList.add('active');
+          } else {
+              bigVideo.pause();
+              btnPlayBig.style.opacity = '1';
+              btnPlaySmall.classList.add('active');
+              btnPause.classList.remove('active'); 
+          }
+          break;
+        case 'KeyM':
+            if (bigVideo.muted == true) {
+                bigVideo.muted = false;
+                volumeBar.value = 0.2;
+                btnVolume.classList.add('active');
+                btnMute.classList.remove('active');
+                volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value * 100}%, #C4C4C4 ${volumeBar.value * 100}%, #C4C4C4 100%)`;
+            } else {
+                bigVideo.muted = true;
+                volumeBar.value = 0;
+                btnVolume.classList.remove('active');
+                btnMute.classList.add('active');
+                volumeBar.style.background = `linear-gradient(to right, #C4C4C4 0%, #C4C4C4 100%)`;
+            }
+          break;
+        case 'KeyF':
+          if (bigVideoContainer.classList.contains('video_fullscreen')) {
+            bigVideoContainer.classList.remove('video_fullscreen');
+            btnFullscreen.classList.add('active');
+            btnExitFullscreen.classList.remove('active');
+            goTopButton.classList.add('back-to-top-show'); 
+          } else {
+            bigVideoContainer.classList.add('video_fullscreen');
+            btnFullscreen.classList.remove('active');
+            btnExitFullscreen.classList.add('active');
+            goTopButton.classList.remove('back-to-top-show'); 
+          }
+          break;
+        }  
+    }     
+  });
+
