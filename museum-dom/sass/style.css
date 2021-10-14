@@ -2137,6 +2137,13 @@ hr {
   cursor: pointer;
   background: linear-gradient(to right, #710707 0%, #710707 50%, #C4C4C4 50%, #C4C4C4 100%);
 }
+.video__controls #volume__bar {
+  -webkit-appearance: none;
+  height: 8px;
+  width: 155px;
+  cursor: pointer;
+  background: linear-gradient(to right, #710707 0%, #710707 50%, #C4C4C4 50%, #C4C4C4 100%);
+}
 
 .video__controls #play__bar::-webkit-slider-thumb,
 .video__controls #volume__bar::-webkit-slider-thumb {
@@ -2149,6 +2156,18 @@ hr {
 
 .play-range_small {
   width: 15.5rem;
+}
+
+.volume-button {
+  display: none;
+}
+
+.mute-button {
+  display: none;
+}
+
+.active {
+  display: block;
 }
 
 .video-next_container {
