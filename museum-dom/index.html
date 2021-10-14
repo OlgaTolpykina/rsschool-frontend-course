@@ -209,7 +209,7 @@
                     <p class="text video__subtitle">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
                 </div>
                 <div class="video__content">
-                    <div class="video">
+                    <div class="video_container">
                         <video class="video__current" src="assets/video/video/video0.mp4" poster="assets/video/posters/poster0.jpg" width="1440" height="650"></video>
                         <img class="button-play_big" src="assets/img/icons/play-button-big.svg" alt="youtube">
                         <div class="video__controls">
@@ -224,9 +224,8 @@
                             </button>
                             <input class="play-range play-range_small" id="volume__bar" min="0" max="1" step="0.1" value="0.5" type="range" name="volume-level">
                             <button>
-                                <object type="image/svg+xml" data="assets/video/scale.svg" class="scale__object">
-                                    Your browser does not support SVG
-                                 </object>
+                                <img class="fullscreen-button active" src="assets/video/scale.svg" alt="enter fullscreen">
+                                <img class="fullscreen-exit-button" src="assets/img/icons/fullscreen_exit.svg" alt="exit fullscreen">
                             </button>
                         </div>
                     </div>     

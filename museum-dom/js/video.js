@@ -213,4 +213,23 @@ playBar.addEventListener('change', () => {
     volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value * 100}%, #C4C4C4 ${volumeBar.value * 100}%, #C4C4C4 100%)`;
   })
 
+  //Полный экран
+
+  let btnFullscreen = document.querySelector('.fullscreen-button');
+  let btnExitFullscreen = document.querySelector('.fullscreen-exit-button');
+  let bigVideoContainer = document.querySelector('.video_container');
+
+  btnFullscreen.addEventListener('click', function() {
+    bigVideoContainer.classList.add('video_fullscreen');
+    btnFullscreen.classList.remove('active');
+    btnExitFullscreen.classList.add('active');
+    goTopButton.classList.remove('back-to-top-show');
+  });
+
+  btnExitFullscreen.addEventListener('click', function() {
+    bigVideoContainer.classList.remove('video_fullscreen');
+    btnFullscreen.classList.add('active');
+    btnExitFullscreen.classList.remove('active');
+    goTopButton.classList.add('back-to-top-show');
+  });
 
