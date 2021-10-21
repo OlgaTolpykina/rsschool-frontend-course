@@ -19,7 +19,6 @@ function setBg() {
     img.addEventListener('load', () => {
         body.style.backgroundImage =`url(${img.src})`;    
     });
-    // body.style.backgroundImage = `url('https://raw.githubusercontent.com/olgatolpykina/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg')`;
 }
 
 function getSlideNext() {
