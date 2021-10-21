@@ -21,7 +21,7 @@ function getTimeOfDay() {
 
 function showGreeting() {
     const timeOfDay = getTimeOfDay();
-    const greetingText = `Good ${timeOfDay}`;
+    const greetingText = `Good ${timeOfDay},`;
     greeting.textContent = greetingText;
 }
 
