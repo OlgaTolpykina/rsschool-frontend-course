@@ -23,13 +23,4 @@ function getLocalStorage() {
 }
 window.addEventListener('load', getLocalStorage);
 
-// function setCity(event) {
-//     if (event.code === 'Enter') {
-//       getWeather();
-//       city.blur();
-//     }
-// }
-
-// city.addEventListener('keypress', setCity);
-
 
