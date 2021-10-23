@@ -12,7 +12,6 @@ async function getRandomQuote() {
 
     quote.textContent = data[index].text;
     author.textContent = data[index].author;
-    console.log(data[index].text);
 }
 
 function getNextQuote() {

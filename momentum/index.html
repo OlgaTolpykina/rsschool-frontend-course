@@ -12,9 +12,20 @@
   <header class="header">
     <div class="player">
       <div class="player-controls">
-        <button class="play-prev player-icon"></button>
-        <button class="play player-icon"></button>
-        <button class="play-next player-icon"></button>
+        <div class="play-buttons">
+          <button class="play-prev player-icon"></button>
+          <button class="play player-icon"></button>
+          <button class="play-next player-icon"></button>
+        </div>
+        <div class="custom-player hidden">
+          <p class="song-title">Aqua Caelestis</p>
+          <input class="input-range" type="range" id="play-bar">
+          <span class="timeline">00:15</span>
+          <span>/</span>
+          <span class="duration">00:39</span>
+          <button class="volume volume-icon"></button>
+          <input class="input-range" type="range" id="volume-bar" min="0" max="1" step="0.1">
+        </div>
       </div>
       <ul class="play-list"></ul>
     </div>
