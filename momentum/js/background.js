@@ -1,9 +1,15 @@
-import { getTimeOfDay }  from './show-greeting.js';
-
 const body = document.querySelector('body');
 const slideNext = document.querySelector('.slide-next');
 const slidePrev = document.querySelector('.slide-prev');
 let randomNumber = getRandomNum(1, 20);
+
+const TIME_OF_DAY = ['night', 'morning', 'afternoon', 'evening'];
+
+function getTimeOfDay() {
+    const date = new Date();
+    const hours = date.getHours();
+    return Math.floor(hours / 6);
+}
 
 function getRandomNum(min, max) {
     min = Math.ceil(min);
@@ -13,7 +19,7 @@ function getRandomNum(min, max) {
 
 function setBg() {
     const img = new Image();
-    const timeOfDay = getTimeOfDay();
+    const timeOfDay = TIME_OF_DAY[getTimeOfDay()];
     const bgNum = randomNumber >= 10 ? randomNumber : '0' + randomNumber;
     img.src = `https://raw.githubusercontent.com/olgatolpykina/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
     img.addEventListener('load', () => {
@@ -34,4 +40,4 @@ function getSlidePrev() {
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
 
-export { setBg, getRandomNum };
+export { getTimeOfDay, setBg, getRandomNum, TIME_OF_DAY };
