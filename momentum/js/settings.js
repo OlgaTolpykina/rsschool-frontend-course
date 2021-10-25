@@ -148,6 +148,8 @@ tagValueFlickr.addEventListener('blur', () => {
 
 //Настройка отображения виджетов
 
+// audioplayerCheckbox.removeAttribute('checked');
+
 audioplayerCheckbox.addEventListener('change', () => {
     player.classList.toggle('hidden');
 });
@@ -173,3 +175,21 @@ quotesCheckbox.addEventListener('change', () => {
     quotes.classList.toggle('hidden');
 });
 
+// function setLocalStorage() {
+//     let value;
+//     if (audioplayerCheckbox.checked) {
+//         value = 1;
+//     } else {
+//         value = 0;
+//     }
+//     localStorage.setItem('audioplayer', value); 
+// }
+
+// window.addEventListener('beforeunload', setLocalStorage);
+
+// window.addEventListener('load', () => {
+//     if (localStorage.getItem('audioplayer') == 0) {
+//         audioplayerCheckbox.removeAttribute('checked');
+//         player.classList.add('hidden'); 
+//     }
+// });
