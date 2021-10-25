@@ -33,7 +33,7 @@ body {
 
 .player {
   width: 30%;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 
 .player-controls {
@@ -213,7 +213,7 @@ body {
   width: 180px;
   min-height: 180px;  
   text-align: left;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 
 .weather-error {
@@ -286,7 +286,7 @@ body {
   font-family: 'Arial-MT';
   font-size: 100px;
   letter-spacing: -4px;
-  transition: opacity 1s;  
+  transition: opacity 0.5s;  
 }
 
 .date {
@@ -294,7 +294,7 @@ body {
   font-size: 24px;
   margin-bottom: 20px;
   text-transform: capitalize;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 
 .greeting-container {
@@ -311,7 +311,7 @@ body {
   flex: 1;  
   padding: 10px;
   text-align: right;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 
 .name {
@@ -324,7 +324,7 @@ body {
   background-color: transparent;
   border: 0;
   outline: 0;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 
 .name::placeholder {
@@ -442,10 +442,11 @@ body {
 }
 
 .settings-error {
+    width: 120px;
     position: absolute;
     top: 149px;
     color: red;
-    font-size: 14px;
+    font-size: 9px;
 }
 
 .tag-input {
@@ -479,7 +480,7 @@ body {
 }
 
 .quotes {
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 
 .author {
