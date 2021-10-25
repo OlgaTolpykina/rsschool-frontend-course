@@ -8,7 +8,7 @@ const humidity = document.querySelector('.humidity');
 const apiKey = 'ad0eb8de708236d59242e0c859fb70a1';
 const lang = 'ru';
 
-async function getWeather(lang, city = localStorage.getItem('city') || 'Минск') { 
+async function getWeather(lang, city = localStorage.getItem('city') || 'Minsk') { 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${lang}&appid=${apiKey}&units=metric`;
     const res = await fetch(url);
     const data = await res.json(); 

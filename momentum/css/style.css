@@ -358,7 +358,7 @@ body {
   align-items: center;
   margin-left: 20px;
   padding: 5px;
-  width: 60%;
+  width: 75%;
   min-height: 210px;
   position: absolute;
   left: 29px;
@@ -459,12 +459,12 @@ body {
 }
 
 .tag-input.unsplash {
-  bottom: 86px;
+  bottom: 94px;
   left: 257px;
 }
 
 .tag-input.flickr {
-  bottom: 55px;
+  bottom: 65px;
   left: 257px;
 }
 
