@@ -11,6 +11,7 @@ import playList from './playlist.js';
 import './add-playlist.js';
 import './play-music.js';
 import './settings.js';
+import './self-estimation.js';
 
 showTime();
 setBg();

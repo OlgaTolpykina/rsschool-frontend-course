@@ -146,9 +146,70 @@ tagValueFlickr.addEventListener('blur', () => {
     changeBackground('flickr', tagValueFlickr.value);
 });
 
-//Настройка отображения виджетов
+function setBackgroundToLocalStorage() {
+    let githubBackgroundChecked;
+    let unsplashBackgroundChecked;
+    let flickrBackgroundChecked;
 
-// audioplayerCheckbox.removeAttribute('checked');
+    if (githubBackground.checked) {
+        githubBackgroundChecked = 1;
+    } else {
+        githubBackgroundChecked = 0;
+    }
+
+    if (unsplashBackground.checked) {
+        unsplashBackgroundChecked = 1;
+    } else {
+        unsplashBackgroundChecked = 0;
+    }
+
+    if (flickrBackground.checked) {
+        flickrBackgroundChecked = 1;
+    } else {
+        flickrBackgroundChecked = 0;
+    }
+
+    localStorage.setItem('github', githubBackgroundChecked);
+    localStorage.setItem('unsplash', unsplashBackgroundChecked);
+    localStorage.setItem('flickr', flickrBackgroundChecked);
+    localStorage.setItem('tagUnsplash', tagValueUnsplash.value);
+    localStorage.setItem('tagFlickr', tagValueFlickr.value);
+}
+
+window.addEventListener('beforeunload', setBackgroundToLocalStorage);
+
+window.addEventListener('load', () => {
+    if (localStorage.getItem('github') == 1) {
+        githubBackground.setAttribute('checked', 'checked');
+        unsplashBackground.removeAttribute('checked');
+        flickrBackground.removeAttribute('checked');
+        setBg();
+    }
+    if (localStorage.getItem('unsplash') == 1) {
+        githubBackground.removeAttribute('checked');
+        unsplashBackground.setAttribute('checked', 'checked');
+        flickrBackground.removeAttribute('checked');
+        if (localStorage.getItem('tagUnsplash')) {
+            tagValueUnsplash.value = localStorage.getItem('tagUnsplash');
+            setBgUnsplash(localStorage.getItem('tagUnsplash'));
+        } else {
+            setBgUnsplash();
+        }
+    }
+    if (localStorage.getItem('flickr') == 1) {
+        githubBackground.removeAttribute('checked');
+        unsplashBackground.removeAttribute('checked');
+        flickrBackground.setAttribute('checked', 'checked');
+        if (localStorage.getItem('tagFlickr')) {
+            tagValueFlickr.value = localStorage.getItem('tagFlickr');
+            setBgFlickr(localStorage.getItem('tagFlickr'));
+        } else {
+            setBgFlickr();
+        }
+    }
+});
+
+//Настройка отображения виджетов
 
 audioplayerCheckbox.addEventListener('change', () => {
     player.classList.toggle('hidden');
@@ -175,21 +236,85 @@ quotesCheckbox.addEventListener('change', () => {
     quotes.classList.toggle('hidden');
 });
 
-// function setLocalStorage() {
-//     let value;
-//     if (audioplayerCheckbox.checked) {
-//         value = 1;
-//     } else {
-//         value = 0;
-//     }
-//     localStorage.setItem('audioplayer', value); 
-// }
+function setWidgetsToLocalStorage() {
+    let playerChecked;
+    let timeChecked;
+    let dateChecked;
+    let greetingChecked;
+    let weatherChecked;
+    let quotesChecked;
+    let todoChecked;
 
-// window.addEventListener('beforeunload', setLocalStorage);
+    if (audioplayerCheckbox.checked) {
+        playerChecked = 1;
+    } else {
+        playerChecked = 0;
+    }
 
-// window.addEventListener('load', () => {
-//     if (localStorage.getItem('audioplayer') == 0) {
-//         audioplayerCheckbox.removeAttribute('checked');
-//         player.classList.add('hidden'); 
-//     }
-// });
+    if (timeCheckbox.checked) {
+        timeChecked = 1;
+    } else {
+        timeChecked = 0;
+    }
+
+    if (dateCheckbox.checked) {
+        dateChecked = 1;
+    } else {
+        dateChecked = 0;
+    }
+
+    if (greetingCheckbox.checked) {
+        greetingChecked = 1;
+    } else {
+        greetingChecked = 0;
+    }
+
+    if (weatherCheckbox.checked) {
+        weatherChecked = 1;
+    } else {
+        weatherChecked = 0;
+    }
+
+    if (quotesCheckbox.checked) {
+        quotesChecked = 1;
+    } else {
+        quotesChecked = 0;
+    }
+    
+    localStorage.setItem('audioplayer', playerChecked);
+    localStorage.setItem('time', timeChecked);
+    localStorage.setItem('date', dateChecked);
+    localStorage.setItem('greeting', greetingChecked);
+    localStorage.setItem('weather', weatherChecked);
+    localStorage.setItem('quotes', quotesChecked); 
+}
+
+window.addEventListener('beforeunload', setWidgetsToLocalStorage);
+
+window.addEventListener('load', () => {
+    if (localStorage.getItem('audioplayer') == 0) {
+        audioplayerCheckbox.removeAttribute('checked');
+        player.classList.add('hidden'); 
+    }
+    if (localStorage.getItem('time') == 0) {
+        timeCheckbox.removeAttribute('checked');
+        time.classList.add('hidden'); 
+    }
+    if (localStorage.getItem('date') == 0) {
+        dateCheckbox.removeAttribute('checked');
+        date.classList.add('hidden'); 
+    }
+    if (localStorage.getItem('greeting') == 0) {
+        greetingCheckbox.removeAttribute('checked');
+        greeting.classList.add('hidden');
+        name.classList.add('hidden'); 
+    }
+    if (localStorage.getItem('weather') == 0) {
+        weatherCheckbox.removeAttribute('checked');
+        weather.classList.add('hidden'); 
+    }
+    if (localStorage.getItem('quotes') == 0) {
+        quotesCheckbox.removeAttribute('checked');
+        quotes.classList.add('hidden'); 
+    }
+});

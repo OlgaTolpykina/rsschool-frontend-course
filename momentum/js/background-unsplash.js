@@ -19,7 +19,7 @@ async function setBgUnsplash(tag = timeOfDay) {
         });    
     } catch (error) {
         const spanError = document.createElement('p');
-        spanError.textContent = 'Rate Limit Exceeded. Please reload page and choose GitHub or Flickr. Thank you!';
+        spanError.textContent = 'Error: Exceeded rate limit when getting background picture from Unsplash. Please reload page and choose GitHub or Flickr. Thank you!';
         spanError.classList.add('settings-error');
         settingsMenu.append(spanError);
     } 
