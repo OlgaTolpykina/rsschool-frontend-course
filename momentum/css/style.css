@@ -435,6 +435,13 @@ body {
   filter: invert(70%);
 }
 
+.settings-error {
+    position: absolute;
+    top: 149px;
+    color: red;
+    font-size: 14px;
+}
+
 .tag-input {
   display: none;
   position: absolute;

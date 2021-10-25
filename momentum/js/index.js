@@ -2,7 +2,7 @@ import { showTime } from './show-time.js';
 import { showDate } from './show-date.js';
 import { showGreeting }  from './show-greeting.js';
 import './name-city.js';
-import { setBg, getTimeOfDay } from './background.js';
+import { setBg, getTimeOfDay, addListenerGitHub } from './background.js';
 import { setBgUnsplash } from './background-unsplash.js';
 import { setBgFlickr } from './background-flickr.js';
 import { getWeather } from './weather.js';
@@ -14,5 +14,6 @@ import './settings.js';
 
 showTime();
 setBg();
+addListenerGitHub();
 document.addEventListener('DOMContentLoaded', getWeather);
 getRandomQuote();

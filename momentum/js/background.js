@@ -37,7 +37,14 @@ function getSlidePrev() {
     setBg();    
 }
 
-slideNext.addEventListener('click', getSlideNext);
-slidePrev.addEventListener('click', getSlidePrev);
+function addListenerGitHub() {
+    slideNext.addEventListener('click', getSlideNext);
+    slidePrev.addEventListener('click', getSlidePrev);
+}
 
-export { getTimeOfDay, setBg, getRandomNum, TIME_OF_DAY };
+function removeListenerGitHub() {
+    slideNext.removeEventListener('click', getSlideNext);
+    slidePrev.removeEventListener('click', getSlidePrev);
+} 
+
+export { getTimeOfDay, setBg, getRandomNum, TIME_OF_DAY, removeListenerGitHub, addListenerGitHub };

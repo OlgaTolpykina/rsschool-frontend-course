@@ -1,3 +1,7 @@
+import { setBg, getTimeOfDay, TIME_OF_DAY, removeListenerGitHub, addListenerGitHub } from "./background.js";
+import { setBgUnsplash, addListenerUnsplash, removeListenerUnsplash } from "./background-unsplash.js";
+import { setBgFlickr, addListenerFlickr, removeListenerFlickr } from "./background-flickr.js";
+
 const settingsButton = document.querySelector('.settings-icon');
 const settingsMenu = document.querySelector('.settings-details');
 const languageButton = document.querySelector('.language');
@@ -99,6 +103,47 @@ unsplashBackground.addEventListener('change', () => {
 flickrBackground.addEventListener('change', () => {
     unsplashTags.classList.remove('active');
     flickrTags.classList.add('active');
+});
+
+//Настройка смены источника фон
+
+const backgroundChoices = document.querySelectorAll('.settings-options-background label');
+const tagValueUnsplash = document.querySelector('.unsplash');
+const tagValueFlickr = document.querySelector('.flickr');
+const timeOfDay = TIME_OF_DAY[getTimeOfDay()];
+
+function changeBackground(value, tag = timeOfDay) {
+    removeListenerGitHub();
+    removeListenerUnsplash();
+    removeListenerFlickr();
+    switch (value) {
+        case 'github':
+            setBg();
+            addListenerGitHub();
+            break;
+        case 'unsplash':
+            setBgUnsplash(tag);
+            addListenerUnsplash(tag);
+            break;
+        case 'flickr':
+            setBgFlickr(tag);
+            addListenerFlickr(tag);
+            break;
+    }
+}
+
+backgroundChoices.forEach(element => {
+    element.addEventListener('change', (event) => {
+        changeBackground(event.target.value);
+    });
+})
+
+tagValueUnsplash.addEventListener('blur', () => {
+    changeBackground('unsplash', tagValueUnsplash.value);
+});
+
+tagValueFlickr.addEventListener('blur', () => {
+    changeBackground('flickr', tagValueFlickr.value);
 });
 
 //Настройка отображения виджетов

@@ -5,27 +5,45 @@ const slideNext = document.querySelector('.slide-next');
 const slidePrev = document.querySelector('.slide-prev');
 const timeOfDay = TIME_OF_DAY[getTimeOfDay()];
 const apiKeyUnsplash = 'UdP3AfIblYXEUmXtQ9IvBp7HZ83brMOd3dvA0iFDMNo';
+const settingsMenu = document.querySelector('.settings-details');
 
 async function setBgUnsplash(tag = timeOfDay) {
     const img = new Image();
     const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${tag}&client_id=${apiKeyUnsplash}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    img.src = data.urls.regular;
-    img.addEventListener('load', () => {
-        body.style.backgroundImage =`url(${img.src})`;    
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        img.src = data.urls.regular;
+        img.addEventListener('load', () => {
+            body.style.backgroundImage =`url(${img.src})`;    
+        });    
+    } catch (error) {
+        const spanError = document.createElement('p');
+        spanError.textContent = 'Rate Limit Exceeded. Please reload page and choose GitHub or Flickr. Thank you!';
+        spanError.classList.add('settings-error');
+        settingsMenu.append(spanError);
+    } 
+}
+
+function getSlideNext(tag) {
+    setBgUnsplash(tag);
+}
+
+function getSlidePrev(tag) {
+    setBgUnsplash(tag);    
+}
+
+function addListenerUnsplash(tag) {
+    slideNext.addEventListener('click', () => {
+        getSlideNext(tag)});
+    slidePrev.addEventListener('click', () => {
+        getSlidePrev(tag);
     });
 }
 
-function getSlideNext() {
-    setBgUnsplash();
+function removeListenerUnsplash() {
+    slideNext.removeEventListener('click', getSlideNext);
+    slidePrev.removeEventListener('click', getSlidePrev);
 }
 
-function getSlidePrev() {
-    setBgUnsplash();    
-}
-
-slideNext.addEventListener('click', getSlideNext);
-slidePrev.addEventListener('click', getSlidePrev);
-
-export { setBgUnsplash };
+export { setBgUnsplash, addListenerUnsplash, removeListenerUnsplash };
