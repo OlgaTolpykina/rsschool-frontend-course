@@ -12,14 +12,25 @@
   <header class="header">
     <div class="player">
       <div class="player-controls">
-        <button class="play-prev player-icon"></button>
-        <button class="play player-icon"></button>
-        <button class="play-next player-icon"></button>
+        <div class="play-buttons">
+          <button class="play-prev player-icon"></button>
+          <button class="play player-icon"></button>
+          <button class="play-next player-icon"></button>
+        </div>
+        <div class="custom-player hidden">
+          <p class="song-title">Aqua Caelestis</p>
+          <input class="input-range" type="range" id="play-bar">
+          <span class="timeline">00:15</span>
+          <span>/</span>
+          <span class="duration">00:39</span>
+          <button class="volume volume-icon"></button>
+          <input class="input-range" type="range" id="volume-bar" min="0" max="1" step="0.1">
+        </div>
       </div>
       <ul class="play-list"></ul>
     </div>
     <div class="weather">
-      <input type="text" class="city" />
+      <input type="text" class="city"/>
       <i class="weather-icon owf"></i>
       <div class="weather-error"></div>
       <div class="description-container">
@@ -39,16 +50,89 @@
     <date class="date"></date>
     <div class="greeting-container">
       <span class="greeting"></span>
-      <input type="text" class="name" />
+      <input type="text" class="name"/>
     </div>
   </main>
   <footer class="footer">
-    <button class="change-quote"></button>
-    <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+    <div class="footer-block settings">
+      <button class="settings-icon"></button>
+      <div class="settings-details hidden">
+        <ul class="settings-list">
+          <li class="settings-item language active">Language</li>
+          <li class="settings-item background">Background</li>
+          <li class="settings-item widgets">Widgets</li>
+        </ul>
+      </div>
+      <div class="settings-options settings-options-language">
+        <label for="russian">
+          <input type="radio" name="language" id="russian" value="russian">
+          Russian
+        </label>
+        <label for="english">
+          <input type="radio" name="language" id="english" value="english" checked>
+          English
+        </label>
+      </div>
+      <div class="settings-options settings-options-background">
+        <label for="github">
+          <input class="github-input" type="radio" name="background" id="github" value="github" checked>
+          GitHub
+        </label>
+        <label for="unsplash">
+          <input class="unsplash-input" type="radio" name="background" id="unsplash" value="unsplash">
+          Unsplash
+        </label>
+        <label for="flickr">
+          <input class="flickr-input" type="radio" name="background" id="flickr" value="flickr">
+          Flickr
+        </label>
+      </div>
+      <div class="settings-options settings-options-widgets">
+        <label for="audioplayer">
+          <input class="audioplayer-checkbox" type="checkbox" name="widgets" id="audioplayer" value="audioplayer" checked>
+          Player
+        </label>
+        <label for="time">
+          <input class="time-checkbox" type="checkbox" name="widgets" id="time" value="time" checked>
+          Time
+        </label>
+        <label for="date">
+          <input class="date-checkbox" type="checkbox" name="widgets" id="date" value="date" checked>
+          Date
+        </label>
+        <label for="greeting">
+          <input class="greeting-checkbox" type="checkbox" name="widgets" id="greeting" value="greeting" checked>
+          Greeting
+        </label>
+        <label for="weather">
+          <input class="weather-checkbox" type="checkbox" name="widgets" id="weather" value="weather" checked>
+          Weather
+        </label>
+        <label for="quotes">
+          <input class="quotes-checkbox" type="checkbox" name="widgets" id="quotes" value="quotes" checked>
+          Quotes
+        </label>
+        <label for="todo">
+          <input class="todo-checkbox" type="checkbox" name="widgets" id="todo" value="todo" checked>
+          To do list
+        </label>
+      </div>
+      <div>
+        <input type="text" class="tag-input unsplash" placeholder="Choose tag (optional)">
+      </div>
+      <div>
+        <input type="text" class="tag-input flickr" placeholder="Choose tag (optional)">
+      </div>
     </div>
+    <div class="footer-block quotes">
+      <button class="change-quote"></button>
+      <div>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
+    </div>
+    <div class="footer-block"></div>
   </footer>
-  <script src="js/script.js"></script>
+  <script type="module" src="./js/index.js"></script>
 </body>
 </html>
