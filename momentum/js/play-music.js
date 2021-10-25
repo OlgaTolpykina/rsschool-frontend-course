@@ -112,7 +112,7 @@ playBar.addEventListener('mouseup', () => {
     }
 });
 
-//Изменение гшромкости
+//Изменение громкости
 
 function toggleVolumeButton() {
     volumeButton.classList.toggle('mute');
@@ -166,15 +166,16 @@ playButtonsSmall.forEach((element, index) => {
             setCustomPlayer();
             togglePlayButton();
         } else if (isPlay && playNum == index) {
+            setCustomPlayer();
             playAudio();
             toggleSmallPlayButton();
-            setCustomPlayer();
             toggleActiveItem();
             togglePlayButton();
         } else {
             audio.pause();
             toggleSmallPlayButton();
             toggleActiveItem();
+            setCustomPlayer();
             isPlay = false;
             playNum = index;
             playAudio();
