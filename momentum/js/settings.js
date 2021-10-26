@@ -1,6 +1,10 @@
 import { setBg, getTimeOfDay, TIME_OF_DAY, removeListenerGitHub, addListenerGitHub } from "./background.js";
 import { setBgUnsplash, addListenerUnsplash, removeListenerUnsplash } from "./background-unsplash.js";
 import { setBgFlickr, addListenerFlickr, removeListenerFlickr } from "./background-flickr.js";
+import { getRandomQuote, getNextQuote, removerListenerChangeQuoteButton, addListenerChangeQuoteButton } from "./show-quotes.js";
+import { getWeather } from "./weather.js";
+import { showDate } from "./show-date.js";
+import { showTime } from "./show-time.js";
 
 const settingsButton = document.querySelector('.settings-icon');
 const settingsMenu = document.querySelector('.settings-details');
@@ -30,6 +34,7 @@ const greeting = document.querySelector('.greeting');
 const name = document.querySelector('.name');
 const weather = document.querySelector('.weather');
 const quotes = document.querySelector('.quotes');
+const body = document.querySelector('body');
 
 function showSettingsMenu() {
     settingsMenu.classList.toggle('hidden');
@@ -318,3 +323,44 @@ window.addEventListener('load', () => {
         quotes.classList.add('hidden'); 
     }
 });
+
+//Настройка языка
+
+const russianLanguage = document.querySelector('.russian-input');
+const englishLanguage = document.querySelector('.english-input');
+const languageChoices = document.querySelectorAll('.settings-options-language label');
+const changeQuoteButton = document.querySelector('.change-quote');
+
+function changeLanguage(language) {
+    removerListenerChangeQuoteButton();
+    switch (language) {
+        case 'russian':
+            getRandomQuote('ru');
+            addListenerChangeQuoteButton('ru');
+            getWeather('ru');
+            // showDate('ru');
+            // showTime('ru');
+            break;
+        case 'english':
+            getRandomQuote('en');
+            addListenerChangeQuoteButton('ru');
+            getWeather('en');
+            // showDate('en');
+            // showTime('en');
+            break;
+    } 
+}
+
+languageChoices.forEach(element => {
+    element.addEventListener('change', (event) => {
+        changeLanguage(event.target.value);
+    });
+})
+
+// let language = 'en' || localStorage.getItem('language');
+
+// const setLocalStorage = () => {
+//     localStorage.setItem('language', language);
+// }
+  
+// window.addEventListener('beforeunload', setLocalStorage);

@@ -15,14 +15,12 @@ const PLACEHOLDER = {
 
 const WEATHER = {
     'ru': {
-        'lang': 'ru',
         'wind': 'Скорость ветра',
         'wind_units': 'м/с',
         'humidity': 'Влажность',
         'err': 'Ошибка загрузки данных. Введите город еще раз',
     },
     'en': {
-      'lang': 'en',
       'wind': 'Wind speed',
       'wind_units': 'm/s',
       'humidity': 'Humidity',
