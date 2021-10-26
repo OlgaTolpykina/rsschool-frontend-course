@@ -3,8 +3,8 @@ import { getTimeOfDay } from "./background.js";
 
 const greeting = document.querySelector('.greeting');
 
-function showGreeting() {
-    const greetingText = GREETING['en'][getTimeOfDay()];
+function showGreeting(language) {
+    const greetingText = GREETING[language][getTimeOfDay()];
     greeting.textContent = greetingText;
 }
 

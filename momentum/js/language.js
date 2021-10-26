@@ -38,4 +38,37 @@ const QUOTES = {
     'en': 'js/data.json'
 }
 
-export { DATE, GREETING, PLACEHOLDER, WEATHER, DEFAULT_CITY, QUOTES };
+const SETTINGS = {
+    'ru': {
+        'language': 'Язык',
+        'background': 'Фон',
+        'widgets': 'Виджеты',
+        'russian': 'Русский',
+        'english': 'Английский',
+        'tag': 'Введите тэг(напр.nature)',
+        'player': 'Музыка',
+        'time': 'Время',
+        'date': 'Дата',
+        'greeting': 'Имя',
+        'weather': 'Погода',
+        'quotes': 'Цитаты',
+        'todo': 'Задачи'
+    },
+    'en': {
+        'language': 'Language',
+        'background': 'Background',
+        'widgets': 'Widgets',
+        'russian': 'Russian',
+        'english': 'English',
+        'tag': 'Choose tag (optional)',
+        'player': 'Player',
+        'time': 'Time',
+        'date': 'Date',
+        'greeting': 'Greeting',
+        'weather': 'Weather',
+        'quotes': 'Quotes',
+        'todo': 'To do list'
+    }
+}
+
+export { DATE, GREETING, PLACEHOLDER, WEATHER, DEFAULT_CITY, QUOTES, SETTINGS };
