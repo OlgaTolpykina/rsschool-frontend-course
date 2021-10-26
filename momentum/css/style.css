@@ -470,7 +470,8 @@ body {
 }
 
 .change-quote {
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
   background-image: url("../assets/svg/reload.svg");  
 }
 

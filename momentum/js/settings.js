@@ -329,8 +329,10 @@ window.addEventListener('load', () => {
 
 //Настройка языка
 
-const russianLanguage = document.querySelector('label[for="russian"] span')
-const englishLanguage = document.querySelector('label[for="english"] span')
+const russianLanguage = document.querySelector('label[for="russian"] span');
+const englishLanguage = document.querySelector('label[for="english"] span');
+const russianLanguageInput = document.querySelector('.russian-input');
+const englishLanguageInput = document.querySelector('.english-input');
 const languageChoices = document.querySelectorAll('.settings-options-language label');
 const changeQuoteButton = document.querySelector('.change-quote');
 const playerText = document.querySelector('label[for="audioplayer"] span');
@@ -354,6 +356,7 @@ function changeLanguage(language) {
             showGreeting('ru');
             showTime('ru');
             getLocalStorage('ru');
+            localStorage.setItem('language', language);
             languageButton.textContent = SETTINGS['ru']['language'];
             backgroundButton.textContent = SETTINGS['ru']['background'];
             widgetsButton.textContent = SETTINGS['ru']['widgets'];
@@ -379,6 +382,7 @@ function changeLanguage(language) {
             showGreeting('en');
             showTime('en');
             getLocalStorage('en');
+            localStorage.setItem('language', language);
             languageButton.textContent = SETTINGS['en']['language'];
             backgroundButton.textContent = SETTINGS['en']['background'];
             widgetsButton.textContent = SETTINGS['en']['widgets'];
@@ -403,9 +407,11 @@ languageChoices.forEach(element => {
     });
 })
 
-const setLocalStorage = () => {
-    localStorage.setItem('language', language);
-}
-  
-window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', () => {
+    if (localStorage.getItem('language') == 'ru') {
+        changeLanguage('russian');
+        russianLanguageInput.setAttribute('checked', 'checked');
+        englishLanguageInput.removeAttribute('checked');
+    }
+});
 
