@@ -16,5 +16,5 @@ import './self-estimation.js';
 showTime();
 setBg();
 addListenerGitHub();
-document.addEventListener('DOMContentLoaded', getWeather);
+getWeather();
 getRandomQuote();
