@@ -1,4 +1,3 @@
-import { getWeather } from './weather.js';
 import { PLACEHOLDER, DEFAULT_CITY } from './language.js';
 
 const name = document.querySelector('.name');
@@ -10,18 +9,18 @@ function setLocalStorage() {
 }
 window.addEventListener('beforeunload', setLocalStorage);
 
-function getLocalStorage() {
+function getLocalStorage(language = 'en') {
     if(localStorage.getItem('name')) {
         name.value = localStorage.getItem('name');
     } else {
-        name.placeholder = PLACEHOLDER['en'];
+        name.placeholder = PLACEHOLDER[language];
     }
     if(localStorage.getItem('city')) {
         city.value = localStorage.getItem('city');
     } else {
-        city.value = DEFAULT_CITY['en'];
+        city.placeholder = DEFAULT_CITY[language];
     } 
 }
-window.addEventListener('load', getLocalStorage);
+// window.addEventListener('load', getLocalStorage);
 
-
+export { getLocalStorage };

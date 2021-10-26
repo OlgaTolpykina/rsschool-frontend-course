@@ -4,7 +4,10 @@ import { setBgFlickr, addListenerFlickr, removeListenerFlickr } from "./backgrou
 import { getRandomQuote, getNextQuote, removerListenerChangeQuoteButton, addListenerChangeQuoteButton } from "./show-quotes.js";
 import { getWeather } from "./weather.js";
 import { showDate } from "./show-date.js";
-import { showTime } from "./show-time.js";
+import { showTime, timer } from "./show-time.js";
+import { showGreeting } from "./show-greeting.js";
+import { getLocalStorage } from "./name-city.js";
+import { SETTINGS } from "./language.js";
 
 const settingsButton = document.querySelector('.settings-icon');
 const settingsMenu = document.querySelector('.settings-details');
@@ -326,27 +329,70 @@ window.addEventListener('load', () => {
 
 //Настройка языка
 
-const russianLanguage = document.querySelector('.russian-input');
-const englishLanguage = document.querySelector('.english-input');
+const russianLanguage = document.querySelector('label[for="russian"] span')
+const englishLanguage = document.querySelector('label[for="english"] span')
 const languageChoices = document.querySelectorAll('.settings-options-language label');
 const changeQuoteButton = document.querySelector('.change-quote');
+const playerText = document.querySelector('label[for="audioplayer"] span');
+const timeText = document.querySelector('label[for="time"] span');
+const dateText = document.querySelector('label[for="date"] span');
+const greetingText = document.querySelector('label[for="greeting"] span');
+const weatherText = document.querySelector('label[for="weather"] span');
+const quotesText = document.querySelector('label[for="quotes"] span');
+const todoText = document.querySelector('label[for="todo"] span');
 
 function changeLanguage(language) {
     removerListenerChangeQuoteButton();
     switch (language) {
         case 'russian':
+            language = 'ru';
+            clearTimeout(timer);
             getRandomQuote('ru');
             addListenerChangeQuoteButton('ru');
             getWeather('ru');
-            // showDate('ru');
-            // showTime('ru');
+            showDate('ru');
+            showGreeting('ru');
+            showTime('ru');
+            getLocalStorage('ru');
+            languageButton.textContent = SETTINGS['ru']['language'];
+            backgroundButton.textContent = SETTINGS['ru']['background'];
+            widgetsButton.textContent = SETTINGS['ru']['widgets'];
+            russianLanguage.textContent = SETTINGS['ru']['russian'];
+            englishLanguage.textContent = SETTINGS['ru']['english'];
+            tagValueUnsplash.placeholder = SETTINGS['ru']['tag'];
+            tagValueFlickr.placeholder = SETTINGS['ru']['tag'];
+            playerText.textContent = SETTINGS['ru']['player'];
+            timeText.textContent = SETTINGS['ru']['time'];
+            dateText.textContent = SETTINGS['ru']['date'];
+            greetingText.textContent = SETTINGS['ru']['greeting'];
+            weatherText.textContent = SETTINGS['ru']['weather'];
+            quotesText.textContent = SETTINGS['ru']['quotes'];
+            todoText.textContent = SETTINGS['ru']['todo'];
             break;
         case 'english':
+            language = 'en';
+            clearTimeout(timer);
             getRandomQuote('en');
-            addListenerChangeQuoteButton('ru');
+            addListenerChangeQuoteButton('en');
             getWeather('en');
-            // showDate('en');
-            // showTime('en');
+            showDate('en');
+            showGreeting('en');
+            showTime('en');
+            getLocalStorage('en');
+            languageButton.textContent = SETTINGS['en']['language'];
+            backgroundButton.textContent = SETTINGS['en']['background'];
+            widgetsButton.textContent = SETTINGS['en']['widgets'];
+            russianLanguage.textContent = SETTINGS['en']['russian'];
+            englishLanguage.textContent = SETTINGS['en']['english'];
+            tagValueUnsplash.placeholder = SETTINGS['en']['tag'];
+            tagValueFlickr.placeholder = SETTINGS['en']['tag'];
+            playerText.textContent = SETTINGS['en']['player'];
+            timeText.textContent = SETTINGS['en']['time'];
+            dateText.textContent = SETTINGS['en']['date'];
+            greetingText.textContent = SETTINGS['en']['greeting'];
+            weatherText.textContent = SETTINGS['en']['weather'];
+            quotesText.textContent = SETTINGS['en']['quotes'];
+            todoText.textContent = SETTINGS['en']['todo'];
             break;
     } 
 }
@@ -357,10 +403,9 @@ languageChoices.forEach(element => {
     });
 })
 
-// let language = 'en' || localStorage.getItem('language');
-
-// const setLocalStorage = () => {
-//     localStorage.setItem('language', language);
-// }
+const setLocalStorage = () => {
+    localStorage.setItem('language', language);
+}
   
-// window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('beforeunload', setLocalStorage);
+
