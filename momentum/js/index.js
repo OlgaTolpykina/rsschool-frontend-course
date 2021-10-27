@@ -1,4 +1,5 @@
 import './settings.js';
+import { DEFAULT_CITY } from './language.js';
 import { showTime } from './show-time.js';
 import { showDate } from './show-date.js';
 import { showGreeting }  from './show-greeting.js';
@@ -20,3 +21,21 @@ addListenerGitHub();
 getLocalStorage();
 getWeather();
 getRandomQuote();
+
+const cityInput = document.querySelector('.city');
+
+cityInput.addEventListener('change', function() {
+    getWeather(localStorage.getItem('language'), cityInput.value);
+});
+
+cityInput.addEventListener('focus', function() {
+    cityInput.placeholder = '';
+});
+
+cityInput.addEventListener('blur', function() {
+    if(localStorage.getItem('city')) {
+        cityInput.value = localStorage.getItem('city');
+    } else {
+        cityInput.placeholder = DEFAULT_CITY[localStorage.getItem('language')];
+    }
+});

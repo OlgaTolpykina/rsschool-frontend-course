@@ -1,4 +1,5 @@
 import { PLACEHOLDER, DEFAULT_CITY } from './language.js';
+import { getWeather } from './weather.js';
 
 const name = document.querySelector('.name');
 const city = document.querySelector('.city');
@@ -21,6 +22,5 @@ function getLocalStorage(language = 'en') {
         city.placeholder = DEFAULT_CITY[language];
     } 
 }
-// window.addEventListener('load', getLocalStorage);
 
 export { getLocalStorage };
