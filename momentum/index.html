@@ -131,7 +131,23 @@
         <div class="author"></div>
       </div>
     </div>
-    <div class="footer-block"></div>
+    <div class="footer-block todo">
+      <div class="todo-wrapper">
+        <div class="todo-header">
+          <p class="todo-title">Daily ToDo</p>
+          <input class="todo-input" type="text" name="text" maxlength="19" placeholder="What is to be done?" id="text">
+          <button id="new">+</button>
+        </div>
+        <div class="todo-content">
+          <div class="todo-inner-content">
+            <ul id="taskstodo">
+            </ul>
+            <ul id="ready">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
   <script type="module" src="./js/index.js"></script>
 </body>

@@ -71,4 +71,15 @@ const SETTINGS = {
     }
 }
 
-export { DATE, GREETING, PLACEHOLDER, WEATHER, DEFAULT_CITY, QUOTES, SETTINGS };
+const TODO = {
+    'ru': {
+        'title': 'Задачи на сегодня',
+        'placeholder': 'Что необходимо сделать?'
+    },
+    'en': {
+        'title': 'Daily ToDo',
+        'placeholder': 'What is to be done?'
+    }
+}
+
+export { DATE, GREETING, PLACEHOLDER, WEATHER, DEFAULT_CITY, QUOTES, SETTINGS, TODO };
