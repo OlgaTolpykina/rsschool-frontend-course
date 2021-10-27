@@ -11,6 +11,7 @@ import { getRandomQuote } from './show-quotes.js';
 import playList from './playlist.js';
 import './add-playlist.js';
 import './play-music.js';
+import './todo.js';
 import './self-estimation.js';
 
 showTime();

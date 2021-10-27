@@ -7,7 +7,7 @@ import { showDate } from "./show-date.js";
 import { showTime, timer } from "./show-time.js";
 import { showGreeting } from "./show-greeting.js";
 import { getLocalStorage } from "./name-city.js";
-import { SETTINGS } from "./language.js";
+import { SETTINGS, TODO } from "./language.js";
 
 const settingsButton = document.querySelector('.settings-icon');
 const settingsMenu = document.querySelector('.settings-details');
@@ -30,6 +30,7 @@ const dateCheckbox = document.querySelector('.date-checkbox');
 const greetingCheckbox = document.querySelector('.greeting-checkbox');
 const weatherCheckbox = document.querySelector('.weather-checkbox');
 const quotesCheckbox = document.querySelector('.quotes-checkbox');
+const todoCheckbox = document.querySelector('.todo-checkbox');
 const player = document.querySelector('.player');
 const time = document.querySelector('.time');
 const date = document.querySelector('.date');
@@ -37,6 +38,7 @@ const greeting = document.querySelector('.greeting');
 const name = document.querySelector('.name');
 const weather = document.querySelector('.weather');
 const quotes = document.querySelector('.quotes');
+const todo = document.querySelector('.todo');
 const body = document.querySelector('body');
 
 function showSettingsMenu() {
@@ -244,6 +246,10 @@ quotesCheckbox.addEventListener('change', () => {
     quotes.classList.toggle('hidden');
 });
 
+todoCheckbox.addEventListener('change', () => {
+    todo.classList.toggle('hidden');
+});
+
 function setWidgetsToLocalStorage() {
     let playerChecked;
     let timeChecked;
@@ -288,13 +294,20 @@ function setWidgetsToLocalStorage() {
     } else {
         quotesChecked = 0;
     }
+
+    if (todoCheckbox.checked) {
+        todoChecked = 1;
+    } else {
+        todoChecked = 0;
+    }
     
     localStorage.setItem('audioplayer', playerChecked);
     localStorage.setItem('time', timeChecked);
     localStorage.setItem('date', dateChecked);
     localStorage.setItem('greeting', greetingChecked);
     localStorage.setItem('weather', weatherChecked);
-    localStorage.setItem('quotes', quotesChecked); 
+    localStorage.setItem('quotes', quotesChecked);
+    localStorage.setItem('todo', todoChecked); 
 }
 
 window.addEventListener('beforeunload', setWidgetsToLocalStorage);
@@ -325,6 +338,10 @@ window.addEventListener('load', () => {
         quotesCheckbox.removeAttribute('checked');
         quotes.classList.add('hidden'); 
     }
+    if (localStorage.getItem('todo') == 0) {
+        todoCheckbox.removeAttribute('checked');
+        todo.classList.add('hidden'); 
+    }
 });
 
 //Настройка языка
@@ -342,6 +359,8 @@ const greetingText = document.querySelector('label[for="greeting"] span');
 const weatherText = document.querySelector('label[for="weather"] span');
 const quotesText = document.querySelector('label[for="quotes"] span');
 const todoText = document.querySelector('label[for="todo"] span');
+const todoTitle = document.querySelector('.todo-title');
+const todoInput = document.querySelector('.todo-input');
 
 function changeLanguage(language) {
     removerListenerChangeQuoteButton();
@@ -371,6 +390,8 @@ function changeLanguage(language) {
             weatherText.textContent = SETTINGS['ru']['weather'];
             quotesText.textContent = SETTINGS['ru']['quotes'];
             todoText.textContent = SETTINGS['ru']['todo'];
+            todoTitle.textContent = TODO['ru']['title'];
+            todoInput.placeholder = TODO['ru']['placeholder'];
             break;
         case 'english':
             language = 'en';
@@ -397,6 +418,8 @@ function changeLanguage(language) {
             weatherText.textContent = SETTINGS['en']['weather'];
             quotesText.textContent = SETTINGS['en']['quotes'];
             todoText.textContent = SETTINGS['en']['todo'];
+            todoTitle.textContent = TODO['en']['title'];
+            todoInput.placeholder = TODO['en']['placeholder'];
             break;
     } 
 }
