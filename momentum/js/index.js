@@ -33,7 +33,9 @@ cityInput.addEventListener('focus', function() {
 });
 
 cityInput.addEventListener('blur', function() {
-    if(localStorage.getItem('city')) {
+    if (cityInput.value) {
+        cityInput.value = cityInput.value;
+    } else if(localStorage.getItem('city')) {
         cityInput.value = localStorage.getItem('city');
     } else {
         cityInput.placeholder = DEFAULT_CITY[localStorage.getItem('language')];
