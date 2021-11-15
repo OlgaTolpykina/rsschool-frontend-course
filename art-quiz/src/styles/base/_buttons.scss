@@ -1,0 +1,21 @@
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 41%;
+}
+
+.button {
+    width: 287px;
+    height: 62px;
+    background-color: transparent;
+    color: $color-text-on-dark;
+    border: 1.5px solid white;
+    border-radius: 60px;
+    transition: box-shadow 1s ease;
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+    } 
+}

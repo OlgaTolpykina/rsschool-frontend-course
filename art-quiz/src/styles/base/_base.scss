@@ -1,0 +1,59 @@
+html {
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    background-color: $color-background;
+    color: $color-text-on-dark;
+}
+
+.application {
+    height: calc(100vh - 20px);
+    width: calc(100vw - 35px);
+    max-width: 1440px;
+    margin: 0 auto;
+    background-image: url('../img/bg-main.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 10%;
+    margin-top: 20px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+}
+
+.footer-logo {
+    width: 85px;
+    height: 31px;
+    background-image: url('../img/svg/rs_school.svg');
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 10%;
+    & a {
+     text-decoration: none;
+     color: $color-text-on-dark;   
+    }
+}

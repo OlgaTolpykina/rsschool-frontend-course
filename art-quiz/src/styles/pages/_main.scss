@@ -1,0 +1,20 @@
+.settings {
+    width: 36px;
+    height: 36px;
+    margin-left: auto;
+    background-image: url('../img/svg/settings.svg');
+    transition: transform .8s ease-in-out;
+    &:hover {
+        transform: rotate(180deg);
+    } 
+}
+
+.logo {
+    width: 100%;
+    height: 165px;
+    margin-top: 140px;
+    
+    background-image: url('../img/logo-main.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
