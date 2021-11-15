@@ -13,6 +13,7 @@ body {
     width: calc(100vw - 35px);
     max-width: 1440px;
     margin: 0 auto;
+    margin-top: 20px;
     background-image: url('../img/bg-main.jpg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -23,7 +24,6 @@ body {
     display: flex;
     align-items: center;
     height: 10%;
-    margin-top: 20px;
 }
 
 .content {
@@ -39,6 +39,9 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 10%;
+    position: absolute;
+    bottom: 0;
+    width: calc(100vw - 100px);
 }
 
 .footer-logo {
