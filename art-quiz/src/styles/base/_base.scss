@@ -6,6 +6,18 @@ body {
     margin: 0;
     background-color: $color-background;
     color: $color-text-on-dark;
+    font-size: 2rem;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.hidden {
+    opacity: 0;
 }
 
 .application {
@@ -14,14 +26,18 @@ body {
     max-width: 1440px;
     margin: 0 auto;
     margin-top: 20px;
-    background-image: url('../img/bg-main.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center bottom;
+}
+
+.container {
+    height: 100%;
+    position: relative;
+    left: 0;
+    transition: left 2s ease;
 }
 
 .header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 10%;
 }
@@ -32,6 +48,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 80%;
+}
+
+.content div {
+    width: 100%;
+}
+
+.hide {
+    left: -2000px;
 }
 
 .footer {
@@ -54,7 +78,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 10%;
+    width: 15%;
     & a {
      text-decoration: none;
      color: $color-text-on-dark;   

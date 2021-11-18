@@ -1,3 +1,10 @@
+.container-main {
+    background-image: url('../img/bg-main.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+}
+
 .settings {
     width: 36px;
     height: 36px;
@@ -17,4 +24,11 @@
     background-image: url('../img/logo-main.png');
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.content .button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 41%;
 }

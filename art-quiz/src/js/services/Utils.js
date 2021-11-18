@@ -1,11 +1,10 @@
-const ErrorPage = {
-    render: () => {
-        return `
-            <section>
-                <p>Page does not exist. Please check the path.</p>
-            </section>   
-        `;
-    }
-}
+// const audio = document.getElementsByTagName(audio);
+// console.log(audio);
 
-export {ErrorPage};
+// function soundClick() {
+//     var audio = new Audio();
+//     audio.src = '../../audio/click.wav';
+//     // audio.autoplay = true;
+// }
+
+// export { soundClick };
