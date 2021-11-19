@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/js/services/Router.js":
@@ -7,11 +8,11 @@
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "handleOnLoad": () => (/* binding */ handleOnLoad),
-/* harmony export */   "handleClickRoute": () => (/* binding */ handleClickRoute)
+/* harmony export */   "handleClickRoute": () => (/* binding */ handleClickRoute),
+/* harmony export */   "parseLocation": () => (/* binding */ parseLocation)
 /* harmony export */ });
 /* harmony import */ var _views_pages_Home_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/pages/Home.js */ "./src/js/views/pages/Home.js");
 /* harmony import */ var _views_pages_Categories_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/pages/Categories.js */ "./src/js/views/pages/Categories.js");
@@ -67,140 +68,12 @@ function handleClickRoute(event) {
 
   for (var i = 0; i < routes.length; i++) {
     if (id.includes(routes[i].id)) {
-      console.log(i);
       window.location.href = "".concat(window.location.href.replace(/#(.*)$/, ''), "#").concat(routes[i].path);
     }
-  } // for (let i = 0; i < routes.length; i++) {
-  //   if (routes[i].id === id) {
-  //     const template = routes[i].page();
-  //     historyMethods.push(routes[i].path);
-  //     render(template, document.querySelector(".application"));
-  //     return;
-  //   }
-  // }
-  // pageNotFound();
-
+  }
 }
 
 
-/*
-import { render, pageNotFound } from './Utils.js';
-import HomePage from "../views/pages/Home.js";
-import CategoriesPage from "../views/pages/Categories.js";
-import SettingsPage from "../views/pages/Settings.js";
-import ErrorPage from "../views/pages/ErrorPage.js";
-
-let pathList = [];
-
-const routes = [
-    {
-      id: 'home',
-      path: '/',
-      page: HomePage,  
-    },
-    {
-      id: 'categories',
-      path: '/categories',
-      page: CategoriesPage,  
-    },
-    {
-      id: 'settings',
-      path: '/settings',
-      page: SettingsPage,  
-    },
-    {
-      id: 'error',
-      path: '/error',
-      page: ErrorPage,  
-    },
-];
-
-class createHistory {
-    constructor(path) {
-        this.path = path;
-    }
-
-    push() {
-      pathList.push(this.path);
-      window.history.pushState(null, "", this.path);
-    };
-  
-    replace() {
-      pathList.pop();
-      pathList.push(this.path);
-      window.history.replaceState(null, "", this.path);
-    };
-  
-    goBack() {
-      window.history.pushState(null, "", this.path);
-    };
-};
-
-// const createHistory = () => {
-//     push = (path) => {
-//       pathList.push(path);
-//       window.history.pushState(null, "", path);
-//     };
-  
-//     replace = (path) => {
-//       pathList.pop();
-//       pathList.push(path);
-//       window.history.replaceState(null, "", path);
-//     };
-  
-//     goBack = (path) => {
-//       window.history.pushState(null, "", path);
-//     };
-
-//     return { push, replace, goBack };
-//   };
-  
-const handleOnLoad = () => {
-  const path = window.location.pathname;
-    for (let i = 0; i < routes.length; i++) {
-      if (routes[i].path === path) {
-        const template = routes[i].page();
-        historyMethods.push(path);
-        render(template, document.querySelector('.application'));
-        return;
-      }
-    }
-    pageNotFound();
-};
-
-function handleClickRoute(event) {
-    const id = event.target.id;
-    for (let i = 0; i < routes.length; i++) {
-      if (routes[i].id === id) {
-        const template = routes[i].page();
-        historyMethods.push(routes[i].path);
-        render(template, document.querySelector(".application"));
-        return;
-      }
-    }
-    pageNotFound();
-  }
-  
-
-const prev = () => {
-    pathList.pop();
-    if (pathList.length === 0) {
-      return;
-    }
-    const path = pathList[pathList.length - 1];
-    for (let i = 0; i < routes.length; i++) {
-      if (routes[i].path === path) {
-        const template = routes[i].page();
-        historyMethods.goBack(path);
-        render(template, document.querySelector(".application"));
-        return;
-      }
-    }
-    pageNotFound();
-  };
-
-export { routes, createHistory, handleOnLoad, handleClickRoute, prev };
-*/
 
 /***/ }),
 
@@ -208,16 +81,147 @@ export { routes, createHistory, handleOnLoad, handleClickRoute, prev };
 /*!**********************************!*\
   !*** ./src/js/services/Utils.js ***!
   \**********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// const audio = document.getElementsByTagName(audio);
-// console.log(audio);
-// function soundClick() {
-//     var audio = new Audio();
-//     audio.src = '../../audio/click.wav';
-//     // audio.autoplay = true;
-// }
-// export { soundClick };
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "soundClick": () => (/* binding */ soundClick),
+/* harmony export */   "changeVolumeLevel": () => (/* binding */ changeVolumeLevel),
+/* harmony export */   "setTimer": () => (/* binding */ setTimer),
+/* harmony export */   "setTimeToTimer": () => (/* binding */ setTimeToTimer)
+/* harmony export */ });
+var audio = document.querySelector('audio');
+
+function soundClick(event) {
+  if (event.target.className.split(" ").includes('click')) {
+    audio.play();
+  }
+}
+
+function changeVolumeLevel() {
+  var volumeBar = document.querySelector('#volume-bar');
+
+  if (volumeBar) {
+    volumeBar.addEventListener('change', function () {
+      audio.volume = volumeBar.value;
+      volumeBar.style.background = "linear-gradient(to right, #FFBCA2 0%, #FFBCA2 ".concat(volumeBar.value * 100, "%, #A4A4A4 ").concat(volumeBar.value * 100, "%, #A4A4A4 100%)");
+      audio.play();
+    });
+    volumeBar.addEventListener('input', function () {
+      volumeBar.style.background = "linear-gradient(to right, #FFBCA2 0%, #FFBCA2 ".concat(volumeBar.value * 100, "%, #A4A4A4 ").concat(volumeBar.value * 100, "%, #A4A4A4 100%)");
+    });
+  }
+
+  var muteBtn = document.querySelector('.mute');
+
+  if (muteBtn) {
+    muteBtn.addEventListener('click', function () {
+      audio.volume = 0;
+      volumeBar.value = 0;
+      volumeBar.style.background = '#A4A4A4';
+    });
+  }
+
+  var soundBtn = document.querySelector('.sound');
+
+  if (soundBtn) {
+    soundBtn.addEventListener('click', function () {
+      audio.volume = 0.3;
+      volumeBar.value = 0.3;
+      volumeBar.style.background = 'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 30%, #A4A4A4 30%, #A4A4A4 100%)';
+      audio.play();
+    });
+  }
+
+  if (localStorage.getItem('volumeLevel') && volumeBar) {
+    volumeBar.value = localStorage.getItem('volumeLevel');
+    audio.volume = volumeBar.value;
+    volumeBar.style.background = "linear-gradient(to right, #FFBCA2 0%, #FFBCA2 ".concat(volumeBar.value * 100, "%, #A4A4A4 ").concat(volumeBar.value * 100, "%, #A4A4A4 100%)");
+  }
+
+  var saveBtn = document.querySelector('.save-button');
+
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function () {
+      localStorage.setItem('volumeLevel', volumeBar.value);
+    });
+  }
+}
+
+function setTimer() {
+  var timerBtn = document.querySelector('#timer');
+  var timerSwitcher = document.querySelector('.slider');
+
+  if (timerBtn) {
+    timerBtn.addEventListener('click', function (event) {
+      console.log(event.target);
+      console.log(event.target.checked);
+      document.querySelector('#on').classList.toggle('hidden');
+      document.querySelector('#off').classList.toggle('hidden');
+      timerSwitcher.classList.toggle('on');
+      timerSwitcher.classList.toggle('off');
+
+      if (event.target.checked) {
+        localStorage.setItem('timer', 'off');
+      } else {
+        localStorage.setItem('timer', 'on');
+      }
+    });
+  }
+
+  if (localStorage.getItem('timer') && timerSwitcher) {
+    if (localStorage.getItem('timer') == 'on') {
+      timerSwitcher.classList.remove('off');
+      timerSwitcher.classList.add('on');
+      document.querySelector('#on').classList.remove('hidden');
+      document.querySelector('#off').classList.add('hidden');
+    } else {
+      timerSwitcher.classList.add('off');
+      timerSwitcher.classList.remove('on');
+      document.querySelector('#on').classList.add('hidden');
+      document.querySelector('#off').classList.remove('hidden');
+    }
+  }
+}
+
+function setTimeToTimer() {
+  var decreaseTimeBtn = document.querySelector('.less-time');
+  var increaseTimeBtn = document.querySelector('.more-time');
+  var timeInput = document.querySelector('#time-input');
+  var timeInputValue = document.querySelector('.time-input-value');
+
+  if (timeInputValue) {
+    timeInputValue.innerHTML = timeInput.value;
+  }
+
+  if (decreaseTimeBtn) {
+    decreaseTimeBtn.addEventListener('click', function () {
+      if (timeInput.value > 5) timeInput.value -= 5;
+      timeInputValue.innerHTML = timeInput.value;
+    });
+  }
+
+  if (increaseTimeBtn) {
+    increaseTimeBtn.addEventListener('click', function () {
+      if (timeInput.value < 30) timeInput.value = +timeInput.value + 5;
+      timeInputValue.innerHTML = timeInput.value;
+    });
+  }
+
+  var saveBtn = document.querySelector('.save-button');
+
+  if (saveBtn) {
+    saveBtn.addEventListener('click', function () {
+      localStorage.setItem('timeToAnswer', timeInput.value);
+    });
+  }
+
+  if (localStorage.getItem('timeToAnswer') && timeInput) {
+    timeInputValue.innerHTML = localStorage.getItem('timeToAnswer');
+  }
+}
+
+
 
 /***/ }),
 
@@ -227,14 +231,13 @@ export { routes, createHistory, handleOnLoad, handleClickRoute, prev };
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var Bottombar = {
   render: function render() {
-    return "\n            <div class=\"footer\">\n                <div class=\"footer-logo\"></div>\n                <div class=\"info\"> \n                    <a href=\"https://github.com/OlgaTolpykina\" target=\"_blank\">OlgaTolpykina</a>\n                    <span>2021</span>\n                </div>\n            </div>\n        ";
+    return "\n            <div class=\"footer\">\n                <div class=\"footer-logo\"></div>\n                <div class=\"info\"> \n                    <a class=\"click\" href=\"https://github.com/OlgaTolpykina\" target=\"_blank\">OlgaTolpykina</a>\n                    <span>2021</span>\n                </div>\n            </div>\n        ";
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Bottombar);
@@ -247,7 +250,6 @@ var Bottombar = {
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -267,7 +269,6 @@ var CategoriesPage = {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -287,14 +288,13 @@ var ErrorPage = {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var HomePage = {
   render: function render() {
-    return "\n        <div class=\"container container-main\">\n            <div class=\"header\">\n                <div class=\"settings settings-route\"></div>\n            </div>\n            <div class=\"content\">\n                <div class=\"logo\"></div>\n                <div class=\"button-wrapper\">\n                    <button class=\"button artists-quiz categories-route\">Artist quiz</button>\n                    <button class=\"button picture-quiz categories-route\">Pictures quiz</button>\n                </div>\n            </div>\n        </div>    \n        ";
+    return "\n        <div class=\"container container-main\">\n            <div class=\"header\">\n                <div class=\"settings settings-route click\"></div>\n            </div>\n            <div class=\"content\">\n                <div class=\"logo\"></div>\n                <div class=\"button-wrapper\">\n                    <button class=\"button artists-quiz categories-route click\">Artist quiz</button>\n                    <button class=\"button picture-quiz categories-route click\">Pictures quiz</button>\n                </div>\n            </div>\n        </div>    \n        ";
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomePage);
@@ -307,14 +307,13 @@ var HomePage = {
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var SettingsPage = {
   render: function render() {
-    return "\n        <div class=\"container\">\n            <div class=\"header\">\n                <p class=\"setting-title home-route\">Setting</p>\n                <div class=\"exit home-route\"></div>\n            </div>\n            <div class=\"content content-settings\">\n                <div>\n                    <p class=\"subsetting-title\">Volume</p>\n                    <input type=\"range\" id=\"volume-bar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.3\">\n                    <div class=\"setting-volume\">\n                        <button class=\"mute\"></button>\n                        <button class=\"sound\"></button>\n                    </div> \n                </div>\n                <div>\n                    <p class=\"subsetting-title\">Time game</p>\n                    <div class=\"setting-timer-wrapper\">\n                        <span id=\"on\">On</span>\n                        <div class=\"setting-timer\">\n                            <input type=\"checkbox\" class=\"hidden\">\n                            <span class=\"slider\"></span>\n                        </div>    \n                        <span id=\"off\" class=\"hidden\">Off</span>\n                    </div>\n                </div>\n                <div>\n                    <p class=\"subsetting-title\">Time to answer</p>\n                    <div class=\"setting-time\">\n                        <button>\n                            <span>-</span>\n                        </button>\n                        <input id=\"time-input\" type=\"number\" min=\"1\" max=\"30\" value=\"20\" readonly>\n                        <span class=\"time-input-value\">20</span>\n                        <button>\n                            <span>+</span>\n                        </button>\n                    </div>\n                </div>\n                <div class=\"setting-buttons\">\n                    <button class=\"button button_element\">Default</button>\n                    <button class=\"button button_colored home-route\">Save</button>\n                </div>\n            </div>\n        </div>";
+    return "\n        <div class=\"container\">\n            <div class=\"header\">\n                <p class=\"setting-title home-route click\">Setting</p>\n                <div class=\"exit home-route click\"></div>\n            </div>\n            <div class=\"content content-settings\">\n                <div>\n                    <p class=\"subsetting-title\">Volume</p>\n                    <input type=\"range\" id=\"volume-bar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.3\">\n                    <div class=\"setting-volume\">\n                        <button class=\"mute\"></button>\n                        <button class=\"sound click\"></button>\n                    </div> \n                </div>\n                <div>\n                    <p class=\"subsetting-title\">Time game</p>\n                    <div class=\"setting-timer-wrapper\">\n                        <span id=\"on\" class=\"hidden\">On</span>\n                        <label>\n                            <div class=\"setting-timer\">\n                                <input id=\"timer\" type=\"checkbox\" class=\"hidden\">\n                                <span class=\"slider off\"></span>\n                            </div>\n                        </label>        \n                        <span id=\"off\">Off</span>\n                    </div>\n                </div>\n                <div>\n                    <p class=\"subsetting-title\">Time to answer</p>\n                    <div class=\"setting-time\">\n                        <button class=\"click\">\n                            <span class=\"less-time\">-</span>\n                        </button>\n                        <input id=\"time-input\" type=\"number\" min=\"5\" max=\"30\" value=\"20\" readonly>\n                        <span class=\"time-input-value\"></span>\n                        <button class=\"click\">\n                            <span class=\"more-time\">+</span>\n                        </button>\n                    </div>\n                </div>\n                <div class=\"setting-buttons\">\n                    <button class=\"button button_element click\">Default</button>\n                    <button class=\"button button_colored save-button home-route click\">Save</button>\n                </div>\n            </div>\n        </div>";
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SettingsPage);
@@ -348,18 +347,6 @@ var SettingsPage = {
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -390,9 +377,8 @@ var SettingsPage = {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
-"use strict";
 var __webpack_exports__ = {};
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -400,17 +386,26 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/services/Router.js */ "./src/js/services/Router.js");
 /* harmony import */ var _js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/services/Utils.js */ "./src/js/services/Utils.js");
-/* harmony import */ var _js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__);
 
 
-window.addEventListener('load', _js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__.handleOnLoad);
-window.addEventListener('hashchange', _js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__.handleOnLoad);
-window.addEventListener('click', _js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__.handleClickRoute); // window.addEventListener('click', soundClick);
+window.addEventListener('load', function () {
+  (0,_js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__.handleOnLoad)();
+  (0,_js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__.changeVolumeLevel)();
+  (0,_js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__.setTimer)();
+  (0,_js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__.setTimeToTimer)();
+});
+window.addEventListener('hashchange', function () {
+  (0,_js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__.handleOnLoad)();
+  (0,_js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__.changeVolumeLevel)();
+  (0,_js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__.setTimer)();
+  (0,_js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__.setTimeToTimer)();
+});
+window.addEventListener('click', _js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__.handleClickRoute);
+window.addEventListener('click', _js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__.soundClick);
 })();
 
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
-"use strict";
 /*!*******************************!*\
   !*** ./src/styles/style.scss ***!
   \*******************************/
