@@ -8,8 +8,8 @@ const HomePage = {
             <div class="content">
                 <div class="logo"></div>
                 <div class="button-wrapper">
-                    <button class="button artists-quiz categories-route click">Artist quiz</button>
-                    <button class="button picture-quiz categories-route click">Pictures quiz</button>
+                    <button class="button button-category categories-route click" id="artists">Artists quiz</button>
+                    <button class="button button-category categories-route click" id="pictures">Pictures quiz</button>
                 </div>
             </div>
         </div>    

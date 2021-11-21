@@ -3,7 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const loader = require('sass-loader');
+const babelPolyfill = require('babel-polyfill');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, options) => {
     const isProduction = options.mode === 'production';
@@ -12,7 +14,7 @@ module.exports = (env, options) => {
         mode: isProduction ? 'production' : 'development',
         devtool: isProduction ? 'none' : 'source-map',
         watch: !isProduction,
-        entry: ['./src/index.js', './src/styles/style.scss'],
+        entry: ['babel-polyfill', './src/index.js', './src/styles/style.scss'],
         output: {
             filename: 'bundle.js',
             path: path.resolve(__dirname, 'build')
@@ -26,7 +28,8 @@ module.exports = (env, options) => {
                 use: {
                   loader: 'babel-loader',
                   options: {
-                    presets: ['@babel/preset-env']
+                    presets: ['@babel/preset-env'],
+                    plugins: ['@babel/plugin-transform-runtime']
                   }
                 }
               },
@@ -56,9 +59,14 @@ module.exports = (env, options) => {
             }),
             new MiniCssExtractPlugin({
                 filename: 'style.css'
-            })
-        ]
-    }
+            }),
+            new CopyPlugin({
+              patterns: [
+                { from: "src/js/imagesRu.json" }
+              ],
+            }),
+        ],
+    };
 
     return config;
 }

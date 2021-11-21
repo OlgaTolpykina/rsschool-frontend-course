@@ -52,6 +52,9 @@ button {
 
 .content div {
     width: 100%;
+    &.category-image {
+        width: 195px;
+    }
 }
 
 .hide {
