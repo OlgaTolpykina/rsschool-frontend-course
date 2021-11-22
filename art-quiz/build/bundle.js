@@ -81,7 +81,7 @@ var handleOnLoad = function handleOnLoad() {
 };
 
 function handleClickRoute(event) {
-  var path = event.target.className.split(" ");
+  var path = event.target.className.split(' ');
 
   for (var i = 0; i < routes.length; i++) {
     if (path.includes(routes[i].id)) {
@@ -120,7 +120,7 @@ __webpack_require__.r(__webpack_exports__);
 var audio = document.querySelector('audio');
 
 function soundClick(event) {
-  if (event.target.className.split(" ").includes('click')) {
+  if (event.target.className.split(' ').includes('click')) {
     audio.play();
   }
 }
@@ -11392,7 +11392,8 @@ window.addEventListener('hashchange', function () {
   (0,_js_services_Utils_js__WEBPACK_IMPORTED_MODULE_1__.setTimeToTimer)();
 });
 window.addEventListener('click', _js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__.handleClickRoute); // window.addEventListener('click', soundClick);
-// async function getData() {
+
+console.log("Буду благодарна, если сможете проверить в четверг вечером. Заранее спасибо!"); // async function getData() {
 //     const response = await fetch('./imagesRu.json');
 //     const data = await response.json();
 //     console.log(data);

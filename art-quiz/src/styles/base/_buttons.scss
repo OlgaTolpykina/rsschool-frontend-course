@@ -1,25 +1,25 @@
 .button {
-    width: 287px;
-    height: 62px;
-    background-color: transparent;
-    color: $color-text-on-dark;
-    border: 1.5px solid white;
-    border-radius: 60px;
-    transition: all 0.5s ease;
-    &:hover {
-        transform: scale(1.02);
-        box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.7);
-        background-color: $color-active;
-        color: $color-background;
-    } 
+  width: 287px;
+  height: 62px;
+  background-color: transparent;
+  color: $color-text-on-dark;
+  border: 1.5px solid white;
+  border-radius: 60px;
+  transition: all 0.5s ease;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.7);
+    background-color: $color-active;
+    color: $color-background;
+  }
 }
 
 .button_colored {
-    border: none;
-    color: $color-background;
-    background-color: $color-active;
+  border: none;
+  color: $color-background;
+  background-color: $color-active;
 }
 
 .button_element {
-    margin-right: 20px;
+  margin-right: 20px;
 }

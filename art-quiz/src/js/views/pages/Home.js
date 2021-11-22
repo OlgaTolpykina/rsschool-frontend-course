@@ -1,6 +1,6 @@
 const HomePage = {
-    render: () => {
-        return `
+  render: () => {
+    return `
         <div class="container container-main">
             <div class="header">
                 <div class="settings settings-route click"></div>
@@ -14,7 +14,7 @@ const HomePage = {
             </div>
         </div>    
         `;
-    }
-}
+  },
+};
 
 export default HomePage;

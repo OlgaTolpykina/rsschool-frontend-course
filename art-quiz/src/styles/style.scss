@@ -1,12 +1,12 @@
 //Abstract
-@import "abstract/constants";
+@import 'abstract/constants';
 
 //Base
-@import "base/base";
-@import "base/buttons";
-@import "base/routing";
+@import 'base/base';
+@import 'base/buttons';
+@import 'base/routing';
 
 //Pages
-@import "pages/main";
-@import "pages/settings";
-@import "pages/categories";
+@import 'pages/main';
+@import 'pages/settings';
+@import 'pages/categories';

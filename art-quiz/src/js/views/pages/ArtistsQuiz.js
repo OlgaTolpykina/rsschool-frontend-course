@@ -1,12 +1,12 @@
 const ArtistsQuizPage = {
-    render: () => {
-        let template = '';
-        template += `
+  render: () => {
+    let template = '';
+    template += `
             
         `;
 
-        return template;
-    }
-}
+    return template;
+  },
+};
 
 export default ArtistsQuizPage;

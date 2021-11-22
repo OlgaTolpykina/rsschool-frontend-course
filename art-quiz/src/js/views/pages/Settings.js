@@ -1,6 +1,6 @@
 const SettingsPage = {
-    render: () => {
-        return `
+  render: () => {
+    return `
         <div class="container">
             <div class="header">
                 <p class="setting-title home-route click">Setting</p>
@@ -47,7 +47,7 @@ const SettingsPage = {
                 </div>
             </div>
         </div>`;
-    }
-}
+  },
+};
 
 export default SettingsPage;

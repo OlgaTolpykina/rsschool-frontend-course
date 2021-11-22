@@ -1,89 +1,89 @@
 html {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 body {
-    margin: 0;
-    background-color: $color-background;
-    color: $color-text-on-dark;
-    font-size: 2rem;
+  margin: 0;
+  background-color: $color-background;
+  color: $color-text-on-dark;
+  font-size: 2rem;
 }
 
 button {
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
 }
 
 .hidden {
-    opacity: 0;
+  opacity: 0;
 }
 
 .application {
-    height: calc(100vh - 20px);
-    width: calc(100vw - 35px);
-    max-width: 1440px;
-    margin: 0 auto;
-    margin-top: 20px;
+  height: calc(100vh - 20px);
+  width: calc(100vw - 35px);
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .container {
-    height: 100%;
-    position: relative;
-    left: 0;
-    transition: left 2s ease;
+  height: 100%;
+  position: relative;
+  left: 0;
+  transition: left 2s ease;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
 }
 
 .content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
 }
 
 .content div {
-    width: 100%;
-    &.category-image {
-        width: 195px;
-    }
+  width: 100%;
+  &.category-image {
+    width: 195px;
+  }
 }
 
 .hide {
-    left: -2000px;
+  left: -2000px;
 }
 
 .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10%;
-    position: absolute;
-    bottom: 0;
-    width: calc(100vw - 100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  width: calc(100vw - 100px);
 }
 
 .footer-logo {
-    width: 85px;
-    height: 31px;
-    background-image: url('../img/svg/rs_school.svg');
+  width: 85px;
+  height: 31px;
+  background-image: url('../img/svg/rs_school.svg');
 }
 
 .info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 15%;
-    & a {
-     text-decoration: none;
-     color: $color-text-on-dark;   
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 15%;
+  & a {
+    text-decoration: none;
+    color: $color-text-on-dark;
+  }
 }

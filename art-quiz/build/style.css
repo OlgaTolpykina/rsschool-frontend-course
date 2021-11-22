@@ -103,14 +103,14 @@ button {
 .button:hover {
   transform: scale(1.02);
   box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.7);
-  background-color: #FFBCA2;
+  background-color: #ffbca2;
   color: #000;
 }
 
 .button_colored {
   border: none;
   color: #000;
-  background-color: #FFBCA2;
+  background-color: #ffbca2;
 }
 
 .button_element {
@@ -229,7 +229,7 @@ button {
   width: 50px;
   height: 24px;
   border-radius: 34px;
-  background-color: #FFBCA2;
+  background-color: #ffbca2;
   position: relative;
 }
 .content-settings .setting-timer-wrapper .setting-timer .slider {
@@ -260,7 +260,7 @@ button {
   width: 15%;
   cursor: pointer;
   border-radius: 4.5px;
-  background: linear-gradient(to right, #FFBCA2 0%, #FFBCA2 30%, #A4A4A4 30%, #A4A4A4 100%);
+  background: linear-gradient(to right, #ffbca2 0%, #ffbca2 30%, #a4a4a4 30%, #a4a4a4 100%);
 }
 #volume-bar::-webkit-slider-thumb {
   appearance: none;
@@ -310,7 +310,7 @@ button {
   width: 260px;
 }
 .navigation-links li:hover {
-  color: #FFBCA2;
+  color: #ffbca2;
   cursor: pointer;
 }
 
@@ -340,7 +340,7 @@ button {
   flex-basis: 30%;
   text-align: center;
   font-size: 4rem;
-  color: #FFBCA2;
+  color: #ffbca2;
 }
 .category-image {
   height: 206px;

@@ -1,6 +1,6 @@
 const Bottombar = {
-    render: () => {
-        return `
+  render: () => {
+    return `
             <div class="footer">
                 <div class="footer-logo"></div>
                 <div class="info"> 
@@ -9,7 +9,7 @@ const Bottombar = {
                 </div>
             </div>
         `;
-    }
-}
+  },
+};
 
 export default Bottombar;

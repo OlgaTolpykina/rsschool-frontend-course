@@ -1,12 +1,12 @@
 const PicturesQuizPage = {
-    render: () => {
-        let template = '';
-        template += `
+  render: () => {
+    let template = '';
+    template += `
             
         `;
 
-        return template;
-    }
-}
+    return template;
+  },
+};
 
 export default PicturesQuizPage;

@@ -1,7 +1,7 @@
 const CategoriesPage = {
-    render: () => {
-        let template = '';
-        template += `
+  render: () => {
+    let template = '';
+    template += `
             <div class="header">
                 <div class="navigation">
                     <div class="home-route logo-small"></div>
@@ -15,12 +15,11 @@ const CategoriesPage = {
             </div>
         `;
 
-        return template;
-    }
-}
+    return template;
+  },
+};
 
 export default CategoriesPage;
-
 
 //Сформировать data.json с данными. +
 //Настроить асинхронное получение данных +-
