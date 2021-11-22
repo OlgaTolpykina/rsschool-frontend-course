@@ -20,6 +20,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_pages_ErrorPage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/pages/ErrorPage.js */ "./src/js/views/pages/ErrorPage.js");
 /* harmony import */ var _views_components_Bottombar_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/components/Bottombar.js */ "./src/js/views/components/Bottombar.js");
 /* harmony import */ var _views_components_Quiz_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/components/Quiz.js */ "./src/js/views/components/Quiz.js");
+/* harmony import */ var _views_pages_ArtistsQuiz_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/pages/ArtistsQuiz.js */ "./src/js/views/pages/ArtistsQuiz.js");
+/* harmony import */ var _views_pages_PicturesQuiz_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../views/pages/PicturesQuiz.js */ "./src/js/views/pages/PicturesQuiz.js");
+
+
 
 
 
@@ -43,6 +47,14 @@ var routes = [{
   id: 'error',
   path: '/error',
   page: _views_pages_ErrorPage_js__WEBPACK_IMPORTED_MODULE_3__["default"]
+}, {
+  id: 'artists-quiz',
+  path: '/artists',
+  page: _views_pages_ArtistsQuiz_js__WEBPACK_IMPORTED_MODULE_6__["default"]
+}, {
+  id: 'pictures-quiz',
+  path: '/pictures',
+  page: _views_pages_PicturesQuiz_js__WEBPACK_IMPORTED_MODULE_7__["default"]
 }];
 
 var parseLocation = function parseLocation() {
@@ -81,7 +93,8 @@ function handleClickRoute(event) {
     if (window.location.hash == '#/categories') {
       var type = event.target.getAttribute('id');
       var quiz = new _views_components_Quiz_js__WEBPACK_IMPORTED_MODULE_5__["default"](type);
-      mainWrapper.insertAdjacentElement('beforeend', quiz.renderCategoriesToDom());
+      var route = "".concat(type, "-quiz");
+      mainWrapper.insertAdjacentElement('beforeend', quiz.renderCategoriesToDom(route));
     }
   }, 0);
 }
@@ -255,11 +268,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Article = /*#__PURE__*/function () {
-  function Article(categoryName) {
+  function Article(categoryName, route) {
     (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Article);
 
     this.categoryName = categoryName;
     this.answered = 0;
+    this.route = route;
   }
 
   (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Article, [{
@@ -275,22 +289,14 @@ var Article = /*#__PURE__*/function () {
       template += '<span>/</span>';
       template += '<span class="total">10</span>';
       template += '</div>';
-      template += "<img class=\"category-image\" src=\"https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/".concat(imageIndex, ".jpg\" alt=\"Preview\" width=\"195\" height=\"206\">");
+      template += "<img class=\"category-image ".concat(this.route, "\" src=\"https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/").concat(imageIndex, ".jpg\" alt=\"Preview\" width=\"195\" height=\"206\">");
       article.innerHTML = template;
       return article;
     }
   }]);
 
   return Article;
-}(); // {/* <article class="category">
-//                     <p class="category-name">1</p>
-//                     <div class="category-statistics">
-//                         <span class="answered">5</span>
-//                         <span>/</span>
-//                         <span class="total">10</span>
-//                     </div>
-//                     <div class="category-image"></div>
-//                 </article> */}
+}();
 
 /***/ }),
 
@@ -353,18 +359,18 @@ var Quiz = /*#__PURE__*/function () {
     }
   }, {
     key: "renderCategoriesToDom",
-    value: function renderCategoriesToDom() {
+    value: function renderCategoriesToDom(route) {
       var categoriesWrapper = this.getCategoriesWrapper();
       categoriesWrapper.innerHTML = '';
 
       if (this.type == 'artists') {
         for (var i = 1; i <= 12; i++) {
-          var article = new _Article_js__WEBPACK_IMPORTED_MODULE_2__.Article(i);
+          var article = new _Article_js__WEBPACK_IMPORTED_MODULE_2__.Article(i, route);
           categoriesWrapper.append(article.generateArticle());
         }
       } else if (this.type == 'pictures') {
         for (var _i = 13; _i <= 24; _i++) {
-          var _article = new _Article_js__WEBPACK_IMPORTED_MODULE_2__.Article(_i);
+          var _article = new _Article_js__WEBPACK_IMPORTED_MODULE_2__.Article(_i, route);
 
           categoriesWrapper.append(_article.generateArticle());
         }
@@ -378,6 +384,28 @@ var Quiz = /*#__PURE__*/function () {
 }();
 
 
+
+/***/ }),
+
+/***/ "./src/js/views/pages/ArtistsQuiz.js":
+/*!*******************************************!*\
+  !*** ./src/js/views/pages/ArtistsQuiz.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var ArtistsQuizPage = {
+  render: function render() {
+    var template = '';
+    template += "\n            \n        ";
+    return template;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ArtistsQuizPage);
 
 /***/ }),
 
@@ -445,6 +473,28 @@ var HomePage = {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomePage);
+
+/***/ }),
+
+/***/ "./src/js/views/pages/PicturesQuiz.js":
+/*!********************************************!*\
+  !*** ./src/js/views/pages/PicturesQuiz.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var PicturesQuizPage = {
+  render: function render() {
+    var template = '';
+    template += "\n            \n        ";
+    return template;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PicturesQuizPage);
 
 /***/ }),
 

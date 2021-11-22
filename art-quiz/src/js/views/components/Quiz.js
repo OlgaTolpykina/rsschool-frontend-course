@@ -17,17 +17,17 @@ export default class Quiz {
         return categoriesWrapper;
     }
 
-    renderCategoriesToDom() {
+    renderCategoriesToDom(route) {
         let categoriesWrapper = this.getCategoriesWrapper();
         categoriesWrapper.innerHTML = '';
         if (this.type == 'artists') {
             for (let i = 1; i <= 12; i++) {
-                let article = new Article(i);
+                let article = new Article(i, route);
                 categoriesWrapper.append(article.generateArticle());
             }
         } else if (this.type == 'pictures') {
             for (let i = 13; i <= 24; i++) {
-                let article = new Article(i);
+                let article = new Article(i, route);
                 categoriesWrapper.append(article.generateArticle());
             }
         }

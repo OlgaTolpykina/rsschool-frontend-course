@@ -4,6 +4,8 @@ import SettingsPage from "../views/pages/Settings.js";
 import ErrorPage from "../views/pages/ErrorPage.js";
 import Bottombar from "../views/components/Bottombar.js";
 import Quiz from "../views/components/Quiz.js";
+import ArtistsQuizPage from "../views/pages/ArtistsQuiz.js";
+import PicturesQuizPage from "../views/pages/PicturesQuiz.js";
 
 const routes = [
     {
@@ -26,6 +28,16 @@ const routes = [
       id: 'error',
       path: '/error',
       page: ErrorPage,  
+    },
+    {
+      id: 'artists-quiz',
+      path: '/artists',
+      page: ArtistsQuizPage,
+    },
+    {
+      id: 'pictures-quiz',
+      path: '/pictures',
+      page: PicturesQuizPage,
     },
 ];
 
@@ -54,7 +66,8 @@ function handleClickRoute(event) {
       if(window.location.hash == '#/categories') {
         const type = event.target.getAttribute('id');
         let quiz = new Quiz(type);
-        mainWrapper.insertAdjacentElement('beforeend', quiz.renderCategoriesToDom());
+        let route = `${type}-quiz`;
+        mainWrapper.insertAdjacentElement('beforeend', quiz.renderCategoriesToDom(route));
       }
     }, 0);
   } 

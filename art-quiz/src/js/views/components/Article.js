@@ -1,7 +1,8 @@
 export class Article {
-    constructor(categoryName) {
+    constructor(categoryName, route) {
         this.categoryName = categoryName;
         this.answered = 0;
+        this.route = route;
     }
 
     generateArticle() {
@@ -17,21 +18,10 @@ export class Article {
         template += '<span>/</span>';
         template += '<span class="total">10</span>';
         template += '</div>';
-        template +=  `<img class="category-image" src="https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/${imageIndex}.jpg" alt="Preview" width="195" height="206">`;     
+        template +=  `<img class="category-image ${this.route}" src="https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/${imageIndex}.jpg" alt="Preview" width="195" height="206">`;     
 
         article.innerHTML = template;
 
         return article;
     }
 }
-
-
-// {/* <article class="category">
-//                     <p class="category-name">1</p>
-//                     <div class="category-statistics">
-//                         <span class="answered">5</span>
-//                         <span>/</span>
-//                         <span class="total">10</span>
-//                     </div>
-//                     <div class="category-image"></div>
-//                 </article> */}
