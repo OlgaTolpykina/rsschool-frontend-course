@@ -55,6 +55,15 @@ button {
   &.category-image {
     width: 195px;
   }
+  &.artists-picture {
+    width: 480px;
+  }
+  &.artists-answers {
+    width: 80%;
+  }
+  &.pictures-wrapper {
+    width: 480px;
+  }
 }
 
 .hide {
@@ -69,6 +78,7 @@ button {
   position: absolute;
   bottom: 0;
   width: calc(100vw - 100px);
+  max-width: 1440px;
 }
 
 .footer-logo {
