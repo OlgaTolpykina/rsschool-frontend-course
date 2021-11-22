@@ -14,8 +14,8 @@ const ArtistsQuizPage = {
             </div>
             <div class="content">
                 <p class="question-text">Кто автор картины?</p>
-                <div class="artists-picture"></div>
-                <ul class="pagination">
+                <div class="artists-picture">
+                  <ul class="pagination">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -26,7 +26,8 @@ const ArtistsQuizPage = {
                     <li></li>
                     <li></li>
                     <li></li>
-                </ul>
+                  </ul>
+                </div>
                 <div class="artists-answers">
                     <div class="artists-answer">А</div>
                     <div class="artists-answer">Б</div>

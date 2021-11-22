@@ -423,9 +423,11 @@ button {
 .pagination {
   display: flex;
   justify-content: space-between;
-  width: 30%;
+  width: 40%;
   height: 15px;
   bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   list-style-type: none;
   padding: 0;
   margin: 0;
