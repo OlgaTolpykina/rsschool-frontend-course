@@ -1,7 +1,7 @@
 export class Article {
   constructor(categoryName, route) {
     this.categoryName = categoryName;
-    this.answered = 0;
+    this.answered = localStorage.getItem(`${this.categoryName}`) || 0;
     this.route = route;
   }
 
@@ -18,7 +18,7 @@ export class Article {
     template += '<span>/</span>';
     template += '<span class="total">10</span>';
     template += '</div>';
-    template += `<img class="category-image ${this.route}" src="https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/${imageIndex}.jpg" alt="Preview" width="195" height="206">`;
+    template += `<img class="category-image ${this.route}" src="https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/${imageIndex}.jpg" alt="Preview" width="195" height="206" id="${this.categoryName}">`;
 
     article.innerHTML = template;
 

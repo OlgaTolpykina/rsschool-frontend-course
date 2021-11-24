@@ -12,29 +12,7 @@ const ArtistsQuizPage = {
                     <span>20</span>
                 </div>
             </div>
-            <div class="content">
-                <p class="question-text">Кто автор картины?</p>
-                <div class="artists-picture">
-                  <ul class="pagination">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                  </ul>
-                </div>
-                <div class="artists-answers">
-                    <div class="artists-answer">А</div>
-                    <div class="artists-answer">Б</div>
-                    <div class="artists-answer">В</div>
-                    <div class="artists-answer">Г</div>
-                </div>
-            </div>
+            <p class="question-text">Кто автор картины?</p>
           </div>
         `;
 
@@ -43,3 +21,12 @@ const ArtistsQuizPage = {
 };
 
 export default ArtistsQuizPage;
+
+// {/* <div class="content"> 
+// <div class="artists-answers">
+//     <div class="artists-answer">А</div>
+//     <div class="artists-answer">Б</div>
+//     <div class="artists-answer">В</div>
+//     <div class="artists-answer">Г</div>
+// </div>
+// </div> */}

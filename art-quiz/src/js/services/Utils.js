@@ -1,3 +1,9 @@
+function getRandomNum(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+}
+
 const audio = document.querySelector('audio');
 
 function soundClick(event) {
@@ -135,4 +141,4 @@ function setTimeToTimer() {
   }
 }
 
-export { soundClick, changeVolumeLevel, setTimer, setTimeToTimer };
+export { getRandomNum, soundClick, changeVolumeLevel, setTimer, setTimeToTimer };

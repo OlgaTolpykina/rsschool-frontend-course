@@ -27,12 +27,16 @@
 
 .question-text {
     margin: 0;
+    margin-bottom: 5px;
     text-align: center;
     width: 100%;
 }
 
 .artists-picture {
-    height: 372px;
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
+    margin-bottom: 15px;
     background-image: url('https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/full/0full.jpg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -43,6 +47,7 @@
 
 .artists-answers {
     width: 80%;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 50px);
@@ -55,6 +60,12 @@
     text-align: center;
     border: 1px solid $color-text-on-dark;
     border-radius: 10px;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.7);
+        background-color: $color-active;
+        color: $color-background;
+    }
 }
 
 .pagination {

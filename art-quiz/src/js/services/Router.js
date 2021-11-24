@@ -6,6 +6,7 @@ import Bottombar from '../views/components/Bottombar.js';
 import Quiz from '../views/components/Quiz.js';
 import ArtistsQuizPage from '../views/pages/ArtistsQuiz.js';
 import PicturesQuizPage from '../views/pages/PicturesQuiz.js';
+import { check } from 'prettier';
 
 const routes = [
   {
@@ -55,6 +56,8 @@ const handleOnLoad = () => {
 
 function handleClickRoute(event) {
   const path = event.target.className.split(' ');
+  const type = event.target.getAttribute('id');
+  let quiz = new Quiz(type);
   for (let i = 0; i < routes.length; i++) {
     if (path.includes(routes[i].id)) {
       window.location.href = `${window.location.href.replace(/#(.*)$/, '')}#${routes[i].path}`;
@@ -63,12 +66,28 @@ function handleClickRoute(event) {
 
   setTimeout(() => {
     if (window.location.hash == '#/categories') {
-      const type = event.target.getAttribute('id');
-      let quiz = new Quiz(type);
       let route = `${type}-quiz`;
       mainWrapper.insertAdjacentElement('beforeend', quiz.renderCategoriesToDom(route));
     }
   }, 0);
+
+  if (window.location.hash == '#/artists') {
+    setTimeout(() => {
+        const categoryName = event.target.getAttribute('id') || document.querySelector('.artists-picture').getAttribute('id');
+
+        const questionWrapper = document.querySelector('.container-question');
+
+        if(!document.querySelector('.artists-picture')) {
+          questionWrapper.insertAdjacentElement('beforeend', quiz.renderQuestionToDom(categoryName));
+          questionWrapper.insertAdjacentElement('beforeend', quiz.renderAnswersToDom());
+        } else if (event.target.className.split(' ').includes('artists-answer')) {
+          localStorage.setItem ('author', event.target.innerHTML)
+          quiz.check(categoryName);
+          questionWrapper.insertAdjacentElement('beforeend', quiz.renderQuestionToDom(categoryName));
+          questionWrapper.insertAdjacentElement('beforeend', quiz.renderAnswersToDom());
+        }
+    }, 0);
+  }
 }
 
 export { handleOnLoad, handleClickRoute, parseLocation };
