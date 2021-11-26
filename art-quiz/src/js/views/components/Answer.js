@@ -2,9 +2,10 @@ import { getRandomNum } from "../../services/Utils.js";
 import data from '../../imagesRu.json';
 
 export class Answer {
-    constructor(imageNumber) { 
+    constructor(imageNumber, categoryName) { 
         this.allAnswers = data;
         this.imageNumber = imageNumber;
+        this.categoryName = categoryName;
     }
 
     generateAnswers() {
@@ -35,6 +36,7 @@ export class Answer {
         for(let i = 0; i < 4; i++) {
             let answer = document.createElement('div');
             answer.className = "artists-answer";
+            answer.setAttribute('data-categoryname', this.categoryName);
             answer.innerHTML = `${variants[i]}`;
 
             answers.insertAdjacentElement('afterbegin', answer);

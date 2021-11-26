@@ -1,3 +1,29 @@
+import data from '../imagesRu.json';
+import { Result } from '../views/components/Result.js';
+
+//Вопросы с разбивкой по типу
+let questions = {
+  artists: '',
+  pictures: '',
+}
+
+let artistsQuestions = [];
+let pictureQuestions = [];
+
+for (let i = 0; i < data.length; i++) { 
+
+  (i < data.length / 2) ? artistsQuestions.push(data[i]) : pictureQuestions.push(data[i]);
+  
+  questions.artists = artistsQuestions;
+  questions.pictures = pictureQuestions;
+}
+
+let results = [
+  new Result('Живопись - не Ваша сильная сторона', 0),
+  new Result('Неплохой результат, но есть, к чему стремиться', 5),
+  new Result('Вы эксперт в области живописи', 10),
+];
+
 function getRandomNum(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -141,4 +167,4 @@ function setTimeToTimer() {
   }
 }
 
-export { getRandomNum, soundClick, changeVolumeLevel, setTimer, setTimeToTimer };
+export { getRandomNum, soundClick, changeVolumeLevel, setTimer, setTimeToTimer, questions, results };

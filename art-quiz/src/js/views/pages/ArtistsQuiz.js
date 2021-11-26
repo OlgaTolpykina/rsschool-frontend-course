@@ -4,7 +4,7 @@ const ArtistsQuizPage = {
     template += `
           <div class="container container-question">
             <div class="header">
-                <button class="exit categories-route" id="artists"></button>
+                <button class="exit categories-route" data-type="artists"></button>
                 <input type="range" class="timer-input" value='0.3' min='0' max='1' step='0.1'>
                 <div>
                     <span>0</span>

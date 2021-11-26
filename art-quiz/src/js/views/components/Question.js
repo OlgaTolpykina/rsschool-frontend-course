@@ -1,35 +1,43 @@
 export class Question {
-    constructor(imageNumber) {
+    constructor(imageNumber, categoryName, right, wrong) {
         this.imageNumber = imageNumber;
+        this.categoryName = categoryName;
+        this.right = right;
+        this.wrong = wrong;
     }
 
-    generateQuestion(categoryName) {
-        let template = '';
+    generateQuestion() {
         if (document.querySelector('.artists-picture')) {
             document.querySelector('.artists-picture').remove();
         }
         let question = document.createElement('div');
         question.className = 'artists-picture';
-
         question.style.backgroundImage = `url("https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/${this.imageNumber}.jpg")`;
-        question.setAttribute('id', `${categoryName}`);
 
-        template += `
-                <ul class="pagination">
-                    <li data-id="first"></li>
-                    <li data-id="second"></li>
-                    <li data-id="third"></li>
-                    <li data-id="fourth"></li>
-                    <li data-id="fifth"></li>
-                    <li data-id="sixth"></li>
-                    <li data-id="seventh"></li>
-                    <li data-id="eighth"></li>
-                    <li data-id="nine"></li>
-                    <li data-id="ten"></li>
-                  </ul>
-        `;
+        let list = document.createElement('ul');
+        list.className = 'pagination';
 
-        question.innerHTML = template;
+        let listItems = [];
+        for(let i = (this.categoryName - 1) * 10; i < (this.categoryName - 1) * 10 + 10; i++) { //Здесь i для первой категории - от 0 до 10, для второй - от 10 до 20 и тд
+            if(this.right.includes(i)) {
+                let rightAnswer = document.createElement('li');
+                rightAnswer.className = 'right';
+                listItems.push(rightAnswer);
+            } else if (this.wrong.includes(i)) {
+                let wrongAnswer = document.createElement('li');
+                wrongAnswer.className = 'wrong';
+                listItems.push(wrongAnswer);
+            } else {
+                let unanswered = document.createElement('li');
+                listItems.push(unanswered);
+            }
+        }
+
+        for(let i = 0; i < listItems.length; i++) {
+            list.insertAdjacentElement('beforeend', listItems[i]);
+        }
+
+        question.insertAdjacentElement('afterbegin', list);
 
         return question;
     }

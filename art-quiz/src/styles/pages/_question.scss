@@ -37,7 +37,7 @@
     height: 350px;
     margin: 0 auto;
     margin-bottom: 15px;
-    background-image: url('https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/full/0full.jpg');
+    background-image: url('https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/0.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -70,9 +70,10 @@
 
 .pagination {
     display: flex;
-    justify-content: space-between;
-    width: 40%;
-    height: 15px;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    height: 20px;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
@@ -80,11 +81,19 @@
     padding: 0;
     margin: 0;
     position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
     & li {
         width: 10px;
         height: 10px;
         background-color: $color-grey;
         border-radius: 100%;
+    }
+    & .wrong {
+        background-color: $color-wrong-answer;
+    }
+
+    & .right {
+        background-color: $color-right-answer;
     }
 }
 

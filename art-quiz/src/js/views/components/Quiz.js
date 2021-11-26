@@ -2,16 +2,72 @@ import { Article } from './Article.js';
 import { Question } from './Question.js';
 import { Answer } from './Answer.js';
 import data from '../../imagesRu.json';
+import { handleOnLoad ,routes } from '../../services/Router.js';
+import { questions, results } from '../../services/Utils.js';
 
 export default class Quiz {
-  constructor(type, results) {
-    this.type = type;
-    this.results = results;
+  constructor() {
+    this.type = '';
+    this.category = '';
+    this.path = '';
+    this.questions = {};
+    this.results = [];
     this.categoryName = 0;
+    this.imageNumber = 0;
+    this.innerHTML = '';
     this.answers = [];
-    this.score = 0;
-    this.result = 0;
-    this.current = localStorage.getItem('currentQuestion') || 0;
+    this.right = [];
+    this.wrong = [];
+    this.current = 0;
+  }
+
+  handleClickRoute(event) {
+    const path = event.target.className.split(' ');
+    this.type = event.target.dataset.type;
+    this.categoryName = event.target.dataset.categoryname;
+    this.innerHTML = event.target.innerHTML;
+    
+    for (let i = 0; i < routes.length; i++) {
+      if (path.includes(routes[i].id)) {
+        window.location.href = `${window.location.href.replace(/#(.*)$/, '')}#${routes[i].path}`;
+        this.path = routes[i].path;
+      }
+    }
+
+    if (path.includes('exit') && path.includes('categories-route')) {
+      this.right = [];
+      this.wrong = [];
+      this.current = 0;
+    }
+
+    handleOnLoad();
+    
+    this.setContentToDom();
+  } 
+
+  setContentToDom() {
+    const mainWrapper = document.querySelector('.application');
+  
+    switch (this.path) {
+      case '/categories':
+        let route = `${this.type}-quiz`;
+        mainWrapper.insertAdjacentElement('beforeend', this.renderCategoriesToDom(route));
+        break;
+      case '/artists':
+        if (this.current > 0 && this.current <= 10) {
+          this.check();  
+        } else {
+          this.end();
+        }
+
+        const questionWrapper = document.querySelector('.container-question');
+        questionWrapper.insertAdjacentElement('beforeend', this.renderQuestionToDom());
+        questionWrapper.insertAdjacentElement('beforeend', this.renderAnswersToDom());
+        this.current++;
+        break;
+      default:
+        break;  
+    }
   }
 
   getCategoriesWrapper() {
@@ -26,36 +82,27 @@ export default class Quiz {
     categoriesWrapper.innerHTML = '';
     if (this.type == 'artists') {
       for (let i = 1; i <= 12; i++) {
-        let article = new Article(i, route);
+        this.category = i;
+        let article = new Article(this.type, this.category, route);
         categoriesWrapper.append(article.generateArticle());
       }
     } else if (this.type == 'pictures') {
       for (let i = 13; i <= 24; i++) {
-        let article = new Article(i, route);
+        this.category = i;
+        let article = new Article(this.type, this.category, route);
         categoriesWrapper.append(article.generateArticle());
       }
     }
     return categoriesWrapper;
   }
 
-  renderQuestionToDom(categoryName) {
-    if(this.current >= 10){ 
-      this.end();
-    }
+  renderQuestionToDom() {
+    this.imageNumber = this.categoryName > 1 ? (+this.categoryName - 1) * 10 + +this.current : 0 + +this.current;
+    let question = new Question(this.imageNumber, this.categoryName, this.right, this.wrong);
 
-    this.categoryName = categoryName;
+    this.answers = new Answer(this.imageNumber, this.categoryName);
 
-    let imageNumber = this.categoryName > 1 ? (this.categoryName - 1) * 10 - 1 + +this.current : 0 + +this.current;
-    let question = new Question(imageNumber);
-
-    this.answers = new Answer(imageNumber);
-    
-    this.current++;
-    localStorage.setItem('imageNumber', imageNumber);
-    localStorage.setItem('currentQuestion', this.current);
-    localStorage.setItem(`${this.categoryName}`, this.current);
-
-    return question.generateQuestion(this.categoryName);
+    return question.generateQuestion();
   }
 
   renderAnswersToDom() {
@@ -63,33 +110,24 @@ export default class Quiz {
   }
 
   check () {
-    // проверить, правильный ли ответ
-    if(localStorage.getItem('author') == data[localStorage.getItem('imageNumber')]) {
-      this.result++;
-      document.querySelector(localStorage.getItem('currentQuestion')).style.backgroundColor = green;
+    if(this.innerHTML == data[this.imageNumber].author) {
+      this.right.push(this.imageNumber);
+      //Должно вызываться модальное окно с указанием, что ответ верный и предложением перейти к следующему вопросу this.showModal(...)
+    } else {
+      this.wrong.push(this.imageNumber);
+      //Должно вызываться модальное окно с указанием, что ответ неверный и предложением перейти к следующему вопросу this.showModal(...)
     };
   }
 
-  // nextQuestion(category) {
-  //   //будет вызываться кликом по варианту ответа
-    
-  //   this.current++;
-
-  //   if(this.current > 10){ 
-  //     this.end();
-  //   }
-
-  //   this.renderQuestionToDom(category);
-  // }
-
   end() {
-    
+    //Должно вызываться модальное окно с результатом раунда
   }
 }
 
-//по нажатию на кнопку ответа должен опять вызываться renderQuestionToDom. Как проверять, что вопросы закончились? Надо создавать массив вопросов под categoryName?
+let quiz = new Quiz();
 
-//добавить на странице категорий id для каждой категории (от 1 до 24), чтобы он определялся в router по клику(event.target.getAttribute('id')) и передавался в renderquestionToDom
-// определять массив данных для первого вопроса по индексу (аналогия с imageIndex см выше), затем при клиеке по варианту ответа будет index++
-//сделать класс Question с методом generateQuestion, куда в template перенести из ArtistsQuiz часть с картиной и вариантами ответов. По аналогии с Article.
-//сделать класс Answers, который будет вставлять часть с вариантами ответов + возвращать, правильный или нет ответ
+function quizInit(event) {
+  quiz.handleClickRoute(event);
+}
+
+export { quizInit };
