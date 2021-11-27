@@ -1,7 +1,9 @@
 .button {
+  display: block;
   width: 287px;
   height: 62px;
   background-color: transparent;
+  text-align: center;
   color: $color-text-on-dark;
   border: 1.5px solid white;
   border-radius: 60px;

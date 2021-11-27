@@ -3,14 +3,15 @@ import { Question } from './Question.js';
 import { Answer } from './Answer.js';
 import data from '../../imagesRu.json';
 import { handleOnLoad ,routes } from '../../services/Router.js';
+import { Modal } from './Modal.js';
 import { questions, results } from '../../services/Utils.js';
 
 export default class Quiz {
-  constructor() {
+  constructor(questions) {
     this.type = '';
     this.category = '';
     this.path = '';
-    this.questions = {};
+    this.questions = questions;
     this.results = [];
     this.categoryName = 0;
     this.imageNumber = 0;
@@ -38,6 +39,8 @@ export default class Quiz {
       this.right = [];
       this.wrong = [];
       this.current = 0;
+    } else if(path.includes('close-modal')) {
+      document.querySelector('.overlay').remove();
     }
 
     handleOnLoad();
@@ -56,7 +59,7 @@ export default class Quiz {
       case '/artists':
         if (this.current > 0 && this.current <= 10) {
           this.check();  
-        } else {
+        } else if(this.current > 10){
           this.end();
         }
 
@@ -112,11 +115,18 @@ export default class Quiz {
   check () {
     if(this.innerHTML == data[this.imageNumber].author) {
       this.right.push(this.imageNumber);
-      //Должно вызываться модальное окно с указанием, что ответ верный и предложением перейти к следующему вопросу this.showModal(...)
+      let modal = new Modal('correct', this.imageNumber, this.questions);
+
+      const mainWrapper = document.querySelector('.application');
+      mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());
     } else {
       this.wrong.push(this.imageNumber);
-      //Должно вызываться модальное окно с указанием, что ответ неверный и предложением перейти к следующему вопросу this.showModal(...)
-    };
+      let modal = new Modal('wrong', this.imageNumber, this.questions);
+      modal.generateModal();
+
+      const mainWrapper = document.querySelector('.application');
+      mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());
+    }
   }
 
   end() {
@@ -124,7 +134,7 @@ export default class Quiz {
   }
 }
 
-let quiz = new Quiz();
+let quiz = new Quiz(data);
 
 function quizInit(event) {
   quiz.handleClickRoute(event);

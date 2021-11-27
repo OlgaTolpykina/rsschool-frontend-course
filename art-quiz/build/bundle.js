@@ -406,6 +406,110 @@ var Bottombar = {
 
 /***/ }),
 
+/***/ "./src/js/views/components/Modal.js":
+/*!******************************************!*\
+  !*** ./src/js/views/components/Modal.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Modal": () => (/* binding */ Modal)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../../../node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "../../../node_modules/@babel/runtime/helpers/esm/createClass.js");
+
+
+var Modal = /*#__PURE__*/function () {
+  function Modal(result, imageNumber, questions) {
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Modal);
+
+    this.result = result; // correct || wrong
+
+    this.imageNumber = imageNumber;
+    this.questions = questions;
+    this.modalButton;
+  }
+
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Modal, [{
+    key: "generateModal",
+    value: function generateModal() {
+      var overlay = this.createElement('div', 'overlay');
+      var modalContent = this.createElement('div', 'modal');
+      var modalPicture = this.createElement('img', 'modal-picture');
+      modalPicture.src = "https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/".concat(this.imageNumber, ".jpg");
+      modalPicture.setAttribute('alt', "".concat(this.questions[this.imageNumber].name));
+      modalPicture.setAttribute('width', '300');
+      modalPicture.setAttribute('height', '300');
+      var resultIcon = this.createElement('span', 'modal-result', "".concat(this.result));
+      var modalTitle = this.createElement('p', 'modal-text', 'modal-title');
+      modalTitle.innerHTML = "".concat(this.questions[this.imageNumber].name);
+      var modalSubTitle = this.createElement('p', 'modal-text', 'modal-subtitle');
+      modalSubTitle.innerHTML = "".concat(this.questions[this.imageNumber].author, ", ").concat(this.questions[this.imageNumber].year);
+      var modalButtons = this.createElement('div', 'modal-buttons');
+      var modalButton = this.createElement('buttons', 'button', 'button_colored', 'button-modal', 'close-modal');
+      modalButton.innerHTML = 'Следующий вопрос';
+      this.modalButton = modalButton;
+      modalButtons.append(modalButton);
+      modalContent.append(modalPicture);
+      modalContent.append(resultIcon);
+      modalContent.append(modalTitle);
+      modalContent.append(modalSubTitle);
+      modalContent.append(modalButtons);
+      overlay.append(modalContent);
+      this.bindEvents();
+      return overlay;
+    }
+  }, {
+    key: "createElement",
+    value: function createElement(element) {
+      var _element$classList;
+
+      element = document.createElement(element);
+
+      for (var _len = arguments.length, classes = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        classes[_key - 1] = arguments[_key];
+      }
+
+      (_element$classList = element.classList).add.apply(_element$classList, classes);
+
+      return element;
+    }
+  }, {
+    key: "bindEvents",
+    value: function bindEvents() {
+      this.modalButton.addEventListener('click', this.closeModal);
+    }
+  }, {
+    key: "closeModal",
+    value: function closeModal(e) {
+      var classes = e.target.classList;
+
+      if (classes.contains('button')) {
+        document.querySelector('.overlay').remove();
+      }
+    }
+  }]);
+
+  return Modal;
+}();
+{
+  /* <div class="overlay">
+  <div class="modal">
+     <img class="modal-picture" src="https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/0.jpg" alt="Picture" width = "300" height="300">
+     <span class="modal-result"></span>
+     <p class="modal-text modal-title">Сватовство майора</p>
+     <p class="modal-text modal-subtitle">Павел Федотов, 1852</p>
+     <div class="modal-buttons">
+         <button class="button button_colored button-modal">Следующий вопрос</button>
+     </div>
+  </div>
+  </div> */
+}
+
+/***/ }),
+
 /***/ "./src/js/views/components/Question.js":
 /*!*********************************************!*\
   !*** ./src/js/views/components/Question.js ***!
@@ -494,7 +598,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Answer_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Answer.js */ "./src/js/views/components/Answer.js");
 /* harmony import */ var _imagesRu_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../imagesRu.json */ "./src/js/imagesRu.json");
 /* harmony import */ var _services_Router_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/Router.js */ "./src/js/services/Router.js");
-/* harmony import */ var _services_Utils_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../services/Utils.js */ "./src/js/services/Utils.js");
+/* harmony import */ var _Modal_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Modal.js */ "./src/js/views/components/Modal.js");
+/* harmony import */ var _services_Utils_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../services/Utils.js */ "./src/js/services/Utils.js");
+
 
 
 
@@ -505,13 +611,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Quiz = /*#__PURE__*/function () {
-  function Quiz() {
+  function Quiz(questions) {
     (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Quiz);
 
     this.type = '';
     this.category = '';
     this.path = '';
-    this.questions = {};
+    this.questions = questions;
     this.results = [];
     this.categoryName = 0;
     this.imageNumber = 0;
@@ -541,6 +647,8 @@ var Quiz = /*#__PURE__*/function () {
         this.right = [];
         this.wrong = [];
         this.current = 0;
+      } else if (path.includes('close-modal')) {
+        document.querySelector('.overlay').remove();
       }
 
       (0,_services_Router_js__WEBPACK_IMPORTED_MODULE_6__.handleOnLoad)();
@@ -560,7 +668,7 @@ var Quiz = /*#__PURE__*/function () {
         case '/artists':
           if (this.current > 0 && this.current <= 10) {
             this.check();
-          } else {
+          } else if (this.current > 10) {
             this.end();
           }
 
@@ -622,12 +730,21 @@ var Quiz = /*#__PURE__*/function () {
     key: "check",
     value: function check() {
       if (this.innerHTML == _imagesRu_json__WEBPACK_IMPORTED_MODULE_5__[this.imageNumber].author) {
-        this.right.push(this.imageNumber); //Должно вызываться модальное окно с указанием, что ответ верный и предложением перейти к следующему вопросу this.showModal(...)
+        this.right.push(this.imageNumber);
+        var modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_7__.Modal('correct', this.imageNumber, this.questions);
+        var mainWrapper = document.querySelector('.application');
+        mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());
       } else {
-        this.wrong.push(this.imageNumber); //Должно вызываться модальное окно с указанием, что ответ неверный и предложением перейти к следующему вопросу this.showModal(...)
-      }
+        this.wrong.push(this.imageNumber);
 
-      ;
+        var _modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_7__.Modal('wrong', this.imageNumber, this.questions);
+
+        _modal.generateModal();
+
+        var _mainWrapper = document.querySelector('.application');
+
+        _mainWrapper.insertAdjacentElement('beforeend', _modal.generateModal());
+      }
     }
   }, {
     key: "end",
@@ -639,7 +756,7 @@ var Quiz = /*#__PURE__*/function () {
 }();
 
 
-var quiz = new Quiz();
+var quiz = new Quiz(_imagesRu_json__WEBPACK_IMPORTED_MODULE_5__);
 
 function quizInit(event) {
   quiz.handleClickRoute(event);
