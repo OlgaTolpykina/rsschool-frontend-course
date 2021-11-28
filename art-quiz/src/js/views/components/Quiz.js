@@ -11,6 +11,7 @@ export default class Quiz {
     this.type = '';
     this.category = '';
     this.path = '';
+    this.classes = '';
     this.questions = questions;
     this.results = [];
     this.categoryName = 0;
@@ -24,28 +25,28 @@ export default class Quiz {
 
   handleClickRoute(event) {
     const path = event.target.className.split(' ');
+    this.classes = path;
     this.type = event.target.dataset.type;
     this.categoryName = event.target.dataset.categoryname;
     this.innerHTML = event.target.innerHTML;
     
     for (let i = 0; i < routes.length; i++) {
-      if (path.includes(routes[i].id)) {
+      if (this.classes.includes(routes[i].id)) {
         window.location.href = `${window.location.href.replace(/#(.*)$/, '')}#${routes[i].path}`;
         this.path = routes[i].path;
       }
     }
 
-    if (path.includes('exit') && path.includes('categories-route')) {
+    if (this.classes.includes('exit') && this.classes.includes('categories-route')) {
       this.right = [];
       this.wrong = [];
       this.current = 0;
-    } else if(path.includes('close-modal')) {
-      document.querySelector('.overlay').remove();
-    }
+    } 
 
-    handleOnLoad();
-    
-    this.setContentToDom();
+    if (!this.classes.includes('close-modal')) {
+      handleOnLoad();
+      this.setContentToDom();
+    }
   } 
 
   setContentToDom() {
@@ -57,7 +58,7 @@ export default class Quiz {
         mainWrapper.insertAdjacentElement('beforeend', this.renderCategoriesToDom(route));
         break;
       case '/artists':
-        if (this.current > 0 && this.current <= 10) {
+        if (this.current > 0 && this.current <= 10 && !this.classes.includes('close-modal')) {
           this.check();  
         } else if(this.current > 10){
           this.end();
@@ -115,14 +116,13 @@ export default class Quiz {
   check () {
     if(this.innerHTML == data[this.imageNumber].author) {
       this.right.push(this.imageNumber);
-      let modal = new Modal('correct', this.imageNumber, this.questions);
+      let modal = new Modal('correct', this.imageNumber, this.questions, this.categoryName);
 
       const mainWrapper = document.querySelector('.application');
       mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());
     } else {
       this.wrong.push(this.imageNumber);
-      let modal = new Modal('wrong', this.imageNumber, this.questions);
-      modal.generateModal();
+      let modal = new Modal('wrong', this.imageNumber, this.questions, this.categoryName);
 
       const mainWrapper = document.querySelector('.application');
       mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());

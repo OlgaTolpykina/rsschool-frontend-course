@@ -422,13 +422,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Modal = /*#__PURE__*/function () {
-  function Modal(result, imageNumber, questions) {
+  function Modal(result, imageNumber, questions, categoryName) {
     (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Modal);
 
-    this.result = result; // correct || wrong
-
+    this.result = result;
     this.imageNumber = imageNumber;
     this.questions = questions;
+    this.categoryName = categoryName;
     this.modalButton;
   }
 
@@ -450,6 +450,7 @@ var Modal = /*#__PURE__*/function () {
       var modalButtons = this.createElement('div', 'modal-buttons');
       var modalButton = this.createElement('buttons', 'button', 'button_colored', 'button-modal', 'close-modal');
       modalButton.innerHTML = 'Следующий вопрос';
+      modalButton.setAttribute('data-categoryname', this.categoryName);
       this.modalButton = modalButton;
       modalButtons.append(modalButton);
       modalContent.append(modalPicture);
@@ -486,27 +487,16 @@ var Modal = /*#__PURE__*/function () {
     value: function closeModal(e) {
       var classes = e.target.classList;
 
-      if (classes.contains('button')) {
+      if (classes.contains('close-modal')) {
+        console.log(document.querySelector('.overlay'));
         document.querySelector('.overlay').remove();
+        console.log(document.querySelector('.overlay'));
       }
     }
   }]);
 
   return Modal;
 }();
-{
-  /* <div class="overlay">
-  <div class="modal">
-     <img class="modal-picture" src="https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/0.jpg" alt="Picture" width = "300" height="300">
-     <span class="modal-result"></span>
-     <p class="modal-text modal-title">Сватовство майора</p>
-     <p class="modal-text modal-subtitle">Павел Федотов, 1852</p>
-     <div class="modal-buttons">
-         <button class="button button_colored button-modal">Следующий вопрос</button>
-     </div>
-  </div>
-  </div> */
-}
 
 /***/ }),
 
@@ -617,6 +607,7 @@ var Quiz = /*#__PURE__*/function () {
     this.type = '';
     this.category = '';
     this.path = '';
+    this.classes = '';
     this.questions = questions;
     this.results = [];
     this.categoryName = 0;
@@ -632,27 +623,28 @@ var Quiz = /*#__PURE__*/function () {
     key: "handleClickRoute",
     value: function handleClickRoute(event) {
       var path = event.target.className.split(' ');
+      this.classes = path;
       this.type = event.target.dataset.type;
       this.categoryName = event.target.dataset.categoryname;
       this.innerHTML = event.target.innerHTML;
 
       for (var i = 0; i < _services_Router_js__WEBPACK_IMPORTED_MODULE_6__.routes.length; i++) {
-        if (path.includes(_services_Router_js__WEBPACK_IMPORTED_MODULE_6__.routes[i].id)) {
+        if (this.classes.includes(_services_Router_js__WEBPACK_IMPORTED_MODULE_6__.routes[i].id)) {
           window.location.href = "".concat(window.location.href.replace(/#(.*)$/, ''), "#").concat(_services_Router_js__WEBPACK_IMPORTED_MODULE_6__.routes[i].path);
           this.path = _services_Router_js__WEBPACK_IMPORTED_MODULE_6__.routes[i].path;
         }
       }
 
-      if (path.includes('exit') && path.includes('categories-route')) {
+      if (this.classes.includes('exit') && this.classes.includes('categories-route')) {
         this.right = [];
         this.wrong = [];
         this.current = 0;
-      } else if (path.includes('close-modal')) {
-        document.querySelector('.overlay').remove();
       }
 
-      (0,_services_Router_js__WEBPACK_IMPORTED_MODULE_6__.handleOnLoad)();
-      this.setContentToDom();
+      if (!this.classes.includes('close-modal')) {
+        (0,_services_Router_js__WEBPACK_IMPORTED_MODULE_6__.handleOnLoad)();
+        this.setContentToDom();
+      }
     }
   }, {
     key: "setContentToDom",
@@ -666,7 +658,7 @@ var Quiz = /*#__PURE__*/function () {
           break;
 
         case '/artists':
-          if (this.current > 0 && this.current <= 10) {
+          if (this.current > 0 && this.current <= 10 && !this.classes.includes('close-modal')) {
             this.check();
           } else if (this.current > 10) {
             this.end();
@@ -731,15 +723,13 @@ var Quiz = /*#__PURE__*/function () {
     value: function check() {
       if (this.innerHTML == _imagesRu_json__WEBPACK_IMPORTED_MODULE_5__[this.imageNumber].author) {
         this.right.push(this.imageNumber);
-        var modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_7__.Modal('correct', this.imageNumber, this.questions);
+        var modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_7__.Modal('correct', this.imageNumber, this.questions, this.categoryName);
         var mainWrapper = document.querySelector('.application');
         mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());
       } else {
         this.wrong.push(this.imageNumber);
 
-        var _modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_7__.Modal('wrong', this.imageNumber, this.questions);
-
-        _modal.generateModal();
+        var _modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_7__.Modal('wrong', this.imageNumber, this.questions, this.categoryName);
 
         var _mainWrapper = document.querySelector('.application');
 
@@ -11804,7 +11794,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_js_services_Router_js__WEBPACK_IMPORTED_MODULE_0__.handleOnLoad)();
-window.addEventListener('click', _js_views_components_Quiz_js__WEBPACK_IMPORTED_MODULE_2__.quizInit);
+window.addEventListener('click', _js_views_components_Quiz_js__WEBPACK_IMPORTED_MODULE_2__.quizInit); //Разобраться с асинхронным получением данных
+//Прописать quiz.end(), который будет вызывать модельное окно с результатом
+//Настроить отображение о количестве сыгранных вопросов
+//Настроить отображение игралась ли уже категория или нет
+//Вопрос по картинам....
+//Доработать верстку, в т.ч. адаптив
 })();
 
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.

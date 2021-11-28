@@ -8,6 +8,7 @@
   border: 1.5px solid white;
   border-radius: 60px;
   transition: all 0.5s ease;
+  cursor: pointer;
   &:hover {
     transform: scale(1.02);
     box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.7);

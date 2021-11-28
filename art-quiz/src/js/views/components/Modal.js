@@ -1,8 +1,9 @@
 export class Modal {
-    constructor(result, imageNumber, questions) {
-        this.result = result; // correct || wrong
+    constructor(result, imageNumber, questions, categoryName) {
+        this.result = result; 
         this.imageNumber = imageNumber;
         this.questions = questions;
+        this.categoryName = categoryName;
         this.modalButton;
     }
 
@@ -27,6 +28,7 @@ export class Modal {
         let modalButtons = this.createElement('div', 'modal-buttons');
         let modalButton = this.createElement('buttons', 'button', 'button_colored', 'button-modal', 'close-modal');
         modalButton.innerHTML = 'Следующий вопрос';
+        modalButton.setAttribute('data-categoryname', this.categoryName);
         this.modalButton = modalButton;
         modalButtons.append(modalButton);
 
@@ -54,20 +56,11 @@ export class Modal {
 
     closeModal(e) {
         let classes = e.target.classList;
-        if(classes.contains('button')) {
+
+        if(classes.contains('close-modal')) {
+            console.log(document.querySelector('.overlay'));
             document.querySelector('.overlay').remove();
+            console.log(document.querySelector('.overlay'));
         }
     }
 }
-
-{/* <div class="overlay">
-<div class="modal">
-    <img class="modal-picture" src="https://raw.githubusercontent.com/OlgaTolpykina/image-data/master/img/0.jpg" alt="Picture" width = "300" height="300">
-    <span class="modal-result"></span>
-    <p class="modal-text modal-title">Сватовство майора</p>
-    <p class="modal-text modal-subtitle">Павел Федотов, 1852</p>
-    <div class="modal-buttons">
-        <button class="button button_colored button-modal">Следующий вопрос</button>
-    </div>
-</div>
-</div> */}
