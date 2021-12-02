@@ -3,10 +3,10 @@ import { ISource } from '../appView';
 
 class Sources {
   draw(data: ISource[]) {
-    const fragment = document.createDocumentFragment();
+    const fragment: DocumentFragment = document.createDocumentFragment();
     const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
-    data.forEach((item) => {
+    data.forEach((item: ISource) => {
       const sourceClone: HTMLTemplateElement = sourceItemTemp.content.cloneNode(true) as HTMLTemplateElement;
 
       (sourceClone.querySelector('.source__item-name') as HTMLTemplateElement).textContent = item.name;

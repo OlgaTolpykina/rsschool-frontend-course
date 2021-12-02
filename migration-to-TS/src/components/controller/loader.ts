@@ -1,8 +1,18 @@
 type ObjectDictionary = { [key: string]: string };
+enum Methods {
+    GET = 'GET',
+    POST = 'POST'
+}
+
+export enum Endpoints {
+    getSources = 'sources',
+    getNews = 'everything'
+}
+
 
 class Loader {
-  public baseLink;
-  public options;
+  readonly baseLink;
+  readonly options;
 
   constructor(baseLink: string, options: ObjectDictionary) {
     this.baseLink = baseLink;
@@ -10,12 +20,12 @@ class Loader {
   }
 
   getResp(
-    { endpoint = 'string', options = {} },
+    { endpoint, options }: {endpoint: Endpoints, options?: Record<string, string>},
     callback = (): void => {
       console.error('No callback for GET response');
     }
   ): void {
-    this.load('GET', endpoint, callback, options);
+    this.load(Methods.GET, endpoint, callback, options);
   }
 
   errorHandler(res: Response): Response {
@@ -28,7 +38,7 @@ class Loader {
     return res;
   }
 
-  makeUrl(options: ObjectDictionary, endpoint: string) {
+  makeUrl(options: ObjectDictionary, endpoint: Endpoints) {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -39,7 +49,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load(method: string, endpoint: string, callback: (data?: { sources: string }) => void, options = {}) {
+  load(method: Methods, endpoint: Endpoints, callback: (data?: { sources: string }) => void, options = {}) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
