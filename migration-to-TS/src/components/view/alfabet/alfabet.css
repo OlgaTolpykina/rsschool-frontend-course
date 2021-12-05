@@ -1,0 +1,13 @@
+.alfabet {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+}
+
+.alfabet__item:hover {
+  cursor: pointer;
+  color: #69db7e;
+  text-shadow: #FC0 1px 0 10px;
+  transform: scale(1.2);
+}

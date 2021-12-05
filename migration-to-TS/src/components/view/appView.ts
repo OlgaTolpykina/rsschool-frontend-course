@@ -46,9 +46,9 @@ export class AppView {
     this.news.draw(values);
   }
 
-  drawSources(data: IData): void {
+  drawSources(data: IData, letter: string): void {
     const values: ISource[] = data?.sources ? data?.sources : [];
-    this.sources.draw(values);
+    this.sources.draw(values, letter);
   }
 }
 
