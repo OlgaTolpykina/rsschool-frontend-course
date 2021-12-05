@@ -1,4 +1,6 @@
-type ObjectDictionary = { [key: string]: string };
+import { ISource, IArticle, IData } from '../view/appView';
+
+type ObjectDictionary<T> = { [key: string]: T };
 enum Methods {
     GET = 'GET',
     POST = 'POST'
@@ -9,19 +11,19 @@ export enum Endpoints {
     getNews = 'everything'
 }
 
-
-class Loader {
+export type CallbackType<T> = (data: T) => void
+class Loader<T> {
   readonly baseLink;
   readonly options;
 
-  constructor(baseLink: string, options: ObjectDictionary) {
+  constructor(baseLink: T, options: ObjectDictionary<T>) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
   getResp(
-    { endpoint, options }: {endpoint: Endpoints, options?: Record<string, string>},
-    callback = (): void => {
+    { endpoint, options }: {endpoint: Endpoints, options?: Record<string, T>},
+    callback: CallbackType<IData> = () => {
       console.error('No callback for GET response');
     }
   ): void {
@@ -38,7 +40,7 @@ class Loader {
     return res;
   }
 
-  makeUrl(options: ObjectDictionary, endpoint: Endpoints) {
+  makeUrl(options: ObjectDictionary<T>, endpoint: Endpoints): string {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -49,12 +51,12 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load(method: Methods, endpoint: Endpoints, callback: (data?: { sources: string }) => void, options = {}) {
+  load(method: Methods, endpoint: Endpoints, callback: CallbackType<IData>, options = {}): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
-      .then((res) => res.json())
-      .then((data) => callback(data))
-      .catch((err) => console.error(err));
+      .then((res: Response) => res.json())
+      .then((data: IData) => callback(data))
+      .catch((err: Response) => console.error(err));
   }
 }
 

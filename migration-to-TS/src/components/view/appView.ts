@@ -6,7 +6,7 @@ export type Source = {
   name: string;
 };
 
-export interface IArticle {
+export type IArticle = {
   source: Source;
   author: string;
   title: string;
@@ -27,7 +27,12 @@ export interface ISource {
   country: string;
 }
 
-export class AppView {
+export interface IData {
+  articles: IArticle[];
+  sources: ISource[];
+}
+
+export class AppView {  
   news: News;
   sources: Sources;
 
@@ -36,12 +41,12 @@ export class AppView {
     this.sources = new Sources();
   }
 
-  drawNews(data?: { articles: Array<IArticle> }) {
+  drawNews(data: IData): void {
     const values: IArticle[] = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
 
-  drawSources(data?: { sources: Array<ISource> }) {
+  drawSources(data: IData): void {
     const values: ISource[] = data?.sources ? data?.sources : [];
     this.sources.draw(values);
   }

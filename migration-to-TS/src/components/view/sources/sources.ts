@@ -2,7 +2,7 @@ import './sources.css';
 import { ISource } from '../appView';
 
 class Sources {
-  draw(data: ISource[]) {
+  draw(data: ISource[]): void {
     const fragment: DocumentFragment = document.createDocumentFragment();
     const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 

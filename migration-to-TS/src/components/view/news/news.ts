@@ -1,14 +1,14 @@
 import './news.css';
-import { IArticle } from '../appView';
+import { IData, IArticle } from '../appView';
 
 class News {
-  draw(data: IArticle[]) {
+  draw(data: IArticle[]): void {
     const news: IArticle[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
     const fragment: DocumentFragment = document.createDocumentFragment();
     const newsItemTemp: HTMLTemplateElement = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 
-    news.forEach((item: IArticle, idx: number) => {
+    news.forEach((item, idx: number) => {
       const newsClone: HTMLTemplateElement = newsItemTemp.content.cloneNode(true) as HTMLTemplateElement;
 
       if (idx % 2) (newsClone.querySelector('.news__item') as HTMLTemplateElement).classList.add('alt');
