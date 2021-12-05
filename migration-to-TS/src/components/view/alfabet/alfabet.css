@@ -1,8 +1,14 @@
 .alfabet {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   height: 50px;
+}
+
+.alfabet__item {
+  width: 30px;
 }
 
 .alfabet__item:hover {

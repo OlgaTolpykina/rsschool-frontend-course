@@ -14,6 +14,9 @@ class Alfabet {
   draw(): void {
     const alfabet: Array<string> = this.characterRange('A', 'Z').split('');
 
+    const alfabetContainer: HTMLElement = document.querySelector('.alfabet') as HTMLElement;
+    alfabetContainer.innerHTML = '';
+
     const fragment: DocumentFragment = document.createDocumentFragment();
     const sourceItemTemp: HTMLTemplateElement = document.querySelector('#alfabetItemTemp') as HTMLTemplateElement;
 
