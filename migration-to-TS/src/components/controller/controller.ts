@@ -1,5 +1,5 @@
 import AppLoader from './appLoader';
-import { ISource, IArticle, IData } from '../view/appView';
+import { IData } from '../view/appView';
 import { Endpoints, CallbackType } from './loader';
 
 class AppController extends AppLoader {

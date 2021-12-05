@@ -1,17 +1,17 @@
-import { ISource, IArticle, IData } from '../view/appView';
+import { IData } from '../view/appView';
 
 type ObjectDictionary<T> = { [key: string]: T };
 enum Methods {
-    GET = 'GET',
-    POST = 'POST'
+  GET = 'GET',
+  POST = 'POST',
 }
 
 export enum Endpoints {
-    getSources = 'sources',
-    getNews = 'everything'
+  getSources = 'sources',
+  getNews = 'everything',
 }
 
-export type CallbackType<T> = (data: T) => void
+export type CallbackType<T> = (data: T) => void;
 class Loader<T> {
   readonly baseLink;
   readonly options;
@@ -22,7 +22,7 @@ class Loader<T> {
   }
 
   getResp(
-    { endpoint, options }: {endpoint: Endpoints, options?: Record<string, T>},
+    { endpoint, options }: { endpoint: Endpoints; options?: Record<string, T> },
     callback: CallbackType<IData> = () => {
       console.error('No callback for GET response');
     }

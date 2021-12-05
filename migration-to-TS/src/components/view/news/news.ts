@@ -1,5 +1,5 @@
 import './news.css';
-import { IData, IArticle } from '../appView';
+import { IArticle } from '../appView';
 
 class News {
   draw(data: IArticle[]): void {

@@ -1,6 +1,5 @@
 import AppController from '../controller/controller';
-import { CallbackType } from '../controller/loader';
-import { AppView, IArticle, IData, ISource } from '../view/appView';
+import { AppView, IData } from '../view/appView';
 
 class App {
   private controller: AppController;

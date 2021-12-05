@@ -15,7 +15,7 @@ export type IArticle = {
   urlToImage: string;
   publishedAt: string;
   content: string;
-}
+};
 
 export interface ISource {
   id: string;
@@ -32,7 +32,7 @@ export interface IData {
   sources: ISource[];
 }
 
-export class AppView {  
+export class AppView {
   news: News;
   sources: Sources;
 
