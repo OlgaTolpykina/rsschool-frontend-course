@@ -1,9 +1,12 @@
 import { handleOnLoad } from './js/services/Router.js';
 import { soundClick, changeVolumeLevel, setTimer, setTimeToTimer } from './js/services/Utils.js';
 import { quizInit } from './js/views/components/Quiz.js';
+import Bottombar from './js/views/components/Bottombar.js';
 
-
+const mainWrapper = document.querySelector('.application');
 handleOnLoad();
+mainWrapper.innerHTML += Bottombar.render();
+
 window.addEventListener('click', quizInit);
 
 

@@ -2,7 +2,7 @@
   background-image: url('../img/bg-main.jpg');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center bottom;
+  background-position: center;
 }
 
 .settings {
@@ -29,5 +29,20 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 41%;
+  width: 600px;
+}
+
+@media (max-width: 650px) {
+  .content .button-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-category {
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    background-size: 280px;
+  }
 }

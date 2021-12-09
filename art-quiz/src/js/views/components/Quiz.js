@@ -4,15 +4,16 @@ import { Answer } from './Answer.js';
 import data from '../../imagesRu.json';
 import { handleOnLoad ,routes } from '../../services/Router.js';
 import { Modal } from './Modal.js';
+import Bottombar from './Bottombar.js';
 import { questions, results } from '../../services/Utils.js';
 
 export default class Quiz {
-  constructor(questions) {
+  constructor() {
     this.type = '';
     this.category = '';
     this.path = '';
     this.classes = '';
-    this.questions = questions;
+    this.questions = [];
     this.results = [];
     this.categoryName = 0;
     this.imageNumber = 0;
@@ -23,12 +24,19 @@ export default class Quiz {
     this.current = 0;
   }
 
+  async getData() {
+    const res = await fetch('./imagesRu.json');
+    const data = await res.json();
+    this.questions = data;
+  }
+
   handleClickRoute(event) {
     const path = event.target.className.split(' ');
     this.classes = path;
     this.type = event.target.dataset.type;
     this.categoryName = event.target.dataset.categoryname;
     this.innerHTML = event.target.innerHTML;
+    const mainWrapper = document.querySelector('.application');
     
     for (let i = 0; i < routes.length; i++) {
       if (this.classes.includes(routes[i].id)) {
@@ -46,6 +54,7 @@ export default class Quiz {
     if (!this.classes.includes('close-modal')) {
       handleOnLoad();
       this.setContentToDom();
+      mainWrapper.innerHTML += Bottombar.render();
     }
   } 
 
@@ -114,7 +123,8 @@ export default class Quiz {
   }
 
   check () {
-    if(this.innerHTML == data[this.imageNumber].author) {
+    this.getData();
+    if(this.innerHTML == this.questions[this.imageNumber].author) {
       this.right.push(this.imageNumber);
       let modal = new Modal('correct', this.imageNumber, this.questions, this.categoryName);
 
@@ -134,10 +144,11 @@ export default class Quiz {
   }
 }
 
-let quiz = new Quiz(data);
+let quiz = new Quiz();
 
 function quizInit(event) {
   quiz.handleClickRoute(event);
+  quiz.getData();
 }
 
 export { quizInit };

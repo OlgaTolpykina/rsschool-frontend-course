@@ -50,7 +50,7 @@ const handleOnLoad = () => {
   const path = parseLocation();
   const { page = ErrorPage } = findPageByPath(path, routes) || {};
   mainWrapper.innerHTML = page.render();
-  mainWrapper.innerHTML += Bottombar.render();
+  // mainWrapper.innerHTML += Bottombar.render();
 };
 
 export { handleOnLoad, routes };
