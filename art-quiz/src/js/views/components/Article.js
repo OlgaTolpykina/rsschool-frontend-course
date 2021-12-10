@@ -4,6 +4,7 @@ export class Article {
     this.categoryName = categoryName;
     this.answered = localStorage.getItem(`${this.categoryName}`) || 0;
     this.route = route;
+    this.image;
   }
 
   generateArticle() {

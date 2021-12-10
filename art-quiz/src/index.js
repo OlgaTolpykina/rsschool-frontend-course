@@ -4,6 +4,7 @@ import { quizInit } from './js/views/components/Quiz.js';
 import Bottombar from './js/views/components/Bottombar.js';
 
 const mainWrapper = document.querySelector('.application');
+
 handleOnLoad();
 mainWrapper.innerHTML += Bottombar.render();
 

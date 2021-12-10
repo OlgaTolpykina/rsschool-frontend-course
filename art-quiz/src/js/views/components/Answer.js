@@ -3,15 +3,23 @@ import data from '../../imagesRu.json';
 
 export class Answer {
     constructor(imageNumber, categoryName) { 
-        this.allAnswers = data;
+        // this.allAnswers = data;
         this.imageNumber = imageNumber;
         this.categoryName = categoryName;
     }
 
-    generateAnswers() {
+    // async getAnswers() {
+    //     const res = await fetch('./imagesRu.json');
+    //     const data = await res.json();
+    //     this.allAnswers = await data;
+    // }
+
+    generateAnswers(data) {
         if (document.querySelector('.artists-answers')) {
             document.querySelector('.artists-answers').remove();
         }
+
+        const questionWrapper = document.querySelector('.container-question');
 
         let answers = document.createElement('div');
         answers.className = 'artists-answers';
@@ -28,8 +36,8 @@ export class Answer {
         while(variants.length < 4) {
             let randomIndex = getRandomNum(0, 3);
             let index = indexes[randomIndex];
-            if(!variants.includes(this.allAnswers[index].author)) {
-                variants.push(this.allAnswers[index].author);
+            if(!variants.includes(data[index].author)) {
+                variants.push(data[index].author);
             }
         }
 
@@ -42,6 +50,6 @@ export class Answer {
             answers.insertAdjacentElement('afterbegin', answer);
         }
 
-        return answers;
+        questionWrapper.append(answers);
     }
 }

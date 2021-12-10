@@ -295,18 +295,24 @@ var Answer = /*#__PURE__*/function () {
   function Answer(imageNumber, categoryName) {
     (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Answer);
 
-    this.allAnswers = _imagesRu_json__WEBPACK_IMPORTED_MODULE_3__;
+    // this.allAnswers = data;
     this.imageNumber = imageNumber;
     this.categoryName = categoryName;
-  }
+  } // async getAnswers() {
+  //     const res = await fetch('./imagesRu.json');
+  //     const data = await res.json();
+  //     this.allAnswers = await data;
+  // }
+
 
   (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Answer, [{
     key: "generateAnswers",
-    value: function generateAnswers() {
+    value: function generateAnswers(data) {
       if (document.querySelector('.artists-answers')) {
         document.querySelector('.artists-answers').remove();
       }
 
+      var questionWrapper = document.querySelector('.container-question');
       var answers = document.createElement('div');
       answers.className = 'artists-answers';
       var indexes = [this.imageNumber];
@@ -325,8 +331,8 @@ var Answer = /*#__PURE__*/function () {
         var randomIndex = (0,_services_Utils_js__WEBPACK_IMPORTED_MODULE_2__.getRandomNum)(0, 3);
         var index = indexes[randomIndex];
 
-        if (!variants.includes(this.allAnswers[index].author)) {
-          variants.push(this.allAnswers[index].author);
+        if (!variants.includes(data[index].author)) {
+          variants.push(data[index].author);
         }
       }
 
@@ -338,7 +344,7 @@ var Answer = /*#__PURE__*/function () {
         answers.insertAdjacentElement('afterbegin', answer);
       }
 
-      return answers;
+      questionWrapper.append(answers);
     }
   }]);
 
@@ -370,6 +376,7 @@ var Article = /*#__PURE__*/function () {
     this.categoryName = categoryName;
     this.answered = localStorage.getItem("".concat(this.categoryName)) || 0;
     this.route = route;
+    this.image;
   }
 
   (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Article, [{
@@ -625,12 +632,12 @@ var Quiz = /*#__PURE__*/function () {
     this.category = '';
     this.path = '';
     this.classes = '';
-    this.questions = [];
     this.results = [];
     this.categoryName = 0;
     this.imageNumber = 0;
     this.innerHTML = '';
     this.answers = [];
+    this.variants;
     this.right = [];
     this.wrong = [];
     this.current = 0;
@@ -639,33 +646,42 @@ var Quiz = /*#__PURE__*/function () {
   (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Quiz, [{
     key: "getData",
     value: function () {
-      var _getData = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().mark(function _callee() {
-        var res, data;
+      var _getData = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().mark(function _callee(url) {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return fetch('./imagesRu.json');
+                return fetch(url);
 
               case 2:
-                res = _context.sent;
-                _context.next = 5;
-                return res.json();
+                response = _context.sent;
+
+                if (response.ok) {
+                  _context.next = 5;
+                  break;
+                }
+
+                throw new Error("\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u043E \u0430\u0434\u0440\u0435\u0441\u0443 ".concat(url, ", \u0441\u0442\u0430\u0442\u0443\u0441 \u043E\u0448\u0438\u0431\u043A\u0438 ").concat(response.status));
 
               case 5:
-                data = _context.sent;
-                this.questions = data;
+                ;
+                _context.next = 8;
+                return response.json();
 
-              case 7:
+              case 8:
+                return _context.abrupt("return", _context.sent);
+
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee);
       }));
 
-      function getData() {
+      function getData(_x) {
         return _getData.apply(this, arguments);
       }
 
@@ -694,15 +710,21 @@ var Quiz = /*#__PURE__*/function () {
         this.current = 0;
       }
 
-      if (!this.classes.includes('close-modal')) {
+      if (this.classes.includes('categories-route') || this.classes.includes('home-route') || this.classes.includes('settings-route') || this.classes.includes('artists-quiz') || this.classes.includes('pictures-quiz')) {
         (0,_services_Router_js__WEBPACK_IMPORTED_MODULE_8__.handleOnLoad)();
         this.setContentToDom();
         mainWrapper.innerHTML += _Bottombar_js__WEBPACK_IMPORTED_MODULE_10__["default"].render();
+      }
+
+      if (this.classes.includes('artists-answer')) {
+        this.setContentToDom();
       }
     }
   }, {
     key: "setContentToDom",
     value: function setContentToDom() {
+      var _this = this;
+
       var mainWrapper = document.querySelector('.application');
 
       switch (this.path) {
@@ -713,14 +735,16 @@ var Quiz = /*#__PURE__*/function () {
 
         case '/artists':
           if (this.current > 0 && this.current <= 10 && !this.classes.includes('close-modal')) {
-            this.check();
+            this.getData('./imagesRu.json').then(function (data) {
+              return _this.check(data);
+            });
           } else if (this.current > 10) {
             this.end();
           }
 
           var questionWrapper = document.querySelector('.container-question');
           questionWrapper.insertAdjacentElement('beforeend', this.renderQuestionToDom());
-          questionWrapper.insertAdjacentElement('beforeend', this.renderAnswersToDom());
+          this.renderAnswersToDom();
           this.current++;
           break;
 
@@ -769,23 +793,45 @@ var Quiz = /*#__PURE__*/function () {
     }
   }, {
     key: "renderAnswersToDom",
-    value: function renderAnswersToDom() {
-      return this.answers.generateAnswers();
-    }
+    value: function () {
+      var _renderAnswersToDom = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().mark(function _callee2() {
+        var _this2 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_3___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return this.getData('./imagesRu.json').then(function (data) {
+                  return _this2.answers.generateAnswers(data);
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function renderAnswersToDom() {
+        return _renderAnswersToDom.apply(this, arguments);
+      }
+
+      return renderAnswersToDom;
+    }()
   }, {
     key: "check",
-    value: function check() {
-      this.getData();
-
-      if (this.innerHTML == this.questions[this.imageNumber].author) {
+    value: function check(data) {
+      if (this.innerHTML == data[this.imageNumber].author) {
         this.right.push(this.imageNumber);
-        var modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_9__.Modal('correct', this.imageNumber, this.questions, this.categoryName);
+        var modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_9__.Modal('correct', this.imageNumber, data, this.categoryName);
         var mainWrapper = document.querySelector('.application');
         mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());
       } else {
         this.wrong.push(this.imageNumber);
 
-        var _modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_9__.Modal('wrong', this.imageNumber, this.questions, this.categoryName);
+        var _modal = new _Modal_js__WEBPACK_IMPORTED_MODULE_9__.Modal('wrong', this.imageNumber, data, this.categoryName);
 
         var _mainWrapper = document.querySelector('.application');
 
@@ -806,7 +852,6 @@ var quiz = new Quiz();
 
 function quizInit(event) {
   quiz.handleClickRoute(event);
-  quiz.getData();
 }
 
 

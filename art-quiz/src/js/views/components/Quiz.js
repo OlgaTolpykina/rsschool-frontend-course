@@ -13,21 +13,25 @@ export default class Quiz {
     this.category = '';
     this.path = '';
     this.classes = '';
-    this.questions = [];
     this.results = [];
     this.categoryName = 0;
     this.imageNumber = 0;
     this.innerHTML = '';
     this.answers = [];
+    this.variants;
     this.right = [];
     this.wrong = [];
     this.current = 0;
   }
 
-  async getData() {
-    const res = await fetch('./imagesRu.json');
-    const data = await res.json();
-    this.questions = data;
+  async getData(url) {
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response.status}`);
+    };
+
+    return await response.json();
   }
 
   handleClickRoute(event) {
@@ -51,11 +55,20 @@ export default class Quiz {
       this.current = 0;
     } 
 
-    if (!this.classes.includes('close-modal')) {
+    if (this.classes.includes('categories-route') 
+        || this.classes.includes('home-route') 
+        || this.classes.includes('settings-route')
+        || this.classes.includes('artists-quiz')
+        || this.classes.includes('pictures-quiz')) {
       handleOnLoad();
       this.setContentToDom();
       mainWrapper.innerHTML += Bottombar.render();
     }
+
+    if (this.classes.includes('artists-answer')) {
+      this.setContentToDom();
+    }
+    
   } 
 
   setContentToDom() {
@@ -68,14 +81,14 @@ export default class Quiz {
         break;
       case '/artists':
         if (this.current > 0 && this.current <= 10 && !this.classes.includes('close-modal')) {
-          this.check();  
+          this.getData('./imagesRu.json').then((data) => this.check(data));  
         } else if(this.current > 10){
           this.end();
         }
 
         const questionWrapper = document.querySelector('.container-question');
         questionWrapper.insertAdjacentElement('beforeend', this.renderQuestionToDom());
-        questionWrapper.insertAdjacentElement('beforeend', this.renderAnswersToDom());
+        this.renderAnswersToDom();
         this.current++;
         break;
       default:
@@ -118,21 +131,21 @@ export default class Quiz {
     return question.generateQuestion();
   }
 
-  renderAnswersToDom() {
-    return this.answers.generateAnswers();
+ async renderAnswersToDom() {
+    await this.getData('./imagesRu.json')
+      .then((data) => this.answers.generateAnswers(data));
   }
 
-  check () {
-    this.getData();
-    if(this.innerHTML == this.questions[this.imageNumber].author) {
+  check(data) {
+    if(this.innerHTML == data[this.imageNumber].author) {
       this.right.push(this.imageNumber);
-      let modal = new Modal('correct', this.imageNumber, this.questions, this.categoryName);
+      let modal = new Modal('correct', this.imageNumber, data, this.categoryName);
 
       const mainWrapper = document.querySelector('.application');
       mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());
     } else {
       this.wrong.push(this.imageNumber);
-      let modal = new Modal('wrong', this.imageNumber, this.questions, this.categoryName);
+      let modal = new Modal('wrong', this.imageNumber, data, this.categoryName);
 
       const mainWrapper = document.querySelector('.application');
       mainWrapper.insertAdjacentElement('beforeend', modal.generateModal());
@@ -148,7 +161,6 @@ let quiz = new Quiz();
 
 function quizInit(event) {
   quiz.handleClickRoute(event);
-  quiz.getData();
 }
 
 export { quizInit };
