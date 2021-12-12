@@ -1,0 +1,36 @@
+.icon {
+  display: inline-block;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  @extend %transition;
+  &:hover {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+.volume {
+    background-image: url("../assets/img/svg/audio.svg");
+}
+
+.mute {
+  background-image: url("../assets/img/svg/mute.svg");
+}
+
+.theme {
+  background-image: url("../assets/img/svg/snowflake.svg");
+}
+
+.tree {
+  background-image: url("../assets/img/svg/tree.svg");
+}
+
+.favorite {
+  background-image: url("../assets/img/svg/ball-2.svg");
+  background-size: 40px 44px;
+  background-position: left -6px;
+}

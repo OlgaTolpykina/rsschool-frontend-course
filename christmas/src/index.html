@@ -8,21 +8,27 @@
   <title>Christmas</title>
 </head>
 <body>
-  <header>
-    <div>
-      <span></span>
-      <span></span>
-      <input type="search">
-      <a href="#"></a>
-      <a href="#">Игрушки</a>
-      <a href="#">Ёлка</a>
-      <div>
-        <span>0</span>
+  <header class="header">
+    <div class="wrapper header__wrapper">
+      <div class="inner-container">
+        <span class="icon volume"></span>
+        <span class="icon theme"></span>
+        <input type="search" class="search" autocomplete="off" autofocus>
+      </div>
+      <div class="inner-container">
+        <div class="navigation">
+          <a href="#" class="link icon tree"></a>
+          <a href="#" class="link link_active">Игрушки</a>
+          <a href="#" class="link link_unactive">Ёлка</a>
+        </div>
+        <div class="icon favorite">
+          <span class="favorite-number">0</span>
+        </div>
       </div>
     </div>
   </header>
   <main>
-    <div>
+    <div class="wrapper">
       <div>
         <div>
           <span>Сортировать</span>
@@ -83,7 +89,7 @@
         </div>
         <div>
           <div>
-            <span>Колитчество экземпляров</span>
+            <span>Количество экземпляров</span>
             <input type="range">
             <span>1</span>
             <span>100</span>
@@ -114,7 +120,7 @@
     </div>
   </main>
   <footer>
-    <div>
+    <div class="wrapper">
       <div>
         <p>©</p>
         <p>2021</p>

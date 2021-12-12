@@ -1,5 +1,15 @@
-$color-grey: #a4a4a4;
+@import 'base/normalize';
 
-body {
-  color: $color-grey;
-}
+//Abstract
+@import 'abstract/constants';
+@import 'abstract/mixins';
+@import 'abstract/placeholders';
+
+//Base
+@import 'base/base';
+@import 'base/icons';
+@import 'base/links';
+
+//Layouts
+@import 'layouts/wrapper';
+@import 'layouts/header';
