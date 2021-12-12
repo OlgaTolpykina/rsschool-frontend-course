@@ -7,9 +7,13 @@
 
 //Base
 @import 'base/base';
+@import 'base/buttons';
 @import 'base/icons';
 @import 'base/links';
+@import 'base/card';
 
 //Layouts
 @import 'layouts/wrapper';
 @import 'layouts/header';
+@import 'layouts/main';
+@import 'layouts/footer';

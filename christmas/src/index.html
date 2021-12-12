@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./favicon.ico" rel="shortcut icon"/>
+  <link href="./assets/img/favicon.ico" rel="shortcut icon"/>
   <title>Christmas</title>
 </head>
 <body>
@@ -17,9 +17,9 @@
       </div>
       <div class="inner-container">
         <div class="navigation">
-          <a href="#" class="link icon tree"></a>
-          <a href="#" class="link link_active">Игрушки</a>
-          <a href="#" class="link link_unactive">Ёлка</a>
+          <a href="#" class="link__text icon tree"></a>
+          <a href="#" class="link__text link_active">Игрушки</a>
+          <a href="#" class="link__text link_unactive">Ёлка</a>
         </div>
         <div class="icon favorite">
           <span class="favorite-number">0</span>
@@ -27,23 +27,28 @@
       </div>
     </div>
   </header>
-  <main>
-    <div class="wrapper">
+  <main class="content content__gifts">
+    <div class="wrapper content__wrapper">
       <div>
-        <div>
-          <span>Сортировать</span>
-          <select name="#" id="#"></select>
+        <div class="settings settings_wide">
+          <span class="settings__title">Сортировать</span>
+          <select class="select button">
+            <option selected="" value="sort-name-max">По названию от «А» до «Я»</option>
+            <option value="sort-name-min">По названию от «Я» до «А»</option>
+            <option value="sort-count-max">По количеству по возрастанию</option>
+            <option value="sort-count-min">По количеству по убыванию</option>
+          </select>
         </div>
-          <div>
-          <div>
-            <span>Категории</span>
+        <div class="filters">
+          <div class="settings settings_narrow">
+            <p class="settings__title">Категории</p>
             <input type="checkbox" id="categories" checked>
             <label for="categories">Все</label>
             <input type="checkbox" id="favorities">
-            <label for="favorities"></label>
+            <label for="favorities">Только любимые</label>
           </div>
-          <div>
-            <span>Размер</span>
+          <div class="settings settings_size">
+            <p class="settings__title">Размер</p>
             <input type="checkbox" id="big">
             <label for="big">Большая</label>
             <input type="checkbox" id="medium">
@@ -51,82 +56,186 @@
             <input type="checkbox" id="small">
             <label for="small">Маленькая</label>
           </div>
-          <div>
-            <span>Цвет</span>
+          <div class="settings settings_narrow">
+            <p class="settings__title">Цвет</p>
             <input type="checkbox" id="white">
             <input type="checkbox" id="yellow">
             <input type="checkbox" id="red">
             <input type="checkbox" id="blue">
             <input type="checkbox" id="green">
           </div>
-          <div>
-            <span>Форма</span>
-            <div>
-              <span></span>
-              <span>Колокол</span>
-            </div>
-            <div>
-              <span></span>
-              <span>Шар</span>
-            </div>
-            <div>
-              <span></span>
-              <span>Шишка</span>
-            </div>
-            <div>
-              <span></span>
-              <span>Звезда</span>
-            </div>
-            <div>
-              <span></span>
-              <span>Снежинка</span>
-            </div>
-            <div>
-              <span></span>
-              <span>Фигурка</span>
-            </div>
+          <div class="settings settings_narrow">
+            <p class="settings__title">Форма</p>
+            <span class="icon_small bell"></span>
+            <span class="icon_small ball"></span>
+            <span class="icon_small cone"></span>
+            <span class="icon_small snowflake"></span>
+            <span class="icon_small toy"></span>
           </div>
         </div>
-        <div>
-          <div>
-            <span>Количество экземпляров</span>
-            <input type="range">
-            <span>1</span>
-            <span>100</span>
+        <div class="filters">
+          <div class="range">
+            <p class="settings__title">Количество экземпляров</p>
+            <span class="number">1</span>
+            <input class="settings__input" type="range" step="1" value="5" min="1" max="10">
+            <span class="number">10</span>
           </div>
-          <div>
-            <span>Год приобретения</span>
-            <input type="range">
-            <span>1940</span>
-            <span>2021</span>
+          <div class="range">
+            <p class="settings__title">Год приобретения</p>
+            <span class="number">1940</span>
+            <input class="settings__input" type="range" step="1" min="1940" max="2021" value="1980">
+            <span class="number">2021</span>
           </div>
-          <div></div>
         </div>
-        <button>Сбросить фильтры</button>
-        <button>Сбросить настройки</button>
+        <button class="button button_small">Сохранить</button>
+        <button class="button button_small">Сбросить</button>
       </div>
-      <div>
-        <div>
-          <p>Большой шар с рисунком Цветок</p>
-          <img src="#" alt="">
-          <p>Год покупки:<span>1960</span>год</p>
-          <p>Форма игрушки:<span>шар</span></p>
-          <p>Цвет игрушки:<span>жёлтый</span></p>
-          <p>Размер игрушки:<span>большая</span></p>
-          <p>Любимая:<span>нет</span></p>
+      <div class="cards-container">
+        <div class="cards-inner-container">
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
+          <div class="card active">
+            <h2 class="card__title">Большой шар с рисунком Цветок</h2>
+            <img class="card__image" src="./assets/img/toys/1.png" alt="">
+            <div class="card__description">
+              <p>Год покупки: <span>1960</span>год</p>
+              <p>Форма игрушки: <span>шар</span></p>
+              <p>Цвет игрушки: <span>жёлтый</span></p>
+              <p>Размер игрушки: <span>большая</span></p>
+              <p>Любимая: <span>нет</span></p>
+            </div>
+            <div class="ribbon"></div>
+          </div>
         </div>
-        <div></div>
       </div>
     </div>
   </main>
-  <footer>
-    <div class="wrapper">
-      <div>
+  <footer class="footer">
+    <div class="wrapper footer__wrapper">
+      <div class="info">
         <p>©</p>
         <p>2021</p>
-        <a href="https://github.com/OlgaTolpykina" target="_blank">Olga Tolpykina</a>
+        <a class="link" href="https://github.com/OlgaTolpykina" target="_blank">Olga Tolpykina</a>
       </div>
-      <a href="https://rs.school/" target="_blank"></a>
+      <a class="link rss-logo" href="https://rs.school/" target="_blank"></a>
     </div>
   </footer>
 </body>

@@ -1,4 +1,11 @@
 .link {
+  cursor: pointer;
+  &:hover {
+    color: $color-active;
+  }
+}
+
+.link__text {
   display: block;
   position: relative;
   font-size: 30px;

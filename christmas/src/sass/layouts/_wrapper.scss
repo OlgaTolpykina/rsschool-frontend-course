@@ -3,6 +3,25 @@
   margin: auto;
 }
 
+
+.header__wrapper {
+  @include desktop-grid;
+  @include media-tablet {
+    @include tablet-grid;
+  }
+}
+
 .inner-container {
+  @include flex;
+}
+
+.content__wrapper {
+  @include desktop-grid;
+  @include media-tablet {
+    @include tablet-grid;
+  }
+}
+
+.footer__wrapper {
   @include flex;
 }

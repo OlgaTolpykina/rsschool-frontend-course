@@ -1,0 +1,86 @@
+.content {
+  padding: 20px;
+}
+
+// Стили для страницы с игрушками
+
+.content__gifts {
+  background-color: $color-background;
+}
+
+.settings {
+  @include flex;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+    &__title {
+      font-size: 1.5rem;
+    } 
+    &_wide {
+      width: 350px;
+    }
+    &_narrow {
+      width: 150px;
+    }
+    &_size {
+      width: 220px;
+    }
+}
+
+.filters {
+  margin-bottom: 50px;
+}
+
+p.settings__title {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.select {
+  appearance: none;
+  width: 240px;
+  height: 40px;
+  margin: 10px 0;
+  background-image: url("../assets/img/svg/arrow-down.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 210px center;
+  font-size: 1.5rem;
+}
+
+.range {
+  @include flex;
+  width: 350px;
+  margin-bottom: 20px;
+}
+
+.number {
+  font-size: 1.2rem;
+}
+
+.settings__input {
+  appearance: none;
+  width: 280px;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(to right, $color-active 0%, $color-active 47%, $color-white 47%, $color-white 100%);
+  &::-webkit-slider-thumb {
+    appearance: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background-image: url("../assets/img/svg/ball.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.cards-container {
+  overflow-y: scroll;
+}
+
+.cards-inner-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  height: 520px;
+}

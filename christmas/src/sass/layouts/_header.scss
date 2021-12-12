@@ -3,13 +3,6 @@
   background-color: $color-background;
 }
 
-.header__wrapper {
-  @include desktop-grid;
-  @include media-tablet {
-    @include tablet-grid;
-  }
-}
-
 .search {
   width: 160px;
   height: 20px;
@@ -18,8 +11,8 @@
   border-radius: 20px;
   border: 1px solid #278D9F;
   color: #fff;
-  font-size: 18px;
-  background-color: rgba(31, 112, 127, .3);
+  font-size: 1.8rem;
+  background-color: $color-buttons;
   background-image: url("../assets/img/svg/search.svg");
   background-size: 20px;
   background-repeat: no-repeat;
@@ -44,5 +37,6 @@
   margin-left: 5px;
   margin-top: 7px;
   text-align: center;
+  font-size: 1.5rem;
   line-height: 30px;
 }

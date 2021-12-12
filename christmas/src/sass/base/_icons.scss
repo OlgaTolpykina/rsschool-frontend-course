@@ -13,6 +13,15 @@
   }
 }
 
+.icon_small {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .volume {
     background-image: url("../assets/img/svg/audio.svg");
 }
@@ -34,3 +43,23 @@
   background-size: 40px 44px;
   background-position: left -6px;
 }
+
+.bell {
+  background-image: url("../assets/img/svg/bell.svg");
+}
+
+.ball {
+  background-image: url("../assets/img/svg/ball.svg");
+}
+
+.cone {
+  background-image: url("../assets/img/svg/cone.svg");
+}
+
+.snowflake {
+  background-image: url("../assets/img/svg/snowflake.svg");
+}
+
+.toy {
+  background-image: url("../assets/img/svg/toy.svg");
+} 
