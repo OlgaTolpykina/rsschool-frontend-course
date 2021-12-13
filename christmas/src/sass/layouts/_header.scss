@@ -6,18 +6,11 @@
 .search {
   width: 160px;
   height: 20px;
-  padding: 5px 15px;
-  outline: none;
-  border-radius: 20px;
-  border: 1px solid #278D9F;
-  color: #fff;
   font-size: 1.8rem;
-  background-color: $color-buttons;
   background-image: url("../assets/img/svg/search.svg");
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: 160px center;
-  backdrop-filter: blur(6px);
   @include media-tablet {
     width: 110px;
     background-position: 100px center;

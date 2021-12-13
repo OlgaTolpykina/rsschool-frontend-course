@@ -1,0 +1,37 @@
+
+.filters {
+  margin-bottom: 50px;
+}
+
+.filter {
+  @include flex;
+  &__input {
+    display: none;
+  }
+  &__label {
+    display: flex;
+    @extend %input-style;
+    margin-left: 10px;
+    @extend %element-style;
+    &:hover {
+      background-color: $color-active;
+    }
+  }
+}
+
+.filter__input:checked + .filter__label {
+  background-color: $color-active;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 20px;
+    height: 20px;
+    background-image: url("../assets/img/svg/snowflake.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

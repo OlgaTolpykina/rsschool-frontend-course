@@ -15,11 +15,16 @@
 
 .icon_small {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  &:hover {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
 }
 
 .volume {

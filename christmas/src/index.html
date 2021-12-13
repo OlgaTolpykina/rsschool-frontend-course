@@ -13,7 +13,7 @@
       <div class="inner-container">
         <span class="icon volume"></span>
         <span class="icon theme"></span>
-        <input type="search" class="search" autocomplete="off" autofocus>
+        <input type="search" class="search button" autocomplete="off" autofocus>
       </div>
       <div class="inner-container">
         <div class="navigation">
@@ -42,27 +42,48 @@
         <div class="filters">
           <div class="settings settings_narrow">
             <p class="settings__title">Категории</p>
-            <input type="checkbox" id="categories" checked>
-            <label for="categories">Все</label>
-            <input type="checkbox" id="favorities">
-            <label for="favorities">Только любимые</label>
+            <div class="filter">
+              Все:
+              <div>
+                <input class="filter__input" type="checkbox" id="categories" checked>
+                <label class="filter__label" for="categories"></label>
+              </div>
+            </div>
+            <div class="filter">
+              Только любимые:
+              <div>
+                <input class="filter__input" type="checkbox" id="favorities">
+                <label class="filter__label" for="favorities"></label>
+              </div>
+            </div>
           </div>
-          <div class="settings settings_size">
+          <div class="settings settings_wide">
             <p class="settings__title">Размер</p>
-            <input type="checkbox" id="big">
-            <label for="big">Большая</label>
-            <input type="checkbox" id="medium">
-            <label for="medium">Средняя</label>
-            <input type="checkbox" id="small">
-            <label for="small">Маленькая</label>
+            <div class="filter">
+              Большая:
+              <div>
+                <input class="filter__input" type="checkbox" id="big">
+                <label class="filter__label" for="big"></label>
+              </div>
+            </div>
+            <div class="filter">
+              Средняя:
+              <input class="filter__input" type="checkbox" id="medium">
+              <label class="filter__label" for="medium"></label>
+            </div>
+            <div class="filter">
+              Маленькая:
+              <input class="filter__input" type="checkbox" id="small">
+              <label class="filter__label" for="small"></label>
+            </div>
           </div>
-          <div class="settings settings_narrow">
+          <div class="settings settings_narrow color">
             <p class="settings__title">Цвет</p>
-            <input type="checkbox" id="white">
-            <input type="checkbox" id="yellow">
-            <input type="checkbox" id="red">
-            <input type="checkbox" id="blue">
-            <input type="checkbox" id="green">
+            <button class="active" data-filter="белый"></button>
+            <button class="active" data-filter="желтый"></button>
+            <button data-filter="красный"></button>
+            <button data-filter="синий"></button>
+            <button data-filter="зеленый"></button>
           </div>
           <div class="settings settings_narrow">
             <p class="settings__title">Форма</p>
@@ -90,7 +111,7 @@
         <button class="button button_small">Сохранить</button>
         <button class="button button_small">Сбросить</button>
       </div>
-      <div class="cards-container">
+      <div class="cards-container cards-layout">
         <div class="cards-inner-container">
           <div class="card active">
             <h2 class="card__title">Большой шар с рисунком Цветок</h2>

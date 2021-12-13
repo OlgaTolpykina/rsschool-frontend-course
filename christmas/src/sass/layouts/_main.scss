@@ -10,24 +10,17 @@
 
 .settings {
   @include flex;
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
     &__title {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     } 
     &_wide {
       width: 350px;
     }
     &_narrow {
-      width: 150px;
+      width: 250px;
     }
-    &_size {
-      width: 220px;
-    }
-}
-
-.filters {
-  margin-bottom: 50px;
 }
 
 p.settings__title {
@@ -54,7 +47,7 @@ p.settings__title {
 }
 
 .number {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .settings__input {
@@ -80,7 +73,33 @@ p.settings__title {
 
 .cards-inner-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
   height: 520px;
+}
+
+.cards-layout {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1300px) {
+  .cards-inner-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  };
+}
+
+@media (max-width: 1100px) {
+  .cards-inner-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  };
+}
+
+@media (max-width: 880px) {
+  .cards-inner-container {
+    grid-template-columns: 1fr;
+  };
 }
