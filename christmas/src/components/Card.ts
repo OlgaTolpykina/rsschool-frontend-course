@@ -17,6 +17,7 @@ export class Card {
   readonly size: string;
   
   readonly favorite: boolean;
+  addEventListener: any;
 
   constructor({ num, name, count, year, shape, color, size, favorite }: ICardData) {
     this.num = num;
