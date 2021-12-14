@@ -40,7 +40,8 @@ export class Card {
           `<h2 class="card__title">${this.name}</h2>
            <img class="card__image" src="./assets/img/${this.num}.png" alt="${this.name}">
            <div class="card__description">
-            <p>Год покупки: <span>${this.year}</span>год</p>
+            <p>Количество: <span>${this.count}</span></p>
+            <p>Год покупки: <span>${this.year}</span> год</p>
             <p>Форма игрушки: <span>${this.shape}</span></p>
             <p>Цвет игрушки: <span>${this.color}</span></p>
             <p>Размер игрушки: <span>${this.size}</span></p>
