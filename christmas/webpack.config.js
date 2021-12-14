@@ -25,7 +25,7 @@ module.exports = ({ development }) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
-    assetModuleFilename: 'assets/[hash][ext]',
+    // assetModuleFilename: 'assets/[hash][ext]',
   },
   module: {
     rules: [
@@ -47,14 +47,19 @@ module.exports = ({ development }) => ({
         type: 'asset/resource',
       },
       {
+        test: /.json$/,
+        type: 'asset/resource',
+
+      },
+      {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-      }
-    ]
+      },
+    ],
   },
   resolve: {
     extensions: ['.ts', '.js']
@@ -69,10 +74,10 @@ module.exports = ({ development }) => ({
       cleanStaleWebpackAssets: false 
     }),
     new CopyPlugin({
-      patterns: [{
-        from: 'public',
-        noErrorOnMissing: true,
-      }],
+      patterns: [
+        { from: "./src/assets/img/toys", to: "./assets/img" },
+        { from: "./public", to: "./assets/img" }
+      ],
     }),
   ],
   ...devServer(development)

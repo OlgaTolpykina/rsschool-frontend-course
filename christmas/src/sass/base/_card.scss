@@ -14,6 +14,7 @@
 
 .card__title {
   width: 100%;
+  min-height: 46.4px;
   text-align: center;
   font-size: 2rem;
 }
@@ -34,9 +35,9 @@
 .ribbon {
   position: absolute;
   top: 98px;
-  width: 50px;
+  width: 40px;
   height: 40px;
-  background: $color-blue;
+  background: $color-cyan;
   left: -8px;
   &::before {
     content: "";
