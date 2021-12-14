@@ -9,6 +9,9 @@
   cursor: pointer;
   &:hover {
     transform: scale(1.01);
+    & .ribbon {
+      transform: scale(0.98);
+    }
   }
 }
 
