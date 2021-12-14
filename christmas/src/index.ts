@@ -7,6 +7,7 @@ import { ICardData } from './components/ICardData';
 //Отрисовка карточек на странице с игрушками
 
 export class Application {
+  selectedCards: Array<ICardData> = [];
 
 
   renderCards(): void {
@@ -16,8 +17,6 @@ export class Application {
         const cardsWrapper:HTMLElement = document.querySelector('.cards-inner-container') as HTMLElement;
         cardsWrapper.innerHTML = '';
 
-        const selectedCards: Array<ICardData> = [];
-
         data.forEach((cardInfo: ICardData) => {
           const card = new Card(cardInfo);
           const cardElement:HTMLElement = card.generateCard();
@@ -25,25 +24,29 @@ export class Application {
           cardsWrapper.append(cardElement);
 
           cardElement.addEventListener('click', () => {
-
-            if (selectedCards.length < 20 && !selectedCards.includes(card)) {
-              selectedCards.push(card);
-              cardElement.classList.add('active');
-              (document.querySelector('.favorite-number') as HTMLElement).innerHTML = `${selectedCards.length}`;
-            } else if(selectedCards.includes(card)) {
-              let index = selectedCards.indexOf(card);
-              selectedCards.splice(index, 1);
-              cardElement.classList.remove('active');
-              (document.querySelector('.favorite-number') as HTMLElement).innerHTML = `${selectedCards.length}`;
-            } else {
-              const limitPhrase = document.createElement('p');
-              limitPhrase.className = 'favorite-number_limit';
-              limitPhrase.innerHTML = 'Извините, все слоты заполнены';
-              (document.querySelector('.favorite')as HTMLElement).append(limitPhrase);
-            }
+            this.getSelectedCards(card, cardElement);
           });
         });
       });
+  }
+
+  getSelectedCards(card: Card, cardElement:HTMLElement):void {
+
+    if (this.selectedCards.length < 20 && !this.selectedCards.includes(card)) {
+        this.selectedCards.push(card);
+        cardElement.classList.add('active');
+        (document.querySelector('.favorite-number') as HTMLElement).innerHTML = `${this.selectedCards.length}`;
+    } else if (this.selectedCards.includes(card)) {
+        let index = this.selectedCards.indexOf(card);
+        this.selectedCards.splice(index, 1);
+        cardElement.classList.remove('active');
+        (document.querySelector('.favorite-number') as HTMLElement).innerHTML = `${this.selectedCards.length}`;
+    } else {
+        const limitPhrase = document.createElement('p');
+        limitPhrase.className = 'favorite-number_limit';
+        limitPhrase.innerHTML = 'Извините, все слоты заполнены';
+        (document.querySelector('.favorite')as HTMLElement).append(limitPhrase);
+    }
   }
 }
 
