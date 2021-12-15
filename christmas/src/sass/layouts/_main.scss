@@ -1,5 +1,5 @@
 .content {
-  padding: 20px;
+  padding: 15px;
 }
 
 // Стили для страницы с игрушками
@@ -30,20 +30,20 @@ p.settings__title {
 
 .select {
   appearance: none;
-  width: 240px;
+  width: 325px;
   height: 40px;
   margin: 10px 0;
   background-image: url("../assets/img/svg/arrow-down.svg");
   background-size: 20px;
   background-repeat: no-repeat;
-  background-position: 210px center;
+  background-position: 285px center;
   font-size: 1.5rem;
 }
 
 .range {
   @include flex;
   width: 350px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .number {
