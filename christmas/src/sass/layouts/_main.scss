@@ -44,6 +44,15 @@ p.settings__title {
   @include flex;
   width: 350px;
   margin-bottom: 15px;
+  &__container {
+    @include flex;
+    flex-wrap: nowrap;
+    text-align: center;
+    pointer-events: none;
+    &_inner {
+      width: 330px;
+    }
+  }
 }
 
 .number {
@@ -52,18 +61,32 @@ p.settings__title {
 
 .settings__input {
   appearance: none;
+  position: relative;
   width: 280px;
   height: 3px;
   border-radius: 10px;
-  background: linear-gradient(to right, $color-active 0%, $color-active 47%, $color-white 47%, $color-white 100%);
+  background: $color-active;
+  &:nth-child(1) {
+    top: 5px;
+  }
+  &:nth-child(2) {
+    bottom: 5px;
+  }
   &::-webkit-slider-thumb {
+    position: relative;
     appearance: none;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     border-radius: 100%;
-    background-image: url("../assets/img/svg/ball.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-color: $color-active;
+    pointer-events: all;
+    &:hover {
+      cursor: w-resize;
+    }
+    &:active {
+      background-color: $color-white;
+      border: 3px solid $color-active;
+    }
   }
 }
 

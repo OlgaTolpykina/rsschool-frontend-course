@@ -97,15 +97,25 @@
         <div class="filters">
           <div class="range">
             <p class="settings__title">Количество экземпляров</p>
-            <span class="number">1</span>
-            <input class="settings__input" type="range" step="1" value="5" min="1" max="10">
-            <span class="number">10</span>
+            <div class="range__container">
+              <span class="number" id="range1">1</span>
+              <div class="range__container_inner">
+                <input class="settings__input" type="range" step="1" value="0" min="0" max="10">
+                <input class="settings__input" type="range" step="1" value="10" min="0" max="10">
+              </div>
+              <span class="number" id="range2">10</span>
+            </div>
           </div>
           <div class="range">
             <p class="settings__title">Год приобретения</p>
-            <span class="number">1940</span>
-            <input class="settings__input" type="range" step="1" min="1940" max="2021" value="1980">
-            <span class="number">2021</span>
+            <div class="range__container">
+              <span class="number" id="range3">1940</span>
+              <div class="range__container_inner">
+                <input class="settings__input" type="range" step="1" min="1940" max="2021" value="1940">
+                <input class="settings__input" type="range" step="1" min="1940" max="2021" value="2021">
+              </div>
+              <span class="number" id="range4">2021</span>
+            </div>
           </div>
         </div>
         <button class="button button_small">Сохранить</button>

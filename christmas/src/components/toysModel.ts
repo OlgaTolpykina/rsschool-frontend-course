@@ -17,6 +17,44 @@ export class Toys {
 
   getCardsList(): void  {
 
+    //////
+    // const sliders: NodeListOf<HTMLInputElement> = document.querySelectorAll('.settings__input');
+    // let minGap = 0;
+    // let displayValueOne: HTMLInputElement = document.querySelector('#range1') as HTMLInputElement;
+    // let displayValueTwo: HTMLInputElement = document.querySelector('#range2') as HTMLInputElement;
+    // let sliderTrack: HTMLInputElement = document.querySelector('.settings__input') as HTMLInputElement;
+    // let sliderMaxValue = sliderTrack.max;
+
+
+    // sliders[0].addEventListener('input', (e) => {
+    //   if(parseInt(sliders[1].value) - parseInt(sliders[0].value) <= minGap){
+    //     sliders[0].value = `${parseInt(sliders[1].value) - minGap}`;
+    //   }
+    //   (displayValueOne as HTMLElement).textContent = sliders[0].value;
+    //   let percent1 = (parseInt(sliders[0].value) / parseInt(sliderMaxValue)) * 100;
+    //   let percent2 = (parseInt(sliders[1].value) / parseInt(sliderMaxValue)) * 100;
+    //   sliderTrack.style.background = `linear-gradient(to right, #fff ${percent1}% , #278D9F ${percent1}% , #278D9F ${percent2}%, #fff ${percent2}%)`;
+    // });
+     
+    //  sliders[1].addEventListener('input', (e) => {
+    //   if(parseInt(sliders[1].value) - parseInt(sliders[0].value) <= minGap){
+    //     sliders[1].value = `${parseInt(sliders[0].value) + minGap}`;
+    //   }
+    //   (displayValueTwo as HTMLElement).textContent = sliders[1].value;
+    //   let percent1 = (parseInt(sliders[0].value) / parseInt(sliderMaxValue)) * 100;
+    // let percent2 = (parseInt(sliders[1].value) / parseInt(sliderMaxValue)) * 100;
+    // sliderTrack.style.background = `linear-gradient(to right, #fff ${percent1}% , #278D9F ${percent1}% , #278D9F ${percent2}%, #fff ${percent2}%)`;
+    //  });
+     
+
+    // sliders.forEach((slider) => {
+    //   slider.addEventListener('change', () => {
+    //     console.log(`from ${sliders[0].value} to ${sliders[1].value}`);
+    //   })
+    // })
+
+    ////
+
     const cards = new LoadData();
     cards.build().then((data: Array<ICardData>) => {
       data.forEach(card => {
@@ -26,23 +64,11 @@ export class Toys {
       this.cardsOnPageArray.sort((a, b) => a.name > b.name ? 1 : -1);
 
       this.renderCards(this.cardsOnPageArray);
+
       this.selectBtn.addEventListener('change', () => {
         this.sortCardsList();
       })
     })
-  }
-
-  sortCardsList():void {
-      if (this.selectBtn.value === 'sort-name-max') {
-        this.cardsOnPageArray.sort((a, b) => a.name > b.name ? 1 : -1);
-      } else if (this.selectBtn.value === 'sort-name-min') {
-        this.cardsOnPageArray.sort((a, b) => a.name > b.name ? -1 : 1);
-      } else if (this.selectBtn.value === 'sort-count-max') {
-        this.cardsOnPageArray.sort((a, b) => a.year > b.year ? 1 : -1);
-      } else if (this.selectBtn.value === 'sort-count-min') {
-        this.cardsOnPageArray.sort((a, b) => a.year > b.year ? -1 : 1);
-      }
-      this.renderCards(this.cardsOnPageArray);
   }
 
   renderCards(data: Array<ICardData>): void {
@@ -59,6 +85,23 @@ export class Toys {
         this.getSelectedCards(card, cardElement);
       });
     });
+  }
+
+  sortCardsList():void {
+      if (this.selectBtn.value === 'sort-name-max') {
+        this.cardsOnPageArray.sort((a, b) => a.name > b.name ? 1 : -1);
+      } else if (this.selectBtn.value === 'sort-name-min') {
+        this.cardsOnPageArray.sort((a, b) => a.name > b.name ? -1 : 1);
+      } else if (this.selectBtn.value === 'sort-count-max') {
+        this.cardsOnPageArray.sort((a, b) => a.year > b.year ? 1 : -1);
+      } else if (this.selectBtn.value === 'sort-count-min') {
+        this.cardsOnPageArray.sort((a, b) => a.year > b.year ? -1 : 1);
+      }
+      
+      const selected = this.selectedCards.map(item => item.num);
+      this.cardsOnPageArray = this.cardsOnPageArray.map((card) => selected.includes(card.num) ? {...card, selected: true} : card);
+
+      this.renderCards(this.cardsOnPageArray);
   }
 
   getSelectedCards(card: Card, cardElement:HTMLElement):void {
@@ -79,4 +122,7 @@ export class Toys {
         this.favoriteBtn.append(limitPhrase);
     }
   }
+
+
+
 }

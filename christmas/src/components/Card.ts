@@ -3,23 +3,17 @@ import { ICardData } from './ICardData';
 
 export class Card {
   readonly num: number;
-  
   readonly name: string;
-  
   readonly count: number;
-  
   readonly year: number;
-  
   readonly shape: string;
-  
   readonly color: string;
-  
   readonly size: string;
-  
   readonly favorite: boolean;
+  public selected?: boolean;
   addEventListener: any;
 
-  constructor({ num, name, count, year, shape, color, size, favorite }: ICardData) {
+  constructor({ num, name, count, year, shape, color, size, favorite, selected = false }: ICardData) {
     this.num = num;
     this.name = name;
     this.count = count;
@@ -28,12 +22,14 @@ export class Card {
     this.color = color;
     this.size = size;
     this.favorite = favorite;
+    this.selected = selected;
   }
 
   generateCard(): HTMLElement {
     let template = '';
     const card: HTMLElement = document.createElement('div');
     card.className = 'card';
+    (this.selected) ? card.className = 'card active' : card.className = 'card';
 
     const isFavorite:string = (this.favorite) ? 'да' : 'нет';
 
@@ -53,5 +49,9 @@ export class Card {
     
     card.innerHTML = template;
     return card;
+  }
+
+  selectCard() {
+    this.selected = true;
   }
 }

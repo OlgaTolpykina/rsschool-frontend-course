@@ -7,4 +7,5 @@ export interface ICardData {
   color: string,
   size: string,
   favorite: boolean,
+  selected?: boolean,
 }
