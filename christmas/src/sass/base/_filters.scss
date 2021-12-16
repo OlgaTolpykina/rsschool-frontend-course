@@ -1,4 +1,6 @@
 
+// Checkbox filters
+
 .filters {
   margin-bottom: 20px;
 }
@@ -34,4 +36,81 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+}
+
+//Select filter
+
+.select {
+  appearance: none;
+  width: 325px;
+  height: 40px;
+  margin: 10px 0;
+  background-image: url("../assets/img/svg/arrow-down.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 285px center;
+  font-size: 1.5rem;
+}
+
+//Range filters
+
+.range {
+  @include flex;
+  width: 350px;
+  margin-bottom: 15px;
+  &__container {
+    @include flex;
+    flex-wrap: nowrap;
+    text-align: center;
+    pointer-events: none;
+    &_inner {
+      display: flex;
+      justify-content: center;
+      width: 330px;
+      position: relative;
+    }
+  }
+  &__track {
+    width: 90%;
+    height: 3px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10px;
+    background-color: $color-active;
+  }
+  &__input {
+    appearance: none;
+    position: absolute;
+    outline: none;
+    width: 90%;
+    height: 3px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: transparent;
+    &::-webkit-slider-thumb {
+      position: relative;
+      appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 100%;
+      background-color: $color-active;
+      pointer-events: all;
+      &:hover {
+        cursor: w-resize;
+      }
+      &:active {
+        background-color: $color-white;
+        border: 3px solid $color-active;
+      }
+    }
+  }
+}
+
+.number {
+  display: inline-block;
+  width: 25px;
+  font-size: 1.5rem;
 }

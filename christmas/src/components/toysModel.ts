@@ -1,72 +1,51 @@
 import { ICardData } from './ICardData';
 import { LoadData } from './loadData';
 import { Card } from './Card';
+import { RangeSlider } from './RangeSlider';
 
 export class Toys {
+  allCardsArray: Array<ICardData> = [];
   cardsOnPageArray: Array<ICardData> = [];
   selectedCards: Array<ICardData> = [];
+  rangeSortedArray: Array<ICardData> = [];
   selectBtn: HTMLSelectElement;
   favoriteBtn: HTMLElement;
+  sliders: NodeListOf<HTMLInputElement>;
 
   constructor() {
+    this.allCardsArray = [];
     this.cardsOnPageArray = [];
     this.selectedCards = [];
+    this.rangeSortedArray = [];
     this.selectBtn = document.querySelector('.select') as HTMLSelectElement;
-    this.favoriteBtn = document.querySelector('.favorite-number') as HTMLElement;    
+    this.favoriteBtn = document.querySelector('.favorite-number') as HTMLElement;
+    this.sliders = document.querySelectorAll('.range__input') as NodeListOf<HTMLInputElement>;    
   }
 
   getCardsList(): void  {
 
-    //////
-    // const sliders: NodeListOf<HTMLInputElement> = document.querySelectorAll('.settings__input');
-    // let minGap = 0;
-    // let displayValueOne: HTMLInputElement = document.querySelector('#range1') as HTMLInputElement;
-    // let displayValueTwo: HTMLInputElement = document.querySelector('#range2') as HTMLInputElement;
-    // let sliderTrack: HTMLInputElement = document.querySelector('.settings__input') as HTMLInputElement;
-    // let sliderMaxValue = sliderTrack.max;
-
-
-    // sliders[0].addEventListener('input', (e) => {
-    //   if(parseInt(sliders[1].value) - parseInt(sliders[0].value) <= minGap){
-    //     sliders[0].value = `${parseInt(sliders[1].value) - minGap}`;
-    //   }
-    //   (displayValueOne as HTMLElement).textContent = sliders[0].value;
-    //   let percent1 = (parseInt(sliders[0].value) / parseInt(sliderMaxValue)) * 100;
-    //   let percent2 = (parseInt(sliders[1].value) / parseInt(sliderMaxValue)) * 100;
-    //   sliderTrack.style.background = `linear-gradient(to right, #fff ${percent1}% , #278D9F ${percent1}% , #278D9F ${percent2}%, #fff ${percent2}%)`;
-    // });
-     
-    //  sliders[1].addEventListener('input', (e) => {
-    //   if(parseInt(sliders[1].value) - parseInt(sliders[0].value) <= minGap){
-    //     sliders[1].value = `${parseInt(sliders[0].value) + minGap}`;
-    //   }
-    //   (displayValueTwo as HTMLElement).textContent = sliders[1].value;
-    //   let percent1 = (parseInt(sliders[0].value) / parseInt(sliderMaxValue)) * 100;
-    // let percent2 = (parseInt(sliders[1].value) / parseInt(sliderMaxValue)) * 100;
-    // sliderTrack.style.background = `linear-gradient(to right, #fff ${percent1}% , #278D9F ${percent1}% , #278D9F ${percent2}%, #fff ${percent2}%)`;
-    //  });
-     
-
-    // sliders.forEach((slider) => {
-    //   slider.addEventListener('change', () => {
-    //     console.log(`from ${sliders[0].value} to ${sliders[1].value}`);
-    //   })
-    // })
-
-    ////
-
     const cards = new LoadData();
+    const rangeSliders = new RangeSlider();
+
     cards.build().then((data: Array<ICardData>) => {
       data.forEach(card => {
-        this.cardsOnPageArray.push(card);
+        this.allCardsArray.push(card);
       });
 
-      this.cardsOnPageArray.sort((a, b) => a.name > b.name ? 1 : -1);
+      this.allCardsArray.sort((a, b) => a.name > b.name ? 1 : -1); 
+      this.renderCards(this.allCardsArray); 
 
-      this.renderCards(this.cardsOnPageArray);
+      this.cardsOnPageArray = this.allCardsArray;
 
       this.selectBtn.addEventListener('change', () => {
-        this.sortCardsList();
+        this.sortCards();
+      })
+
+      rangeSliders.setRangeSliders();
+      this.sliders.forEach((slider) => {
+        slider.addEventListener('change', () => {
+          this.rangeFilterCards();
+        })
       })
     })
   }
@@ -87,7 +66,8 @@ export class Toys {
     });
   }
 
-  sortCardsList():void {
+  sortCards():void {  
+
       if (this.selectBtn.value === 'sort-name-max') {
         this.cardsOnPageArray.sort((a, b) => a.name > b.name ? 1 : -1);
       } else if (this.selectBtn.value === 'sort-name-min') {
@@ -99,7 +79,6 @@ export class Toys {
       }
       
       this.checkIfSelected();
-
       this.renderCards(this.cardsOnPageArray);
   }
 
@@ -120,6 +99,23 @@ export class Toys {
         limitPhrase.innerHTML = 'Извините, все слоты заполнены';
         this.favoriteBtn.append(limitPhrase);
     }
+  }
+
+  rangeFilterCards() {
+    this.cardsOnPageArray = this.allCardsArray;
+    
+    this.rangeSortedArray = this.cardsOnPageArray.filter(card =>
+      card.count >= parseInt(this.sliders[0].value) && 
+      card.count <= parseInt(this.sliders[1].value) && 
+      card.year >= parseInt(this.sliders[2].value) && 
+      card.year <= parseInt(this.sliders[3].value) 
+    );
+
+    this.cardsOnPageArray = this.rangeSortedArray;
+
+    this.sortCards();
+    this.checkIfSelected();
+    this.renderCards(this.cardsOnPageArray);
   }
 
   checkIfSelected():void {

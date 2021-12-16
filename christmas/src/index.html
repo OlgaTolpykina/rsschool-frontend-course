@@ -98,12 +98,13 @@
           <div class="range">
             <p class="settings__title">Количество экземпляров</p>
             <div class="range__container">
-              <span class="number" id="range1">1</span>
+              <span class="number" id="range1">0</span>
               <div class="range__container_inner">
-                <input class="settings__input" type="range" step="1" value="0" min="0" max="10">
-                <input class="settings__input" type="range" step="1" value="10" min="0" max="10">
+                <div class="range__track"></div>
+                <input class="range__input" type="range" step="1" value="0" min="0" max="12" id="rangeTrack1">
+                <input class="range__input" type="range" step="1" value="12" min="0" max="12" id="rangeTrack1">
               </div>
-              <span class="number" id="range2">10</span>
+              <span class="number" id="range2">12</span>
             </div>
           </div>
           <div class="range">
@@ -111,8 +112,9 @@
             <div class="range__container">
               <span class="number" id="range3">1940</span>
               <div class="range__container_inner">
-                <input class="settings__input" type="range" step="1" min="1940" max="2021" value="1940">
-                <input class="settings__input" type="range" step="1" min="1940" max="2021" value="2021">
+                <div class="range__track"></div>
+                <input class="range__input" type="range" step="1" min="1940" max="2021" value="1940" id="rangeTrack2">
+                <input class="range__input" type="range" step="1" min="1940" max="2021" value="2021" id="rangeTrack2">
               </div>
               <span class="number" id="range4">2021</span>
             </div>

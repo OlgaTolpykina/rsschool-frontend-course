@@ -2,7 +2,7 @@
   padding: 15px;
 }
 
-// Стили для страницы с игрушками
+// Toys page
 
 .content__gifts {
   background-color: $color-background;
@@ -26,68 +26,6 @@
 p.settings__title {
   width: 100%;
   margin-bottom: 10px;
-}
-
-.select {
-  appearance: none;
-  width: 325px;
-  height: 40px;
-  margin: 10px 0;
-  background-image: url("../assets/img/svg/arrow-down.svg");
-  background-size: 20px;
-  background-repeat: no-repeat;
-  background-position: 285px center;
-  font-size: 1.5rem;
-}
-
-.range {
-  @include flex;
-  width: 350px;
-  margin-bottom: 15px;
-  &__container {
-    @include flex;
-    flex-wrap: nowrap;
-    text-align: center;
-    pointer-events: none;
-    &_inner {
-      width: 330px;
-    }
-  }
-}
-
-.number {
-  font-size: 1.5rem;
-}
-
-.settings__input {
-  appearance: none;
-  position: relative;
-  width: 280px;
-  height: 3px;
-  border-radius: 10px;
-  background: $color-active;
-  &:nth-child(1) {
-    top: 5px;
-  }
-  &:nth-child(2) {
-    bottom: 5px;
-  }
-  &::-webkit-slider-thumb {
-    position: relative;
-    appearance: none;
-    height: 20px;
-    width: 20px;
-    border-radius: 100%;
-    background-color: $color-active;
-    pointer-events: all;
-    &:hover {
-      cursor: w-resize;
-    }
-    &:active {
-      background-color: $color-white;
-      border: 3px solid $color-active;
-    }
-  }
 }
 
 .cards-container {
