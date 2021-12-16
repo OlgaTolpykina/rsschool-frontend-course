@@ -82,7 +82,7 @@ export class Toys {
       cardsWrapper.append(cardElement);
 
       cardElement.addEventListener('click', () => {
-        this.getSelectedCards(card, cardElement);
+        this.selectCards(card, cardElement);
       });
     });
   }
@@ -98,13 +98,12 @@ export class Toys {
         this.cardsOnPageArray.sort((a, b) => a.year > b.year ? -1 : 1);
       }
       
-      const selected = this.selectedCards.map(item => item.num);
-      this.cardsOnPageArray = this.cardsOnPageArray.map((card) => selected.includes(card.num) ? {...card, selected: true} : card);
+      this.checkIfSelected();
 
       this.renderCards(this.cardsOnPageArray);
   }
 
-  getSelectedCards(card: Card, cardElement:HTMLElement):void {
+  selectCards(card: Card, cardElement:HTMLElement):void {
 
     if (this.selectedCards.length < 20 && !this.selectedCards.includes(card)) {
         this.selectedCards.push(card);
@@ -123,6 +122,9 @@ export class Toys {
     }
   }
 
-
+  checkIfSelected():void {
+    const selected = this.selectedCards.map(item => item.num);
+    this.cardsOnPageArray = this.cardsOnPageArray.map((card) => selected.includes(card.num) ? {...card, selected: true} : card);
+  }
 
 }
