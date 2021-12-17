@@ -45,6 +45,18 @@ p.settings__title {
   justify-content: center;
 }
 
+.no-cards {
+  @include flex;
+  justify-content: center;
+  font-size: 2rem;
+  @extend %element-style;
+  border-radius: 10px;
+  grid-column: span 4;
+  margin: auto;
+  width: 500px;
+  height: 100px;
+}
+
 @media (max-width: 1300px) {
   .cards-inner-container {
     grid-template-columns: repeat(3, 1fr);

@@ -43,16 +43,9 @@
           <div class="settings settings_narrow">
             <p class="settings__title">Категории</p>
             <div class="filter">
-              Все:
-              <div>
-                <input class="filter__input" type="checkbox" id="categories" checked>
-                <label class="filter__label" for="categories"></label>
-              </div>
-            </div>
-            <div class="filter">
               Только любимые:
               <div>
-                <input class="filter__input" type="checkbox" id="favorities">
+                <input class="filter__input filter_favorite" type="checkbox" id="favorities">
                 <label class="filter__label" for="favorities"></label>
               </div>
             </div>
@@ -62,36 +55,36 @@
             <div class="filter">
               Большая:
               <div>
-                <input class="filter__input" type="checkbox" id="big">
+                <input class="filter__input filter_size" type="checkbox" data-filter="большой" id="big">
                 <label class="filter__label" for="big"></label>
               </div>
             </div>
             <div class="filter">
               Средняя:
-              <input class="filter__input" type="checkbox" id="medium">
+              <input class="filter__input filter_size" type="checkbox" data-filter="средний" id="medium">
               <label class="filter__label" for="medium"></label>
             </div>
             <div class="filter">
               Маленькая:
-              <input class="filter__input" type="checkbox" id="small">
+              <input class="filter__input filter_size" type="checkbox" data-filter="малый" id="small">
               <label class="filter__label" for="small"></label>
             </div>
           </div>
           <div class="settings settings_narrow color">
             <p class="settings__title">Цвет</p>
-            <button class="active" data-filter="белый"></button>
-            <button class="active" data-filter="желтый"></button>
-            <button data-filter="красный"></button>
-            <button data-filter="синий"></button>
-            <button data-filter="зеленый"></button>
+            <button class="filter_color" data-filter="белый"></button>
+            <button class="filter_color" data-filter="желтый"></button>
+            <button class="filter_color" data-filter="красный"></button>
+            <button class="filter_color" data-filter="синий"></button>
+            <button class="filter_color" data-filter="зелёный"></button>
           </div>
           <div class="settings settings_narrow">
             <p class="settings__title">Форма</p>
-            <span class="icon_small bell"></span>
-            <span class="icon_small ball"></span>
-            <span class="icon_small cone"></span>
-            <span class="icon_small snowflake"></span>
-            <span class="icon_small toy"></span>
+            <span class="icon_small bell filter_shape" data-filter="колокольчик"></span>
+            <span class="icon_small ball filter_shape" data-filter="шар"></span>
+            <span class="icon_small cone filter_shape" data-filter="шишка"></span>
+            <span class="icon_small snowflake filter_shape" data-filter="снежинка"></span>
+            <span class="icon_small toy filter_shape" data-filter="фигурка"></span>
           </div>
         </div>
         <div class="filters">
