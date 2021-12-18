@@ -33,10 +33,10 @@
         <div class="settings settings_wide">
           <span class="settings__title">Сортировать</span>
           <select class="select button">
-            <option value="sort-name-max">По названию от «А» до «Я»</option>
-            <option value="sort-name-min">По названию от «Я» до «А»</option>
-            <option value="sort-count-max">По году приобретения по возрастанию</option>
-            <option value="sort-count-min">По году приобретения по убыванию</option>
+            <option value="name-acs">По названию от «А» до «Я»</option>
+            <option value="name-dsc">По названию от «Я» до «А»</option>
+            <option value="year-acs">По году приобретения по возрастанию</option>
+            <option value="year-dsc">По году приобретения по убыванию</option>
           </select>
         </div>
         <div class="filters">
@@ -94,8 +94,8 @@
               <span class="number" id="range1">0</span>
               <div class="range__container_inner">
                 <div class="range__track"></div>
-                <input class="range__input" type="range" step="1" value="0" min="0" max="12" id="rangeTrack1">
-                <input class="range__input" type="range" step="1" value="12" min="0" max="12" id="rangeTrack1">
+                <input class="range__input" type="range" step="1" value="0" min="0" max="12" data-filter="count-from" id="rangeTrack1">
+                <input class="range__input" type="range" step="1" value="12" min="0" max="12" data-filter="count-to" id="rangeTrack1">
               </div>
               <span class="number" id="range2">12</span>
             </div>
@@ -106,8 +106,8 @@
               <span class="number" id="range3">1940</span>
               <div class="range__container_inner">
                 <div class="range__track"></div>
-                <input class="range__input" type="range" step="1" min="1940" max="2021" value="1940" id="rangeTrack2">
-                <input class="range__input" type="range" step="1" min="1940" max="2021" value="2021" id="rangeTrack2">
+                <input class="range__input" type="range" step="1" min="1940" max="2021" value="1940" data-filter="year-from" id="rangeTrack2">
+                <input class="range__input" type="range" step="1" min="1940" max="2021" value="2021" data-filter="year-to" id="rangeTrack2">
               </div>
               <span class="number" id="range4">2021</span>
             </div>

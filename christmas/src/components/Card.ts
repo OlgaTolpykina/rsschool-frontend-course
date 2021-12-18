@@ -1,7 +1,7 @@
-import { ICardData } from './ICardData';
+import { ICardData } from './types';
 
 
-export class Card {
+export class Card implements ICardData {
   readonly num: number;
   readonly name: string;
   readonly count: number;
