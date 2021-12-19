@@ -32,6 +32,6 @@ export interface Sort {
 }
 
 export enum SortDirection {
-  ASC= 'ВВЕРХ',
+  ASC = 'ВВЕРХ',
   DSC = 'ВНИЗ',
 }

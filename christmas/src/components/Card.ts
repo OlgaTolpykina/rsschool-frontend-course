@@ -11,7 +11,6 @@ export class Card implements ICardData {
   readonly size: string;
   readonly favorite: boolean;
   public selected?: boolean;
-  addEventListener: any;
 
   constructor({ num, name, count, year, shape, color, size, favorite, selected = false }: ICardData) {
     this.num = num;
@@ -29,9 +28,9 @@ export class Card implements ICardData {
     let template = '';
     const card: HTMLElement = document.createElement('div');
     card.className = 'card';
-    (this.selected) ? card.className = 'card active' : card.className = 'card';
+    if (this.selected) card.className = 'card active';
 
-    const isFavorite:string = (this.favorite) ? 'да' : 'нет';
+    const isFavorite: string = (this.favorite) ? 'да' : 'нет';
 
     template += 
           `<h2 class="card__title">${this.name}</h2>

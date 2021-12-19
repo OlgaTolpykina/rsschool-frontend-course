@@ -72,3 +72,17 @@
 .toy {
   background-image: url("../assets/img/svg/toy.svg");
 } 
+
+.hamburger {
+  width: 9px;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid #fff;
+  cursor: pointer; 
+}
+
+.hamburger path {
+  color:white;
+  stroke: white;
+  stroke-width: 1;
+}

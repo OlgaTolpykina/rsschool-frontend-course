@@ -21,6 +21,17 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/indent": ["warn", 2, {
       "SwitchCase": 1
-    }]
+    }],
+    "lines-between-class-members": "off",
+    "@typescript-eslint/lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterOverload": true, "exceptAfterSingleLine": true }
+    ],
+    "no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-expressions": [
+      "error",
+      { "allowTernary": true }
+    ]
   }
 }

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" class="hamburger" width="9px">
+    <path d="M2,8 L8,2" class="p1"/>
+    <path d="M2,2 L8,8" class="p3"/>
+</svg>

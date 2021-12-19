@@ -19,10 +19,11 @@ export class Toys {
   colorBtns: NodeListOf<HTMLElement>;
   shapeBtns: NodeListOf<HTMLElement>;
   sliders: NodeListOf<HTMLInputElement>;
-  favoriteValue: boolean = false;
+  favoriteValue = false;
   sizeArray: Array<string>;
   colorArray: Array<string>;
   shapeArray: Array<string>;
+  searchBtn: HTMLInputElement;
 
   constructor() {
     this.allCardsArray = [];
@@ -45,6 +46,7 @@ export class Toys {
     this.sizeBtns = document.querySelectorAll('.filter_size') as NodeListOf<HTMLInputElement>;
     this.colorBtns = document.querySelectorAll('.filter_color') as NodeListOf<HTMLElement>;
     this.shapeBtns = document.querySelectorAll('.filter_shape') as NodeListOf<HTMLElement>;
+    this.searchBtn = document.querySelector('.search') as HTMLInputElement;
     this.sliders = document.querySelectorAll('.range__input') as NodeListOf<HTMLInputElement>;    
   }
 
@@ -64,8 +66,23 @@ export class Toys {
       this.cardsOnPageArray = this.allCardsArray;
       const filters = new FiltersComponent(this.filters, this.sortConditions);
 
-//Select slider
+      //Search field      
+      this.searchBtn.addEventListener('change', () => {
+        if (this.searchBtn.value) {
+          this.filters.name = this.searchBtn.value.toLowerCase();
+          this.searchBtn.style.backgroundImage = 'url("../assets/img/svg/cross.svg")';
+        } else if (this.filters.name && !this.searchBtn.value) {
+          delete this.filters.name;
+          this.searchBtn.style.backgroundImage = 'url("../assets/img/svg/search.svg")';
+        }
 
+        this.cardsOnPageArray = filters.parceData(this.allCardsArray);
+
+        this.checkIfSelected();
+        this.renderCards(this.cardsOnPageArray);
+      });
+
+      //Select slider      
       this.selectBtn.addEventListener('change', () => {
         this.sortConditions.key = this.selectBtn.value.split('-')[0];
         
@@ -73,7 +90,7 @@ export class Toys {
           this.sortConditions.direction = SortDirection.DSC;
         } else {
           this.sortConditions.direction = SortDirection.ASC;
-        };
+        }
 
         this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
@@ -81,7 +98,7 @@ export class Toys {
         this.renderCards(this.cardsOnPageArray);
       });
 
-//Filters
+      //Filters
 
       this.favoriteBtn.addEventListener('click', () =>{
         (this.favoriteBtn.checked) ? this.filters.favorite = true : delete this.filters.favorite;
@@ -89,15 +106,14 @@ export class Toys {
         this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
         this.checkIfSelected();
-        console.log(this.cardsOnPageArray);
         this.renderCards(this.cardsOnPageArray);
       });
 
       this.sizeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           this.sizeArray = [];
-          this.sizeBtns.forEach((btn) => {
-            if (btn.checked) this.sizeArray.push((btn.dataset.filter) as string);
+          this.sizeBtns.forEach((button) => {
+            if (button.checked) this.sizeArray.push((button.dataset.filter) as string);
           });
           (this.sizeArray.length > 0) ? this.filters.size = this.sizeArray : delete this.filters.size;
 
@@ -112,8 +128,8 @@ export class Toys {
         btn.addEventListener('click', () => {
           btn.classList.toggle('active');
           this.colorArray = [];
-          this.colorBtns.forEach((btn) => {
-            if (btn.className.includes('active')) this.colorArray.push((btn.dataset.filter) as string);
+          this.colorBtns.forEach((button) => {
+            if (button.className.includes('active')) this.colorArray.push((button.dataset.filter) as string);
           });
           (this.colorArray.length > 0) ? this.filters.color = this.colorArray : delete this.filters.color;
 
@@ -128,8 +144,8 @@ export class Toys {
         btn.addEventListener('click', () => {
           btn.classList.toggle('active');
           this.shapeArray = [];
-          this.shapeBtns.forEach((btn) => {
-            if (btn.className.includes('active')) this.shapeArray.push((btn.dataset.filter) as string);
+          this.shapeBtns.forEach((button) => {
+            if (button.className.includes('active')) this.shapeArray.push((button.dataset.filter) as string);
           });
           (this.shapeArray.length > 0) ? this.filters.shape = this.shapeArray : delete this.filters.shape;
 
@@ -140,19 +156,19 @@ export class Toys {
         });
       });
 
-// Range sliders
+      // Range sliders
 
       rangeSliders.setRangeSliders();
       this.sliders.forEach((slider) => {
         slider.addEventListener('change', (e) => {
           if (e.target === this.sliders[0] || e.target === this.sliders[1] ) {
-            this.filters.count = { from: Number(this.sliders[0].value), to: Number(this.sliders[1].value) }
+            this.filters.count = { from: Number(this.sliders[0].value), to: Number(this.sliders[1].value) };
           }
 
           if (e.target === this.sliders[2] || e.target === this.sliders[3] ) {
-            this.filters.year = { from: Number(this.sliders[2].value), to: Number(this.sliders[3].value) }
+            this.filters.year = { from: Number(this.sliders[2].value), to: Number(this.sliders[3].value) };
           }
-          
+
           this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
           this.checkIfSelected();
@@ -168,9 +184,9 @@ export class Toys {
     cardsWrapper.innerHTML = '';
 
     if (data.length === 0) {
-      let div = document.createElement('div');
+      const div = document.createElement('div');
       div.innerHTML = 'Извините, совпадений не обнаружено';
-      div.className = 'no-cards'
+      div.className = 'no-cards';
       cardsWrapper.append(div);
     }
         
@@ -189,24 +205,24 @@ export class Toys {
   selectCards(card: ICardData, cardElement:HTMLElement):void {
 
     if (this.selectedCards.length < 20 && !this.selectedCards.includes(card)) {
-        this.selectedCards.push(card);
-        cardElement.classList.add('active');
-        this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
+      this.selectedCards.push(card);
+      cardElement.classList.add('active');
+      this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
     } else if (this.selectedCards.includes(card)) {
-        let index = this.selectedCards.indexOf(card);
-        this.selectedCards.splice(index, 1);
-        cardElement.classList.remove('active');
-        this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
+      const index = this.selectedCards.indexOf(card);
+      this.selectedCards.splice(index, 1);
+      cardElement.classList.remove('active');
+      this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
     } else {
-        const limitPhrase = document.createElement('p');
-        limitPhrase.className = 'favorite-number_limit';
-        limitPhrase.innerHTML = 'Извините, все слоты заполнены';
-        this.selectedBtn.append(limitPhrase);
+      const limitPhrase = document.createElement('p');
+      limitPhrase.className = 'favorite-number_limit';
+      limitPhrase.innerHTML = 'Извините, все слоты заполнены';
+      this.selectedBtn.append(limitPhrase);
     }
   }
 
   checkIfSelected():void {
     const selected = this.selectedCards.map(item => item.num);
-    this.cardsOnPageArray = this.cardsOnPageArray.map((card) => selected.includes(card.num) ? {...card, selected: true} : card);
+    this.cardsOnPageArray = this.cardsOnPageArray.map((card) => selected.includes(card.num) ? { ...card, selected: true } : card);
   }
 }

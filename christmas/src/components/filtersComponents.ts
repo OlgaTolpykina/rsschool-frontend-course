@@ -19,16 +19,15 @@ export class FiltersComponent {
   }
 
   filterData(data: ICardData[]):void {
-    console.log(this.filters);
     this.cardsToShowArray = [];
     data.map((card) => {
       let isToyToShow = true;
 
       if (this.filters.name && isToyToShow) {
-        if (!card.name.includes(this.filters.name)) isToyToShow = false;
+        if (!card.name.toLowerCase().includes(this.filters.name)) isToyToShow = false;
       }
 
-      if (this.filters.hasOwnProperty('favorite') && isToyToShow) {
+      if (Object.prototype.hasOwnProperty.call(this.filters, 'favorite') && isToyToShow) {
         if (this.filters.favorite !== card.favorite) isToyToShow = false;
       }
 
@@ -45,13 +44,13 @@ export class FiltersComponent {
       }
 
       if (this.filters.count && isToyToShow) {
-        if (this.filters.count.from >= card.count || this.filters.count.to <= card.count) {
+        if (this.filters.count.from > card.count || this.filters.count.to < card.count) {
           isToyToShow = false;
         }
       }
 
       if (this.filters.year && isToyToShow) {
-        if (this.filters.year.from >= card.year || this.filters.year.to <= card.year) {
+        if (this.filters.year.from > card.year || this.filters.year.to < card.year) {
           isToyToShow = false;
         }
       }
@@ -61,7 +60,7 @@ export class FiltersComponent {
   }
 
   sortData(data: ICardData[]): void {
-    if(this.sortConditions.direction === SortDirection.ASC) {
+    if (this.sortConditions.direction === SortDirection.ASC) {
       data.sort((a, b) => a[this.sortConditions.key] > b[this.sortConditions.key] ? 1 : -1);
     } else {
       data.sort((a, b) => a[this.sortConditions.key] > b[this.sortConditions.key] ? -1 : 1);
