@@ -25,6 +25,7 @@ export class Toys {
   shapeArray: Array<string>;
   searchBtn: HTMLInputElement;
   resetBtn: HTMLElement;
+  resetLocalStorageBtn: HTMLElement;
 
   constructor() {
     this.allCardsArray = [];
@@ -49,6 +50,7 @@ export class Toys {
     this.shapeBtns = document.querySelectorAll('.filter_shape') as NodeListOf<HTMLElement>;
     this.searchBtn = document.querySelector('.search') as HTMLInputElement;
     this.resetBtn = document.querySelector('.reset') as HTMLElement;
+    this.resetLocalStorageBtn = document.querySelector('.reset_local-storage') as HTMLElement;
     this.sliders = document.querySelectorAll('.range__input') as NodeListOf<HTMLInputElement>;    
   }
 
@@ -56,17 +58,24 @@ export class Toys {
 
     const cards = new LoadData();
     const rangeSliders = new RangeSlider();
+    this.filters = JSON.parse(localStorage.getItem('filters') || '{}');
+    this.sortConditions = JSON.parse(localStorage.getItem('sortConditions') || '{}');
+    this.selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
+    this.setButtons();
+    this.setSelected();
 
     cards.build().then((data: Array<ICardData>) => {
       data.forEach(card => {
         this.allCardsArray.push(card);
       });
 
-      this.allCardsArray.sort((a, b) => a.name > b.name ? 1 : -1); 
-      this.renderCards(this.allCardsArray); 
-
-      this.cardsOnPageArray = this.allCardsArray;
       const filters = new FiltersComponent(this.filters, this.sortConditions);
+      this.allCardsArray.sort((a, b) => a.name > b.name ? 1 : -1); 
+
+      this.cardsOnPageArray = filters.parceData(this.allCardsArray);
+
+      this.checkIfSelected();
+      this.renderCards(this.cardsOnPageArray);
 
       //Search field      
       this.searchBtn.addEventListener('change', () => {
@@ -77,6 +86,8 @@ export class Toys {
           delete this.filters.name;
           this.searchBtn.style.backgroundImage = 'url("../assets/img/svg/search.svg")';
         }
+
+        this.setLocalStorage();
 
         this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
@@ -94,6 +105,8 @@ export class Toys {
           this.sortConditions.direction = SortDirection.ASC;
         }
 
+        this.setLocalStorage();
+
         this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
         this.checkIfSelected();
@@ -104,6 +117,8 @@ export class Toys {
 
       this.favoriteBtn.addEventListener('click', () =>{
         (this.favoriteBtn.checked) ? this.filters.favorite = true : delete this.filters.favorite;
+
+        this.setLocalStorage();
 
         this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
@@ -118,6 +133,8 @@ export class Toys {
             if (button.checked) this.sizeArray.push((button.dataset.filter) as string);
           });
           (this.sizeArray.length > 0) ? this.filters.size = this.sizeArray : delete this.filters.size;
+
+          this.setLocalStorage();
 
           this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
@@ -135,6 +152,8 @@ export class Toys {
           });
           (this.colorArray.length > 0) ? this.filters.color = this.colorArray : delete this.filters.color;
 
+          this.setLocalStorage();
+
           this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
           this.checkIfSelected();
@@ -150,6 +169,8 @@ export class Toys {
             if (button.className.includes('active')) this.shapeArray.push((button.dataset.filter) as string);
           });
           (this.shapeArray.length > 0) ? this.filters.shape = this.shapeArray : delete this.filters.shape;
+
+          this.setLocalStorage();
 
           this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
@@ -171,6 +192,8 @@ export class Toys {
             this.filters.year = { from: Number(this.sliders[2].value), to: Number(this.sliders[3].value) };
           }
 
+          this.setLocalStorage();
+
           this.cardsOnPageArray = filters.parceData(this.allCardsArray);
 
           this.checkIfSelected();
@@ -182,6 +205,7 @@ export class Toys {
 
       this.resetBtn.addEventListener('click', () => {
         this.filters = {};
+        this.setLocalStorage();
         this.favoriteBtn.checked = false;
         this.sizeBtns.forEach((btn) => {
           btn.checked = false;
@@ -206,6 +230,14 @@ export class Toys {
 
         this.checkIfSelected();
         this.renderCards(this.cardsOnPageArray);
+      });
+
+      //Reset Local Storage button
+
+      this.resetLocalStorageBtn.addEventListener('click', () => {
+        localStorage.removeItem('filters');
+        localStorage.removeItem('sortConditions');
+        localStorage.removeItem('selectedCards');
       });
 
     });
@@ -238,11 +270,13 @@ export class Toys {
 
     if (this.selectedCards.length < 20 && !this.selectedCards.includes(card)) {
       this.selectedCards.push(card);
+      this.setLocalStorage();
       cardElement.classList.add('active');
       this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
     } else if (this.selectedCards.includes(card)) {
       const index = this.selectedCards.indexOf(card);
       this.selectedCards.splice(index, 1);
+      this.setLocalStorage();
       cardElement.classList.remove('active');
       this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
     } else {
@@ -256,5 +290,51 @@ export class Toys {
   checkIfSelected():void {
     const selected = this.selectedCards.map(item => item.num);
     this.cardsOnPageArray = this.cardsOnPageArray.map((card) => selected.includes(card.num) ? { ...card, selected: true } : card);
+  }
+
+  setLocalStorage():void {
+    localStorage.setItem('filters', JSON.stringify(this.filters));
+    localStorage.setItem('sortConditions', JSON.stringify(this.sortConditions));
+    localStorage.setItem('selectedCards', JSON.stringify(this.selectedCards));
+  }
+
+  setButtons() {
+    if (this.sortConditions && this.sortConditions.key === 'name' && this.sortConditions.direction === SortDirection.ASC) {
+      this.selectBtn.value = 'name-acs';
+    }
+    if (this.sortConditions && this.sortConditions.key === 'name' && this.sortConditions.direction === SortDirection.DSC) {
+      this.selectBtn.value = 'name-dsc';
+    }
+    if (this.sortConditions && this.sortConditions.key === 'year' && this.sortConditions.direction === SortDirection.ASC) {
+      this.selectBtn.value = 'year-acs';
+    }
+    if (this.sortConditions && this.sortConditions.key === 'year' && this.sortConditions.direction === SortDirection.DSC) {
+      this.selectBtn.value = 'year-dsc';
+    }
+    if (this.filters.favorite === true) this.favoriteBtn.checked = true;
+    this.sizeBtns.forEach((button) => {
+      if (this.filters.size && this.filters.size.includes(button.dataset.filter as string)) { button.checked = true; }
+    });
+    this.colorBtns.forEach((button) => {
+      if (this.filters.color && this.filters.color.includes(button.dataset.filter as string)) { button.classList.add('active'); }
+    });
+    this.shapeBtns.forEach((button) => {
+      if (this.filters.shape && this.filters.shape.includes(button.dataset.filter as string)) { button.classList.add('active'); }
+    }); 
+
+    const reloadRangeSliders = new RangeSlider();
+    if (this.filters.count) {
+      this.sliders[0].value = (this.filters.count.from).toString();
+      this.sliders[1].value = (this.filters.count.to).toString();
+    }
+    if (this.filters.year) {
+      this.sliders[2].value = (this.filters.year.from).toString();
+      this.sliders[3].value = (this.filters.year.to).toString();
+    }
+    reloadRangeSliders.setRangeSliders(this.sliders);
+  }
+
+  setSelected() {
+    this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
   }
 }

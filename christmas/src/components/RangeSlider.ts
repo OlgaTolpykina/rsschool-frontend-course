@@ -62,12 +62,12 @@ export class RangeSlider {
     (this.displayValueTwo as HTMLElement).textContent = sliders[1].value;
     (this.displayValueThree as HTMLElement).textContent = sliders[2].value;
     (this.displayValueFour as HTMLElement).textContent = sliders[3].value;
-      const percent1 = ((parseInt(sliders[0].value) - parseInt(this.sliderOneMinValue)) / (parseInt(this.sliderOneMaxValue) - parseInt(this.sliderOneMinValue))) * 100;
-      const percent2 = ((parseInt(sliders[1].value) - parseInt(this.sliderOneMinValue)) / (parseInt(this.sliderOneMaxValue) - parseInt(this.sliderOneMinValue))) * 100;
-      const percent3 = ((parseInt(sliders[2].value) - parseInt(this.sliderTwoMinValue)) / (parseInt(this.sliderTwoMaxValue) - parseInt(this.sliderTwoMinValue))) * 100;
-      const percent4 = ((parseInt(sliders[3].value) - parseInt(this.sliderTwoMinValue)) / (parseInt(this.sliderTwoMaxValue) - parseInt(this.sliderTwoMinValue))) * 100;
+    const percent1 = ((parseInt(sliders[0].value) - parseInt(this.sliderOneMinValue)) / (parseInt(this.sliderOneMaxValue) - parseInt(this.sliderOneMinValue))) * 100;
+    const percent2 = ((parseInt(sliders[1].value) - parseInt(this.sliderOneMinValue)) / (parseInt(this.sliderOneMaxValue) - parseInt(this.sliderOneMinValue))) * 100;
+    const percent3 = ((parseInt(sliders[2].value) - parseInt(this.sliderTwoMinValue)) / (parseInt(this.sliderTwoMaxValue) - parseInt(this.sliderTwoMinValue))) * 100;
+    const percent4 = ((parseInt(sliders[3].value) - parseInt(this.sliderTwoMinValue)) / (parseInt(this.sliderTwoMaxValue) - parseInt(this.sliderTwoMinValue))) * 100;
 
-      this.sliderTracks[0].style.background = `linear-gradient(to right, #fff ${percent1}% , #278D9F ${percent1}% , #278D9F ${percent2}%, #fff ${percent2}%)`;
-      this.sliderTracks[2].style.background = `linear-gradient(to right, #fff ${percent3}% , #278D9F ${percent3}% , #278D9F ${percent4}%, #fff ${percent4}%)`;
+    this.sliderTracks[0].style.background = `linear-gradient(to right, #fff ${percent1}% , #278D9F ${percent1}% , #278D9F ${percent2}%, #fff ${percent2}%)`;
+    this.sliderTracks[2].style.background = `linear-gradient(to right, #fff ${percent3}% , #278D9F ${percent3}% , #278D9F ${percent4}%, #fff ${percent4}%)`;
   }
 }
