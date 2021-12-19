@@ -1,3 +1,4 @@
+import { Colors, Coefficients } from './constants';
 export class RangeSlider {
   sliders: NodeListOf<HTMLInputElement>;
   displayValueOne: HTMLInputElement;
@@ -23,7 +24,7 @@ export class RangeSlider {
     this.sliderTwoMinValue = this.sliderTracks[2].min;
   }
 
-  setRangeSliders(sliders: NodeListOf<HTMLInputElement>) {
+  public setRangeSliders(sliders: NodeListOf<HTMLInputElement>) {
     this.sliders = sliders;
 
     this.colorSlider(this.sliders);
@@ -57,17 +58,17 @@ export class RangeSlider {
     });
   }
 
-  colorSlider(sliders: NodeListOf<HTMLInputElement>) {
+  private colorSlider(sliders: NodeListOf<HTMLInputElement>) {
     (this.displayValueOne as HTMLElement).textContent = sliders[0].value;
     (this.displayValueTwo as HTMLElement).textContent = sliders[1].value;
     (this.displayValueThree as HTMLElement).textContent = sliders[2].value;
     (this.displayValueFour as HTMLElement).textContent = sliders[3].value;
-    const percent1 = ((parseInt(sliders[0].value) - parseInt(this.sliderOneMinValue)) / (parseInt(this.sliderOneMaxValue) - parseInt(this.sliderOneMinValue))) * 100;
-    const percent2 = ((parseInt(sliders[1].value) - parseInt(this.sliderOneMinValue)) / (parseInt(this.sliderOneMaxValue) - parseInt(this.sliderOneMinValue))) * 100;
-    const percent3 = ((parseInt(sliders[2].value) - parseInt(this.sliderTwoMinValue)) / (parseInt(this.sliderTwoMaxValue) - parseInt(this.sliderTwoMinValue))) * 100;
-    const percent4 = ((parseInt(sliders[3].value) - parseInt(this.sliderTwoMinValue)) / (parseInt(this.sliderTwoMaxValue) - parseInt(this.sliderTwoMinValue))) * 100;
+    const percent1 = ((parseInt(sliders[0].value) - parseInt(this.sliderOneMinValue)) / (parseInt(this.sliderOneMaxValue) - parseInt(this.sliderOneMinValue))) * Coefficients.percent;
+    const percent2 = ((parseInt(sliders[1].value) - parseInt(this.sliderOneMinValue)) / (parseInt(this.sliderOneMaxValue) - parseInt(this.sliderOneMinValue))) * Coefficients.percent;
+    const percent3 = ((parseInt(sliders[2].value) - parseInt(this.sliderTwoMinValue)) / (parseInt(this.sliderTwoMaxValue) - parseInt(this.sliderTwoMinValue))) * Coefficients.percent;
+    const percent4 = ((parseInt(sliders[3].value) - parseInt(this.sliderTwoMinValue)) / (parseInt(this.sliderTwoMaxValue) - parseInt(this.sliderTwoMinValue))) * Coefficients.percent;
 
-    this.sliderTracks[0].style.background = `linear-gradient(to right, #fff ${percent1}% , #278D9F ${percent1}% , #278D9F ${percent2}%, #fff ${percent2}%)`;
-    this.sliderTracks[2].style.background = `linear-gradient(to right, #fff ${percent3}% , #278D9F ${percent3}% , #278D9F ${percent4}%, #fff ${percent4}%)`;
+    this.sliderTracks[0].style.background = `linear-gradient(to right, ${Colors.white} ${percent1}% , ${Colors.main} ${percent1}% , ${Colors.main} ${percent2}%, ${Colors.white} ${percent2}%)`;
+    this.sliderTracks[2].style.background = `linear-gradient(to right, ${Colors.white} ${percent3}% , ${Colors.main} ${percent3}% , ${Colors.main} ${percent4}%, ${Colors.white} ${percent4}%)`;
   }
 }

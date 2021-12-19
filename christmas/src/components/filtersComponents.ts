@@ -11,14 +11,14 @@ export class FiltersComponent {
     this.sortConditions = sortConditions;
   }
 
-  parceData(data: ICardData[]): ICardData[] {
+  public parseData(data: ICardData[]): ICardData[] {
     this.filterData(data);
     this.sortData(this.cardsToShowArray);
 
     return this.cardsToShowArray;
   }
 
-  filterData(data: ICardData[]):void {
+  private filterData(data: ICardData[]):void {
     this.cardsToShowArray = [];
     data.map((card) => {
       let isToyToShow = true;
@@ -59,7 +59,7 @@ export class FiltersComponent {
     });
   }
 
-  sortData(data: ICardData[]): void {
+  private sortData(data: ICardData[]): void {
     if (this.sortConditions.direction === SortDirection.ASC) {
       data.sort((a, b) => a[this.sortConditions.key] > b[this.sortConditions.key] ? 1 : -1);
     } else {

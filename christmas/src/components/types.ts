@@ -8,7 +8,7 @@ export interface ICardData {
   size: string;
   favorite: boolean;
   selected?: boolean;
-  [key: string]: any;
+  [key: string]: any; // eslint-disable-line
 }
 
 export interface IFilters {

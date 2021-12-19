@@ -3,6 +3,7 @@ import { LoadData } from './loadData';
 import { Card } from './Card';
 import { RangeSlider } from './RangeSlider';
 import { FiltersComponent } from './filtersComponents';
+import { Phrases } from './constants';
 
 export class Toys {
   allCardsArray: Array<ICardData> = [];
@@ -54,7 +55,7 @@ export class Toys {
     this.sliders = document.querySelectorAll('.range__input') as NodeListOf<HTMLInputElement>;    
   }
 
-  getCardsList(): void  {
+  public getCardsList(): void  {
 
     const cards = new LoadData();
     const rangeSliders = new RangeSlider();
@@ -71,11 +72,7 @@ export class Toys {
 
       const filters = new FiltersComponent(this.filters, this.sortConditions);
       this.allCardsArray.sort((a, b) => a.name > b.name ? 1 : -1); 
-
-      this.cardsOnPageArray = filters.parceData(this.allCardsArray);
-
-      this.checkIfSelected();
-      this.renderCards(this.cardsOnPageArray);
+      this.filterCards();
 
       //Search field      
       this.searchBtn.addEventListener('change', () => {
@@ -88,11 +85,7 @@ export class Toys {
         }
 
         this.setLocalStorage();
-
-        this.cardsOnPageArray = filters.parceData(this.allCardsArray);
-
-        this.checkIfSelected();
-        this.renderCards(this.cardsOnPageArray);
+        this.filterCards();
       });
 
       //Select slider      
@@ -106,11 +99,7 @@ export class Toys {
         }
 
         this.setLocalStorage();
-
-        this.cardsOnPageArray = filters.parceData(this.allCardsArray);
-
-        this.checkIfSelected();
-        this.renderCards(this.cardsOnPageArray);
+        this.filterCards();
       });
 
       //Filters
@@ -119,11 +108,7 @@ export class Toys {
         (this.favoriteBtn.checked) ? this.filters.favorite = true : delete this.filters.favorite;
 
         this.setLocalStorage();
-
-        this.cardsOnPageArray = filters.parceData(this.allCardsArray);
-
-        this.checkIfSelected();
-        this.renderCards(this.cardsOnPageArray);
+        this.filterCards();
       });
 
       this.sizeBtns.forEach(btn => {
@@ -135,11 +120,7 @@ export class Toys {
           (this.sizeArray.length > 0) ? this.filters.size = this.sizeArray : delete this.filters.size;
 
           this.setLocalStorage();
-
-          this.cardsOnPageArray = filters.parceData(this.allCardsArray);
-
-          this.checkIfSelected();
-          this.renderCards(this.cardsOnPageArray);
+          this.filterCards();
         });
       });
 
@@ -153,11 +134,7 @@ export class Toys {
           (this.colorArray.length > 0) ? this.filters.color = this.colorArray : delete this.filters.color;
 
           this.setLocalStorage();
-
-          this.cardsOnPageArray = filters.parceData(this.allCardsArray);
-
-          this.checkIfSelected();
-          this.renderCards(this.cardsOnPageArray);
+          this.filterCards();
         });
       });
 
@@ -171,11 +148,7 @@ export class Toys {
           (this.shapeArray.length > 0) ? this.filters.shape = this.shapeArray : delete this.filters.shape;
 
           this.setLocalStorage();
-
-          this.cardsOnPageArray = filters.parceData(this.allCardsArray);
-
-          this.checkIfSelected();
-          this.renderCards(this.cardsOnPageArray);
+          this.filterCards();
         });
       });
 
@@ -193,11 +166,7 @@ export class Toys {
           }
 
           this.setLocalStorage();
-
-          this.cardsOnPageArray = filters.parceData(this.allCardsArray);
-
-          this.checkIfSelected();
-          this.renderCards(this.cardsOnPageArray);
+          this.filterCards();
         });
       });
 
@@ -225,11 +194,7 @@ export class Toys {
 
         resetRangeSliders.setRangeSliders(this.sliders);
 
-        const resetFilters = new FiltersComponent(this.filters, this.sortConditions);
-        this.cardsOnPageArray = resetFilters.parceData(this.allCardsArray);
-
-        this.checkIfSelected();
-        this.renderCards(this.cardsOnPageArray);
+        this.filterCards();
       });
 
       //Reset Local Storage button
@@ -243,13 +208,13 @@ export class Toys {
     });
   }
 
-  renderCards(data: Array<ICardData>): void {
+  private renderCards(data: Array<ICardData>): void {
     const cardsWrapper:HTMLElement = document.querySelector('.cards-inner-container') as HTMLElement;
     cardsWrapper.innerHTML = '';
 
     if (data.length === 0) {
       const div = document.createElement('div');
-      div.innerHTML = 'Извините, совпадений не обнаружено';
+      div.innerHTML = Phrases.noMatch;
       div.className = 'no-cards';
       cardsWrapper.append(div);
     }
@@ -266,7 +231,14 @@ export class Toys {
     });
   }
 
-  selectCards(card: ICardData, cardElement:HTMLElement):void {
+  private filterCards() {
+    const filters = new FiltersComponent(this.filters, this.sortConditions);
+    this.cardsOnPageArray = filters.parseData(this.allCardsArray);
+    this.checkIfSelected();
+    this.renderCards(this.cardsOnPageArray);
+  }
+
+  private selectCards(card: ICardData, cardElement:HTMLElement):void {
 
     if (this.selectedCards.length < 20 && !this.selectedCards.includes(card)) {
       this.selectedCards.push(card);
@@ -287,18 +259,18 @@ export class Toys {
     }
   }
 
-  checkIfSelected():void {
+  private checkIfSelected():void {
     const selected = this.selectedCards.map(item => item.num);
     this.cardsOnPageArray = this.cardsOnPageArray.map((card) => selected.includes(card.num) ? { ...card, selected: true } : card);
   }
 
-  setLocalStorage():void {
+  private setLocalStorage():void {
     localStorage.setItem('filters', JSON.stringify(this.filters));
     localStorage.setItem('sortConditions', JSON.stringify(this.sortConditions));
     localStorage.setItem('selectedCards', JSON.stringify(this.selectedCards));
   }
 
-  setButtons() {
+  private setButtons() {
     if (this.sortConditions && this.sortConditions.key === 'name' && this.sortConditions.direction === SortDirection.ASC) {
       this.selectBtn.value = 'name-acs';
     }
@@ -334,7 +306,7 @@ export class Toys {
     reloadRangeSliders.setRangeSliders(this.sliders);
   }
 
-  setSelected() {
+  private setSelected() {
     this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
   }
 }
