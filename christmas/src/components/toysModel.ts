@@ -24,6 +24,7 @@ export class Toys {
   colorArray: Array<string>;
   shapeArray: Array<string>;
   searchBtn: HTMLInputElement;
+  resetBtn: HTMLElement;
 
   constructor() {
     this.allCardsArray = [];
@@ -47,6 +48,7 @@ export class Toys {
     this.colorBtns = document.querySelectorAll('.filter_color') as NodeListOf<HTMLElement>;
     this.shapeBtns = document.querySelectorAll('.filter_shape') as NodeListOf<HTMLElement>;
     this.searchBtn = document.querySelector('.search') as HTMLInputElement;
+    this.resetBtn = document.querySelector('.reset') as HTMLElement;
     this.sliders = document.querySelectorAll('.range__input') as NodeListOf<HTMLInputElement>;    
   }
 
@@ -158,7 +160,7 @@ export class Toys {
 
       // Range sliders
 
-      rangeSliders.setRangeSliders();
+      rangeSliders.setRangeSliders(this.sliders);
       this.sliders.forEach((slider) => {
         slider.addEventListener('change', (e) => {
           if (e.target === this.sliders[0] || e.target === this.sliders[1] ) {
@@ -174,6 +176,36 @@ export class Toys {
           this.checkIfSelected();
           this.renderCards(this.cardsOnPageArray);
         });
+      });
+
+      //Reset button
+
+      this.resetBtn.addEventListener('click', () => {
+        this.filters = {};
+        this.favoriteBtn.checked = false;
+        this.sizeBtns.forEach((btn) => {
+          btn.checked = false;
+        });
+        this.colorBtns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+        this.shapeBtns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+        
+        const resetRangeSliders = new RangeSlider();
+        this.sliders[0].value = '0';
+        this.sliders[1].value = '12';
+        this.sliders[2].value = '1940';
+        this.sliders[3].value = '2021';
+
+        resetRangeSliders.setRangeSliders(this.sliders);
+
+        const resetFilters = new FiltersComponent(this.filters, this.sortConditions);
+        this.cardsOnPageArray = resetFilters.parceData(this.allCardsArray);
+
+        this.checkIfSelected();
+        this.renderCards(this.cardsOnPageArray);
       });
 
     });
