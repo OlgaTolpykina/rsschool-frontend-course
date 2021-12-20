@@ -8,7 +8,6 @@ export interface ICardData {
   size: string;
   favorite: boolean;
   selected?: boolean;
-  [key: string]: any; // eslint-disable-line
 }
 
 export interface IFilters {
@@ -26,8 +25,10 @@ export interface IRangeFilter {
   to: number;
 }
 
+export type SortParams = 'name' | 'year';
+
 export interface Sort {
-  key: keyof ICardData;
+  key: SortParams;
   direction: SortDirection;
 }
 

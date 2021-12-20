@@ -1,4 +1,4 @@
-import { ICardData, IFilters, Sort, SortDirection } from './types';
+import { ICardData, IFilters, SortParams, Sort, SortDirection } from './types';
 import { LoadData } from './loadData';
 import { Card } from './Card';
 import { RangeSlider } from './RangeSlider';
@@ -70,7 +70,6 @@ export class Toys {
         this.allCardsArray.push(card);
       });
 
-      const filters = new FiltersComponent(this.filters, this.sortConditions);
       this.allCardsArray.sort((a, b) => a.name > b.name ? 1 : -1); 
       this.filterCards();
 
@@ -90,7 +89,7 @@ export class Toys {
 
       //Select slider      
       this.selectBtn.addEventListener('change', () => {
-        this.sortConditions.key = this.selectBtn.value.split('-')[0];
+        this.sortConditions.key = this.selectBtn.value.split('-')[0] as SortParams;
         
         if (this.selectBtn.value.split('-')[1].toUpperCase() === 'DSC') {
           this.sortConditions.direction = SortDirection.DSC;

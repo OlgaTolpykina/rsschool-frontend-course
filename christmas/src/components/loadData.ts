@@ -31,7 +31,7 @@ export class LoadData {
         color: item.color,
         size: item.size,
         favorite: item.favorite,
-      } as ICardData
+      } as ICardData;
     });
   }
 }
