@@ -6,7 +6,9 @@
 
 
 .header__wrapper {
-  @include desktop-grid;
+  display: grid;
+  grid-template-columns: 1fr 3.5fr;
+  gap: 30px;
   @include media-tablet {
     @include tablet-grid;
   }

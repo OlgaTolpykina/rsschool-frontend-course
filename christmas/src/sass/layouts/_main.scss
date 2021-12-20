@@ -38,7 +38,7 @@ p.settings__title {
 .cards-inner-container {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 30px;
   height: 520px;
 }
@@ -60,7 +60,19 @@ p.settings__title {
   height: 100px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1800px) {
+  .cards-inner-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1600px) {
+  .cards-inner-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1350px) {
   .cards-inner-container {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
