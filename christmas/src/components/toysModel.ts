@@ -4,6 +4,8 @@ import { Card } from './Card';
 import { RangeSlider } from './RangeSlider';
 import { FiltersComponent } from './filtersComponents';
 import { Phrases } from './constants';
+const searchImg = require('../assets/img/svg/search.svg');
+const deleteImg = require('../assets/img/svg/cross.svg');
 
 export class Toys {
   allCardsArray: Array<ICardData> = [];
@@ -77,13 +79,22 @@ export class Toys {
       this.searchBtn.addEventListener('change', () => {
         if (this.searchBtn.value) {
           this.filters.name = this.searchBtn.value.toLowerCase();
-          this.searchBtn.style.backgroundImage = 'url("../assets/img/svg/cross.svg")';
+          this.searchBtn.style.backgroundImage = `url(${deleteImg})`;
         } else if (this.filters.name && !this.searchBtn.value) {
           delete this.filters.name;
-          this.searchBtn.style.backgroundImage = 'url("../assets/img/svg/search.svg")';
+          this.searchBtn.style.backgroundImage = `url(${searchImg})`;
         }
 
-        this.setLocalStorage();
+        this.filterCards();
+      });
+
+      this.searchBtn.addEventListener('click', () => {
+        if (this.searchBtn.value) {
+          delete this.filters.name;
+          this.searchBtn.style.backgroundImage = `url(${searchImg})`;
+          this.searchBtn.value = '';
+        }
+
         this.filterCards();
       });
 
