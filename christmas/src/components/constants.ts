@@ -16,3 +16,8 @@ export enum CardParameters {
   height = 280,
   gap = 30,
 }
+
+export enum Filters {
+  color = 'color',
+  shape = 'shape',
+}

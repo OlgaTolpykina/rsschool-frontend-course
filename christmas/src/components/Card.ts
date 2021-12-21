@@ -26,7 +26,7 @@ export class Card implements ICardData {
     this.idx = idx;
   }
 
-  generateCard(cardsPositionsArray: Array<CardsPositions>): HTMLElement {
+  generateCard(): HTMLElement {
     let template = '';
     const card: HTMLElement = document.createElement('div');
     card.className = 'card';
@@ -49,9 +49,6 @@ export class Card implements ICardData {
           `;
     
     card.innerHTML = template;
-    
-    card.style.left = cardsPositionsArray[this.idx + 1].left + 'px';
-    card.style.top = cardsPositionsArray[this.idx + 1].top + 'px';
 
     return card;
   }
