@@ -1,4 +1,4 @@
-import { ICardData } from './types';
+import { ICardData, CardsPositions } from './types';
 
 
 export class Card implements ICardData {
@@ -11,8 +11,9 @@ export class Card implements ICardData {
   readonly size: string;
   readonly favorite: boolean;
   public selected?: boolean;
+  idx: number;
 
-  constructor({ num, name, count, year, shape, color, size, favorite, selected = false }: ICardData) {
+  constructor({ num, name, count, year, shape, color, size, favorite, selected = false }: ICardData, idx: number) {
     this.num = num;
     this.name = name;
     this.count = count;
@@ -22,9 +23,10 @@ export class Card implements ICardData {
     this.size = size;
     this.favorite = favorite;
     this.selected = selected;
+    this.idx = idx;
   }
 
-  generateCard(): HTMLElement {
+  generateCard(cardsPositionsArray: Array<CardsPositions>): HTMLElement {
     let template = '';
     const card: HTMLElement = document.createElement('div');
     card.className = 'card';
@@ -47,6 +49,10 @@ export class Card implements ICardData {
           `;
     
     card.innerHTML = template;
+    
+    card.style.left = cardsPositionsArray[this.idx + 1].left + 'px';
+    card.style.top = cardsPositionsArray[this.idx + 1].top + 'px';
+
     return card;
   }
 

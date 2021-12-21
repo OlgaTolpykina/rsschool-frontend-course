@@ -1,9 +1,9 @@
-import { ICardData, IFilters, SortParams, Sort, SortDirection } from './types';
+import { ICardData, IFilters, SortParams, Sort, SortDirection, CardsPositions } from './types';
 import { LoadData } from './loadData';
 import { Card } from './Card';
 import { RangeSlider } from './RangeSlider';
 import { FiltersComponent } from './filtersComponents';
-import { Phrases } from './constants';
+import { Phrases, CardParameters } from './constants';
 const searchImg = require('../assets/img/svg/search.svg');
 const deleteImg = require('../assets/img/svg/cross.svg');
 
@@ -29,6 +29,9 @@ export class Toys {
   searchBtn: HTMLInputElement;
   resetBtn: HTMLElement;
   resetLocalStorageBtn: HTMLElement;
+  cardsNumberInARow: number;
+  cardsPositionsArray: Array<CardsPositions>;
+  cardsWrapper: HTMLElement;
 
   constructor() {
     this.allCardsArray = [];
@@ -45,6 +48,7 @@ export class Toys {
       key: 'name',
       direction: SortDirection.ASC,
     };
+    this.cardsWrapper = document.querySelector('.cards-inner-container') as HTMLElement;
     this.selectBtn = document.querySelector('.select') as HTMLSelectElement;
     this.selectedBtn = document.querySelector('.favorite-number') as HTMLElement;
     this.favoriteBtn = document.querySelector('.filter_favorite') as HTMLInputElement;
@@ -54,7 +58,9 @@ export class Toys {
     this.searchBtn = document.querySelector('.search') as HTMLInputElement;
     this.resetBtn = document.querySelector('.reset') as HTMLElement;
     this.resetLocalStorageBtn = document.querySelector('.reset_local-storage') as HTMLElement;
-    this.sliders = document.querySelectorAll('.range__input') as NodeListOf<HTMLInputElement>;    
+    this.sliders = document.querySelectorAll('.range__input') as NodeListOf<HTMLInputElement>;
+    this.cardsNumberInARow = 0;   
+    this.cardsPositionsArray = []; 
   }
 
   public getCardsList(): void  {
@@ -70,9 +76,11 @@ export class Toys {
     cards.build().then((data: Array<ICardData>) => {
       data.forEach(card => {
         this.allCardsArray.push(card);
+        this.allCardsArray.sort((a, b) => a.name > b.name ? 1 : -1);
       });
 
-      this.allCardsArray.sort((a, b) => a.name > b.name ? 1 : -1); 
+      this.setPositionsArray(this.cardsWrapper, data);
+
       this.filterCards();
 
       //Search field      
@@ -219,21 +227,21 @@ export class Toys {
   }
 
   private renderCards(data: Array<ICardData>): void {
-    const cardsWrapper:HTMLElement = document.querySelector('.cards-inner-container') as HTMLElement;
-    cardsWrapper.innerHTML = '';
+    this.cardsWrapper.innerHTML = '';
 
     if (data.length === 0) {
       const div = document.createElement('div');
       div.innerHTML = Phrases.noMatch;
       div.className = 'no-cards';
-      cardsWrapper.append(div);
+      this.cardsWrapper.append(div);
     }
         
-    data.forEach((cardInfo: ICardData) => {
-      const card = new Card(cardInfo);
-      const cardElement:HTMLElement = card.generateCard();
+    data.forEach((cardInfo: ICardData, idx) => {
+      const card = new Card(cardInfo, idx);
+      const cardElement:HTMLElement = card.generateCard(this.cardsPositionsArray);
           
-      cardsWrapper.append(cardElement);
+      this.cardsWrapper.append(cardElement);
+      setTimeout(() => {this.animateCards(cardElement, idx)}, 100); // eslint-disable-line
 
       cardElement.addEventListener('click', () => {
         this.selectCards(card, cardElement);
@@ -241,7 +249,35 @@ export class Toys {
     });
   }
 
-  private filterCards() {
+  private setPositionsArray(container: HTMLElement, data: Array<ICardData>) {
+    this.cardsPositionsArray = [];
+    this.cardsNumberInARow = Math.round((container.scrollWidth) / (CardParameters.width + CardParameters.gap));
+    let idx = 0;
+    let left = 0;
+    let top = 0;
+    
+    for (let i = 0; i <= data.length / this.cardsNumberInARow; i++) {
+      idx = i * this.cardsNumberInARow;
+      left = container.getBoundingClientRect().left;
+      top = container.getBoundingClientRect().top + (CardParameters.height + CardParameters.gap) * i;
+      this.cardsPositionsArray.push({ idx, left, top });
+
+      for (let j = 1; j < this.cardsNumberInARow; j++) {
+        idx = this.cardsNumberInARow * i + j;
+        left = container.getBoundingClientRect().left + (CardParameters.width + CardParameters.gap) * j;
+        top = container.getBoundingClientRect().top + (CardParameters.height + CardParameters.gap) * i;
+        this.cardsPositionsArray.push({ idx, left, top });
+      }
+      
+    }
+  }
+
+  private animateCards(element: HTMLElement, idx: number):void {
+    element.style.left = this.cardsPositionsArray[idx].left + 'px';
+    element.style.top = this.cardsPositionsArray[idx].top + 'px';
+  }
+
+  private filterCards(): void {
     const filters = new FiltersComponent(this.filters, this.sortConditions);
     this.cardsOnPageArray = filters.parseData(this.allCardsArray);
     this.checkIfSelected();
@@ -280,7 +316,7 @@ export class Toys {
     localStorage.setItem('selectedCards', JSON.stringify(this.selectedCards));
   }
 
-  private setButtons() {
+  private setButtons(): void {
     if (this.sortConditions && this.sortConditions.key === 'name' && this.sortConditions.direction === SortDirection.ASC) {
       this.selectBtn.value = 'name-acs';
     }
@@ -316,7 +352,7 @@ export class Toys {
     reloadRangeSliders.setRangeSliders(this.sliders);
   }
 
-  private setSelected() {
+  private setSelected(): void {
     this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
   }
 }

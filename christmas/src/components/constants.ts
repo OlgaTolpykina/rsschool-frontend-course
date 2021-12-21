@@ -10,3 +10,9 @@ export enum Coefficients {
 export enum Phrases {
   noMatch = 'Извините, совпадений не обнаружено',
 }
+
+export enum CardParameters {
+  width = 190,
+  height = 280,
+  gap = 30,
+}

@@ -20,6 +20,7 @@
 
 .content__wrapper {
   @include desktop-grid;
+  width: 100%;
   @include media-tablet {
     @include tablet-grid;
   }

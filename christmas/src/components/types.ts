@@ -1,4 +1,5 @@
 export interface ICardData {
+  id?: number;
   num: number;
   name: string;
   count: number;
@@ -11,13 +12,13 @@ export interface ICardData {
 }
 
 export interface IFilters {
-  name?: string,
-  count?: IRangeFilter,
-  year?: IRangeFilter,
-  shape?: string[],
-  color?: string[],
-  size?: string[],
-  favorite?: boolean,
+  name?: string;
+  count?: IRangeFilter;
+  year?: IRangeFilter;
+  shape?: string[];
+  color?: string[];
+  size?: string[];
+  favorite?: boolean;
 }
 
 export interface IRangeFilter {
@@ -35,4 +36,10 @@ export interface Sort {
 export enum SortDirection {
   ASC = 'ВВЕРХ',
   DSC = 'ВНИЗ',
+}
+
+export interface CardsPositions {
+  idx: number;
+  top: number;
+  left: number;
 }
