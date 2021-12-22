@@ -3,6 +3,7 @@ import { Filters } from './constants';
 import { Toys } from './toysModel';
 import { RangeSlider } from './RangeSlider';
 import { FiltersComponent } from './filtersComponents';
+import { createSnowFlake } from './Background';
 const searchImg = require('../assets/img/svg/search.svg');
 const deleteImg = require('../assets/img/svg/cross.svg');
 
@@ -23,12 +24,14 @@ export class Events {
   shapeArray: Array<string>;
   toysModel: Toys = new Toys;
   data: ICardData[];
-
+  snowflakeBtn: HTMLElement;
+  intervalId!: NodeJS.Timer;
 
   constructor(data: Array<ICardData>, filters: IFilters, sortConditions: Sort) {
     this.data = data;
     this.filters = filters;
     this.sortConditions = sortConditions;
+    this.snowflakeBtn = document.querySelector('.theme') as HTMLElement;
     this.selectBtn = document.querySelector('.select') as HTMLSelectElement;
     this.favoriteBtn = document.querySelector('.filter_favorite') as HTMLInputElement;
     this.sizeBtns = document.querySelectorAll('.filter_size') as NodeListOf<HTMLInputElement>;
@@ -41,6 +44,7 @@ export class Events {
     this.sizeArray = [];
     this.colorArray = [];
     this.shapeArray = [];
+    this.intervalId; //eslint-disable-line
   }
 
   public setEvents(): void {
@@ -152,6 +156,21 @@ export class Events {
       this.filterCards(this.data);
     });
 
+    //Snowflake button
+    let isSnowing = false;
+
+    this.snowflakeBtn.addEventListener('click', () => {
+      if (!isSnowing) {
+        this.intervalId = setInterval(createSnowFlake, 100);
+        this.snowflakeBtn.classList.add('active');
+        isSnowing = true;
+      } else {
+        clearInterval(this.intervalId);
+        this.snowflakeBtn.classList.remove('active');
+        isSnowing = false;
+      }
+    });
+
     //Reset Local Storage button
 
     this.resetLocalStorageBtn.addEventListener('click', () => {
@@ -161,26 +180,26 @@ export class Events {
     });
   }
 
-  private setButtonFilters (btns: NodeListOf<HTMLElement>, filter: Filters ) {
+  private setButtonFilters(btns: NodeListOf<HTMLElement>, filter: Filters ) {
     btns.forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
 
-        switch(filter) {
-          case(Filters.color):
-          this.colorArray = [];
-          btns.forEach((btn) => {
-            if (btn.className.includes('active')) this.colorArray.push((btn.dataset.filter) as string);
-          });
-          (this.colorArray.length > 0) ? this.filters.color = this.colorArray : delete this.filters.color;
-          break;
-          case(Filters.shape):
-          this.shapeArray = [];
-          btns.forEach((btn) => {
-            if (btn.className.includes('active')) this.shapeArray.push((btn.dataset.filter) as string);
-          });
-          (this.shapeArray.length > 0) ? this.filters.shape = this.shapeArray : delete this.filters.shape;
-          break;
+        switch (filter) {
+          case (Filters.color):
+            this.colorArray = [];
+            btns.forEach((btn) => { //eslint-disable-line
+              if (btn.className.includes('active')) this.colorArray.push((btn.dataset.filter) as string);
+            });
+            (this.colorArray.length > 0) ? this.filters.color = this.colorArray : delete this.filters.color;
+            break;
+          case (Filters.shape):
+            this.shapeArray = [];
+            btns.forEach((btn) => { //eslint-disable-line
+              if (btn.className.includes('active')) this.shapeArray.push((btn.dataset.filter) as string);
+            });
+            (this.shapeArray.length > 0) ? this.filters.shape = this.shapeArray : delete this.filters.shape;
+            break;
         }
 
         this.toysModel.setLocalStorage(this.filters, this.sortConditions);
@@ -191,9 +210,8 @@ export class Events {
 
   public filterCards(data: Array<ICardData>): void {
     const filters = new FiltersComponent(this.filters, this.sortConditions);
-    let cardsOnPageArray = filters.parseData(data);
+    const cardsOnPageArray = filters.parseData(data);
     this.toysModel.checkIfSelected();
-    console.log(cardsOnPageArray);
     this.toysModel.renderCards(cardsOnPageArray);
   }
 }

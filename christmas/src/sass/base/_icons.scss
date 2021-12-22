@@ -11,6 +11,9 @@
     opacity: 0.5;
     transform: scale(1.2);
   }
+  &.active {
+    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
+  }
 }
 
 .icon_small {

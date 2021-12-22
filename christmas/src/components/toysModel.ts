@@ -1,23 +1,19 @@
-import { ICardData, IFilters, Sort, SortDirection, CardsPositions } from './types';
+import { ICardData, IFilters, Sort, SortDirection } from './types';
 import { LoadData } from './loadData';
 import { Card } from './Card';
 import { Events } from './Events';
 import { RangeSlider } from './RangeSlider';
-import { Phrases, CardParameters } from './constants';
+import { Phrases } from './constants';
 
 export class Toys {
   allCardsArray: Array<ICardData> = [];
   cardsOnPageArray: Array<ICardData> = [];
   selectedCards: Array<ICardData> = [];
-  filteredCards: Array<ICardData> = [];
   rangeSortedArray: Array<ICardData> = [];
   filters: IFilters;
   sortConditions: Sort;
   selectedBtn: HTMLElement;
   favoriteValue = false;
-  sizeArray: Array<string>;
-  colorArray: Array<string>;
-  shapeArray: Array<string>;
   cardsWrapper: HTMLElement;
   sliders: NodeListOf<HTMLInputElement>;
   selectBtn: HTMLSelectElement;
@@ -30,12 +26,8 @@ export class Toys {
     this.allCardsArray = [];
     this.cardsOnPageArray = [];
     this.selectedCards = [];
-    this.filteredCards = [];
     this.rangeSortedArray = [];
     this.favoriteValue = false;
-    this.sizeArray = [];
-    this.colorArray = [];
-    this.shapeArray = [];
     this.filters = {};
     this.sortConditions = {
       key: 'name',
