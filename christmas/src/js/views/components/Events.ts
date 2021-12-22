@@ -1,11 +1,11 @@
-import { ICardData, IFilters, Sort, SortDirection, SortParams } from './types';
-import { Filters } from './constants';
-import { Toys } from './toysModel';
+import { ICardData, IFilters, Sort, SortDirection, SortParams } from '../../services/types';
+import { Filters } from '../../services/constants';
+import { Toys } from '../../services/toysModel';
 import { RangeSlider } from './RangeSlider';
-import { FiltersComponent } from './filtersComponents';
+import { FilterData } from '../../services/filterData';
 import { createSnowFlake } from './Background';
-const searchImg = require('../assets/img/svg/search.svg');
-const deleteImg = require('../assets/img/svg/cross.svg');
+const searchImg = require('../../../assets/img/svg/search.svg');
+const deleteImg = require('../../../assets/img/svg/cross.svg');
 
 export class Events {
   filters: IFilters;
@@ -209,7 +209,7 @@ export class Events {
   }
 
   public filterCards(data: Array<ICardData>): void {
-    const filters = new FiltersComponent(this.filters, this.sortConditions);
+    const filters = new FilterData(this.filters, this.sortConditions);
     const cardsOnPageArray = filters.parseData(data);
     this.toysModel.checkIfSelected();
     this.toysModel.renderCards(cardsOnPageArray);

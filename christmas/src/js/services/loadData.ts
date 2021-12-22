@@ -1,4 +1,4 @@
-import cardsDataUrl from '../assets/json/data.json';
+import cardsDataUrl from '../../assets/json/data.json';
 import { ICardData } from './types';
 
 interface ICardDto {

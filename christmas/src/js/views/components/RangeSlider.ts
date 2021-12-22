@@ -1,4 +1,5 @@
-import { Colors, Coefficients } from './constants';
+import { Colors, Coefficients } from '../../services/constants';
+
 export class RangeSlider {
   sliders: NodeListOf<HTMLInputElement>;
   displayValueOne: HTMLInputElement;

@@ -1,4 +1,4 @@
-import { ICardData } from './types';
+import { ICardData } from '../../services/types';
 
 
 export class Card implements ICardData {

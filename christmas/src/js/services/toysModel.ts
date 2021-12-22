@@ -1,8 +1,8 @@
 import { ICardData, IFilters, Sort, SortDirection } from './types';
 import { LoadData } from './loadData';
-import { Card } from './Card';
-import { Events } from './Events';
-import { RangeSlider } from './RangeSlider';
+import { Card } from '../views/components/Card';
+import { Events } from '../views/components/Events';
+import { RangeSlider } from '../views/components/RangeSlider';
 import { Phrases } from './constants';
 
 export class Toys {

@@ -1,5 +1,5 @@
 import './sass/style.scss';
-import { Toys } from './components/toysModel';
+import { Toys } from './js/services/toysModel';
 
 
 //Страница с игрушками

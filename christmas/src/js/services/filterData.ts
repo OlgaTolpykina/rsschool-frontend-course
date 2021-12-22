@@ -1,6 +1,6 @@
 import { IFilters, Sort, SortDirection, ICardData } from './types';
 
-export class FiltersComponent {
+export class FilterData {
   cardsToShowArray: ICardData[];
   filters: IFilters;
   sortConditions: Sort;

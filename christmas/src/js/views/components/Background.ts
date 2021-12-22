@@ -1,4 +1,4 @@
-const snowflakeImg = require('../assets/img/svg/snowflake_blue.svg');
+const snowflakeImg = require('../../../assets/img/svg/snowflake_blue.svg');
 
 export function createSnowFlake():void {
   const snowflake: HTMLElement = document.createElement('span');
