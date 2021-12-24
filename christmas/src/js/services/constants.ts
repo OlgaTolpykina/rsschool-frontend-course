@@ -1,3 +1,4 @@
+
 export enum Colors {
   white = '#fff',
   main = '#278D9F',
@@ -11,13 +12,24 @@ export enum Phrases {
   noMatch = 'Извините, совпадений не обнаружено',
 }
 
-export enum CardParameters {
-  width = 190,
-  height = 280,
-  gap = 30,
+export enum SortDirection {
+  ASC = 'ВВЕРХ',
+  DSC = 'ВНИЗ',
 }
 
 export enum Filters {
   color = 'color',
   shape = 'shape',
+}
+
+export enum RoutesID {
+  home = 'home-route',
+  toys = 'toys-route',
+  tree = 'tree-route',
+}
+
+export enum Paths {
+  home = '/',
+  toys = '/toys',
+  tree = '/tree',
 }

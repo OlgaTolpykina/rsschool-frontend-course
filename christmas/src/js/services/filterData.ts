@@ -1,4 +1,5 @@
-import { IFilters, Sort, SortDirection, ICardData } from './types';
+import { IFilters, Sort, ICardData } from './types';
+import { SortDirection } from './constants';
 
 export class FilterData {
   cardsToShowArray: ICardData[];

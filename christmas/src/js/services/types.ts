@@ -1,3 +1,5 @@
+import { SortDirection, RoutesID, Paths } from "./constants";
+
 export interface ICardData {
   id?: number;
   num: number;
@@ -33,13 +35,18 @@ export interface Sort {
   direction: SortDirection;
 }
 
-export enum SortDirection {
-  ASC = 'ВВЕРХ',
-  DSC = 'ВНИЗ',
-}
-
 export interface CardsPositions {
   idx: number;
   top: number;
   left: number;
+}
+
+type Page = {
+  render: () => string;
+}
+
+export interface Routes {
+  id: RoutesID,
+  path: Paths,
+  page: Page,
 }

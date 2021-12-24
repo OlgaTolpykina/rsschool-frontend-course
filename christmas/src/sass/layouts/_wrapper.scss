@@ -1,6 +1,7 @@
 .wrapper {
   max-width: $content-width;
   margin: auto;
+  width: 100%;
   height: 100%;
 }
 
@@ -18,12 +19,15 @@
   @include flex;
 }
 
-.content__wrapper {
+.toys__wrapper {
   @include desktop-grid;
-  width: 100%;
   @include media-tablet {
     @include tablet-grid;
   }
+}
+
+.tree__wrapper {
+  @include flex;
 }
 
 .footer__wrapper {

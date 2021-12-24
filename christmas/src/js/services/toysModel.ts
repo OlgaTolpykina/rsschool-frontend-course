@@ -1,4 +1,5 @@
-import { ICardData, IFilters, Sort, SortDirection } from './types';
+import { ICardData, IFilters, Sort } from './types';
+import { SortDirection } from './constants';
 import { LoadData } from './loadData';
 import { Card } from '../views/components/Card';
 import { Events } from '../views/components/Events';

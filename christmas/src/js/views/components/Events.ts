@@ -1,4 +1,5 @@
-import { ICardData, IFilters, Sort, SortDirection, SortParams } from '../../services/types';
+import { ICardData, IFilters, Sort, SortParams } from '../../services/types';
+import { SortDirection } from '../../services/constants';
 import { Filters } from '../../services/constants';
 import { Toys } from '../../services/toysModel';
 import { RangeSlider } from './RangeSlider';
@@ -177,6 +178,7 @@ export class Events {
       localStorage.removeItem('filters');
       localStorage.removeItem('sortConditions');
       localStorage.removeItem('selectedCards');
+      localStorage.removeItem('path');
     });
   }
 
