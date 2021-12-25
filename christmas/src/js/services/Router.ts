@@ -5,6 +5,7 @@ import ToysPage from '../views/pages/ToysPage';
 import TreePage from '../views/pages/TreePage';
 import { Toys } from './toysModel';
 import { TreeModel } from './treeModel';
+import { ICardData } from "./types";
 
 export class Router {
 
@@ -97,6 +98,7 @@ export class Router {
         this.path = this.routes[i].path;
 
         this.renderPage();
+        
       }
     }  
   }

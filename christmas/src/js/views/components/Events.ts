@@ -27,6 +27,7 @@ export class Events {
   data: ICardData[];
   snowflakeBtn: HTMLElement;
   intervalId!: NodeJS.Timer;
+  cardsOnPageArray: Array<ICardData>;
 
   constructor(data: Array<ICardData>, filters: IFilters, sortConditions: Sort) {
     this.data = data;
@@ -46,6 +47,7 @@ export class Events {
     this.colorArray = [];
     this.shapeArray = [];
     this.intervalId; //eslint-disable-line
+    this.cardsOnPageArray = [];
   }
 
   public setEvents(): void {
@@ -212,8 +214,8 @@ export class Events {
 
   public filterCards(data: Array<ICardData>): void {
     const filters = new FilterData(this.filters, this.sortConditions);
-    const cardsOnPageArray = filters.parseData(data);
-    this.toysModel.checkIfSelected();
-    this.toysModel.renderCards(cardsOnPageArray);
+    this.cardsOnPageArray = filters.parseData(data);
+    this.cardsOnPageArray = this.toysModel.checkIfSelected(this.cardsOnPageArray);
+    this.toysModel.renderCards(this.cardsOnPageArray);
   }
 }

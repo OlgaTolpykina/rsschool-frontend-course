@@ -1,3 +1,5 @@
+import { ICardData } from "./types";
+
 const treeVarianImg1 = require('../../assets/img/tree/1.png');
 const treeVarianImg2 = require('../../assets/img/tree/2.png');
 const treeVarianImg3 = require('../../assets/img/tree/3.png');
@@ -23,13 +25,19 @@ export class TreeModel {
   treeLightsWrapper: HTMLElement;
   lightVariants: Array<string>;
   treeMainWrapper: HTMLElement;
+  treeFavoritesWrapper: HTMLElement;
+  selectedCards: Array<ICardData>;
+  favoriteCard: Array<HTMLElement>;
 
 
   constructor () {
+    this.selectedCards = [];
+    this.favoriteCard = [];
     this.treeWrapper = document.querySelector('.tree_choice') as HTMLElement;
     this.treeBgWrapper = document.querySelector('.bg_choice') as HTMLElement;
     this.treeLightsWrapper = document.querySelector('.lights_choice') as HTMLElement;
     this.treeMainWrapper = document.querySelector('.tree__main-tree') as HTMLElement;
+    this.treeFavoritesWrapper  = document.querySelector('.tree__favorites') as HTMLElement;
 
     this.treeVariantImgs = [treeVarianImg1, treeVarianImg2, treeVarianImg3, treeVarianImg4, treeVarianImg5, treeVarianImg6];
     this.bgVariantsImgs = [bgVarianImg1, bgVarianImg2, bgVarianImg3, bgVarianImg4, bgVarianImg5, bgVarianImg6, bgVarianImg7, bgVarianImg8, bgVarianImg9, bgVarianImg10];
@@ -125,5 +133,68 @@ export class TreeModel {
 
     this.treeMainWrapper.append(lightsContainer);
     this.treeMainWrapper.append(mainTree);
+
+    this.renderSelected();
+  }
+
+  renderSelected() {
+    this.selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
+
+    const favoritesContainer = document.createElement('div') as HTMLElement;
+    favoritesContainer.className = 'favorites_container settings__container';
+
+    for (let i = 0; i < 20; i++) {
+      const favoriteCard = document.createElement('div') as HTMLElement;
+      favoriteCard.className = 'favorites__card'; 
+      this.favoriteCard.push(favoriteCard);
+      favoritesContainer.append(favoriteCard); 
+    }
+
+    for (let i = 0; i < this.selectedCards.length; i++) {
+      const favoriteCardCount = document.createElement('p') as HTMLElement;
+      favoriteCardCount.className = 'favorites__card_count';
+      favoriteCardCount.innerHTML = this.selectedCards[i].count.toString();
+      
+      this.favoriteCard[i].append(favoriteCardCount);
+
+      for (let j = 1; j <= this.selectedCards[i].count; j++) {
+      const favoriteCardImg = document.createElement('img') as HTMLImageElement;
+      favoriteCardImg.src = `assets/img/${i + 1}.png`;
+      favoriteCardImg.className = 'favorites__card_img';
+      favoriteCardImg.setAttribute('alt', 'toy');
+      favoriteCardImg.setAttribute('width', '70');
+      favoriteCardImg.setAttribute('height', '70');
+      favoriteCardImg.setAttribute('draggable', 'true');
+
+      this.favoriteCard[i].append(favoriteCardImg);
+      }
+    }
+    
+    this.treeFavoritesWrapper.append(favoritesContainer);
+
+    this.renderDecorated();
+  }
+
+  renderDecorated() {
+    const decoratedTree = document.createElement('div') as HTMLElement;
+    decoratedTree.className = 'favorites__decorated settings__container';
+    this.treeFavoritesWrapper.append(decoratedTree);
+
+    const decoratedTreeContainer = document.createElement('div') as HTMLElement;
+    decoratedTreeContainer.className = 'favorites__decorated_container';
+    decoratedTree.append(decoratedTreeContainer);
+
+    for (let i = 0; i < 6; i++) {
+      const decoratedTreeVariant = document.createElement('div') as HTMLElement;
+      decoratedTreeVariant.className = 'tree_decorated';
+      decoratedTreeContainer.append(decoratedTreeVariant);
+
+      const decoratedTreeImg = document.createElement('img') as HTMLImageElement;
+      decoratedTreeImg.src = `${this.treeVariantImgs[i]}`;
+      decoratedTreeImg.className = 'tree_decorated_img';
+      decoratedTreeImg.setAttribute('alt', 'Наряженная ёлка');
+      decoratedTreeImg.setAttribute('height', '110');
+      decoratedTreeVariant.append(decoratedTreeImg);
+    }
   }
 }

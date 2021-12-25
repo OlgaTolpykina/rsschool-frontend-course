@@ -86,19 +86,21 @@ export class Toys {
       this.cardsWrapper.append(cardElement);
 
       cardElement.addEventListener('click', () => {
-        this.selectCards(card, cardElement);
+        this.selectCards(cardInfo, cardElement);
       });
     });
   }
 
   private selectCards(card: ICardData, cardElement:HTMLElement):void {
 
-    if (this.selectedCards.length < 20 && !this.selectedCards.includes(card)) {
+    if (this.selectedCards.length < 20 && !card.selected) {
+      card.selected = true;
       this.selectedCards.push(card);
       localStorage.setItem('selectedCards', JSON.stringify(this.selectedCards));
       cardElement.classList.add('active');
       this.selectedBtn.innerHTML = `${this.selectedCards.length}`;
-    } else if (this.selectedCards.includes(card)) {
+    } else if (card.selected) {
+      card.selected = false;
       const index = this.selectedCards.indexOf(card);
       this.selectedCards.splice(index, 1);
       localStorage.setItem('selectedCards', JSON.stringify(this.selectedCards));
@@ -112,9 +114,10 @@ export class Toys {
     }
   }
 
-  public checkIfSelected():void {
+  public checkIfSelected(data: Array<ICardData>): Array<ICardData> {
+    this.selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
     const selected = this.selectedCards.map(item => item.num);
-    this.cardsOnPageArray = this.cardsOnPageArray.map((card) => selected.includes(card.num) ? { ...card, selected: true } : card);
+    return data = data.map((card) => selected.includes(card.num) ? { ...card, selected: true } : { ...card, selected: false });
   }
 
   public setLocalStorage(filters: IFilters, sortConditions: Sort):void {

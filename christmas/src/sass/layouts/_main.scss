@@ -190,7 +190,9 @@ p.settings__title {
 
 .tree_choice::before,
 .bg_choice::before,
-.lights_choice::before {
+.lights_choice::before,
+.favorites_container::before,
+.favorites__decorated::before {
   content: "Выберите ёлку";
   width: 100%;
   font-size: 20px;
@@ -210,7 +212,7 @@ p.settings__title {
 
 .setting__item {
   @extend %element-style;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: $color-white_semitransparent;
   background-repeat: no-repeat;
   background-position: center;
@@ -220,7 +222,6 @@ p.settings__title {
   width: 115px;
   height: 115px;
   background-size: auto 110px;
-
 }
 
 .bg__variant {
@@ -351,6 +352,80 @@ p.settings__title {
   width: 500px;
   height: 714px;
 }
+
+.tree__favorites {
+  width: 400px;
+}
+
+.favorites_container {
+  &::before {
+    content: "Выбранные игрушки";
+  }
+}
+
+.favorites__card {
+  @include flex;
+  width: 25%;
+  max-width: 84px;
+  height: 84px;
+  @extend %element-style;
+  border-radius: 10px;
+  background-color: $color-white_semitransparent;
+  &_count {
+    width: 25px;
+    height: 25px;
+    align-self: flex-end;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-left: 60px;
+    border-radius: 10px;
+    background-color: $color-active;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: 900;
+  }
+  &_img {
+    display: block;
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+    cursor: move;
+  }
+}
+
+.favorites__decorated {
+  &::before {
+    content: 'Вы нарядили';
+  }
+  &_container {
+    display: flex;
+    gap: 10px;
+    height: 140px;
+    width: 400px;
+    overflow-x: auto;
+  }
+}
+
+.tree_decorated {
+  @include flex;
+  justify-content: center;
+  width: 115px;
+  min-width: 115px;
+  height: 115px;
+  border-radius: 10px;
+  background-color: $color-white_semitransparent;
+  &_img {
+    height: 110px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 
 
 
