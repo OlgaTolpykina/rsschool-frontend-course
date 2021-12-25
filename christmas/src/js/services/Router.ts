@@ -60,12 +60,12 @@ export class Router {
     const treeModel = new TreeModel();
 
     if (this.path === Paths.home) {
-      (document.querySelector('.header') as HTMLElement).classList.add('hidden');
+      (document.querySelector('.header__wrapper') as HTMLElement).classList.add('hidden');
       this.mainWrapper.classList.remove('content__tree');
     }
 
     if (this.path === Paths.toys) {
-      (document.querySelector('.header') as HTMLElement).classList.remove('hidden');
+      (document.querySelector('.header__wrapper') as HTMLElement).classList.remove('hidden');
       (document.querySelector('.toys-route') as HTMLElement).classList.add('link_active');
       (document.querySelector('.tree-route') as HTMLElement).classList.remove('link_active');
       this.mainWrapper.classList.remove('content__tree');

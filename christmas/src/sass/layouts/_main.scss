@@ -177,7 +177,8 @@ p.settings__title {
 
 // Tree page
 
-.tree__settings {
+.tree__settings,
+.tree__favorites {
   width: 400px;
 }
 
@@ -186,6 +187,8 @@ p.settings__title {
   gap: 10px;
   width: 100%;
   margin-bottom: 20px;
+  overflow-y: auto;
+  justify-content: center;
 }
 
 .tree_choice::before,
@@ -353,10 +356,6 @@ p.settings__title {
   height: 714px;
 }
 
-.tree__favorites {
-  width: 400px;
-}
-
 .favorites_container {
   &::before {
     content: "Выбранные игрушки";
@@ -365,8 +364,7 @@ p.settings__title {
 
 .favorites__card {
   @include flex;
-  width: 25%;
-  max-width: 84px;
+  width: 84px;
   height: 84px;
   @extend %element-style;
   border-radius: 10px;
@@ -426,6 +424,52 @@ p.settings__title {
   }
 }
 
+@media (max-width: 1650px) {
+  .tree__main-tree {
+    width: 600px;
+  }
+}
 
+@media (max-width: 1450px) {
+  .tree__main-tree {
+    width: 450px;
+  }
 
+  .main-tree {
+    width: 400px;
+    height: 650px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .tree__settings,
+  .tree__favorites {
+    width: 275px;
+  }
+
+  .settings__container {
+    height: 295px;
+  }
+
+  .favorites_container {
+    height: 600px;
+  }
+
+}  
+
+@media (max-width: 1050px) {
+  .tree__settings,
+  .tree__favorites {
+    width: 200px;
+  }
+
+  .main-tree {
+    width: 250px;
+    height: 400px;
+  }
+
+  .tree__main-tree {
+    width: 330px;
+  }
+}
 
