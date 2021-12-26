@@ -343,6 +343,7 @@ p.settings__title {
   align-items: flex-end;
   width: 800px;
   height: 100%;
+  position: relative;
   background-image: url("../assets/img/bg/1.jpg");
   background-size: cover;
   background-position: center;
@@ -354,6 +355,8 @@ p.settings__title {
   display: block;
   width: 500px;
   height: 714px;
+  position: absolute;
+  left: calc(50% - 250px);
 }
 
 .favorites_container {
@@ -438,6 +441,7 @@ p.settings__title {
   .main-tree {
     width: 400px;
     height: 650px;
+    left: calc(50% - 200px);
   }
 }
 
@@ -466,6 +470,7 @@ p.settings__title {
   .main-tree {
     width: 250px;
     height: 400px;
+    left: calc(50% - 125px);
   }
 
   .tree__main-tree {

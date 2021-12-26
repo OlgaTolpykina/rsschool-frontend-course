@@ -97,11 +97,16 @@ export class TreeModel {
 
     const switcher = document.createElement('div') as HTMLElement;
     switcher.className = 'lights__switcher';
+
     const switcherInput = document.createElement('input') as HTMLInputElement;
     switcherInput.type = 'checkbox';
     switcherInput.setAttribute('checked', 'checked');
     switcherInput.className = 'lights__switcher_input';
     switcherInput.setAttribute('id', 'lights__switcher');
+    switcherInput.addEventListener('click', () => {
+
+    });
+
     const switcherLabel = document.createElement('label') as HTMLLabelElement;
     switcherLabel.className = 'lights__switcher_label';
     switcherLabel.setAttribute('for', 'lights__switcher');
@@ -146,6 +151,7 @@ export class TreeModel {
     this.treeMainWrapper.append(mainTree);
 
     this.renderSelected();
+    this.renderLights(lightsContainer);
   }
 
   renderSelected() {
@@ -223,6 +229,97 @@ export class TreeModel {
     this.settingsComtainer.append(bntContainer);
     bntContainer.append(resetBtn);
   }
+
+  renderLights(container: HTMLElement):void {
+    const canvas = document.createElement('canvas') as HTMLCanvasElement;
+    canvas.setAttribute('id', 'first');
+    canvas.width = 500;
+    canvas.height = 714;
+
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+    
+    for (let i = -3; i < 5; i+=3) {
+      ctx.beginPath();  
+      ctx.arc(250+i*15, 170-Math.pow(i,2), 5, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      this.setContext(ctx);
+    }
+
+    for (let i = -5; i < 7; i+=3) {
+      ctx.beginPath();  
+      ctx.arc(250+i*15, 250-Math.pow(i,2), 5, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      this.setContext(ctx);
+    }
+
+    for (let i = -7; i < 9; i+=3) {
+      ctx.beginPath();  
+      ctx.arc(250+i*15, 350-Math.pow(i,2), 5, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      this.setContext(ctx);
+    }
+
+    for (let i = -8; i < 10; i+=3) {
+      ctx.beginPath();  
+      ctx.arc(250+i*15, 450-Math.pow(i,2), 5, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      this.setContext(ctx);
+    }
+
+    for (let i = -10; i < 12; i+=3) {
+      ctx.beginPath();  
+      ctx.arc(250+i*15, 550-Math.pow(i,2), 5, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      this.setContext(ctx);
+    }
+
+    for (let i = -11; i < 14; i+=3) {
+      ctx.beginPath();  
+      ctx.arc(250+i*15, 650-Math.pow(i,2), 5, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      this.setContext(ctx);
+    }
+
+    container.append(canvas);
+  }
+
+  setContext(ctx: CanvasRenderingContext2D) {
+    ctx.fillStyle = '#FDD700';
+    ctx.strokeStyle = '#FDD700';
+    ctx.shadowColor = '#FDD700';
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetX = 5;
+    ctx.shadowOffsetY = 5;
+    ctx.fill();
+  }
+
+  // animateColorChanging(container: HTMLElement, canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, color1: string, color2: string) {
+  //   const colors: Array<string> = [color1, color2];
+  //   context.clearRect(0, 0, canvas.width, canvas.height);
+
+  //   for (let j = 0; j < colors.length; j++) {
+  //     for (let i = -20; i < 20; i+=2) {
+  //       context.beginPath();  
+  //       context.arc(65+i*10, 65-Math.pow(i,2), 5, 0.5, 2 * Math.PI);
+  //       context.fillStyle = `${colors[j]}`;
+  //       context.strokeStyle = `${colors[j]}`;
+  //       context.shadowColor = `${colors[j]}`;
+  //       context.shadowBlur = 10;
+  //       context.shadowOffsetX = 5;
+  //       context.shadowOffsetY = 5;
+  //       context.fill();
+  //       context.stroke();
+  
+  //       container.append(canvas);
+  //     }
+  //   }
+  // }
 
   resetLocalStorage() {
     localStorage.removeItem('chosenTree');
