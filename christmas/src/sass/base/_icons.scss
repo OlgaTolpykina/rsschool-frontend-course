@@ -6,7 +6,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  @extend %transition;
   &:hover {
     opacity: 0.5;
     transform: scale(1.2);

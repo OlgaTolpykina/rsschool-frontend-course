@@ -25,7 +25,6 @@ export class Events {
   shapeArray: Array<string>;
   toysModel: Toys = new Toys;
   data: ICardData[];
-  snowflakeBtn: HTMLElement;
   intervalId!: NodeJS.Timer;
   cardsOnPageArray: Array<ICardData>;
 
@@ -33,7 +32,6 @@ export class Events {
     this.data = data;
     this.filters = filters;
     this.sortConditions = sortConditions;
-    this.snowflakeBtn = document.querySelector('.theme') as HTMLElement;
     this.selectBtn = document.querySelector('.select') as HTMLSelectElement;
     this.favoriteBtn = document.querySelector('.filter_favorite') as HTMLInputElement;
     this.sizeBtns = document.querySelectorAll('.filter_size') as NodeListOf<HTMLInputElement>;
@@ -159,21 +157,6 @@ export class Events {
       this.filterCards(this.data);
     });
 
-    //Snowflake button
-    let isSnowing = false;
-
-    this.snowflakeBtn.addEventListener('click', () => {
-      if (!isSnowing) {
-        this.intervalId = setInterval(createSnowFlake, 100);
-        this.snowflakeBtn.classList.add('active');
-        isSnowing = true;
-      } else {
-        clearInterval(this.intervalId);
-        this.snowflakeBtn.classList.remove('active');
-        isSnowing = false;
-      }
-    });
-
     //Reset Local Storage button
 
     this.resetLocalStorageBtn.addEventListener('click', () => {
@@ -181,6 +164,8 @@ export class Events {
       localStorage.removeItem('sortConditions');
       localStorage.removeItem('selectedCards');
       localStorage.removeItem('path');
+      localStorage.removeItem('music');
+      localStorage.removeItem('snow');
     });
   }
 

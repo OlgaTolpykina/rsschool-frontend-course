@@ -1,11 +1,10 @@
-import { Routes } from "./types";
-import { RoutesID, Paths } from "./constants";
+import { Routes } from './types';
+import { RoutesID, Paths } from './constants';
 import  HomePage from '../views/pages/HomePage';
 import ToysPage from '../views/pages/ToysPage';
 import TreePage from '../views/pages/TreePage';
 import { Toys } from './toysModel';
 import { TreeModel } from './treeModel';
-import { ICardData } from "./types";
 
 export class Router {
 
@@ -29,7 +28,7 @@ export class Router {
         id: RoutesID.tree,
         path: Paths.tree,
         page: TreePage,
-      }
+      },
     ];
     this.path = '';
     this.mainWrapper = document.querySelector('main') as HTMLElement;

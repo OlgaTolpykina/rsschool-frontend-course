@@ -39,7 +39,7 @@ module.exports = ({ development }) => ({
         loader: "html-loader",
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg|mp3)$/i,
         type: 'asset/resource',
       },
       {
@@ -76,7 +76,8 @@ module.exports = ({ development }) => ({
     new CopyPlugin({
       patterns: [
         { from: "./src/assets/img/toys", to: "./assets/img" },
-        { from: "./public", to: "./assets/img" }
+        { from: "./public", to: "./assets/img" },
+        { from: "./src/assets/audio", to: "./assets/audio" }
       ],
     }),
   ],

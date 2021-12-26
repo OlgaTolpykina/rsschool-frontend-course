@@ -22,6 +22,7 @@ export class Toys {
   sizeBtns: NodeListOf<HTMLInputElement>;
   colorBtns: NodeListOf<HTMLElement>;
   shapeBtns: NodeListOf<HTMLElement>;
+  snowflakeBtn: HTMLElement;
 
   constructor() {
     this.allCardsArray = [];
@@ -42,6 +43,7 @@ export class Toys {
     this.sizeBtns = document.querySelectorAll('.filter_size') as NodeListOf<HTMLInputElement>;
     this.colorBtns = document.querySelectorAll('.filter_color') as NodeListOf<HTMLElement>;
     this.shapeBtns = document.querySelectorAll('.filter_shape') as NodeListOf<HTMLElement>;
+    this.snowflakeBtn = document.querySelector('.theme') as HTMLElement;
   }
 
   public getCardsList(): void  {
@@ -126,6 +128,8 @@ export class Toys {
   }
 
   private setButtons(): void {
+    if (localStorage.getItem('snow') === 'true') this.snowflakeBtn.classList.add('active');
+
     if (this.sortConditions && this.sortConditions.key === 'name' && this.sortConditions.direction === SortDirection.ASC) {
       this.selectBtn.value = 'name-acs';
     }

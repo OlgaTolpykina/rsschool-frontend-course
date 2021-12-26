@@ -1,4 +1,5 @@
-import { ICardData } from "./types";
+import { ICardData } from './types';
+import { Phrases } from './constants';
 
 const treeVarianImg1 = require('../../assets/img/tree/1.png');
 const treeVarianImg2 = require('../../assets/img/tree/2.png');
@@ -28,11 +29,13 @@ export class TreeModel {
   treeFavoritesWrapper: HTMLElement;
   selectedCards: Array<ICardData>;
   favoriteCard: Array<HTMLElement>;
+  settingsComtainer: HTMLElement;
 
 
-  constructor () {
+  constructor() {
     this.selectedCards = [];
     this.favoriteCard = [];
+    this.settingsComtainer = document.querySelector('.tree__settings') as HTMLElement;
     this.treeWrapper = document.querySelector('.tree_choice') as HTMLElement;
     this.treeBgWrapper = document.querySelector('.bg_choice') as HTMLElement;
     this.treeLightsWrapper = document.querySelector('.lights_choice') as HTMLElement;
@@ -50,7 +53,7 @@ export class TreeModel {
     for (let i = 1; i <= 6; i++) {
       const treeVariant: HTMLElement = (document.createElement('div') as HTMLElement);
       treeVariant.className = 'tree__variant setting__item';
-      treeVariant.style.backgroundImage = `url("${this.treeVariantImgs[i-1]}")`;
+      treeVariant.style.backgroundImage = `url("${this.treeVariantImgs[i - 1]}")`;
       treeVariant.addEventListener('click', () => this.chooseTree(i));
       this.treeWrapper.append(treeVariant);
     }
@@ -58,7 +61,7 @@ export class TreeModel {
   }
 
   chooseTree(idx: number): void {
-    (document.querySelector('.main-tree') as HTMLImageElement).src = `${this.treeVariantImgs[idx-1]}`;
+    (document.querySelector('.main-tree') as HTMLImageElement).src = `${this.treeVariantImgs[idx - 1]}`;
     localStorage.setItem('chosenTree', idx.toString());
   }
 
@@ -68,7 +71,7 @@ export class TreeModel {
     for (let i = 1; i <= 10; i++) {
       const bgVariant: HTMLElement = document.createElement('div') as HTMLElement;
       bgVariant.className = 'bg__variant setting__item';
-      bgVariant.style.backgroundImage = `url("${this.bgVariantsImgs[i-1]}")`;
+      bgVariant.style.backgroundImage = `url("${this.bgVariantsImgs[i - 1]}")`;
       bgVariant.addEventListener('click', () => this.chooseBg(i));
       this.treeBgWrapper.append(bgVariant);
     }
@@ -77,7 +80,7 @@ export class TreeModel {
   }
 
   chooseBg(idx: number) {
-    this.treeMainWrapper.style.backgroundImage = `url(${this.bgVariantsImgs[idx-1]})`;
+    this.treeMainWrapper.style.backgroundImage = `url(${this.bgVariantsImgs[idx - 1]})`;
     localStorage.setItem('chosenBg', idx.toString());
   }
 
@@ -98,7 +101,7 @@ export class TreeModel {
     switcherInput.type = 'checkbox';
     switcherInput.setAttribute('checked', 'checked');
     switcherInput.className = 'lights__switcher_input';
-    switcherInput.setAttribute('id', 'lights__switcher')
+    switcherInput.setAttribute('id', 'lights__switcher');
     const switcherLabel = document.createElement('label') as HTMLLabelElement;
     switcherLabel.className = 'lights__switcher_label';
     switcherLabel.setAttribute('for', 'lights__switcher');
@@ -121,11 +124,19 @@ export class TreeModel {
   }
 
   renderMainTree() {
+    let bgUrl = '';
+    (localStorage.getItem('chosenBg')) ? bgUrl = `url("${this.bgVariantsImgs[Number(localStorage.getItem('chosenBg')) - 1]}")`
+                                       : bgUrl = `url("${this.bgVariantsImgs[0]}")`;
+    this.treeMainWrapper.style.backgroundImage = bgUrl;
+
     const lightsContainer = document.createElement('div') as HTMLElement;
     lightsContainer.className = 'lights__onTree-container';
 
     const mainTree = document.createElement('img') as HTMLImageElement;
-    mainTree.src = `${this.treeVariantImgs[0]}`;
+    let mainTreeSrc = '';
+    (localStorage.getItem('chosenTree')) ? mainTreeSrc = `${this.treeVariantImgs[Number(localStorage.getItem('chosenTree')) - 1]}`
+                                         : mainTreeSrc = `${this.treeVariantImgs[0]}`;
+    mainTree.src = mainTreeSrc;
     mainTree.setAttribute('alt', 'tree');
     mainTree.setAttribute('width', '500');
     mainTree.setAttribute('height', '714');
@@ -158,15 +169,15 @@ export class TreeModel {
       this.favoriteCard[i].append(favoriteCardCount);
 
       for (let j = 1; j <= this.selectedCards[i].count; j++) {
-      const favoriteCardImg = document.createElement('img') as HTMLImageElement;
-      favoriteCardImg.src = `assets/img/${i + 1}.png`;
-      favoriteCardImg.className = 'favorites__card_img';
-      favoriteCardImg.setAttribute('alt', 'toy');
-      favoriteCardImg.setAttribute('width', '70');
-      favoriteCardImg.setAttribute('height', '70');
-      favoriteCardImg.setAttribute('draggable', 'true');
+        const favoriteCardImg = document.createElement('img') as HTMLImageElement;
+        favoriteCardImg.src = `assets/img/${i + 1}.png`;
+        favoriteCardImg.className = 'favorites__card_img';
+        favoriteCardImg.setAttribute('alt', 'toy');
+        favoriteCardImg.setAttribute('width', '70');
+        favoriteCardImg.setAttribute('height', '70');
+        favoriteCardImg.setAttribute('draggable', 'true');
 
-      this.favoriteCard[i].append(favoriteCardImg);
+        this.favoriteCard[i].append(favoriteCardImg);
       }
     }
     
@@ -196,5 +207,28 @@ export class TreeModel {
       decoratedTreeImg.setAttribute('height', '110');
       decoratedTreeVariant.append(decoratedTreeImg);
     }
+
+    this.renderBtn();
+  }
+
+  renderBtn() {
+    const bntContainer = document.createElement('div') as HTMLElement;
+    bntContainer.className = 'button__container';
+
+    const resetBtn = document.createElement('button') as HTMLElement;
+    resetBtn.className = 'button button_small';
+    resetBtn.innerHTML = Phrases.reset;
+    resetBtn.addEventListener('click', this.resetLocalStorage);
+
+    this.settingsComtainer.append(bntContainer);
+    bntContainer.append(resetBtn);
+  }
+
+  resetLocalStorage() {
+    localStorage.removeItem('chosenTree');
+    localStorage.removeItem('chosenBg');
+    localStorage.removeItem('music');
+    localStorage.removeItem('snow');
+    localStorage.removeItem('light');
   }
 }
