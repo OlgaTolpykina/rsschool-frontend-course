@@ -472,13 +472,30 @@ p.settings__title {
     height: 250px;
   }
 
+  .lights_choice {
+    height: 100px;
+  }
+
+  .favorites__decorated {
+    height: 195px;
+  }
+
   .favorites_container {
-    height: 600px;
+    height: 450px;
   }
 
   .lights__onTree-container {
     position: absolute;
-    top: 200px;
+    top: 0px;
+  }
+
+  .light__variant_container {
+    width: 180px;
+  }
+
+  .light__variant {
+    width: 20px;
+    height: 20px;
   }
 
 }  
@@ -499,11 +516,30 @@ p.settings__title {
     width: 250px;
     height: 380px;
     position: absolute;
-    top: 454px;
+    top: 243px;
   }
 
   .tree__main-tree {
     width: 330px;
+  }
+
+  .light__variant {
+    width: 15px;
+    height: 15px;
+  }
+
+  .switcher_indicator {
+    width: 20px;
+  }
+
+  .switcher_inner-container::before,
+  .switcher_inner-container::after {
+    height: 20px;
+    line-height: 20px;
+  }
+
+  .light__variant_container {
+    padding: 0;
   }
 }
 

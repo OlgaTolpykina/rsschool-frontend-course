@@ -177,6 +177,9 @@ export class TreeModel {
     switcherInput.className = 'lights__switcher_input';
     switcherInput.setAttribute('id', 'lights__switcher');
     switcherInput.addEventListener('click', () => {
+      localStorage.setItem('lights', switcherInput.checked.toString());
+      if (localStorage.getItem('lights') === 'true') switcherInput.checked = true;
+
       if (!switcherInput.checked) { 
         this.clearIntervals();
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -241,7 +244,15 @@ export class TreeModel {
     this.treeMainWrapper.append(mainTree);
 
     this.renderSelected();
-    this.renderLights(this.lightsContainer, this.lightsColor, true);
+
+    let isLightsOn = true;
+    if (localStorage.getItem('lights') === 'false') isLightsOn = false;
+
+    if (isLightsOn) {
+      let isMulticolor = true;
+      if (localStorage.getItem('isMulticolor') === 'false') isMulticolor = false;
+      this.renderLights(this.lightsContainer, this.lightsColor, isMulticolor);
+    }
   }
 
   renderSelected() {
