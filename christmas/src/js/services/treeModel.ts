@@ -1,5 +1,6 @@
 import { ICardData } from './types';
 import { Phrases } from './constants';
+import { LightsColor } from './constants';
 
 const treeVarianImg1 = require('../../assets/img/tree/1.png');
 const treeVarianImg2 = require('../../assets/img/tree/2.png');
@@ -29,18 +30,41 @@ export class TreeModel {
   treeFavoritesWrapper: HTMLElement;
   selectedCards: Array<ICardData>;
   favoriteCard: Array<HTMLElement>;
-  settingsComtainer: HTMLElement;
+  settingsContainer: HTMLElement;
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  lightsContainer: HTMLElement;
+  lightsColor: string;
+  intervalID1: number;
+  intervalID2: number;
+  intervalID3: number;
+  intervalID4: number;
+  intervalID5: number;
+  intervalID6: number;
+  intervalID7: number;
 
 
   constructor() {
     this.selectedCards = [];
     this.favoriteCard = [];
-    this.settingsComtainer = document.querySelector('.tree__settings') as HTMLElement;
+    this.settingsContainer = document.querySelector('.tree__settings') as HTMLElement;
     this.treeWrapper = document.querySelector('.tree_choice') as HTMLElement;
     this.treeBgWrapper = document.querySelector('.bg_choice') as HTMLElement;
     this.treeLightsWrapper = document.querySelector('.lights_choice') as HTMLElement;
     this.treeMainWrapper = document.querySelector('.tree__main-tree') as HTMLElement;
     this.treeFavoritesWrapper  = document.querySelector('.tree__favorites') as HTMLElement;
+    this.canvas = document.createElement('canvas') as HTMLCanvasElement;
+    this.context = this.canvas.getContext("2d") as CanvasRenderingContext2D;
+    this.lightsContainer = document.createElement('div') as HTMLElement;
+    this.lightsColor = localStorage.getItem('lightsColor') || LightsColor.yellow_light;
+
+    this.intervalID1 = 0;
+    this.intervalID2 = 0;
+    this.intervalID3 = 0;
+    this.intervalID4 = 0;
+    this.intervalID5 = 0;
+    this.intervalID6 = 0;
+    this.intervalID7 = 0;
 
     this.treeVariantImgs = [treeVarianImg1, treeVarianImg2, treeVarianImg3, treeVarianImg4, treeVarianImg5, treeVarianImg6];
     this.bgVariantsImgs = [bgVarianImg1, bgVarianImg2, bgVarianImg3, bgVarianImg4, bgVarianImg5, bgVarianImg6, bgVarianImg7, bgVarianImg8, bgVarianImg9, bgVarianImg10];
@@ -92,6 +116,39 @@ export class TreeModel {
       const lightVariant = document.createElement('button') as HTMLInputElement;
       lightVariant.className = 'light__variant';
       lightVariant.classList.add(this.lightVariants[i]);
+      lightVariant.addEventListener('click', () => {
+        
+        //Send to renderLights array of color + idx of particular color. If multicolor, then random idx from first array element to last. Save lo local storage idx.
+
+        if (i === 1) {
+          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          this.lightsColor = LightsColor.red_light;
+          this.clearIntervals();
+          this.renderLights(this.lightsContainer, LightsColor.red_light);
+          localStorage.setItem('lightsColor', LightsColor.red_light);
+        }
+        if (i === 2) {
+          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          this.lightsColor = LightsColor.blue_light;
+          this.clearIntervals();
+          this.renderLights(this.lightsContainer, LightsColor.blue_light);
+          localStorage.setItem('lightsColor', LightsColor.blue_light);
+        }
+        if (i === 3) {
+          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          this.lightsColor = LightsColor.yellow_light;
+          this.clearIntervals();
+          this.renderLights(this.lightsContainer, LightsColor.yellow_light);
+          localStorage.setItem('lightsColor', LightsColor.yellow_light);
+        }
+        if (i === 4) {
+          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          this.lightsColor = LightsColor.green_light;
+          this.clearIntervals();
+          this.renderLights(this.lightsContainer, LightsColor.green_light);
+          localStorage.setItem('lightsColor', LightsColor.green_light);
+        }
+      });
       lightsBtnsWrapper.append(lightVariant);
     }
 
@@ -104,7 +161,12 @@ export class TreeModel {
     switcherInput.className = 'lights__switcher_input';
     switcherInput.setAttribute('id', 'lights__switcher');
     switcherInput.addEventListener('click', () => {
-
+      if (!switcherInput.checked) { 
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      } else {
+        const color = localStorage.getItem('lightsColor') || this.lightsColor;
+        this.renderLights(this.lightsContainer, color);
+      }
     });
 
     const switcherLabel = document.createElement('label') as HTMLLabelElement;
@@ -128,14 +190,23 @@ export class TreeModel {
     this.renderMainTree();
   }
 
+  clearIntervals() {
+    clearInterval(this.intervalID1);
+    clearInterval(this.intervalID2);
+    clearInterval(this.intervalID3);
+    clearInterval(this.intervalID4);
+    clearInterval(this.intervalID5);
+    clearInterval(this.intervalID6);
+    clearInterval(this.intervalID7);
+  }
+
   renderMainTree() {
     let bgUrl = '';
     (localStorage.getItem('chosenBg')) ? bgUrl = `url("${this.bgVariantsImgs[Number(localStorage.getItem('chosenBg')) - 1]}")`
                                        : bgUrl = `url("${this.bgVariantsImgs[0]}")`;
     this.treeMainWrapper.style.backgroundImage = bgUrl;
 
-    const lightsContainer = document.createElement('div') as HTMLElement;
-    lightsContainer.className = 'lights__onTree-container';
+    this.lightsContainer.className = 'lights__onTree-container';
 
     const mainTree = document.createElement('img') as HTMLImageElement;
     let mainTreeSrc = '';
@@ -147,11 +218,11 @@ export class TreeModel {
     mainTree.setAttribute('height', '714');
     mainTree.className = 'main-tree';
 
-    this.treeMainWrapper.append(lightsContainer);
+    this.treeMainWrapper.append(this.lightsContainer);
     this.treeMainWrapper.append(mainTree);
 
     this.renderSelected();
-    this.renderLights(lightsContainer);
+    this.renderLights(this.lightsContainer, this.lightsColor);
   }
 
   renderSelected() {
@@ -159,7 +230,7 @@ export class TreeModel {
 
     const favoritesContainer = document.createElement('div') as HTMLElement;
     favoritesContainer.className = 'favorites_container settings__container';
-
+    
     for (let i = 0; i < 20; i++) {
       const favoriteCard = document.createElement('div') as HTMLElement;
       favoriteCard.className = 'favorites__card'; 
@@ -226,78 +297,95 @@ export class TreeModel {
     resetBtn.innerHTML = Phrases.reset;
     resetBtn.addEventListener('click', this.resetLocalStorage);
 
-    this.settingsComtainer.append(bntContainer);
+    this.settingsContainer.append(bntContainer);
     bntContainer.append(resetBtn);
   }
 
-  renderLights(container: HTMLElement):void {
-    const canvas = document.createElement('canvas') as HTMLCanvasElement;
-    canvas.setAttribute('id', 'first');
-    canvas.width = 500;
-    canvas.height = 714;
-
-    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+  renderLights(container: HTMLElement, color: string):void {
+    this.canvas.setAttribute('id', 'canvas');
+    this.canvas.width = container.offsetWidth;
+    this.canvas.height = container.offsetHeight;
+    window.addEventListener('resize', () => {
+      this.canvas.width = container.offsetWidth;
+      this.canvas.height = container.offsetHeight;
+    });
     
-    for (let i = -3; i < 5; i+=3) {
-      ctx.beginPath();  
-      ctx.arc(250+i*15, 170-Math.pow(i,2), 5, 0, 2 * Math.PI);
-      ctx.stroke();
+    this.intervalID1 = (setInterval(() => { this.context.clearRect(0, 0, this.canvas.width, this.canvas.height); }, 1500) as unknown as number);
 
-      this.setContext(ctx);
-    }
+    this.intervalID2 = (setInterval(() => {
+      for (let i = -3; i < 5; i+=3) {
+        this.context.beginPath();  
+        this.context.arc(this.canvas.width / 2 + i*15, 170-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.stroke();
 
-    for (let i = -5; i < 7; i+=3) {
-      ctx.beginPath();  
-      ctx.arc(250+i*15, 250-Math.pow(i,2), 5, 0, 2 * Math.PI);
-      ctx.stroke();
+        this.setContext(this.context, color);      
+      }
+    }, 300) as unknown as number);
 
-      this.setContext(ctx);
-    }
+    this.intervalID3 = (setInterval(() => {
+      for (let i = -5; i < 7; i+=3) {
+        this.context.beginPath();  
+        this.context.arc(this.canvas.width / 2 + i*15, 250-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.stroke();
 
-    for (let i = -7; i < 9; i+=3) {
-      ctx.beginPath();  
-      ctx.arc(250+i*15, 350-Math.pow(i,2), 5, 0, 2 * Math.PI);
-      ctx.stroke();
+        this.setContext(this.context, color);
+      }
+    }, 500) as unknown as number);
 
-      this.setContext(ctx);
-    }
+    this.intervalID4 = (setInterval(() => {
+      for (let i = -7; i < 9; i+=3) {
+        this.context.beginPath();  
+        this.context.arc(this.canvas.width / 2 + i*15, 350-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.stroke();
 
-    for (let i = -8; i < 10; i+=3) {
-      ctx.beginPath();  
-      ctx.arc(250+i*15, 450-Math.pow(i,2), 5, 0, 2 * Math.PI);
-      ctx.stroke();
+        this.setContext(this.context, color);
+      }
+    }, 400)as unknown as number);
 
-      this.setContext(ctx);
-    }
 
-    for (let i = -10; i < 12; i+=3) {
-      ctx.beginPath();  
-      ctx.arc(250+i*15, 550-Math.pow(i,2), 5, 0, 2 * Math.PI);
-      ctx.stroke();
+    this.intervalID5 = (setInterval(() => {
+      for (let i = -8; i < 10; i+=3) {
+        this.context.beginPath();  
+        this.context.arc(this.canvas.width / 2 + i*15, 450-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.stroke();
 
-      this.setContext(ctx);
-    }
+        this.setContext(this.context, color);
+      }
+    }, 200) as unknown as number);
 
-    for (let i = -11; i < 14; i+=3) {
-      ctx.beginPath();  
-      ctx.arc(250+i*15, 650-Math.pow(i,2), 5, 0, 2 * Math.PI);
-      ctx.stroke();
+    this.intervalID6 = (setInterval(() => {
+      for (let i = -10; i < 12; i+=3) {
+        this.context.beginPath();  
+        this.context.arc(this.canvas.width / 2 + i*15, 550-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.stroke();
 
-      this.setContext(ctx);
-    }
+        this.setContext(this.context, color);
+      }
+    }, 300) as unknown as number);
 
-    container.append(canvas);
+    this.intervalID7 = (setInterval(() => {
+      for (let i = -11; i < 14; i+=3) {
+        this.context.beginPath();  
+        this.context.arc(this.canvas.width / 2 + i*15, 650-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.stroke();
+
+        this.setContext(this.context, color);
+      }
+    }, 400) as unknown as number);
+
+    container.append(this.canvas);
   }
 
-  setContext(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = '#FDD700';
-    ctx.strokeStyle = '#FDD700';
-    ctx.shadowColor = '#FDD700';
+  setContext(ctx: CanvasRenderingContext2D, color: string) {
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
+    ctx.shadowColor = color;
     ctx.shadowBlur = 10;
     ctx.shadowOffsetX = 5;
     ctx.shadowOffsetY = 5;
     ctx.fill();
   }
+
 
   // animateColorChanging(container: HTMLElement, canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, color1: string, color2: string) {
   //   const colors: Array<string> = [color1, color2];
@@ -326,6 +414,6 @@ export class TreeModel {
     localStorage.removeItem('chosenBg');
     localStorage.removeItem('music');
     localStorage.removeItem('snow');
-    localStorage.removeItem('light');
+    localStorage.removeItem('lightsColor');
   }
 }
