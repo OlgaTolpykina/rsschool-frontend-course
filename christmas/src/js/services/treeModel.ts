@@ -312,8 +312,8 @@ export class TreeModel {
         favoriteCardImg.src = `assets/img/${i + 1}.png`;
         favoriteCardImg.className = 'favorites__card_img';
         favoriteCardImg.setAttribute('alt', 'toy');
-        favoriteCardImg.setAttribute('width', '70');
-        favoriteCardImg.setAttribute('height', '70');
+        favoriteCardImg.setAttribute('width', '55');
+        favoriteCardImg.setAttribute('height', '55');
         favoriteCardImg.setAttribute('draggable', 'true');
 
         this.favoriteCard[i].append(favoriteCardImg);
