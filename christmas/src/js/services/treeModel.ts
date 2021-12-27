@@ -178,9 +178,11 @@ export class TreeModel {
     switcherInput.setAttribute('id', 'lights__switcher');
     switcherInput.addEventListener('click', () => {
       if (!switcherInput.checked) { 
+        this.clearIntervals();
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       } else {
         const color = localStorage.getItem('lightsColor') || this.lightsColor;
+        if (localStorage.getItem('isMulticolor') === 'true') isMulticolor = true;
         
         this.renderLights(this.lightsContainer, color, isMulticolor);
       }
