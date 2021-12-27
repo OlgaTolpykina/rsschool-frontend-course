@@ -289,6 +289,7 @@ export class TreeModel {
 
   renderSelected() {
     this.selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
+    const allCards: Array<ICardData> = JSON.parse(localStorage.getItem('initialCardsListInfo') as string);
 
     const favoritesContainer = document.createElement('div') as HTMLElement;
     favoritesContainer.className = 'favorites_container settings__container';
@@ -300,23 +301,45 @@ export class TreeModel {
       favoritesContainer.append(favoriteCard); 
     }
 
-    for (let i = 0; i < this.selectedCards.length; i++) {
-      const favoriteCardCount = document.createElement('p') as HTMLElement;
-      favoriteCardCount.className = 'favorites__card_count';
-      favoriteCardCount.innerHTML = this.selectedCards[i].count.toString();
-      
-      this.favoriteCard[i].append(favoriteCardCount);
+    if (this.selectedCards.length > 0) {
+      for (let i = 0; i < this.selectedCards.length; i++) {
+        const favoriteCardCount = document.createElement('p') as HTMLElement;
+        favoriteCardCount.className = 'favorites__card_count';
+        favoriteCardCount.innerHTML = this.selectedCards[i].count.toString();
+        
+        this.favoriteCard[i].append(favoriteCardCount);
 
-      for (let j = 1; j <= this.selectedCards[i].count; j++) {
-        const favoriteCardImg = document.createElement('img') as HTMLImageElement;
-        favoriteCardImg.src = `assets/img/${i + 1}.png`;
-        favoriteCardImg.className = 'favorites__card_img';
-        favoriteCardImg.setAttribute('alt', 'toy');
-        favoriteCardImg.setAttribute('width', '55');
-        favoriteCardImg.setAttribute('height', '55');
-        favoriteCardImg.setAttribute('draggable', 'true');
+        for (let j = 1; j <= this.selectedCards[i].count; j++) {
+          const favoriteCardImg = document.createElement('img') as HTMLImageElement;
+          favoriteCardImg.src = `assets/img/${i + 1}.png`;
+          favoriteCardImg.className = 'favorites__card_img';
+          favoriteCardImg.setAttribute('alt', 'toy');
+          favoriteCardImg.setAttribute('width', '55');
+          favoriteCardImg.setAttribute('height', '55');
+          favoriteCardImg.setAttribute('draggable', 'true');
 
-        this.favoriteCard[i].append(favoriteCardImg);
+          this.favoriteCard[i].append(favoriteCardImg);
+        }
+      }
+    } else {
+      for (let i = 0; i < 20; i++) {
+        const favoriteCardCount = document.createElement('p') as HTMLElement;
+        favoriteCardCount.className = 'favorites__card_count';
+        favoriteCardCount.innerHTML = allCards[i].count.toString();
+        
+        this.favoriteCard[i].append(favoriteCardCount);
+
+        for (let j = 1; j <= allCards[i].count; j++) {
+          const favoriteCardImg = document.createElement('img') as HTMLImageElement;
+          favoriteCardImg.src = `assets/img/${i + 1}.png`;
+          favoriteCardImg.className = 'favorites__card_img';
+          favoriteCardImg.setAttribute('alt', 'toy');
+          favoriteCardImg.setAttribute('width', '55');
+          favoriteCardImg.setAttribute('height', '55');
+          favoriteCardImg.setAttribute('draggable', 'true');
+
+          this.favoriteCard[i].append(favoriteCardImg);
+        }
       }
     }
     

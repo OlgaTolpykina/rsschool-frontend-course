@@ -59,6 +59,7 @@ export class Toys {
     this.setSelected();
 
     cards.build().then((data: Array<ICardData>) => {
+      localStorage.setItem('initialCardsListInfo', JSON.stringify(data));
       data.forEach(card => {
         this.allCardsArray.push(card);
         this.allCardsArray.sort((a, b) => a.name > b.name ? 1 : -1);
