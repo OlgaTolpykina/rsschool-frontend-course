@@ -111,42 +111,58 @@ export class TreeModel {
   renderLightsVariants() {
     const lightsBtnsWrapper = document.createElement('div') as HTMLElement;
     lightsBtnsWrapper.className = 'light__variant_container';
+    let isMulticolor: boolean = false;
+    if (localStorage.getItem('isMulticolor') === 'true') isMulticolor = true;
 
     for (let i = 0; i <= 4; i++) {
       const lightVariant = document.createElement('button') as HTMLInputElement;
       lightVariant.className = 'light__variant';
       lightVariant.classList.add(this.lightVariants[i]);
       lightVariant.addEventListener('click', () => {
-        
-        //Send to renderLights array of color + idx of particular color. If multicolor, then random idx from first array element to last. Save lo local storage idx.
+      
+        if (i === 0) {
+          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          this.clearIntervals();
+          isMulticolor = true;
+          this.renderLights(this.lightsContainer, LightsColor.red_light, isMulticolor);
+          localStorage.setItem('isMulticolor', 'true');
+        }
 
         if (i === 1) {
           this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
           this.lightsColor = LightsColor.red_light;
           this.clearIntervals();
-          this.renderLights(this.lightsContainer, LightsColor.red_light);
+          isMulticolor = false;
+          this.renderLights(this.lightsContainer, LightsColor.red_light, isMulticolor);
           localStorage.setItem('lightsColor', LightsColor.red_light);
+          localStorage.setItem('isMulticolor', 'false');
         }
         if (i === 2) {
           this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
           this.lightsColor = LightsColor.blue_light;
           this.clearIntervals();
-          this.renderLights(this.lightsContainer, LightsColor.blue_light);
+          isMulticolor = false;
+          this.renderLights(this.lightsContainer, LightsColor.blue_light, isMulticolor);
           localStorage.setItem('lightsColor', LightsColor.blue_light);
+          localStorage.setItem('isMulticolor', 'false');
         }
         if (i === 3) {
           this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
           this.lightsColor = LightsColor.yellow_light;
           this.clearIntervals();
-          this.renderLights(this.lightsContainer, LightsColor.yellow_light);
+          isMulticolor = false;
+          this.renderLights(this.lightsContainer, LightsColor.yellow_light, isMulticolor);
           localStorage.setItem('lightsColor', LightsColor.yellow_light);
+          localStorage.setItem('isMulticolor', 'false');
         }
         if (i === 4) {
           this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
           this.lightsColor = LightsColor.green_light;
           this.clearIntervals();
-          this.renderLights(this.lightsContainer, LightsColor.green_light);
+          isMulticolor = false;
+          this.renderLights(this.lightsContainer, LightsColor.green_light, isMulticolor);
           localStorage.setItem('lightsColor', LightsColor.green_light);
+          localStorage.setItem('isMulticolor', 'false');
         }
       });
       lightsBtnsWrapper.append(lightVariant);
@@ -165,7 +181,8 @@ export class TreeModel {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       } else {
         const color = localStorage.getItem('lightsColor') || this.lightsColor;
-        this.renderLights(this.lightsContainer, color);
+        
+        this.renderLights(this.lightsContainer, color, isMulticolor);
       }
     });
 
@@ -222,7 +239,7 @@ export class TreeModel {
     this.treeMainWrapper.append(mainTree);
 
     this.renderSelected();
-    this.renderLights(this.lightsContainer, this.lightsColor);
+    this.renderLights(this.lightsContainer, this.lightsColor, true);
   }
 
   renderSelected() {
@@ -301,7 +318,10 @@ export class TreeModel {
     bntContainer.append(resetBtn);
   }
 
-  renderLights(container: HTMLElement, color: string):void {
+  renderLights(container: HTMLElement, color: string, isMulticolor: boolean):void {
+    let multicolorArray = [LightsColor.blue_dark, LightsColor.blue_light, LightsColor.green_dark, LightsColor.green_light, LightsColor.red_dark, LightsColor.red_light, LightsColor.yellow_dark, LightsColor.yellow_light];
+    let randomNum = 0;
+
     this.canvas.setAttribute('id', 'canvas');
     this.canvas.width = container.offsetWidth;
     this.canvas.height = container.offsetHeight;
@@ -313,62 +333,86 @@ export class TreeModel {
     this.intervalID1 = (setInterval(() => { this.context.clearRect(0, 0, this.canvas.width, this.canvas.height); }, 1500) as unknown as number);
 
     this.intervalID2 = (setInterval(() => {
-      for (let i = -3; i < 5; i+=3) {
+      for (let i = -2; i < 3; i+=3) {
         this.context.beginPath();  
         this.context.arc(this.canvas.width / 2 + i*15, 170-Math.pow(i,2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
+        if (isMulticolor) {
+          randomNum = this.getRandomNum(0, multicolorArray.length);
+          color = multicolorArray[randomNum];
+        }
         this.setContext(this.context, color);      
       }
     }, 300) as unknown as number);
 
     this.intervalID3 = (setInterval(() => {
-      for (let i = -5; i < 7; i+=3) {
+      for (let i = -3; i < 5; i+=3) {
         this.context.beginPath();  
         this.context.arc(this.canvas.width / 2 + i*15, 250-Math.pow(i,2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
+        if (isMulticolor) {
+          randomNum = this.getRandomNum(0, multicolorArray.length);
+          color = multicolorArray[randomNum];
+        }
         this.setContext(this.context, color);
       }
     }, 500) as unknown as number);
 
     this.intervalID4 = (setInterval(() => {
-      for (let i = -7; i < 9; i+=3) {
+      for (let i = -5; i < 7; i+=3) {
         this.context.beginPath();  
         this.context.arc(this.canvas.width / 2 + i*15, 350-Math.pow(i,2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
+        if (isMulticolor) {
+          randomNum = this.getRandomNum(0, multicolorArray.length);
+          color = multicolorArray[randomNum];
+        }
         this.setContext(this.context, color);
       }
     }, 400)as unknown as number);
 
 
     this.intervalID5 = (setInterval(() => {
-      for (let i = -8; i < 10; i+=3) {
+      for (let i = -6; i < 9; i+=3) {
         this.context.beginPath();  
         this.context.arc(this.canvas.width / 2 + i*15, 450-Math.pow(i,2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
+        if (isMulticolor) {
+          randomNum = this.getRandomNum(0, multicolorArray.length);
+          color = multicolorArray[randomNum];
+        }
         this.setContext(this.context, color);
       }
     }, 200) as unknown as number);
 
     this.intervalID6 = (setInterval(() => {
-      for (let i = -10; i < 12; i+=3) {
+      for (let i = -8; i < 10; i+=3) {
         this.context.beginPath();  
         this.context.arc(this.canvas.width / 2 + i*15, 550-Math.pow(i,2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
+        if (isMulticolor) {
+          randomNum = this.getRandomNum(0, multicolorArray.length);
+          color = multicolorArray[randomNum];
+        }
         this.setContext(this.context, color);
       }
     }, 300) as unknown as number);
 
     this.intervalID7 = (setInterval(() => {
-      for (let i = -11; i < 14; i+=3) {
+      for (let i = -10; i < 13; i+=3) {
         this.context.beginPath();  
         this.context.arc(this.canvas.width / 2 + i*15, 650-Math.pow(i,2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
+        if (isMulticolor) {
+          randomNum = this.getRandomNum(0, multicolorArray.length);
+          color = multicolorArray[randomNum];
+        }
         this.setContext(this.context, color);
       }
     }, 400) as unknown as number);
@@ -386,29 +430,6 @@ export class TreeModel {
     ctx.fill();
   }
 
-
-  // animateColorChanging(container: HTMLElement, canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, color1: string, color2: string) {
-  //   const colors: Array<string> = [color1, color2];
-  //   context.clearRect(0, 0, canvas.width, canvas.height);
-
-  //   for (let j = 0; j < colors.length; j++) {
-  //     for (let i = -20; i < 20; i+=2) {
-  //       context.beginPath();  
-  //       context.arc(65+i*10, 65-Math.pow(i,2), 5, 0.5, 2 * Math.PI);
-  //       context.fillStyle = `${colors[j]}`;
-  //       context.strokeStyle = `${colors[j]}`;
-  //       context.shadowColor = `${colors[j]}`;
-  //       context.shadowBlur = 10;
-  //       context.shadowOffsetX = 5;
-  //       context.shadowOffsetY = 5;
-  //       context.fill();
-  //       context.stroke();
-  
-  //       container.append(canvas);
-  //     }
-  //   }
-  // }
-
   resetLocalStorage() {
     localStorage.removeItem('chosenTree');
     localStorage.removeItem('chosenBg');
@@ -416,4 +437,10 @@ export class TreeModel {
     localStorage.removeItem('snow');
     localStorage.removeItem('lightsColor');
   }
+
+  getRandomNum(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+}
 }
