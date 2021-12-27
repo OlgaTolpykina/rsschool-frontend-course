@@ -329,13 +329,13 @@ p.settings__title {
   }
 }
 
-.lights__switcher_input:checked + .lights__switcher_label .switcher_inner-container {
-  margin-left: 0;
-}
+// .lights__switcher_input:checked + .lights__switcher_label .switcher_inner-container {
+//   margin-left: 0;
+// }
 
-.lights__switcher_input:checked + .lights__switcher_label .switcher_indicator {
-  right: 0;
-}
+// .lights__switcher_input:checked + .lights__switcher_label .switcher_indicator {
+//   right: 0;
+// }
 
 .tree__main-tree {
   display: flex;
