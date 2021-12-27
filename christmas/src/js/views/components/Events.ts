@@ -4,7 +4,6 @@ import { Filters } from '../../services/constants';
 import { Toys } from '../../services/toysModel';
 import { RangeSlider } from './RangeSlider';
 import { FilterData } from '../../services/filterData';
-import { createSnowFlake } from './Background';
 const searchImg = require('../../../assets/img/svg/search.svg');
 const deleteImg = require('../../../assets/img/svg/cross.svg');
 

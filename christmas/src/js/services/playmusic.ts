@@ -25,7 +25,6 @@ musicBtn.addEventListener('click', () => {
 
 window.addEventListener('click', () => {
   if (localStorage.getItem('music') === 'true') {
-    console.log(audio);
     audio.play();
     audio.volume = 0.3;
   } 

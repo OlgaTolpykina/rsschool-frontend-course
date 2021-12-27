@@ -4,9 +4,6 @@ const snowflakeBtn = document.querySelector('.theme') as HTMLElement;
 let intervalId: NodeJS.Timer;
 let isSnowing = false;
 
-snowflakeBtn.addEventListener('click', runAndStopSnow);
-isSnowOnLoad();
-
 function runAndStopSnow() {
   if (!isSnowing) {
     intervalId = setInterval(createSnowFlake, 100);
@@ -27,3 +24,7 @@ function isSnowOnLoad() {
     isSnowing = true;
   } 
 }
+
+
+snowflakeBtn.addEventListener('click', runAndStopSnow);
+isSnowOnLoad();

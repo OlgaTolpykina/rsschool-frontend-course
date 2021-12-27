@@ -54,7 +54,7 @@ export class TreeModel {
     this.treeMainWrapper = document.querySelector('.tree__main-tree') as HTMLElement;
     this.treeFavoritesWrapper  = document.querySelector('.tree__favorites') as HTMLElement;
     this.canvas = document.createElement('canvas') as HTMLCanvasElement;
-    this.context = this.canvas.getContext("2d") as CanvasRenderingContext2D;
+    this.context = this.canvas.getContext('2d') as CanvasRenderingContext2D;
     this.lightsContainer = document.createElement('div') as HTMLElement;
     this.lightsColor = localStorage.getItem('lightsColor') || LightsColor.yellow_light;
 
@@ -111,18 +111,18 @@ export class TreeModel {
   renderLightsVariants() {
     const lightsBtnsWrapper = document.createElement('div') as HTMLElement;
     lightsBtnsWrapper.className = 'light__variant_container';
-    let isMulticolor: boolean = false;
+    let isMulticolor = false;
     if (localStorage.getItem('isMulticolor') === 'true') isMulticolor = true;
 
     for (let i = 0; i <= 4; i++) {
       const lightVariant = document.createElement('button') as HTMLInputElement;
       lightVariant.className = 'light__variant';
       lightVariant.classList.add(this.lightVariants[i]);
-      lightVariant.addEventListener('click', () => {
+      lightVariant.addEventListener('click', () => { //eslint-disable-line
 
-        switcherInput.checked = true;
-        localStorage.setItem('lights', switcherInput.checked.toString());
-        if (switcherInput.checked) {
+        switcherInput.checked = true; //eslint-disable-line
+        localStorage.setItem('lights', switcherInput.checked.toString()); //eslint-disable-line
+        if (switcherInput.checked) { //eslint-disable-line
           (document.querySelector('.switcher_indicator') as HTMLElement).style.right = '0';
           (document.querySelector('.switcher_inner-container') as HTMLElement).style.margin = '0';
         } else {
@@ -364,7 +364,7 @@ export class TreeModel {
   }
 
   renderLights(container: HTMLElement, color: string, isMulticolor: boolean):void {
-    let multicolorArray = [LightsColor.blue_dark, LightsColor.blue_light, LightsColor.green_dark, LightsColor.green_light, LightsColor.red_dark, LightsColor.red_light, LightsColor.yellow_dark, LightsColor.yellow_light];
+    const multicolorArray = [LightsColor.blue_dark, LightsColor.blue_light, LightsColor.green_dark, LightsColor.green_light, LightsColor.red_dark, LightsColor.red_light, LightsColor.yellow_dark, LightsColor.yellow_light];
     let randomNum = 0;
 
     this.canvas.setAttribute('id', 'canvas');
@@ -378,9 +378,9 @@ export class TreeModel {
     this.intervalID1 = (setInterval(() => { this.context.clearRect(0, 0, this.canvas.width, this.canvas.height); }, 1500) as unknown as number);
 
     this.intervalID2 = (setInterval(() => {
-      for (let i = -2; i < 3; i+=3) {
+      for (let i = -2; i < 3; i += 3) {
         this.context.beginPath();  
-        this.context.arc(this.canvas.width / 2 + i*15, 170-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.arc(this.canvas.width / 2 + i * 15, 170 - Math.pow(i, 2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
         if (isMulticolor) {
@@ -392,9 +392,9 @@ export class TreeModel {
     }, 300) as unknown as number);
 
     this.intervalID3 = (setInterval(() => {
-      for (let i = -3; i < 5; i+=3) {
+      for (let i = -3; i < 5; i += 3) {
         this.context.beginPath();  
-        this.context.arc(this.canvas.width / 2 + i*15, 250-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.arc(this.canvas.width / 2 + i * 15, 250 - Math.pow(i, 2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
         if (isMulticolor) {
@@ -406,9 +406,9 @@ export class TreeModel {
     }, 500) as unknown as number);
 
     this.intervalID4 = (setInterval(() => {
-      for (let i = -5; i < 7; i+=3) {
+      for (let i = -5; i < 7; i += 3) {
         this.context.beginPath();  
-        this.context.arc(this.canvas.width / 2 + i*15, 350-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.arc(this.canvas.width / 2 + i * 15, 350 - Math.pow(i, 2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
         if (isMulticolor) {
@@ -417,13 +417,13 @@ export class TreeModel {
         }
         this.setContext(this.context, color);
       }
-    }, 400)as unknown as number);
+    }, 400) as unknown as number);
 
 
     this.intervalID5 = (setInterval(() => {
-      for (let i = -6; i < 9; i+=3) {
+      for (let i = -6; i < 9; i += 3) {
         this.context.beginPath();  
-        this.context.arc(this.canvas.width / 2 + i*15, 450-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.arc(this.canvas.width / 2 + i * 15, 450 - Math.pow(i, 2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
         if (isMulticolor) {
@@ -435,9 +435,9 @@ export class TreeModel {
     }, 200) as unknown as number);
 
     this.intervalID6 = (setInterval(() => {
-      for (let i = -8; i < 10; i+=3) {
+      for (let i = -8; i < 10; i += 3) {
         this.context.beginPath();  
-        this.context.arc(this.canvas.width / 2 + i*15, 550-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.arc(this.canvas.width / 2 + i * 15, 550 - Math.pow(i, 2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
         if (isMulticolor) {
@@ -449,9 +449,9 @@ export class TreeModel {
     }, 300) as unknown as number);
 
     this.intervalID7 = (setInterval(() => {
-      for (let i = -10; i < 13; i+=3) {
+      for (let i = -10; i < 13; i += 3) {
         this.context.beginPath();  
-        this.context.arc(this.canvas.width / 2 + i*15, 650-Math.pow(i,2), 5, 0, 2 * Math.PI);
+        this.context.arc(this.canvas.width / 2 + i * 15, 650 - Math.pow(i, 2), 5, 0, 2 * Math.PI);
         this.context.stroke();
 
         if (isMulticolor) {

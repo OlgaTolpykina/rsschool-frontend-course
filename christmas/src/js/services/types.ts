@@ -1,4 +1,4 @@
-import { SortDirection, RoutesID, Paths } from "./constants";
+import { SortDirection, RoutesID, Paths } from './constants';
 
 export interface ICardData {
   id?: number;
@@ -43,7 +43,7 @@ export interface CardsPositions {
 
 type Page = {
   render: () => string;
-}
+};
 
 export interface Routes {
   id: RoutesID,
