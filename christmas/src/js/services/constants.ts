@@ -46,3 +46,7 @@ export enum LightsColor {
   red_dark = 'rgba(247, 0, 118, 0.4)',
 }
 
+export enum Drag {
+  minDistance = 1,
+}
+

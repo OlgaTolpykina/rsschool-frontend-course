@@ -1,6 +1,7 @@
 import { ICardData } from './types';
-import { Phrases } from './constants';
+import { Drag, Phrases } from './constants';
 import { LightsColor } from './constants';
+import { DragManager } from '../views/components/DragDrop'
 
 const treeVarianImg1 = require('../../assets/img/tree/1.png');
 const treeVarianImg2 = require('../../assets/img/tree/2.png');
@@ -20,6 +21,7 @@ const bgVarianImg9 = require('../../assets/img/bg/9.jpg');
 const bgVarianImg10 = require('../../assets/img/bg/10.jpg');
 
 export class TreeModel {
+  [x: string]: any; //eslint-disable-line
   treeWrapper: HTMLElement;
   treeVariantImgs: Array<string>;
   treeBgWrapper: HTMLElement;
@@ -261,6 +263,19 @@ export class TreeModel {
     this.treeMainWrapper.style.backgroundImage = bgUrl;
 
     this.lightsContainer.className = 'lights__onTree-container';
+    const drag = new DragManager();
+
+    const mainTreeMap = document.createElement('map') as HTMLMapElement;
+    mainTreeMap.setAttribute('name', 'tree-map');
+    const mainTreeArea = document.createElement('area') as HTMLAreaElement;
+    mainTreeArea.setAttribute('shape', 'poly');
+    mainTreeArea.setAttribute('coords', '228,65,174,244,131,357,78,473,19,614,83,685,297,688,477,628,439,572,334,280,333,265,314,227,273,106,251,38');
+    mainTreeMap.append(mainTreeArea);
+
+    mainTreeArea.addEventListener('dragenter', drag.onDragEnter);
+    mainTreeArea.addEventListener('dragover', drag.onDragOver);
+    mainTreeArea.addEventListener('dragleave', drag.onDragLeave);
+    mainTreeArea.addEventListener('drop', drag.onDrop);
 
     const mainTree = document.createElement('img') as HTMLImageElement;
     let mainTreeSrc = '';
@@ -270,9 +285,11 @@ export class TreeModel {
     mainTree.setAttribute('alt', 'tree');
     mainTree.setAttribute('width', '500');
     mainTree.setAttribute('height', '714');
+    mainTree.setAttribute('usemap', '#tree-map');
     mainTree.className = 'main-tree';
 
     this.treeMainWrapper.append(this.lightsContainer);
+    this.treeMainWrapper.append(mainTreeMap);
     this.treeMainWrapper.append(mainTree);
 
     this.renderSelected();
@@ -290,6 +307,7 @@ export class TreeModel {
   renderSelected() {
     this.selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
     const allCards: Array<ICardData> = JSON.parse(localStorage.getItem('initialCardsListInfo') as string);
+    const drag = new DragManager();
 
     const favoritesContainer = document.createElement('div') as HTMLElement;
     favoritesContainer.className = 'favorites_container settings__container';
@@ -314,9 +332,12 @@ export class TreeModel {
           favoriteCardImg.src = `assets/img/${i + 1}.png`;
           favoriteCardImg.className = 'favorites__card_img';
           favoriteCardImg.setAttribute('alt', 'toy');
+          favoriteCardImg.setAttribute('id', `${i}${j}`);
           favoriteCardImg.setAttribute('width', '55');
           favoriteCardImg.setAttribute('height', '55');
           favoriteCardImg.setAttribute('draggable', 'true');
+
+          favoriteCardImg.addEventListener('dragstart', drag.onDragStart);
 
           this.favoriteCard[i].append(favoriteCardImg);
         }
@@ -332,11 +353,17 @@ export class TreeModel {
         for (let j = 1; j <= allCards[i].count; j++) {
           const favoriteCardImg = document.createElement('img') as HTMLImageElement;
           favoriteCardImg.src = `assets/img/${i + 1}.png`;
-          favoriteCardImg.className = 'favorites__card_img';
+          favoriteCardImg.className = 'favorites__card_img draggable';
           favoriteCardImg.setAttribute('alt', 'toy');
+          favoriteCardImg.setAttribute('id', `${i}${j}`);
           favoriteCardImg.setAttribute('width', '55');
           favoriteCardImg.setAttribute('height', '55');
           favoriteCardImg.setAttribute('draggable', 'true');
+
+          favoriteCardImg.addEventListener('dragstart', drag.onDragStart);
+          favoriteCardImg.addEventListener('dragend', drag.onDragEnd);
+          favoriteCardImg.addEventListener('drag', drag.onDrag);
+
 
           this.favoriteCard[i].append(favoriteCardImg);
         }
@@ -346,6 +373,7 @@ export class TreeModel {
     this.treeFavoritesWrapper.append(favoritesContainer);
 
     this.renderDecorated();
+    this.dragAndDrop();
   }
 
   renderDecorated() {
@@ -511,5 +539,119 @@ export class TreeModel {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+  }
+
+  dragAndDrop(): void {
+    // const zone1 = document.querySelector('.favorites_container') as HTMLElement;
+    // const zone2 = document.querySelector('.lights__onTree-container') as HTMLElement;
+
+    // const draggables = document.querySelectorAll('.draggable') as NodeListOf<HTMLElement>;
+
+    // zone2.addEventListener('dragover', (event) => {
+    //   event.preventDefault();
+    // });
+
+    // draggables.forEach(draggable => {
+    //   draggable.addEventListener('dragstart', (event) => {
+    //     console.log('dragstart');
+    //     console.log(event.target);
+    //     (event.dataTransfer as DataTransfer).setData('id', ((event.target as HTMLElement).id as string));
+    //   });
+    // });
+
+    // zone2.addEventListener('drop', (event: DragEvent) => {
+    //   const itemId = (event.dataTransfer as DataTransfer).getData('id');
+      
+    //   (event.target as HTMLElement).append(document.getElementById(itemId) as HTMLElement);
+    // });
+
+    // const drag = new DragManager();
+
+    // const container = document.querySelector('.tree__wrapper') as HTMLElement;
+
+    // // container.addEventListener('mousedown', (e) => {
+    //   console.log('mousedown');
+    //   drag.onMouseDown(e)});
+
+    // container.addEventListener('mousemove', (e) => {
+    //   console.log('mousemove');
+    //   drag.onMouseMove(e);
+    // });
+    // container.addEventListener('mouseup', (e) => {
+    //   // container.removeEventListener('mousemove', drag.onMouseMove);
+    //   console.log('mouseup');
+    //   drag.onMouseUp(e);
+    // });
+    // container.onmousedown = drag.onMouseDown;
+    // // container.onmousemove = drag.onMouseMove;
+    // container.onmouseup = drag.onMouseUp;
+
+    // container.addEventListener('mousedown', (e) => {
+    //   e.preventDefault();
+    //   drag.onMouseDown(e);
+    // });
+    // container.addEventListener('mousemove', (e) => {
+    //   drag.onMouseMove(e);
+    // });
+    // container.addEventListener('mouseup', (e) => {
+    //   e.preventDefault();
+    //   console.log('Here');
+    //   drag.onMouseUp(e);
+    // });
+    
+
+    // container.addEventListener('mouseup', () => {
+    //   console.log('mouseup');
+    // });
+  }
 }
-}
+
+// function handleDragStart(e: DragEvent) {
+//   (e.dataTransfer as DataTransfer).setData('id', (e.target as HTMLElement).id);
+// }
+
+// function handleDragEnterLeave(e: DragEvent) {
+//   if(e.type == "dragenter") {
+//       (e.target as HTMLElement).className = "drag-enter"; 
+//   } else {
+//       (e.target as HTMLElement).className = "";
+//   }
+// }
+
+// function handleOverDrop(e: DragEvent) {
+//   e.preventDefault();
+//   if (e.type != 'drop') {
+//     return;
+//   }
+//   const draggedId = (e.dataTransfer as DataTransfer).getData('id');
+//   const draggedEl = document.getElementById(draggedId) as HTMLElement;
+
+//   if ((draggedEl as HTMLElement).parentNode == e.target) {
+//         (e.target as HTMLElement).className = "";
+//         return; //note: when a return is reached a function exits.
+//       }
+
+//   ((draggedEl as HTMLElement).parentNode as ParentNode).removeChild(draggedEl);
+//   (e.target as HTMLElement).appendChild(draggedEl);
+//   (e.target as HTMLElement).className = "";
+// }
+
+// const draggable = document.querySelectorAll('.draggable');
+// const targets = document.querySelectorAll('.droppable');
+
+// for (let i = 0; i < draggable.length; i++) {
+//   draggable[i].addEventListener('dragstart', handleDragStart);
+// }
+
+// // //Register event listeners for the"dragstart" event on the draggable elements:
+// // for(var i = 0; i < draggable.length; i++) {
+// //   draggable[i].addEventListener("dragstart", handleDragStart);
+// // }
+
+// // //Register event listeners for "dragover", "drop", "dragenter" & "dragleave" events on the drop target elements.
+// // for(var i = 0; i < targets.length; i++) {
+// //   targets[i].addEventListener("dragover", handleOverDrop);
+// //   targets[i].addEventListener("drop", handleOverDrop);
+// //   targets[i].addEventListener("dragenter", handleDragEnterLeave);
+// //   targets[i].addEventListener("dragleave", handleDragEnterLeave);
+// // }
