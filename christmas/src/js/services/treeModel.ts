@@ -1,7 +1,7 @@
 import { ICardData } from './types';
 import { Drag, Phrases } from './constants';
 import { LightsColor } from './constants';
-import { DragManager } from '../views/components/DragDrop'
+import { DragManager } from '../views/components/DragDrop';
 
 const treeVarianImg1 = require('../../assets/img/tree/1.png');
 const treeVarianImg2 = require('../../assets/img/tree/2.png');
