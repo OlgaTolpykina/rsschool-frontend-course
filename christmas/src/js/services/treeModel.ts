@@ -276,6 +276,10 @@ export class TreeModel {
     mainTreeArea.addEventListener('dragover', drag.onDragOver);
     mainTreeArea.addEventListener('dragleave', drag.onDragLeave);
     mainTreeArea.addEventListener('drop', drag.onDrop);
+    document.addEventListener('dragenter', drag.onDragEnter);
+    document.addEventListener('dragover', drag.onDragOver);
+    document.addEventListener('dragleave', drag.onDragLeave);
+    document.addEventListener('drop', drag.onDrop);
 
     const mainTree = document.createElement('img') as HTMLImageElement;
     let mainTreeSrc = '';
@@ -329,10 +333,10 @@ export class TreeModel {
 
         for (let j = 1; j <= this.selectedCards[i].count; j++) {
           const favoriteCardImg = document.createElement('img') as HTMLImageElement;
-          favoriteCardImg.src = `assets/img/${i + 1}.png`;
+          favoriteCardImg.src = `assets/img/${this.selectedCards[i].num}.png`;
           favoriteCardImg.className = 'favorites__card_img';
           favoriteCardImg.setAttribute('alt', 'toy');
-          favoriteCardImg.setAttribute('id', `${i}${j}`);
+          favoriteCardImg.setAttribute('id', `${i}_${j}`);
           favoriteCardImg.setAttribute('width', '55');
           favoriteCardImg.setAttribute('height', '55');
           favoriteCardImg.setAttribute('draggable', 'true');
@@ -352,10 +356,10 @@ export class TreeModel {
 
         for (let j = 1; j <= allCards[i].count; j++) {
           const favoriteCardImg = document.createElement('img') as HTMLImageElement;
-          favoriteCardImg.src = `assets/img/${i + 1}.png`;
+          favoriteCardImg.src = `assets/img/${allCards[i].num}.png`;
           favoriteCardImg.className = 'favorites__card_img draggable';
           favoriteCardImg.setAttribute('alt', 'toy');
-          favoriteCardImg.setAttribute('id', `${i}${j}`);
+          favoriteCardImg.setAttribute('id', `${i}_${j}`);
           favoriteCardImg.setAttribute('width', '55');
           favoriteCardImg.setAttribute('height', '55');
           favoriteCardImg.setAttribute('draggable', 'true');
