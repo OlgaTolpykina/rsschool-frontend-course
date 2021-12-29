@@ -29,8 +29,8 @@ export class DragManager {
     const areaZone = document.querySelector('area');
     const favoritesCards = document.querySelectorAll('.favorites__card');
     const favoritesCardNumber = parseInt(dragItem.id.split('_')[0]);
-    let count = (dragItem.parentNode?.firstChild as HTMLElement).innerHTML as string;
-    let countNew = (favoritesCards[favoritesCardNumber].firstChild as HTMLElement).innerHTML as string;
+    const count = (dragItem.parentNode?.firstChild as HTMLElement).innerHTML as string;
+    const countNew = (favoritesCards[favoritesCardNumber].firstChild as HTMLElement).innerHTML as string;
     const dragItemNumber = parseInt(dragItem.src.split('/')[5].split('.')[0]);
     const allCards = JSON.parse(localStorage.getItem('initialCardsListInfo') as string);
     const dragItemCount = allCards[dragItemNumber - 1].count;
