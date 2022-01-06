@@ -1,24 +1,15 @@
 import { ICardData } from './types';
-import { Drag, Phrases } from './constants';
+import { Phrases } from './constants';
 import { LightsColor } from './constants';
 import { DragManager } from '../views/components/DragDrop';
 
-const treeVarianImg1 = require('../../assets/img/tree/1.png');
-const treeVarianImg2 = require('../../assets/img/tree/2.png');
-const treeVarianImg3 = require('../../assets/img/tree/3.png');
-const treeVarianImg4 = require('../../assets/img/tree/4.png');
-const treeVarianImg5 = require('../../assets/img/tree/5.png');
-const treeVarianImg6 = require('../../assets/img/tree/6.png');
-const bgVarianImg1 = require('../../assets/img/bg/1.jpg');
-const bgVarianImg2 = require('../../assets/img/bg/2.jpg');
-const bgVarianImg3 = require('../../assets/img/bg/3.jpg');
-const bgVarianImg4 = require('../../assets/img/bg/4.jpg');
-const bgVarianImg5 = require('../../assets/img/bg/5.jpg');
-const bgVarianImg6 = require('../../assets/img/bg/6.jpg');
-const bgVarianImg7 = require('../../assets/img/bg/7.jpg');
-const bgVarianImg8 = require('../../assets/img/bg/8.jpg');
-const bgVarianImg9 = require('../../assets/img/bg/9.jpg');
-const bgVarianImg10 = require('../../assets/img/bg/10.jpg');
+const images: any = []; //eslint-disable-line
+
+function importAll(r: any) { //eslint-disable-line
+  r.keys().forEach((s: string, i: number) => images[i] = r(s));
+}
+
+importAll(require.context('../../assets/img/', true, /\.\/tree|bg\//));
 
 export class TreeModel {
   [x: string]: any; //eslint-disable-line
@@ -68,8 +59,8 @@ export class TreeModel {
     this.intervalID6 = 0;
     this.intervalID7 = 0;
 
-    this.treeVariantImgs = [treeVarianImg1, treeVarianImg2, treeVarianImg3, treeVarianImg4, treeVarianImg5, treeVarianImg6];
-    this.bgVariantsImgs = [bgVarianImg1, bgVarianImg2, bgVarianImg3, bgVarianImg4, bgVarianImg5, bgVarianImg6, bgVarianImg7, bgVarianImg8, bgVarianImg9, bgVarianImg10];
+    this.treeVariantImgs = [images[10], images[11], images[12], images[13], images[14], images[15]];
+    this.bgVariantsImgs = [images[0], images[1], images[2], images[3], images[4], images[5], images[6], images[7], images[8], images[9]];
     this.lightVariants = ['light_multicolor', 'light_red', 'light_blue', 'light_yellow', 'light_green'];
   } 
 
@@ -259,7 +250,7 @@ export class TreeModel {
   renderMainTree() {
     let bgUrl = '';
     (localStorage.getItem('chosenBg')) ? bgUrl = `url("${this.bgVariantsImgs[Number(localStorage.getItem('chosenBg')) - 1]}")`
-                                       : bgUrl = `url("${this.bgVariantsImgs[0]}")`;
+                                       : bgUrl = `url("${this.bgVariantsImgs[0]}")`; //eslint-disable-line
     this.treeMainWrapper.style.backgroundImage = bgUrl;
 
     this.lightsContainer.className = 'lights__onTree-container';
@@ -274,17 +265,15 @@ export class TreeModel {
 
     mainTreeArea.addEventListener('dragenter', drag.onDragEnter);
     mainTreeArea.addEventListener('dragover', drag.onDragOver);
-    mainTreeArea.addEventListener('dragleave', drag.onDragLeave);
     mainTreeArea.addEventListener('drop', drag.onDrop);
     document.addEventListener('dragenter', drag.onDragEnter);
     document.addEventListener('dragover', drag.onDragOver);
-    document.addEventListener('dragleave', drag.onDragLeave);
     document.addEventListener('drop', drag.onDrop);
 
     const mainTree = document.createElement('img') as HTMLImageElement;
     let mainTreeSrc = '';
     (localStorage.getItem('chosenTree')) ? mainTreeSrc = `${this.treeVariantImgs[Number(localStorage.getItem('chosenTree')) - 1]}`
-                                         : mainTreeSrc = `${this.treeVariantImgs[0]}`;
+                                         : mainTreeSrc = `${this.treeVariantImgs[0]}`; //eslint-disable-line
     mainTree.src = mainTreeSrc;
     mainTree.setAttribute('alt', 'tree');
     mainTree.setAttribute('width', '500');
@@ -365,9 +354,6 @@ export class TreeModel {
           favoriteCardImg.setAttribute('draggable', 'true');
 
           favoriteCardImg.addEventListener('dragstart', drag.onDragStart);
-          favoriteCardImg.addEventListener('dragend', drag.onDragEnd);
-          favoriteCardImg.addEventListener('drag', drag.onDrag);
-
 
           this.favoriteCard[i].append(favoriteCardImg);
         }
@@ -377,7 +363,6 @@ export class TreeModel {
     this.treeFavoritesWrapper.append(favoritesContainer);
 
     this.renderDecorated();
-    this.dragAndDrop();
   }
 
   renderDecorated() {
@@ -544,118 +529,4 @@ export class TreeModel {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
   }
-
-  dragAndDrop(): void {
-    // const zone1 = document.querySelector('.favorites_container') as HTMLElement;
-    // const zone2 = document.querySelector('.lights__onTree-container') as HTMLElement;
-
-    // const draggables = document.querySelectorAll('.draggable') as NodeListOf<HTMLElement>;
-
-    // zone2.addEventListener('dragover', (event) => {
-    //   event.preventDefault();
-    // });
-
-    // draggables.forEach(draggable => {
-    //   draggable.addEventListener('dragstart', (event) => {
-    //     console.log('dragstart');
-    //     console.log(event.target);
-    //     (event.dataTransfer as DataTransfer).setData('id', ((event.target as HTMLElement).id as string));
-    //   });
-    // });
-
-    // zone2.addEventListener('drop', (event: DragEvent) => {
-    //   const itemId = (event.dataTransfer as DataTransfer).getData('id');
-      
-    //   (event.target as HTMLElement).append(document.getElementById(itemId) as HTMLElement);
-    // });
-
-    // const drag = new DragManager();
-
-    // const container = document.querySelector('.tree__wrapper') as HTMLElement;
-
-    // // container.addEventListener('mousedown', (e) => {
-    //   console.log('mousedown');
-    //   drag.onMouseDown(e)});
-
-    // container.addEventListener('mousemove', (e) => {
-    //   console.log('mousemove');
-    //   drag.onMouseMove(e);
-    // });
-    // container.addEventListener('mouseup', (e) => {
-    //   // container.removeEventListener('mousemove', drag.onMouseMove);
-    //   console.log('mouseup');
-    //   drag.onMouseUp(e);
-    // });
-    // container.onmousedown = drag.onMouseDown;
-    // // container.onmousemove = drag.onMouseMove;
-    // container.onmouseup = drag.onMouseUp;
-
-    // container.addEventListener('mousedown', (e) => {
-    //   e.preventDefault();
-    //   drag.onMouseDown(e);
-    // });
-    // container.addEventListener('mousemove', (e) => {
-    //   drag.onMouseMove(e);
-    // });
-    // container.addEventListener('mouseup', (e) => {
-    //   e.preventDefault();
-    //   console.log('Here');
-    //   drag.onMouseUp(e);
-    // });
-    
-
-    // container.addEventListener('mouseup', () => {
-    //   console.log('mouseup');
-    // });
-  }
 }
-
-// function handleDragStart(e: DragEvent) {
-//   (e.dataTransfer as DataTransfer).setData('id', (e.target as HTMLElement).id);
-// }
-
-// function handleDragEnterLeave(e: DragEvent) {
-//   if(e.type == "dragenter") {
-//       (e.target as HTMLElement).className = "drag-enter"; 
-//   } else {
-//       (e.target as HTMLElement).className = "";
-//   }
-// }
-
-// function handleOverDrop(e: DragEvent) {
-//   e.preventDefault();
-//   if (e.type != 'drop') {
-//     return;
-//   }
-//   const draggedId = (e.dataTransfer as DataTransfer).getData('id');
-//   const draggedEl = document.getElementById(draggedId) as HTMLElement;
-
-//   if ((draggedEl as HTMLElement).parentNode == e.target) {
-//         (e.target as HTMLElement).className = "";
-//         return; //note: when a return is reached a function exits.
-//       }
-
-//   ((draggedEl as HTMLElement).parentNode as ParentNode).removeChild(draggedEl);
-//   (e.target as HTMLElement).appendChild(draggedEl);
-//   (e.target as HTMLElement).className = "";
-// }
-
-// const draggable = document.querySelectorAll('.draggable');
-// const targets = document.querySelectorAll('.droppable');
-
-// for (let i = 0; i < draggable.length; i++) {
-//   draggable[i].addEventListener('dragstart', handleDragStart);
-// }
-
-// // //Register event listeners for the"dragstart" event on the draggable elements:
-// // for(var i = 0; i < draggable.length; i++) {
-// //   draggable[i].addEventListener("dragstart", handleDragStart);
-// // }
-
-// // //Register event listeners for "dragover", "drop", "dragenter" & "dragleave" events on the drop target elements.
-// // for(var i = 0; i < targets.length; i++) {
-// //   targets[i].addEventListener("dragover", handleOverDrop);
-// //   targets[i].addEventListener("drop", handleOverDrop);
-// //   targets[i].addEventListener("dragenter", handleDragEnterLeave);
-// //   targets[i].addEventListener("dragleave", handleDragEnterLeave);
-// // }

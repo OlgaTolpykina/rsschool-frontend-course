@@ -6,6 +6,7 @@ export enum Colors {
 
 export enum Coefficients {
   percent = 100,
+  favoriteToysMaxNumber = 20,
 }
 
 export enum Phrases {

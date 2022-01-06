@@ -1,4 +1,3 @@
-import { Events } from '../views/components/Events';
 import { SortDirection, RoutesID, Paths } from './constants';
 
 export interface ICardData {

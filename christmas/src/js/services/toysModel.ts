@@ -4,7 +4,7 @@ import { LoadData } from './loadData';
 import { Card } from '../views/components/Card';
 import { Events } from '../views/components/Events';
 import { RangeSlider } from '../views/components/RangeSlider';
-import { Phrases } from './constants';
+import { Phrases, Coefficients } from './constants';
 
 export class Toys {
   allCardsArray: Array<ICardData> = [];
@@ -96,7 +96,7 @@ export class Toys {
 
   private selectCards(card: ICardData, cardElement:HTMLElement):void {
 
-    if (this.selectedCards.length < 20 && !card.selected) {
+    if (this.selectedCards.length < Coefficients.favoriteToysMaxNumber && !card.selected) {
       card.selected = true;
       this.selectedCards.push(card);
       localStorage.setItem('selectedCards', JSON.stringify(this.selectedCards));
@@ -120,7 +120,7 @@ export class Toys {
   public checkIfSelected(data: Array<ICardData>): Array<ICardData> {
     this.selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
     const selected = this.selectedCards.map(item => item.num);
-    return data = data.map((card) => selected.includes(card.num) ? { ...card, selected: true } : { ...card, selected: false });
+    return data.map((card) => selected.includes(card.num) ? { ...card, selected: true } : { ...card, selected: false });
   }
 
   public setLocalStorage(filters: IFilters, sortConditions: Sort):void {

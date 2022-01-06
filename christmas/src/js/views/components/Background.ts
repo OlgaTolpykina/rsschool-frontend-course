@@ -6,13 +6,13 @@ export function createSnowFlake():void {
   snowflake.style.backgroundImage = `url("${snowflakeImg}")`;
   snowflake.style.left = Math.random() * window.innerWidth + 'px';
   snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // between 2 - 5 seconds
-  // snowflake.style.opacity = Math.random();
   snowflake.style.width = Math.random() * 10 + 20 + 'px';
   snowflake.style.height = snowflake.style.width;
+  snowflake.style.opacity = `${Math.random()}`;
 	
   document.body.appendChild(snowflake);
 	
   setTimeout(() => {
     snowflake.remove();
-  }, 5000);
+  }, 3000);
 }

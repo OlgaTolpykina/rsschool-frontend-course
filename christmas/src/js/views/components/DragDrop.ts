@@ -5,12 +5,6 @@ export class DragManager {
   onDragStart(event: DragEvent) {
     (event.dataTransfer as DataTransfer).setData('id', this.id);
   }
-  
-  onDragEnd(event: DragEvent) {
-  }
-
-  onDrag(event: DragEvent) {
-  }
 
   onDragEnter(event: DragEvent) {
     event.preventDefault();
@@ -18,9 +12,6 @@ export class DragManager {
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
-  }
-  
-  onDragLeave(event: DragEvent) {
   }
 
   onDrop(event: DragEvent) {
@@ -31,7 +22,7 @@ export class DragManager {
     const favoritesCardNumber = parseInt(dragItem.id.split('_')[0]);
     const count = (dragItem.parentNode?.firstChild as HTMLElement).innerHTML as string;
     const countNew = (favoritesCards[favoritesCardNumber].firstChild as HTMLElement).innerHTML as string;
-    const dragItemNumber = parseInt(dragItem.src.split('/')[5].split('.')[0]);
+    const dragItemNumber = parseInt(dragItem.src.split('/')[7].split('.')[0]);
     const allCards = JSON.parse(localStorage.getItem('initialCardsListInfo') as string);
     const dragItemCount = allCards[dragItemNumber - 1].count;
 
