@@ -49,17 +49,44 @@
 					</section>
 					<section>
 						<blockquote cite="https://reactjs.org/docs/introducing-jsx.html">JSX may remind you of a template language, but it comes with the full power of JavaScript.</blockquote>
-						<ul>
-							<li>Is not obligatory for React but is highly recommended to use</li>
-							<li>Comes from the fact that rendering logic (markup) is tightly connected with the UI logic</li>
-						</ul>
+						<pre class="code-wrapper">
+							<code class="hljs javascript" data-trim>
+								const name = 'Olga';
+								const element = <h1>Hello, {name}!</h1>
+
+								ReactDOM.render(
+									element,
+									document.getElementByID('root')
+								);
+							</code>
+						</pre>
 					</section>
 					<section data-auto-animate>
 						<h3>Key features of React</h3>
 						<ul>
 							<li>JSX</li>
-							<li class="fragment">Components</li>
+							<li>Components</li>
 						</ul>
+					</section>
+					<section>
+						<pre class="code-wrapper">
+							<code class="hljs javascript" data-trim>
+								class HelloMessage extends React.Component {
+									render() {
+										return (
+											<div>
+												Hello {this.props.name}
+											</div>
+										);
+									}
+								}
+								
+								ReactDOM.render(
+									<HelloMessage name="Olga" />,
+									document.getElementById('hello-example')
+								);
+							</code>
+						</pre>
 					</section>
 					<section data-auto-animate>
 						<h3>Key features of React</h3>
@@ -78,7 +105,7 @@
 							<li>JSX</li>
 							<li>Components</li>
 							<li>React Fiber</li>
-							<li class="fragment">Stable code</li>
+							<li>Stable code</li>
 							<li class="fragment">SEO friendly</li>
 							<li class="fragment">Helpful developer toolset</li>
 						</ul>
@@ -95,7 +122,7 @@
 							<li>Stable code</li>
 							<li>SEO friendly</li>
 							<li>Helpful developer toolset</li>
-							<li class="fragment">React Native</li>
+							<li>React Native</li>
 							<li class="fragment">Focused and easy-to-learn</li>
 						</ul>
 					</section>
@@ -105,7 +132,7 @@
 						<h3 class="contents">Contents</h3>
 						<ul>
 							<li>What is React JS</li>
-							<li class="fragment">Getting started</li>
+							<li>Getting started</li>
 						</ul>
 					</section>
 					<section>
@@ -119,14 +146,80 @@
 					<section>
 						<h3 class="contents">Contents</h3>
 						<ul>
-							<li >What is React JS</li>
-							<li >Getting started</li>
-							<li class="fragment">React vs Angular vs Vue</li>
+							<li>What is React JS</li>
+							<li>Getting started</li>
+							<li>React vs Angular vs Vue</li>
 						</ul>
 					</section>
 					<section>
-						Comparison
+						<h3>Who is the winner?...</h3>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Vue.js</th>
+									<th>ReactJS</th>
+									<th>Angular</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Popularity</td>
+									<td class="table-content">>190K stars on Github <br>~400 contributors</td>
+									<td class="table-content">>180K stars on Github <br>~1500 contributors</td>
+									<td class="table-content">80K stars on Github <br>~1500 contributors</td>
+								</tr>
+								<tr class="fragment">
+									<td>Founders</td>
+									<td class="table-content">Evan You</td>
+									<td class="table-content">Facebook</td>
+									<td class="table-content">Google</td>
+								</tr>
+								<tr class="fragment">
+									<td>Russian documentation</td>
+									<td class="table-content">Yes</td>
+									<td class="table-content">Yes</td>
+									<td class="table-content">No</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
+					<section>
+						<h3>Who is the winner?...</h3>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Vue.js</th>
+									<th>ReactJS</th>
+									<th>Angular</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Getting started</td>
+									<td class="table-content">Customizable</td>
+									<td class="table-content">3 command lines</td>
+									<td class="table-content">Customizable</td>
+								</tr>
+								<tr class="fragment">
+									<td>Syntax</td>
+									<td class="table-content">Templates / JSX</td>
+									<td class="table-content">JSX</td>
+									<td class="table-content">Templates</td>
+								</tr>
+								<tr class="fragment">
+									<td>Rendering</td>
+									<td class="table-content">VDom</td>
+									<td class="table-content">React Fiber</td>
+									<td class="table-content">-</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+				<section>
+					<h2>Thank you for your attention!</h2>
 				</section>
 			</div>
 		</div>
