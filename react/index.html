@@ -31,11 +31,12 @@
 					</section>
 					<section>
 						<blockquote cite="https://reactjs.org/">A JavaScript library for building user interfaces</blockquote>
-						<br>
-						<br>
 						<ul>
 							<li>Created by Facebook</li>
 							<li>First release was in 2013</li>
+							<li>React Native appeared in 2015</li>
+							<li>Redux - released in 2015</li>
+							<li>React Fiber - 2017</li>
 							<li>Current version - 17.0.2 (as of January 2022)</li>
 							<li>Huge projects on ReactJS:<br> 
 								Facebook, Instagram, Netflix, New York Times, Yahoo! Mail, Dropbox, Walmart</li>
@@ -69,30 +70,83 @@
 						</ul>
 					</section>
 					<section>
+						<h4>React Class Component</h4>
 						<pre class="code-wrapper">
 							<code class="hljs javascript" data-trim>
-								class HelloMessage extends React.Component {
+								class Welcome extends React.Component {
 									render() {
-										return (
-											<div>
-												Hello {this.props.name}
-											</div>
-										);
+										return <h1>Hello, {this.props.name}</h1>;
 									}
 								}
-								
-								ReactDOM.render(
-									<HelloMessage name="Olga" />,
-									document.getElementById('hello-example')
-								);
 							</code>
 						</pre>
+					</section>
+					<section>
+						<h4>React Function Component</h4>
+						<pre class="code-wrapper">
+							<code class="hljs javascript" data-trim>
+								function Welcome(props) {
+									return <h1>Hello, {props.name}</h1>;
+								}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Key features of React</h3>
+						<ul>
+							<li>JSX</li>
+							<li>Components</li>
+							<li>Hooks</li>
+						</ul>
+					</section>
+					<section>
+						<blockquote cite="https://reactjs.org/docs/hooks-intro.html">They let you use state and other React features without writing a class.</blockquote>
+						<ul>
+							<li>Introduced in React 16.8</li>
+							<li>Hooks are functions that let you “hook into” React state and lifecycle features from function components.</li>
+						</ul>
+					</section>
+					<section>
+						<pre class="code-wrapper">
+							<code class="hljs javascript" data-trim>
+								import React, { useState } from 'react';
+
+								function Example() {
+									// Declare a new state variable, which we'll call "count"
+									const [count, setCount] = useState(0);
+
+									return (
+										<div>
+											<p>You clicked {count} times</p>
+											<button onClick={() => setCount(count + 1)}>
+												Click me
+											</button>
+										</div>
+									);
+								}
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h4>Basic hooks</h4>
+						<ul>
+							<li>useState
+								<pre class="code-wrapper small">
+									<code class="hljs javascript" data-trim>
+										const [state, setState] = useState(initialState);
+									</code>
+								</pre>
+							</li>
+							<li>useEffect</li>
+							<li>useContext</li>
+						</ul>
 					</section>
 					<section data-auto-animate>
 						<h3>Key features of React</h3>
 						<ul>
 							<li>JSX</li>
 							<li>Components</li>
+							<li>Hooks</li>
 							<li>React Fiber</li>
 						</ul>
 					</section>
@@ -104,6 +158,7 @@
 						<ul>
 							<li>JSX</li>
 							<li>Components</li>
+							<li>Hooks</li>
 							<li>React Fiber</li>
 							<li>Stable code</li>
 							<li class="fragment">SEO friendly</li>
@@ -118,6 +173,7 @@
 						<ul>
 							<li>JSX</li>
 							<li>Components</li>
+							<li>Hooks</li>
 							<li>React Fiber</li>
 							<li>Stable code</li>
 							<li>SEO friendly</li>
