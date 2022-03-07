@@ -1,7 +1,7 @@
 import { ICardData } from '../../services/types';
 
 
-export class Card implements ICardData {
+export default class Card implements ICardData {
   readonly num: number;
   readonly name: string;
   readonly count: number;
@@ -11,9 +11,8 @@ export class Card implements ICardData {
   readonly size: string;
   readonly favorite: boolean;
   public selected?: boolean;
-  idx: number;
 
-  constructor({ num, name, count, year, shape, color, size, favorite, selected = false }: ICardData, idx: number) {
+  constructor({ num, name, count, year, shape, color, size, favorite, selected = false }: ICardData) {
     this.num = num;
     this.name = name;
     this.count = count;
@@ -23,13 +22,14 @@ export class Card implements ICardData {
     this.size = size;
     this.favorite = favorite;
     this.selected = selected;
-    this.idx = idx;
   }
 
-  generateCard(): HTMLElement {
+  generateCard(idx: number): HTMLElement {
     let template = '';
     const card: HTMLElement = document.createElement('div');
     card.className = 'card';
+    card.id = this.num.toString();
+    card.style.animationDelay = `${idx / 5}s`;
     if (this.selected) card.className = 'card active';
 
     const isFavorite: string = (this.favorite) ? 'да' : 'нет';

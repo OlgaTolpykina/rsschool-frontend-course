@@ -7,7 +7,12 @@
   backdrop-filter: blur(4px);
   border-radius: 10px;
   cursor: pointer;
+  animation: slide-up 0.5s ease-in forwards;
   transition: left 0.2s ease-out, top 0.2s ease-out;
+  &.removing {
+    transform: scale(0);
+    transition: transform .3s;
+  }
   &:hover {
     transform: scale(1.01);
     & .ribbon {

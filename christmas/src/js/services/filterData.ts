@@ -1,20 +1,20 @@
 import { IFilters, Sort, ICardData } from './types';
-import { SortDirection } from './constants';
+// import { SortDirection } from './constants';
 
 export class FilterData {
   cardsToShowArray: ICardData[];
   filters: IFilters;
-  sortConditions: Sort;
+  // sortConditions: Sort;
   
   constructor(filters: IFilters, sortConditions: Sort) {
     this.cardsToShowArray = [];
     this.filters = filters;
-    this.sortConditions = sortConditions;
+    // this.sortConditions = sortConditions;
   }
 
   public parseData(data: ICardData[]): ICardData[] {
     this.filterData(data);
-    this.sortData(this.cardsToShowArray);
+    // this.sortData(this.cardsToShowArray);
 
     return this.cardsToShowArray;
   }
@@ -60,11 +60,11 @@ export class FilterData {
     });
   }
 
-  private sortData(data: ICardData[]): void {
-    if (this.sortConditions.direction === SortDirection.ASC) {
-      data.sort((a, b) => a[this.sortConditions.key] > b[this.sortConditions.key] ? 1 : -1);
-    } else {
-      data.sort((a, b) => a[this.sortConditions.key] > b[this.sortConditions.key] ? -1 : 1);
-    }
-  }
+  // private sortData(data: ICardData[]): void {
+  //   if (this.sortConditions.direction === SortDirection.ASC) {
+  //     data.sort((a, b) => a[this.sortConditions.key] > b[this.sortConditions.key] ? 1 : -1);
+  //   } else {
+  //     data.sort((a, b) => a[this.sortConditions.key] > b[this.sortConditions.key] ? -1 : 1);
+  //   }
+  // }
 }

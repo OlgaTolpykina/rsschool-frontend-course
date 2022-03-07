@@ -15,8 +15,8 @@ export enum Phrases {
 }
 
 export enum SortDirection {
-  ASC = 'ВВЕРХ',
-  DSC = 'ВНИЗ',
+  ASC = 'asc',
+  DSC = 'dsc',
 }
 
 export enum Filters {
@@ -49,5 +49,20 @@ export enum LightsColor {
 
 export enum Drag {
   minDistance = 1,
+}
+
+export enum SortNames {
+  title = 'Сортировать',
+  nameAsc = 'По названию от «А» до «Я»',
+  nameDsc = 'По названию от «Я» до «А»',
+  yearAsc = 'По году приобретения по возрастанию',
+  yearDsc = 'По году приобретения по убыванию',
+}
+
+export enum SortValues {
+  nameAsc = 'name-asc',
+  nameDsc = 'name-dsc',
+  yearAsc = 'year-asc',
+  yearDsc = 'year-dsc',
 }
 

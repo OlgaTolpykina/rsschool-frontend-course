@@ -41,8 +41,8 @@ export interface CardsPositions {
   left: number;
 }
 
-type Page = {
-  render: () => string;
+export type Page = {
+  render: () => void;
 };
 
 export interface Routes {
@@ -50,3 +50,9 @@ export interface Routes {
   path: Paths,
   page: Page,
 }
+
+export type StoragesHandler = {
+  [index: string]: Storage;
+  session: Storage;
+  local: Storage;
+};

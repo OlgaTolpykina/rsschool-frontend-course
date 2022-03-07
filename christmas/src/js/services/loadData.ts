@@ -1,4 +1,4 @@
-import cardsDataUrl from '../../assets/json/data.json';
+import cardsData from '../../assets/json/data.json';
 import { ICardData } from './types';
 
 interface ICardDto {
@@ -12,10 +12,10 @@ interface ICardDto {
   favorite: boolean,
 }
 
-export class LoadData {
+class LoadData {
   
   public async build() {
-    return await this.load(cardsDataUrl) as Array<ICardData>;
+    return await this.load(cardsData) as Array<ICardData>;
   }
 
   private async load(url: string): Promise<Array<ICardData>> {
@@ -35,3 +35,5 @@ export class LoadData {
     });
   }
 }
+
+export default new LoadData();

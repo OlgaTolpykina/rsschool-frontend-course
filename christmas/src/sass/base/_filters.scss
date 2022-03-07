@@ -9,6 +9,7 @@
   @include flex;
   &__input {
     display: none;
+    pointer-events: none;
   }
   &__label {
     display: flex;
