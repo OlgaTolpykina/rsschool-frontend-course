@@ -29,7 +29,7 @@ export default class Card implements ICardData {
     const card: HTMLElement = document.createElement('div');
     card.className = 'card';
     card.id = this.num.toString();
-    card.style.animationDelay = `${idx / 5}s`;
+    // card.style.animationDelay = `${idx * 0.1}s`;
     if (this.selected) card.className = 'card active';
 
     const isFavorite: string = (this.favorite) ? 'да' : 'нет';

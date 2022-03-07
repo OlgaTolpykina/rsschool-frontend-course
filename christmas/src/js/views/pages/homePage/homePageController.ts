@@ -1,4 +1,5 @@
 import HomePageView from "./homePageView";
+import settingsManager from "../../../services/settingsManager";
 
 
 export default class HomePageController {
@@ -10,5 +11,6 @@ export default class HomePageController {
 
   public createPage(): void {
     this.view.render();
+    settingsManager.init();
   }
 }

@@ -1,9 +1,10 @@
 import { ICardData } from "../../../services/types";
+import { Colors, Coefficients } from "../../../services/constants";
 import toysPageView from "./toysPageView";
 import ToyPageModel from './toysPageModel';
 import filterDataManager from "../../../services/filterDataManager";
-import { Colors, Coefficients } from "../../../services/constants";
 import storageManager from "../../../services/storageManager";
+import settingsManager from "../../../services/settingsManager";
 import searchImg from '../../../../assets/img/svg/search.svg';
 import deleteImg from '../../../../assets/img/svg/cross.svg';
 
@@ -22,6 +23,7 @@ export class ToyPageController {
     const filters = this.model.filters;
     this.view.render(sortConditions, filters, this.sortCards.bind(this), this.filterCards.bind(this), this.handleRangeFiltering.bind(this), this.handleButtonClick.bind(this), this.handleSearchFieldChange.bind(this), this.handleSearchFieldClearance.bind(this));
     filterDataManager.filterData(cards);
+    settingsManager.init();
   }
 
   public renderCards(cards: Array<ICardData>): void {
@@ -151,9 +153,9 @@ export class ToyPageController {
 
   handleSearchFieldClearance(e: Event): void {
     const clickedBtn = <HTMLInputElement>e.target;
-    const searchField = <HTMLInputElement>clickedBtn.previousElementSibling;
-    const key = <string>searchField.dataset.name;
     if (<string>clickedBtn.dataset.value === 'delete') {
+      const searchField = <HTMLInputElement>clickedBtn.previousElementSibling;
+      const key = <string>searchField.dataset.name;
       searchField.value = '';
       clickedBtn.style.backgroundImage = `url(${searchImg})`;
       clickedBtn.dataset.value = 'search';
