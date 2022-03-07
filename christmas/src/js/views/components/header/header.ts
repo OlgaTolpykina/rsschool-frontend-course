@@ -13,8 +13,12 @@ class Header {
     if (withContents) {
       this.rootNode.insertAdjacentHTML('afterbegin', headerTemplate(isSearchNeeded, favoritesNumber));
     }
-    this.rootNode.onchange = (e: Event) => handleSearchFieldChange!(e);
-    this.rootNode.onclick = (e: Event) => handleSearchFieldClearance!(e);
+    if (handleSearchFieldChange) {
+      this.rootNode.onchange = (e: Event) => handleSearchFieldChange!(e);
+    }
+    if (handleSearchFieldClearance) {
+      this.rootNode.onclick = (e: Event) => handleSearchFieldClearance!(e);
+    }
     return this.rootNode;
   }
 }

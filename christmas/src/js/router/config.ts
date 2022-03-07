@@ -3,16 +3,17 @@ import { Page } from '../services/types';
 import TreePage from '../views/pages/TreePage';
 import HomePageController from '../views/pages/homePage/homePageController';
 import toysPageController from '../views/pages/toysPage/toysPageController';
+import treePageController from '../views/pages/treePage/treePageController';
 
 class Config {
   homePageController: HomePageController;
   toysPageController: typeof toysPageController;
-  treePage: Page;
+  treePageController: typeof treePageController;
 
   constructor() {
     this.homePageController = new HomePageController();
     this.toysPageController = toysPageController;
-    this.treePage = TreePage;
+    this.treePageController = treePageController;
   }
 
   public getRoutes(): IRouteOption[] {
@@ -27,7 +28,7 @@ class Config {
         },
         {
           path: /tree/,
-          callback: () => this.treePage.render(),
+          callback: () => this.treePageController.createPage(),
         }, 
     ];
 

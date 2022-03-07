@@ -338,6 +338,9 @@ p.settings__title {
   align-items: flex-end;
   width: 800px;
   height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   background-image: url("../assets/img/bg/1.jpg");
   background-size: cover;
   background-position: center;
@@ -401,8 +404,8 @@ p.settings__title {
   &_container {
     display: flex;
     gap: 10px;
-    height: 140px;
-    width: 400px;
+    height: 80px;
+    width: 55px;
     overflow-x: auto;
   }
 }

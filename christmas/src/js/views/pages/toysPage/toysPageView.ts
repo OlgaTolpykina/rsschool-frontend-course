@@ -25,6 +25,7 @@ export class ToyPageView {
 
   private createHeader(handleSearchFieldChange: (e: Event) => void, handleSearchFieldClearance: (e: Event) => void): void {
     this.rootNode.append(header.getTemplate(true, true, handleSearchFieldChange, handleSearchFieldClearance, this.selectedCards.length));
+    this.rootNode.querySelector('.toys-route')!.classList.add('link_active');
   }
 
   private createMainSection(sortConditions: Sort, filters: IFilters, sortCards: (e: Event) => void, filterCards: (e: Event) => void, handleRangeFiltering: (e: Event) => void, handleButtonClick: (e: Event) => void): void {

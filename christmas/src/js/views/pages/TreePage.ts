@@ -8,8 +8,7 @@ const TreePage = {
             <div class="lights_choice settings__container"></div>
           </div>
           <div class="tree__main-tree"></div>
-          <div class="tree__favorites">
-          </div>
+          <div class="tree__favorites"></div>
         </div>   
         `;
   },

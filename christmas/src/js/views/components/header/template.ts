@@ -8,17 +8,17 @@ export default function headerTemplate(isSearchNeeded?: boolean, favorites?: num
       <span class="icon theme"></span>
       <div class="search-container">
         <input type="search" class="search button ${searchClass}" placeholder="Поиск" autocomplete="off" autofocus  data-name="name">
-        <span class="search-icon" data-value="search">
+        <span class="search-icon ${searchClass}" data-value="search">
       </div>
     </div>
     <div class="inner-container inner-container_right">
       <div class="navigation">
         <a href="#/" class="link__text icon tree home-route"></a>
-        <a href="#/toys" class="link__text link_active toys-route">Игрушки</a>
+        <a href="#/toys" class="link__text toys-route">Игрушки</a>
         <a href="#/tree" class="link__text tree-route">Ёлка</a>
       </div>
       <div class="icon favorite">
-        <span class="favorite-number">${favorites}</span>
+        <span class="favorite-number">${favoritesNumber}</span>
       </div>
     </div>
   </div>
