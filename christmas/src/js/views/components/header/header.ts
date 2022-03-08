@@ -1,4 +1,4 @@
-import headerTemplate from "./template";
+import headerTemplate from './template';
 
 class Header {
   private rootNode: HTMLElement;

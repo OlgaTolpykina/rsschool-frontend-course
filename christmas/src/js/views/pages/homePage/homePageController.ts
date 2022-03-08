@@ -1,5 +1,5 @@
-import HomePageView from "./homePageView";
-import settingsManager from "../../../services/settingsManager";
+import HomePageView from './homePageView';
+import settingsManager from '../../../services/settingsManager';
 
 
 export default class HomePageController {

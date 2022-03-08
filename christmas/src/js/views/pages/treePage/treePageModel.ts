@@ -1,5 +1,5 @@
-import storageManager from "../../../services/storageManager";
-import loadData from "../../../services/loadData";
+import storageManager from '../../../services/storageManager';
+import loadData from '../../../services/loadData';
 import { ICardData } from '../../../services/types';
 class TreePageModel {
 

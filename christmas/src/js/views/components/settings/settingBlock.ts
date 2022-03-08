@@ -1,5 +1,5 @@
 import dragManager from '../../../services/dragManager';
-import { ICardData } from "../../../services/types";
+import { ICardData } from '../../../services/types';
 
 class SettingBlock {
   private favoriteCard: Array<HTMLElement>;
@@ -35,7 +35,7 @@ class SettingBlock {
         variant.onclick = (e: Event) => handleVariantChoice(e);
       }
       wrapper.append(variant);
-    };
+    }
     
     if (favoriteToys) {
       this.renderFavoriteToys(favoriteToys);
@@ -75,10 +75,10 @@ class SettingBlock {
     const lightButtonsWrapper = <HTMLElement>document.createElement('div');
     lightButtonsWrapper.className = 'light__variant_container';
     for (let i = 0; i <= 4; i++) {
-        const lightVariant = <HTMLInputElement>document.createElement('button');
-        lightVariant.className = 'light__variant';
-        lightVariant.classList.add(lightVariants[i]);
-        lightButtonsWrapper.append(lightVariant);
+      const lightVariant = <HTMLInputElement>document.createElement('button');
+      lightVariant.className = 'light__variant';
+      lightVariant.classList.add(lightVariants[i]);
+      lightButtonsWrapper.append(lightVariant);
     }
     wrapper.append(lightButtonsWrapper);
     return wrapper;

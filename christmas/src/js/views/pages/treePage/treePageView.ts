@@ -1,10 +1,10 @@
-import header from "../../components/header/header";
+import header from '../../components/header/header';
 import settingBlock from '../../components/settings/settingBlock';
-import buttons from "../../components/buttons/buttons";
-import footer from "../../components/footer/footer";
-import storageManager from "../../../services/storageManager";
-import dragManager from "../../../services/dragManager";
-import { ICardData } from "../../../services/types";
+import buttons from '../../components/buttons/buttons';
+import footer from '../../components/footer/footer';
+import storageManager from '../../../services/storageManager';
+import dragManager from '../../../services/dragManager';
+import { ICardData } from '../../../services/types';
 
 class TreePageView {
   private rootNode: HTMLElement;
@@ -52,12 +52,12 @@ class TreePageView {
     settingsWrapper.append(settingBlock.getTemplate('tree_choice', 'tree', 6, 'tree__variant', handleVariantChoice));
     settingsWrapper.append(settingBlock.getTemplate('bg_choice', 'bg', 10, 'bg__variant', handleVariantChoice));
     settingsWrapper.append(settingBlock.getLightsVariantsTemplate(this.lightVariants));
-    settingsWrapper.append(buttons.getTemplate(['Сбросить настройки'], [''], handleButtonClick))
+    settingsWrapper.append(buttons.getTemplate(['Сбросить настройки'], [''], handleButtonClick));
 
     parentNode.append(settingsWrapper);
   }
 
-  private createMainTreeBlock(parentNode: HTMLElement, treeVariant: string, bgVariant: string, ): void {
+  private createMainTreeBlock(parentNode: HTMLElement, treeVariant: string, bgVariant: string ): void {
     const mainTreeWrapper = <HTMLElement>document.createElement('div');
     mainTreeWrapper.className = 'tree__main-tree';
     mainTreeWrapper.style.background = `url("./assets/img/${bgVariant}.jpg") center / cover no-repeat`;
@@ -90,14 +90,14 @@ class TreePageView {
     const favoriteCardsArray = this.formFavoriteCardsArr();
     favoritiesWrapper.className = 'tree__favorites';
     favoritiesWrapper.append(settingBlock.getTemplate('favorites_container', 'favorites', 20, 'favorites__card', undefined, favoriteCardsArray));
-    favoritiesWrapper.append(settingBlock.getTemplate('decorated_container', 'decorated', 6, 'decorated_container_inner', handleVariantChoice))
+    favoritiesWrapper.append(settingBlock.getTemplate('decorated_container', 'decorated', 6, 'decorated_container_inner', handleVariantChoice));
 
     parentNode.append(favoritiesWrapper);
   }
 
   private formFavoriteCardsArr(): Array<ICardData> {
     this.selectedCards = <Array<number>>storageManager.getItem('selectedCards', 'local') || [];
-    let favoriteCards = <Array<Array<ICardData>>>[];
+    const favoriteCards = <Array<Array<ICardData>>>[];
     let favoriteCardsArray = <Array<ICardData>>[];
     if (this.selectedCards.length > 0) {
       this.selectedCards.forEach((num) => {

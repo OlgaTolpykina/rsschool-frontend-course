@@ -1,4 +1,4 @@
-import buttonTemplate from "./template";
+import buttonTemplate from './template';
 
 class Buttons {
   private rootNode: HTMLElement;

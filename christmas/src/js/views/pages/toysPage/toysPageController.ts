@@ -1,10 +1,10 @@
-import { ICardData } from "../../../services/types";
-import { Colors, Coefficients } from "../../../services/constants";
-import toysPageView from "./toysPageView";
+import { ICardData } from '../../../services/types';
+import { Colors, Coefficients } from '../../../services/constants';
+import toysPageView from './toysPageView';
 import ToyPageModel from './toysPageModel';
-import filterDataManager from "../../../services/filterDataManager";
-import storageManager from "../../../services/storageManager";
-import settingsManager from "../../../services/settingsManager";
+import filterDataManager from '../../../services/filterDataManager';
+import storageManager from '../../../services/storageManager';
+import settingsManager from '../../../services/settingsManager';
 import searchImg from '../../../../assets/img/svg/search.svg';
 import deleteImg from '../../../../assets/img/svg/cross.svg';
 
@@ -48,9 +48,9 @@ export class ToyPageController {
     const key = <string>clickedElement.dataset.name;
 
     if (key === 'favorite') {
-      this.model.updateFilters({[key]: (<HTMLInputElement>clickedElement).checked});
+      this.model.updateFilters({ [key]: (<HTMLInputElement>clickedElement).checked });
       return;
-    };
+    }
 
     if (key === 'size') {
       const sizeBtns = <NodeListOf<HTMLInputElement>>document.querySelectorAll('.filter_size');
@@ -58,7 +58,7 @@ export class ToyPageController {
       sizeBtns.forEach((button) => {
         if (button.checked) sizeArray.push(<string>button.dataset.filter);
       });
-      this.model.updateFilters({[key]: sizeArray});
+      this.model.updateFilters({ [key]: sizeArray });
       return;
     }
 
@@ -69,7 +69,7 @@ export class ToyPageController {
       btns.forEach((button) => {
         if (button.className.includes('active')) valuesArray.push(<string>button.dataset.filter);
       });
-      this.model.updateFilters({[key]: valuesArray});
+      this.model.updateFilters({ [key]: valuesArray });
       return;
     }
   }
@@ -87,17 +87,17 @@ export class ToyPageController {
 
   private limitBindSliderValues(slider: HTMLInputElement, key: string): void {
     let bindSlider;
-    console.log(slider, slider.previousElementSibling);
+    
     if (slider.previousElementSibling!.tagName !== 'INPUT') {
       bindSlider = <HTMLInputElement>slider.nextElementSibling;
       slider.value = (+bindSlider.value - +slider.value <= 0) ? bindSlider.value : slider.value;
       this.colorSliders(slider, bindSlider);
-      this.model.updateFilters({[key]: { from: Number(slider.value), to: Number(bindSlider.value) }});
+      this.model.updateFilters({ [key]: { from: Number(slider.value), to: Number(bindSlider.value) } });
     } else {
       bindSlider = <HTMLInputElement>slider.previousElementSibling;
       slider.value = (+slider.value - +bindSlider.value <= 0) ? bindSlider.value : slider.value;
       this.colorSliders(bindSlider, slider);
-      this.model.updateFilters({[key]: { from: Number(bindSlider.value), to: Number(slider.value) }});
+      this.model.updateFilters({ [key]: { from: Number(bindSlider.value), to: Number(slider.value) } });
     }
   }
 
@@ -123,7 +123,7 @@ export class ToyPageController {
     const clickedElement = <HTMLElement>e.target;
     const type = clickedElement.dataset.name;
     
-    switch(type) {
+    switch (type) {
       case 'resetLS':
         localStorage.clear();
         this.createPage();
@@ -139,16 +139,16 @@ export class ToyPageController {
     const key = <string>searchField.dataset.name;
 
     if (searchField.value) {
-      const searchBtn = <HTMLElement>document.querySelector(`[data-value='search']`);
+      const searchBtn = <HTMLElement>document.querySelector('[data-value=\'search\']');
       searchBtn.style.backgroundImage = `url(${deleteImg})`;
       searchBtn.dataset.value = 'delete';
     } else {
-      const deleteBtn = <HTMLElement>document.querySelector(`[data-value='delete']`);
+      const deleteBtn = <HTMLElement>document.querySelector('[data-value=\'delete\']');
       deleteBtn.style.backgroundImage = `url(${searchImg})`;
       deleteBtn.dataset.value = 'search';
     }
     
-    this.model.updateFilters({[key]: searchField.value});
+    this.model.updateFilters({ [key]: searchField.value });
   }
 
   handleSearchFieldClearance(e: Event): void {
@@ -159,7 +159,7 @@ export class ToyPageController {
       searchField.value = '';
       clickedBtn.style.backgroundImage = `url(${searchImg})`;
       clickedBtn.dataset.value = 'search';
-      this.model.updateFilters({[key]: searchField.value});
+      this.model.updateFilters({ [key]: searchField.value });
     }
   }
 }

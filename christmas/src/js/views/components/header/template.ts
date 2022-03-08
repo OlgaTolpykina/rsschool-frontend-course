@@ -1,6 +1,6 @@
 export default function headerTemplate(isSearchNeeded?: boolean, favorites?: number): string {
-  let favoritesNumber = (favorites) ? favorites : 0;
-  let searchClass = (isSearchNeeded) ? '' : 'hidden';
+  const favoritesNumber = (favorites) ? favorites : 0;
+  const searchClass = (isSearchNeeded) ? '' : 'hidden';
   return `
   <div class="wrapper header__wrapper">
     <div class="inner-container inner-container_left">
@@ -22,5 +22,5 @@ export default function headerTemplate(isSearchNeeded?: boolean, favorites?: num
       </div>
     </div>
   </div>
-  `
+  `;
 }

@@ -22,8 +22,8 @@ class FilterData {
           filters.shape && !filters.shape.some(shape => shape === card.shape) ||
           filters.count && (filters.count.from > card.count || filters.count.to < card.count) ||
           filters.year && (filters.year.from > card.year || filters.year.to < card.year)
-          ) {   
-          isCardToShow = false;
+      ) {   
+        isCardToShow = false;
       }
       if (isCardToShow) this.cardsToRender.push(card);
       toysPageController.renderCards(this.cardsToRender);

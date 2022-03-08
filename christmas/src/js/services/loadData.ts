@@ -20,8 +20,8 @@ class LoadData {
 
   private async load(url: string): Promise<Array<ICardData>> {
     const res = await fetch(url);
-    const cardsData = await res.json();
-    return cardsData.map((item: ICardDto) => {
+    const cards = await res.json();
+    return cards.map((item: ICardDto) => {
       return {
         num: Number(item.num),
         name: item.name,

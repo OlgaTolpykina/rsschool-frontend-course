@@ -17,7 +17,8 @@
     "import"
   ],
   "rules": {
-    "no-console": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-console": 0,
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/indent": ["warn", 2, {
       "SwitchCase": 1

@@ -117,6 +117,6 @@ class Settings {
       snowflake.remove();
     }, 3000);
   }
-};
+}
 
 export default new Settings();

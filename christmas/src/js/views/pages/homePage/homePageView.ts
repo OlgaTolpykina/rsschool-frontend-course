@@ -32,7 +32,7 @@ class HomePageView {
     <div class="bg__ball bg_ball2"></div>
     <h1 class="home-page_title">Новогодняя игра <span>"Наряди ёлку"</span></h1>
     <a href="#/toys" class="home-page_switch">Начать</a>  
-    `
+    `;
   }
 
   private createFooter(): void {

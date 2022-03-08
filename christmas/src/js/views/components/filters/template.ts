@@ -1,7 +1,7 @@
 export function sortFilterTemplate(value: string, name: string): string {
   return `
   <option value='${value}'>${name}</option>
-  `
+  `;
 }
 
 export function filtersBlockTemplate(): string {
@@ -83,5 +83,5 @@ export function filtersBlockTemplate(): string {
               <span class="number" id="range4">2021</span>
             </div>
         </div>
-  `
+  `;
 }

@@ -1,6 +1,6 @@
-import treePageModel from "./treePageModel";
-import treePageView from "./treePageView";
-import settingsManager from "../../../services/settingsManager";
+import treePageModel from './treePageModel';
+import treePageView from './treePageView';
+import settingsManager from '../../../services/settingsManager';
 
 class TreePageController {
   private model: typeof treePageModel;

@@ -1,14 +1,14 @@
-import loadData from "./loadData";
+import loadData from './loadData';
 
 class DragManager {
 
   static dragStartHandler(ev: DragEvent): void {
-    (ev.dataTransfer!).setData("id", (<HTMLElement>ev.target).id);
+    (<DataTransfer>ev.dataTransfer).setData('id', (<HTMLElement>ev.target).id);
   }
 
   static dragOverHandler(ev: DragEvent): void {
     ev.preventDefault();
-    (<DataTransfer>ev.dataTransfer).dropEffect = "move";
+    (<DataTransfer>ev.dataTransfer).dropEffect = 'move';
   }
 
   static async dropHandler(ev: DragEvent): Promise<void> {
@@ -20,7 +20,7 @@ class DragManager {
       const dropZone = <HTMLElement>ev.target;
       const favoritesCards = document.querySelectorAll('.favorites__card');
       const favoritesCardNumber = parseInt(dragItem.id.split('_')[0]);
-      const toysNumberElement = (<HTMLElement>(<HTMLElement>dragItem.parentNode).firstChild)  
+      const toysNumberElement = (<HTMLElement>(<HTMLElement>dragItem.parentNode).firstChild);  
       const count = toysNumberElement.innerHTML;
       const countNew = (<HTMLElement>favoritesCards[favoritesCardNumber].firstChild).innerHTML; 
       const dragItemNumber = parseInt(<string>dragItem.dataset.count);

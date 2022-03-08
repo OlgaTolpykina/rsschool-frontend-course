@@ -1,6 +1,6 @@
-import toysPageController from "../../pages/toysPage/toysPageController";
-import { IFilters } from "../../../services/types";
-import { sortFilterTemplate, filtersBlockTemplate } from "./template";
+import toysPageController from '../../pages/toysPage/toysPageController';
+import { IFilters } from '../../../services/types';
+import { sortFilterTemplate, filtersBlockTemplate } from './template';
 
 class Filters {
   private sortWrapper: HTMLSelectElement;
@@ -18,7 +18,7 @@ class Filters {
     
     sortNames.forEach((sortName, index) => {
       this.sortWrapper.insertAdjacentHTML('afterbegin', sortFilterTemplate(sortValues[index], sortName));
-      if(sortValues[index] === sortValueChosen) { 
+      if (sortValues[index] === sortValueChosen) { 
         this.sortWrapper.value = sortValueChosen;
       }
     });
@@ -27,7 +27,7 @@ class Filters {
   }
 
   public getFiltersTemplate(filters: IFilters, filterCards: (e: Event) => void, handleRangeFiltering: (e: Event) => void): HTMLElement {
-    this.filtersWrapper.textContent = ''
+    this.filtersWrapper.textContent = '';
     this.filtersWrapper.insertAdjacentHTML('afterbegin', filtersBlockTemplate());
     this.activateButtons(filters);
     this.activateSliders(filters);
@@ -39,9 +39,9 @@ class Filters {
   private activateButtons(filters: IFilters): void {
     const filterKeys = Object.keys(filters);
     filterKeys.forEach((key) => {
-      const btns = <NodeListOf<HTMLInputElement>>this.filtersWrapper.querySelectorAll(`.filter_${key}`);
+      const btns = <NodeListOf<HTMLInputElement>> this.filtersWrapper.querySelectorAll(`.filter_${key}`);
       btns.forEach((btn) => {
-        switch(key) {
+        switch (key) {
           case 'favorite':
             if (filters.favorite) btn.checked = true;
             break;
@@ -60,8 +60,8 @@ class Filters {
   private activateSliders(filters: IFilters): void {
     const filterKeys = Object.keys(filters);
     filterKeys.forEach((key) => {
-      const sliders =  <NodeListOf<HTMLInputElement>>this.filtersWrapper.querySelectorAll(`[data-name=${key}]`);
-      switch(key) {
+      const sliders =  <NodeListOf<HTMLInputElement>> this.filtersWrapper.querySelectorAll(`[data-name=${key}]`);
+      switch (key) {
         case 'count':
         case 'year':
           if (filters[key]) {

@@ -1,9 +1,9 @@
-import header from "../../components/header/header";
+import header from '../../components/header/header';
 import filters from '../../components/filters/filter';
 import buttons from '../../components/buttons/buttons';
 import Card from '../../components/Card';
-import footer from "../../components/footer/footer";
-import storageManager from "../../../services/storageManager";
+import footer from '../../components/footer/footer';
+import storageManager from '../../../services/storageManager';
 import { SortNames, SortValues, Phrases } from '../../../services/constants';
 import { ICardData, Sort, IFilters } from '../../../services/types';
 
@@ -16,10 +16,10 @@ export class ToyPageView {
     this.selectedCards = <Array<number>>storageManager.getItem('selectedCards', 'local') || [];
   }
 
-  public render(sortConditions: Sort, filters: IFilters, sortCards: (e: Event) => void, filterCards: (e: Event) => void, handleRangeFiltering: (e: Event) => void, handleButtonClick: (e: Event) => void, handleSearchFieldChange: (e: Event) => void, handleSearchFieldClearance: (e: Event) => void): void {
+  public render(sortConditions: Sort, currentFilters: IFilters, sortCards: (e: Event) => void, filterCards: (e: Event) => void, handleRangeFiltering: (e: Event) => void, handleButtonClick: (e: Event) => void, handleSearchFieldChange: (e: Event) => void, handleSearchFieldClearance: (e: Event) => void): void {
     this.rootNode.textContent = '';
     this.createHeader(handleSearchFieldChange, handleSearchFieldClearance);
-    this.createMainSection(sortConditions, filters, sortCards, filterCards, handleRangeFiltering, handleButtonClick);
+    this.createMainSection(sortConditions, currentFilters, sortCards, filterCards, handleRangeFiltering, handleButtonClick);
     this.createFooter();
   }
 
@@ -29,22 +29,22 @@ export class ToyPageView {
     this.rootNode.querySelector('.toys-route')!.classList.add('link_active');
   }
 
-  private createMainSection(sortConditions: Sort, filters: IFilters, sortCards: (e: Event) => void, filterCards: (e: Event) => void, handleRangeFiltering: (e: Event) => void, handleButtonClick: (e: Event) => void): void {
+  private createMainSection(sortConditions: Sort, currentFilters: IFilters, sortCards: (e: Event) => void, filterCards: (e: Event) => void, handleRangeFiltering: (e: Event) => void, handleButtonClick: (e: Event) => void): void {
     const main = document.createElement('main');
     main.className = 'content content__toys';
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper toys__wrapper';
-    this.createFiltersBlock(wrapper, sortConditions, filters, sortCards, filterCards, handleRangeFiltering, handleButtonClick);
+    this.createFiltersBlock(wrapper, sortConditions, currentFilters, sortCards, filterCards, handleRangeFiltering, handleButtonClick);
     this.createCardsBlock(wrapper);
     
     main.append(wrapper);
     this.rootNode.append(main);
   }
 
-  private createFiltersBlock(parentNode: HTMLElement, sortConditions: Sort, filters: IFilters, sortCards: (e: Event) => void, filterCards: (e: Event) => void, handleRangeFiltering: (e: Event) => void, handleButtonClick: (e: Event) => void): void {
+  private createFiltersBlock(parentNode: HTMLElement, sortConditions: Sort, currentFilters: IFilters, sortCards: (e: Event) => void, filterCards: (e: Event) => void, handleRangeFiltering: (e: Event) => void, handleButtonClick: (e: Event) => void): void {
     const filtersWrapper = document.createElement('div');
     this.createSortFilters(filtersWrapper, sortConditions, sortCards);
-    this.createFilters(filtersWrapper, filters, filterCards, handleRangeFiltering);
+    this.createFilters(filtersWrapper, currentFilters, filterCards, handleRangeFiltering);
     this.addButtons(filtersWrapper, handleButtonClick);
 
     parentNode.append(filtersWrapper);
@@ -67,7 +67,7 @@ export class ToyPageView {
   }
 
   private setSortingChosen(sortConditions: Sort): string {
-    const value = `${sortConditions.key}-${sortConditions.direction.slice(0,3).toLowerCase()}`;
+    const value = `${sortConditions.key}-${sortConditions.direction.slice(0, 3).toLowerCase()}`;
     return value;
   }
 
@@ -91,7 +91,7 @@ export class ToyPageView {
   }
 
   public renderCards(cards: Array<ICardData>, selectCard: (e: Event) => void): void {
-    const cardsInnerContainer = <HTMLElement>this.rootNode.querySelector('.cards-inner-container');
+    const cardsInnerContainer = <HTMLElement> this.rootNode.querySelector('.cards-inner-container');
     cardsInnerContainer.textContent = '';
 
     if (cards.length === 0) {
@@ -104,7 +104,7 @@ export class ToyPageView {
     cards.forEach((cardInfo: ICardData, idx: number) => {
       const card = new Card(cardInfo);
       const cardElement:HTMLElement = card.generateCard(idx);
-      if(this.checkIfCardIsSelected(card)) cardElement.classList.add('active');
+      if (this.checkIfCardIsSelected(card)) cardElement.classList.add('active');
       cardElement.onclick = (e: Event) => selectCard(e);
           
       cardsInnerContainer.append(cardElement);
