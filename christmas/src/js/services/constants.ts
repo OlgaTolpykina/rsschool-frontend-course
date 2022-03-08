@@ -11,7 +11,6 @@ export enum Coefficients {
 
 export enum Phrases {
   noMatch = 'Извините, совпадений не обнаружено',
-  reset = 'Сбросить настройки',
 }
 
 export enum SortDirection {

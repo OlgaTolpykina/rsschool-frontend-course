@@ -188,6 +188,7 @@ p.settings__title {
 
 .settings__container {
   @include flex;
+  justify-content: center;
   gap: 10px;
   width: 100%;
   margin-bottom: 10px;
@@ -198,7 +199,7 @@ p.settings__title {
 .bg_choice::before,
 .lights_choice::before,
 .favorites_container::before,
-.favorites__decorated::before {
+.decorated_container::before {
   content: "Выберите ёлку";
   width: 100%;
   font-size: 20px;
@@ -222,6 +223,7 @@ p.settings__title {
   background-color: $color-white_semitransparent;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 }
 
 .tree__variant {
@@ -338,13 +340,6 @@ p.settings__title {
   align-items: flex-end;
   width: 800px;
   height: 100%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  background-image: url("../assets/img/bg/1.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   padding-bottom: 20px;
 }
 
@@ -397,11 +392,11 @@ p.settings__title {
   }
 }
 
-.favorites__decorated {
+.decorated_container {
   &::before {
     content: 'Вы нарядили';
   }
-  &_container {
+  &_inner {
     display: flex;
     gap: 10px;
     height: 80px;
@@ -514,8 +509,9 @@ p.settings__title {
 
   .main-tree {
     width: 250px;
-    height: 400px;
+    height: 500px;
     left: calc(50% - 125px);
+    bottom: calc(50% - 40%);
   }
 
   .lights__onTree-container {
