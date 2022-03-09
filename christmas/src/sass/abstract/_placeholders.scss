@@ -1,17 +1,17 @@
 %transition {
-  transition: all .5s ease-out;
+    transition: all 0.5s ease-out;
 }
 
 %element-style {
-  background-color: $color-buttons;
-  backdrop-filter: blur(6px);
-  border: 1px solid $color-active;
-  cursor: pointer;
+    background-color: $color-buttons;
+    backdrop-filter: blur(6px);
+    border: 1px solid $color-active;
+    cursor: pointer;
 }
 
 %input-style {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
 }

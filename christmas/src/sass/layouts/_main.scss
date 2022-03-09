@@ -1,198 +1,198 @@
 .content {
-  padding: 15px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: url('../assets/img/bg.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  &__tree {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  &__toys,
-  &__tree {
-    background: url('../assets/img/bg.jpg'), rgba(25, 47, 45, 0.7);
-    background-blend-mode: color;
-  }
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('../assets/img/bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    &__tree {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    &__toys,
+    &__tree {
+        background: url('../assets/img/bg.jpg'), rgba(25, 47, 45, 0.7);
+        background-blend-mode: color;
+    }
 }
 
 //Home page
 
 .bg__ball {
-  position: absolute;
-  background-size: contain;
-  background-repeat: no-repeat;
-  &::before {
-    content: "";
     position: absolute;
-    background-color: #aaa;
-  }
+    background-size: contain;
+    background-repeat: no-repeat;
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: #aaa;
+    }
 }
 
 .bg_ball1 {
-  width: 400px;
-  height: 400px;
-  left: calc(50% - 550px);
-  top: 10%;
-  background-image: url('../assets/img/ball/1.png');
-  &::before {
-    top: -210px;
-    left: calc(50% - 47px);
-    height: 220px;
-    width: 5px;
-  }
+    width: 400px;
+    height: 400px;
+    left: calc(50% - 550px);
+    top: 10%;
+    background-image: url('../assets/img/ball/1.png');
+    &::before {
+        top: -210px;
+        left: calc(50% - 47px);
+        height: 220px;
+        width: 5px;
+    }
 }
 
 .bg_ball2 {
-  width: 300px;
-  height: 300px;
-  left: calc(50% + 150px);
-  top: 10%;
-  background-image: url('../assets/img/ball/2.png');
-  &::before{
-    top: -205px;
-    left: calc(50% - 32px);
-    height: 210px;
-    width: 5px;
-  }
+    width: 300px;
+    height: 300px;
+    left: calc(50% + 150px);
+    top: 10%;
+    background-image: url('../assets/img/ball/2.png');
+    &::before {
+        top: -205px;
+        left: calc(50% - 32px);
+        height: 210px;
+        width: 5px;
+    }
 }
 
 .home-page_title {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  width: 600px;
-  height: 250px;
-  margin-bottom: 80px;
-  font-weight: 400;
-  text-align: center;
-  border-radius: 25px;
-  font-size: 4.8rem;
-  line-height: 8rem;
-  @extend %element-style;
-  cursor: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 600px;
+    height: 250px;
+    margin-bottom: 80px;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 25px;
+    font-size: 4.8rem;
+    line-height: 8rem;
+    @extend %element-style;
+    cursor: auto;
 }
 
 .home-page_switch {
-  @include flex;
-  justify-content: center;
-  width: 320px;
-  height: 60px;
-  text-align: center;
-  @extend %element-style;
-  font-size: 2.5rem;
-  font-weight: 300;
-  border-radius: 15px;
-  &:hover {
-    background-color: $color-active;
-  }
+    @include flex;
+    justify-content: center;
+    width: 320px;
+    height: 60px;
+    text-align: center;
+    @extend %element-style;
+    font-size: 2.5rem;
+    font-weight: 300;
+    border-radius: 15px;
+    &:hover {
+        background-color: $color-active;
+    }
 }
 
 // Toys page
 
 .settings {
-  @include flex;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+    @include flex;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
     &__title {
-      font-size: 1.8rem;
-    } 
+        font-size: 1.8rem;
+    }
     &_wide {
-      width: 350px;
+        width: 350px;
     }
     &_narrow {
-      width: 250px;
+        width: 250px;
     }
 }
 
 p.settings__title {
-  width: 100%;
-  margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .cards-container {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }
 
 .cards-inner-container {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 30px;
-  width: 100%;
-  height: 520px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 30px;
+    width: 100%;
+    height: 520px;
 }
 
 .cards-layout {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .no-cards {
-  @include flex;
-  justify-content: center;
-  font-size: 2rem;
-  @extend %element-style;
-  border-radius: 10px;
-  grid-column: span 4;
-  margin: auto;
-  width: 500px;
-  height: 100px;
+    @include flex;
+    justify-content: center;
+    font-size: 2rem;
+    @extend %element-style;
+    border-radius: 10px;
+    grid-column: span 4;
+    margin: auto;
+    width: 500px;
+    height: 100px;
 }
 
 @media (max-width: 1800px) {
-  .cards-inner-container {
-    grid-template-columns: repeat(5, 1fr);
-  }
+    .cards-inner-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 @media (max-width: 1600px) {
-  .cards-inner-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
+    .cards-inner-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @media (max-width: 1350px) {
-  .cards-inner-container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  };
+    .cards-inner-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
 }
 
 @media (max-width: 1100px) {
-  .cards-inner-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  };
+    .cards-inner-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
 }
 
 @media (max-width: 880px) {
-  .cards-inner-container {
-    grid-template-columns: 1fr;
-  };
+    .cards-inner-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 // Tree page
 
 .tree__settings,
 .tree__favorites {
-  width: 400px;
+    width: 400px;
 }
 
 .settings__container {
-  @include flex;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  margin-bottom: 10px;
-  overflow-y: auto;
+    @include flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    overflow-y: auto;
 }
 
 .tree_choice::before,
@@ -200,348 +200,346 @@ p.settings__title {
 .lights_choice::before,
 .favorites_container::before,
 .decorated_container::before {
-  content: "Выберите ёлку";
-  width: 100%;
-  font-size: 20px;
-  font-weight: 400;
-  padding: 10px;
-  padding-left: 0;
-  text-transform: uppercase;
+    content: 'Выберите ёлку';
+    width: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10px;
+    padding-left: 0;
+    text-transform: uppercase;
 }
 
 .bg_choice::before {
-  content: "Выберите фон";
+    content: 'Выберите фон';
 }
 
 .lights_choice::before {
-  content: "Гирлянда";
+    content: 'Гирлянда';
 }
 
 .setting__item {
-  @extend %element-style;
-  border-radius: 10px;
-  background-color: $color-white_semitransparent;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+    @extend %element-style;
+    border-radius: 10px;
+    background-color: $color-white_semitransparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .tree__variant {
-  width: 115px;
-  height: 100px;
-  background-size: auto 100px;
+    width: 115px;
+    height: 100px;
+    background-size: auto 100px;
 }
 
 .bg__variant {
-  width: 65px;
-  height: 60px;
-  background-size: cover;
+    width: 65px;
+    height: 60px;
+    background-size: cover;
 }
 
 .light__variant {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  &:hover {
-    transform: scale(1.1);
-  } 
-  &_container {
-    @include flex;
-    width: 250px;
-    padding: 10px;
-  }
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    &:hover {
+        transform: scale(1.1);
+    }
+    &_container {
+        @include flex;
+        width: 250px;
+        padding: 10px;
+    }
 }
 
 .light_multicolor {
-  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8);
-  box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #441313 0 -1px 9px, #ccc 0 2px 12px;
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8);
+    box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #441313 0 -1px 9px, #ccc 0 2px 12px;
 }
 
 .light_red {
-  background-color: #F00;
-  box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgb(255 0 0 / 50%) 0 2px 12px;
+    background-color: #f00;
+    box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgb(255 0 0 / 50%) 0 2px 12px;
 }
 
 .light_blue {
-  background-color: $color-blue;
-  box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3f8cff 0 2px 14px;
+    background-color: $color-blue;
+    box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3f8cff 0 2px 14px;
 }
 
 .light_yellow {
-  background-color: $color-yellow;
-  box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #ff0 0 2px 12px;
+    background-color: $color-yellow;
+    box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #ff0 0 2px 12px;
 }
 
 .light_green {
-  background-color: $color-green;
-  box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89ff00 0 2px 12px;
+    background-color: $color-green;
+    box-shadow: rgb(0 0 0 / 20%) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89ff00 0 2px 12px;
 }
 
 .lights__switcher {
-  position: relative;
-  width: 85px;
-  &_input {
-    display: none;
-  }
-  &_label {
-    display: block;
-    overflow: hidden;
-    cursor: pointer;
-    border-radius: 20px;
-  }
+    position: relative;
+    width: 85px;
+    &_input {
+        display: none;
+    }
+    &_label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 20px;
+    }
 }
 
 .switcher {
-  &_inner-container {
-    width: 200%;
-    margin-left: -100%;
-    transition: margin 0.3s ease-in 0s;
-    &::before,
-    &::after {
-      float: left;
-      width: 50%;
-      height: 30px;
-      padding: 0;
-      line-height: 30px;
-      font-size: 16px;
-      font-weight: 600;
-      box-sizing: border-box;
+    &_inner-container {
+        width: 200%;
+        margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+        &::before,
+        &::after {
+            float: left;
+            width: 50%;
+            height: 30px;
+            padding: 0;
+            line-height: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            box-sizing: border-box;
+        }
+        &::before {
+            content: 'Вкл';
+            padding-left: 12px;
+            background-color: $color-active;
+        }
+        &::after {
+            content: 'Выкл';
+            padding-right: 10px;
+            background-color: $color-lightgrey;
+            color: $color-grey;
+            text-align: right;
+        }
     }
-    &::before {
-      content: "Вкл";
-      padding-left: 12px;
-      background-color: $color-active;
+    &_indicator {
+        width: 26px;
+        margin: 2px;
+        background: $color-white;
+        border: 2px solid $color-grey;
+        border-radius: 20px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 55px;
+        transition: all 0.3s ease-in 0s;
     }
-    &::after {
-      content: "Выкл";
-      padding-right: 10px;
-      background-color: $color-lightgrey;
-      color: $color-grey;
-      text-align: right;
-    }
-  }
-  &_indicator {
-    width: 26px;
-    margin: 2px;
-    background: $color-white;
-    border: 2px solid $color-grey;
-    border-radius: 20px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 55px;
-    transition: all 0.3s ease-in 0s;
-  }
 }
 
 .tree__main-tree {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 800px;
-  height: 100%;
-  padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 800px;
+    height: 100%;
+    padding-bottom: 20px;
 }
 
 .main-tree {
-  display: block;
-  width: 500px;
-  height: 600px;
-  position: absolute;
-  bottom: 0;
-  left: calc(50% - 250px);
+    display: block;
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 250px);
 }
 
 .favorites_container {
-  &::before {
-    content: "Выбранные игрушки";
-  }
+    &::before {
+        content: 'Выбранные игрушки';
+    }
 }
 
 .favorites__card {
-  @include flex;
-  width: 70px;
-  height: 70px;
-  @extend %element-style;
-  border-radius: 10px;
-  background-color: $color-white_semitransparent;
-  &_count {
-    width: 25px;
-    height: 25px;
-    align-self: flex-end;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    margin-left: 45px;
+    @include flex;
+    width: 70px;
+    height: 70px;
+    @extend %element-style;
     border-radius: 10px;
-    background-color: $color-active;
-    font-size: 14px;
-    line-height: 25px;
-    font-weight: 900;
-  }
-  &_img {
-    display: block;
-    position: absolute;
-    height: 55px;
-    width: 55px;
-    top: 0;
-    left: 0;
-    object-fit: contain;
-    cursor: move;
-    z-index: 1;
-  }
+    background-color: $color-white_semitransparent;
+    &_count {
+        width: 25px;
+        height: 25px;
+        align-self: flex-end;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        margin-left: 45px;
+        border-radius: 10px;
+        background-color: $color-active;
+        font-size: 14px;
+        line-height: 25px;
+        font-weight: 900;
+    }
+    &_img {
+        display: block;
+        position: absolute;
+        height: 55px;
+        width: 55px;
+        top: 0;
+        left: 0;
+        object-fit: contain;
+        cursor: move;
+        z-index: 1;
+    }
 }
 
 .decorated_container {
-  &::before {
-    content: 'Вы нарядили';
-  }
-  &_inner {
-    display: flex;
-    gap: 10px;
-    height: 80px;
-    width: 55px;
-    overflow-x: auto;
-  }
+    &::before {
+        content: 'Вы нарядили';
+    }
+    &_inner {
+        display: flex;
+        gap: 10px;
+        height: 80px;
+        width: 55px;
+        overflow-x: auto;
+    }
 }
 
 .tree_decorated {
-  @include flex;
-  justify-content: center;
-  width: 115px;
-  min-width: 115px;
-  height: 115px;
-  border-radius: 10px;
-  background-color: $color-white_semitransparent;
-  &_img {
-    height: 110px;
-  }
-  &:hover {
-    cursor: pointer;
-  }
+    @include flex;
+    justify-content: center;
+    width: 115px;
+    min-width: 115px;
+    height: 115px;
+    border-radius: 10px;
+    background-color: $color-white_semitransparent;
+    &_img {
+        height: 110px;
+    }
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .lights__onTree-container {
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-  width: 500px;
-  height: 714px;
-  position: absolute;
-  pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    width: 500px;
+    height: 714px;
+    position: absolute;
+    pointer-events: none;
 }
 
 @media (max-width: 1650px) {
-  .tree__main-tree {
-    width: 600px;
-  }
+    .tree__main-tree {
+        width: 600px;
+    }
 }
 
 @media (max-width: 1450px) {
-  .tree__main-tree {
-    width: 450px;
-  }
+    .tree__main-tree {
+        width: 450px;
+    }
 
-  .main-tree {
-    width: 400px;
-    height: 550px;
-    left: calc(50% - 200px);
-  }
+    .main-tree {
+        width: 400px;
+        height: 550px;
+        left: calc(50% - 200px);
+    }
 
-  .lights__onTree-container {
-    width: 400px;
-    height: 550px;
-    position: absolute;
-    top: 30px;
-  }
+    .lights__onTree-container {
+        width: 400px;
+        height: 550px;
+        position: absolute;
+        top: 30px;
+    }
 }
 
 @media (max-width: 1300px) {
-  .tree__settings,
-  .tree__favorites {
-    width: 280px;
-  }
+    .tree__settings,
+    .tree__favorites {
+        width: 280px;
+    }
 
-  .settings__container {
-    height: 225px;
-  }
+    .settings__container {
+        height: 225px;
+    }
 
-  .tree__variant {
-    width: 80px;
-    height: 80px;
-    background-size: auto 80px;
-  }
+    .tree__variant {
+        width: 80px;
+        height: 80px;
+        background-size: auto 80px;
+    }
 
-  .lights_choice {
-    height: 100px;
-  }
+    .lights_choice {
+        height: 100px;
+    }
 
-  .favorites__decorated {
-    height: 195px;
-  }
+    .favorites__decorated {
+        height: 195px;
+    }
 
-  .favorites_container {
-    position: relative;
-    height: 373px;
-  }
+    .favorites_container {
+        position: relative;
+        height: 373px;
+    }
 
-  .lights__onTree-container {
-    position: absolute;
-    top: 0px;
-  }
+    .lights__onTree-container {
+        position: absolute;
+        top: 0px;
+    }
 
-  .light__variant_container {
-    width: 180px;
-  }
+    .light__variant_container {
+        width: 180px;
+    }
 
-  .light__variant {
-    width: 20px;
-    height: 20px;
-  }
-
-}  
-
-@media (max-width: 1050px) {
-  .tree__settings,
-  .tree__favorites {
-    width: 200px;
-  }
-
-  .main-tree {
-    width: 250px;
-    height: 500px;
-    left: calc(50% - 125px);
-    bottom: calc(50% - 40%);
-  }
-
-  .lights__onTree-container {
-    width: 250px;
-    height: 380px;
-    position: absolute;
-    top: 243px;
-  }
-
-  .tree__main-tree {
-    width: 330px;
-  }
-
-  .light__variant {
-    width: 15px;
-    height: 15px;
-  }
-
-  .switcher_indicator {
-    width: 20px;
-  }
-
-  .switcher_inner-container::before,
-  .switcher_inner-container::after {
-    height: 20px;
-    line-height: 20px;
-  }
-
-  .light__variant_container {
-    padding: 0;
-  }
+    .light__variant {
+        width: 20px;
+        height: 20px;
+    }
 }
 
+@media (max-width: 1050px) {
+    .tree__settings,
+    .tree__favorites {
+        width: 200px;
+    }
+
+    .main-tree {
+        width: 250px;
+        height: 500px;
+        left: calc(50% - 125px);
+        bottom: calc(50% - 40%);
+    }
+
+    .lights__onTree-container {
+        width: 250px;
+        height: 380px;
+        position: absolute;
+        top: 243px;
+    }
+
+    .tree__main-tree {
+        width: 330px;
+    }
+
+    .light__variant {
+        width: 15px;
+        height: 15px;
+    }
+
+    .switcher_indicator {
+        width: 20px;
+    }
+
+    .switcher_inner-container::before,
+    .switcher_inner-container::after {
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .light__variant_container {
+        padding: 0;
+    }
+}

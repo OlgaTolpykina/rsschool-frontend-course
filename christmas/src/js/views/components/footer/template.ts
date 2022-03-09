@@ -1,6 +1,5 @@
-
 export default function footerTemplate(): string {
-  return `
+    return `
   <div class="wrapper footer__wrapper">
     <div class="info">
       <p>©</p>
