@@ -22,6 +22,7 @@ export class ToyPageView {
         sortCards: (e: Event) => void,
         filterCards: (e: Event) => void,
         handleRangeFiltering: (e: Event) => void,
+        handleCardsRerendering: () => void,
         handleButtonClick: (e: Event) => void,
         handleSearchFieldChange: (e: Event) => void,
         handleSearchFieldClearance: (e: Event) => void
@@ -34,6 +35,7 @@ export class ToyPageView {
             sortCards,
             filterCards,
             handleRangeFiltering,
+            handleCardsRerendering,
             handleButtonClick
         );
         this.createFooter();
@@ -62,6 +64,7 @@ export class ToyPageView {
         sortCards: (e: Event) => void,
         filterCards: (e: Event) => void,
         handleRangeFiltering: (e: Event) => void,
+        handleCardsRerendering: () => void,
         handleButtonClick: (e: Event) => void
     ): void {
         const main = document.createElement('main');
@@ -75,6 +78,7 @@ export class ToyPageView {
             sortCards,
             filterCards,
             handleRangeFiltering,
+            handleCardsRerendering,
             handleButtonClick
         );
         this.createCardsBlock(wrapper);
@@ -90,11 +94,12 @@ export class ToyPageView {
         sortCards: (e: Event) => void,
         filterCards: (e: Event) => void,
         handleRangeFiltering: (e: Event) => void,
+        handleCardsRerendering: () => void,
         handleButtonClick: (e: Event) => void
     ): void {
         const filtersWrapper = document.createElement('div');
         this.createSortFilters(filtersWrapper, sortConditions, sortCards);
-        this.createFilters(filtersWrapper, currentFilters, filterCards, handleRangeFiltering);
+        this.createFilters(filtersWrapper, currentFilters, filterCards, handleRangeFiltering, handleCardsRerendering);
         this.addButtons(filtersWrapper, handleButtonClick);
 
         parentNode.append(filtersWrapper);
@@ -127,9 +132,12 @@ export class ToyPageView {
         parentNode: HTMLElement,
         currentFilters: IFilters,
         filterCards: (e: Event) => void,
-        handleRangeFiltering: (e: Event) => void
+        handleRangeFiltering: (e: Event) => void,
+        handleCardsRerendering: () => void
     ): void {
-        parentNode.append(filters.getFiltersTemplate(currentFilters, filterCards, handleRangeFiltering));
+        parentNode.append(
+            filters.getFiltersTemplate(currentFilters, filterCards, handleRangeFiltering, handleCardsRerendering)
+        );
     }
 
     private addButtons(parentNode: HTMLElement, handleButtonClick: (e: Event) => void): void {

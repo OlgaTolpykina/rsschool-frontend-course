@@ -35,7 +35,8 @@ class Filters {
     public getFiltersTemplate(
         filters: IFilters,
         filterCards: (e: Event) => void,
-        handleRangeFiltering: (e: Event) => void
+        handleRangeFiltering: (e: Event) => void,
+        handleCardsRerendering: () => void
     ): HTMLElement {
         this.filtersWrapper.textContent = '';
         this.filtersWrapper.insertAdjacentHTML('afterbegin', filtersBlockTemplate());
@@ -43,6 +44,7 @@ class Filters {
         this.activateSliders(filters);
         this.filtersWrapper.onclick = (e: Event) => filterCards(e);
         this.filtersWrapper.oninput = (e: Event) => handleRangeFiltering(e);
+        this.filtersWrapper.onchange = () => handleCardsRerendering();
         return this.filtersWrapper;
     }
 

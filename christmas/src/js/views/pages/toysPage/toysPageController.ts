@@ -27,6 +27,7 @@ export class ToyPageController {
             this.sortCards.bind(this),
             this.filterCards.bind(this),
             this.handleRangeFiltering.bind(this),
+            this.handleCardsRerendering.bind(this),
             this.handleButtonClick.bind(this),
             this.handleSearchFieldChange.bind(this),
             this.handleSearchFieldClearance.bind(this)
@@ -92,6 +93,10 @@ export class ToyPageController {
             this.limitBindSliderValues(slider, key);
             this.updateSliderTextValues(parentNode, slider);
         }
+    }
+
+    private handleCardsRerendering(): void {
+        this.model.filterData();
     }
 
     private limitBindSliderValues(slider: HTMLInputElement, key: string): void {

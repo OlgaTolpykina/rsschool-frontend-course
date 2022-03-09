@@ -121,6 +121,9 @@ class ToyPageModel {
             filters.name ? (this.filters.name = filters.name) : delete this.filters.name;
 
         this.saveFilters();
+    }
+
+    public filterData(): void {
         filterDataManager.filterData(this.allCards);
     }
 
