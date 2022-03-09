@@ -143,9 +143,9 @@ export class ToyPageController {
         const type = clickedElement.dataset.name;
         const filters = this.model.filters;
 
-        if (Object.keys(filters).length > 0 && type === 'resetLS') {
+        if (type === 'resetLS') {
             localStorage.clear();
-            this.createPage();
+            if (Object.keys(filters).length > 0) this.createPage();
         } else if (Object.keys(filters).length > 0) {
             storageManager.deleteItem('filters', 'local');
             this.createPage();
