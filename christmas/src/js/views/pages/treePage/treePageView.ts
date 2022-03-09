@@ -5,7 +5,7 @@ import footer from '../../components/footer/footer';
 import storageManager from '../../../services/storageManager';
 import dragManager from '../../../services/dragManager';
 import utils from '../../../services/utils';
-import { ICardData } from '../../../services/types';
+import { ICardData, IToyCoords } from '../../../services/types';
 import { LightsColor } from '../../../services/constants';
 
 class TreePageView {
@@ -58,6 +58,7 @@ class TreePageView {
         if (isLightsOn) {
             this.renderLights(this.lightsContainer, this.lightsColor);
         }
+        this.checkToysCoords();
         this.createFooter();
     }
 
@@ -261,6 +262,19 @@ class TreePageView {
         }
         favoriteCardsArray = favoriteCards.reduce((array1, array2) => [...array1, ...array2]);
         return favoriteCardsArray;
+    }
+
+    private checkToysCoords(): void {
+        const toysCoords: IToyCoords = storageManager.getItem('toysCoords', 'local') || {};
+        const dropZone = <HTMLAreaElement>this.rootNode.querySelector('area');
+        Object.keys(toysCoords).forEach((toyId) => {
+            const toy = <HTMLElement>document.getElementById(`${toyId}`);
+            const toysNumberElement = <HTMLElement>(<HTMLElement>toy.parentNode).firstChild;
+            toy.style.left = toysCoords[toyId].left;
+            toy.style.top = toysCoords[toyId].top;
+            toysNumberElement.innerHTML = toysCoords[toyId].count;
+            dropZone.append(toy);
+        });
     }
 
     private createFooter(): void {

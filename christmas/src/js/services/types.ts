@@ -35,11 +35,11 @@ export interface Sort {
     direction: SortDirection;
 }
 
-export interface CardsPositions {
-    idx: number;
-    top: number;
-    left: number;
-}
+// export interface CardsPositions {
+//     idx: number;
+//     top: number;
+//     left: number;
+// }
 
 export type Page = {
     render: () => void;
@@ -56,3 +56,12 @@ export type StoragesHandler = {
     session: Storage;
     local: Storage;
 };
+
+export type ToysData = {
+    left: string;
+    top: string;
+    count: string;
+};
+export interface IToyCoords {
+    [id: string]: ToysData;
+}

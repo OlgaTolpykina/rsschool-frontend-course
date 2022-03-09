@@ -1,16 +1,18 @@
 import loadData from './loadData';
+import storageManager from './storageManager';
+import { IToyCoords } from './types';
 
 class DragManager {
-    static dragStartHandler(ev: DragEvent): void {
+    public dragStartHandler(ev: DragEvent): void {
         (<DataTransfer>ev.dataTransfer).setData('id', (<HTMLElement>ev.target).id);
     }
 
-    static dragOverHandler(ev: DragEvent): void {
+    public dragOverHandler(ev: DragEvent): void {
         ev.preventDefault();
         (<DataTransfer>ev.dataTransfer).dropEffect = 'move';
     }
 
-    static async dropHandler(ev: DragEvent): Promise<void> {
+    public async dropHandler(ev: DragEvent): Promise<void> {
         ev.preventDefault();
         const dragFlag = (<DataTransfer>ev.dataTransfer).getData('id');
         const dragItem = <HTMLElement>document.getElementById(dragFlag);
@@ -41,6 +43,7 @@ class DragManager {
                 }
 
                 dropZone.append(dragItem);
+                this.saveToysCoords(dragItem.id, dragItem.style.left, dragItem.style.top, toysNumberElement.innerHTML);
             } else {
                 dragItem.style.left = '0px';
                 dragItem.style.top = '0px';
@@ -51,9 +54,23 @@ class DragManager {
                     ).toString();
                 }
                 favoritesCards[favoritesCardNumber].append(dragItem);
+                this.deleteToyCoords(dragItem.id);
             }
         }
     }
+
+    private saveToysCoords(id: string, left: string, top: string, count: string): void {
+        const toysCoords: IToyCoords = storageManager.getItem('toysCoords', 'local') || {};
+        toysCoords[id] = { left: left, top: top, count: count };
+        storageManager.addItem('toysCoords', toysCoords, 'local');
+    }
+
+    private deleteToyCoords(id: string): void {
+        const toysCoords: IToyCoords = storageManager.getItem('toysCoords', 'local') || {};
+        console.log(toysCoords[id]);
+        delete toysCoords[id];
+        storageManager.addItem('toysCoords', toysCoords, 'local');
+    }
 }
 
-export default DragManager;
+export default new DragManager();
