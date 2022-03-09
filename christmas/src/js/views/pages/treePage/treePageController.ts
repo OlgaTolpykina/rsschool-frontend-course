@@ -1,6 +1,7 @@
 import treePageModel from './treePageModel';
 import treePageView from './treePageView';
 import settingsManager from '../../../services/settingsManager';
+import animationManager from '../../../services/animationManager';
 
 class TreePageController {
     private model: typeof treePageModel;
@@ -27,6 +28,7 @@ class TreePageController {
             this.handleButtonClick.bind(this)
         );
         settingsManager.init();
+        animationManager.init();
     }
 
     handleVariantChoice(e: Event): void {

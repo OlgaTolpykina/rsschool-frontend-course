@@ -78,7 +78,7 @@ class TreePageView {
     }
 
     private createHeader(): void {
-        this.selectedCards = <Array<number>>storageManager.getItem('selectedCards', 'local');
+        this.selectedCards = <Array<number>>storageManager.getItem('selectedCards', 'local') || [];
         this.rootNode.append(header.getTemplate(true, false, undefined, undefined, this.selectedCards.length));
         this.rootNode.querySelector('.tree-route')!.classList.add('link_active');
     }

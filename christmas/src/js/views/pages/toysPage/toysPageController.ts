@@ -5,6 +5,7 @@ import ToyPageModel from './toysPageModel';
 import filterDataManager from '../../../services/filterDataManager';
 import storageManager from '../../../services/storageManager';
 import settingsManager from '../../../services/settingsManager';
+import animationManager from '../../../services/animationManager';
 import searchImg from '../../../../assets/img/svg/search.svg';
 import deleteImg from '../../../../assets/img/svg/cross.svg';
 
@@ -34,6 +35,7 @@ export class ToyPageController {
         );
         filterDataManager.filterData(cards);
         settingsManager.init();
+        animationManager.init();
     }
 
     public renderCards(cards: Array<ICardData>): void {
@@ -59,6 +61,7 @@ export class ToyPageController {
 
         if (key === 'favorite') {
             this.model.updateFilters({ [key]: (<HTMLInputElement>clickedElement).checked });
+            this.model.filterData();
             return;
         }
 
@@ -69,6 +72,7 @@ export class ToyPageController {
                 if (button.checked) sizeArray.push(<string>button.dataset.filter);
             });
             this.model.updateFilters({ [key]: sizeArray });
+            this.model.filterData();
             return;
         }
 
@@ -80,6 +84,7 @@ export class ToyPageController {
                 if (button.className.includes('active')) valuesArray.push(<string>button.dataset.filter);
             });
             this.model.updateFilters({ [key]: valuesArray });
+            this.model.filterData();
             return;
         }
     }
@@ -136,15 +141,14 @@ export class ToyPageController {
     private handleButtonClick(e: Event): void {
         const clickedElement = <HTMLElement>e.target;
         const type = clickedElement.dataset.name;
+        const filters = this.model.filters;
 
-        switch (type) {
-            case 'resetLS':
-                localStorage.clear();
-                this.createPage();
-                break;
-            case 'reset':
-                storageManager.deleteItem('filters', 'local');
-                this.createPage();
+        if (Object.keys(filters).length > 0 && type === 'resetLS') {
+            localStorage.clear();
+            this.createPage();
+        } else if (Object.keys(filters).length > 0) {
+            storageManager.deleteItem('filters', 'local');
+            this.createPage();
         }
     }
 
