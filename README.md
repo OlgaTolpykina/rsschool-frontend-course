@@ -4,4 +4,5 @@ This repo includes ths following projects:
 2. CSS Mem Slider https://olgatolpykina.github.io/cssMemSlider/cssMemSlider/
 3. Momentum https://rolling-scopes-school.github.io/olgatolpykina-JSFE2021Q3/momentum/ 
 4. HTML Builder https://github.com/OlgaTolpykina/HTML-builder 
-5. Christmas https://rolling-scopes-school.github.io/olgatolpykina-JSFE2021Q3/christmas/#/
+5. Migration to Typescript https://rolling-scopes-school.github.io/olgatolpykina-JSFE2021Q3/newsAPI/
+6. Christmas https://rolling-scopes-school.github.io/olgatolpykina-JSFE2021Q3/christmas/#/
