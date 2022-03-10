@@ -1,24 +1,24 @@
 .footer {
-    background-color: $color-background;
-    min-height: 50px;
-    padding: 15px;
-    font-size: 1.8rem;
+  background-color: $color-background;
+  min-height: 50px;
+  padding: 15px;
+  font-size: 1.8rem;
 }
 
 .info {
-    @include flex;
-    width: 200px;
+  @include flex;
+  width: 200px;
 }
 
 .rss-logo {
-    width: 100px;
-    height: 35px;
-    background-image: url('../assets/img/svg/rss.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    @extend %transition;
-    &:hover {
-        transform: scale(1.1);
-        opacity: 0.5;
-    }
+  width: 100px;
+  height: 35px;
+  background-image: url('../assets/img/svg/rss.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  @extend %transition;
+  &:hover {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
 }

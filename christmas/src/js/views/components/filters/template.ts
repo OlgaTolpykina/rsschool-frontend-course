@@ -1,11 +1,11 @@
 export function sortFilterTemplate(value: string, name: string): string {
-    return `
+  return `
   <option value='${value}'>${name}</option>
   `;
 }
 
 export function filtersBlockTemplate(): string {
-    return `
+  return `
         <div class="settings settings_narrow">
             <p class="settings__title">Категории</p>
             <div class="filter">

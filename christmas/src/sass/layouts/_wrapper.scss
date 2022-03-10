@@ -1,34 +1,34 @@
 .wrapper {
-    max-width: $content-width;
-    margin: auto;
-    width: 100%;
-    height: 100%;
+  max-width: $content-width;
+  margin: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .header__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 3.5fr;
-    gap: 30px;
-    @include media-tablet {
-        @include tablet-grid;
-    }
+  display: grid;
+  grid-template-columns: 1fr 3.5fr;
+  gap: 30px;
+  @include media-tablet {
+    @include tablet-grid;
+  }
 }
 
 .inner-container {
-    @include flex;
+  @include flex;
 }
 
 .toys__wrapper {
-    @include desktop-grid;
-    @include media-tablet {
-        @include tablet-grid;
-    }
+  @include desktop-grid;
+  @include media-tablet {
+    @include tablet-grid;
+  }
 }
 
 .tree__wrapper {
-    @include flex;
+  @include flex;
 }
 
 .footer__wrapper {
-    @include flex;
+  @include flex;
 }

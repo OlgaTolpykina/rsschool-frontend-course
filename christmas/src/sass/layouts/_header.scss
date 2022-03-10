@@ -1,74 +1,74 @@
 .header {
-    min-height: 70px;
-    padding: 15px;
-    background-color: $color-background;
+  min-height: 70px;
+  padding: 15px;
+  background-color: $color-background;
 }
 
 .search {
-    width: 160px;
-    height: 20px;
-    font-size: 1.8rem;
-    // background-image: url("../assets/img/svg/search.svg");
+  width: 160px;
+  height: 20px;
+  font-size: 1.8rem;
+  // background-image: url("../assets/img/svg/search.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 160px center;
+  @include media-tablet {
+    width: 110px;
+    background-position: 100px center;
+  }
+  &.hidden {
+    display: none;
+  }
+  &-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  &-icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 140px;
+    background-image: url('../assets/img/svg/search.svg');
     background-size: 20px;
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: 160px center;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.2);
+    }
     @include media-tablet {
-        width: 110px;
-        background-position: 100px center;
+      left: 105px;
     }
-    &.hidden {
-        display: none;
-    }
-    &-container {
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
-    &-icon {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        left: 140px;
-        background-image: url('../assets/img/svg/search.svg');
-        background-size: 20px;
-        background-position: center;
-        background-repeat: no-repeat;
-        cursor: pointer;
-        &:hover {
-            transform: scale(1.2);
-        }
-        @include media-tablet {
-            left: 105px;
-        }
-    }
+  }
 }
 
 .navigation {
-    @include flex;
+  @include flex;
 }
 
 .favorite-number {
-    display: inline-block;
-    min-width: 29px;
-    height: 30px;
-    background-color: $color-active;
-    border-radius: 50%;
-    margin-left: 6px;
-    margin-top: 7px;
-    text-align: center;
-    font-size: 1.5rem;
-    line-height: 30px;
-    &_limit {
-        position: absolute;
-        left: -330px;
-        font-size: 20px;
-        top: 8px;
-        color: $color-red;
-    }
+  display: inline-block;
+  min-width: 29px;
+  height: 30px;
+  background-color: $color-active;
+  border-radius: 50%;
+  margin-left: 6px;
+  margin-top: 7px;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 30px;
+  &_limit {
+    position: absolute;
+    left: -330px;
+    font-size: 20px;
+    top: 8px;
+    color: $color-red;
+  }
 }
 
 .icon.favorite:hover {
-    opacity: 1;
-    transform: scale(1);
-    cursor: auto;
+  opacity: 1;
+  transform: scale(1);
+  cursor: auto;
 }

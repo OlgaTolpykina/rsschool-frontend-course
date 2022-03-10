@@ -1,11 +1,11 @@
 .snowflake_falling {
-    position: absolute;
-    top: -20px;
-    animation: fall linear forwards;
+  position: absolute;
+  top: -20px;
+  animation: fall linear forwards;
 }
 
 @keyframes fall {
-    to {
-        transform: translateY(105vh);
-    }
+  to {
+    transform: translateY(105vh);
+  }
 }

@@ -1,76 +1,76 @@
 .icon {
-    display: inline-block;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    &:hover {
-        opacity: 0.5;
-        transform: scale(1.2);
-    }
-    &.active {
-        filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
-    }
+  display: inline-block;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  &:hover {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+  &.active {
+    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
+  }
 }
 
 .icon_small {
-    display: inline-block;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    &:hover {
-        opacity: 0.5;
-        transform: scale(1.2);
-    }
-    &.active {
-        filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
-    }
+  display: inline-block;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  &:hover {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+  &.active {
+    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
+  }
 }
 
 .volume {
-    background-image: url('../assets/img/svg/audio.svg');
+  background-image: url('../assets/img/svg/audio.svg');
 }
 
 .mute {
-    background-image: url('../assets/img/svg/mute.svg');
+  background-image: url('../assets/img/svg/mute.svg');
 }
 
 .theme {
-    background-image: url('../assets/img/svg/snowflake.svg');
+  background-image: url('../assets/img/svg/snowflake.svg');
 }
 
 .tree {
-    background-image: url('../assets/img/svg/tree.svg');
+  background-image: url('../assets/img/svg/tree.svg');
 }
 
 .favorite {
-    position: relative;
-    background-image: url('../assets/img/svg/ball-2.svg');
-    background-size: 40px 44px;
-    background-position: left -6px;
+  position: relative;
+  background-image: url('../assets/img/svg/ball-2.svg');
+  background-size: 40px 44px;
+  background-position: left -6px;
 }
 
 .bell {
-    background-image: url('../assets/img/svg/bell.svg');
+  background-image: url('../assets/img/svg/bell.svg');
 }
 
 .ball {
-    background-image: url('../assets/img/svg/ball.svg');
+  background-image: url('../assets/img/svg/ball.svg');
 }
 
 .cone {
-    background-image: url('../assets/img/svg/cone.svg');
+  background-image: url('../assets/img/svg/cone.svg');
 }
 
 .snowflake {
-    background-image: url('../assets/img/svg/snowflake.svg');
+  background-image: url('../assets/img/svg/snowflake.svg');
 }
 
 .toy {
-    background-image: url('../assets/img/svg/toy.svg');
+  background-image: url('../assets/img/svg/toy.svg');
 }
