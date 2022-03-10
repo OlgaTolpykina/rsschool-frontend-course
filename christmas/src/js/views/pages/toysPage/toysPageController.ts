@@ -155,18 +155,19 @@ export class ToyPageController {
   handleSearchFieldChange(e: Event): void {
     const searchField = <HTMLInputElement>e.target;
     const key = <string>searchField.dataset.name;
+    const searchBtn = <HTMLElement>document.querySelector("[data-value='search']");
+    const deleteBtn = <HTMLElement>document.querySelector("[data-value='delete']");
 
-    if (searchField.value) {
-      const searchBtn = <HTMLElement>document.querySelector("[data-value='search']");
+    if (searchField.value && searchBtn) {
       searchBtn.style.backgroundImage = `url(${deleteImg})`;
       searchBtn.dataset.value = 'delete';
-    } else {
-      const deleteBtn = <HTMLElement>document.querySelector("[data-value='delete']");
+    } else if (!searchField.value) {
       deleteBtn.style.backgroundImage = `url(${searchImg})`;
       deleteBtn.dataset.value = 'search';
     }
 
     this.model.updateFilters({ [key]: searchField.value });
+    this.model.filterData();
   }
 
   handleSearchFieldClearance(e: Event): void {
@@ -178,6 +179,7 @@ export class ToyPageController {
       clickedBtn.style.backgroundImage = `url(${searchImg})`;
       clickedBtn.dataset.value = 'search';
       this.model.updateFilters({ [key]: searchField.value });
+      this.model.filterData();
     }
   }
 }
